@@ -1,0 +1,257 @@
+// DEBUG
+// -------------------------------------------------------
+// Enabling current media query, displays currently used
+// media query.
+@current-media-query: 			true;
+
+
+// GRID & BREAKPOINTS
+// -------------------------------------------------------
+
+// Dictate how many columns you would like your grid 
+// system to use. Default value is 12. 
+// Gutter width between columns (use px|%|rem)
+@grid-columns: 					12;
+@grid-gutter-width: 			24px;
+
+// Breakpoints & container widths
+@use-screen-sm:					true;
+	@container-sm: 				100%;
+	@screen-sm-min:				480px; //30em
+@use-screen-md:					true;
+	@container-md: 				(@screen-md-min - 16px);
+	@screen-md-min:				768px; //48em
+@use-screen-lg:					true;
+	@container-lg:				(@screen-lg-min - 16px);
+	@screen-lg-min:				992px; //62em
+@use-screen-xl:					true;
+	@container-xl:				(@screen-xl-min - 16px);	
+	@screen-xl-min:				1280px; //80em
+
+
+// TYPOGRAPHY & BASELINE PROPORTIONS
+// -------------------------------------------------------
+
+@base-font-size: 				16px;
+@base-line-height:				24px;
+
+// Line-height ratio & element spacing
+@line-height-ratio: 			(unit(@base-line-height / @base-font-size));
+@base-spacing-unit:				@base-line-height;
+@base-spacing-unit-half:		round(@base-line-height / 2);
+@base-spacing-unit-double:		round(@base-line-height * 2);
+
+// Modular Scale – Rate of growth for headings, buttons, etc. 
+@modular-scale-factor: 			1.333;
+
+// @Font-Face
+// Options: 'font-family', 'font-file', font-weight, font-style, 'svg-name'
+//@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
+//@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
+
+@base-font-family:				"proxima-nova", sans-serif;
+@heading-font-family:			@base-font-family;
+@blockquote-font-family:		@base-font-family;	
+
+// Heading styles
+@heading-font-weight:			700;
+@heading-letter-spacing:		-0.010em;
+@heading-line-height:			1.25;
+
+
+// COLORS
+// -------------------------------------------------------
+
+// Greyscale
+@grey-25:						lighten(@black, 97,5%);
+@grey-50:						lighten(@black, 95%);
+@grey-100:						lighten(@black, 90%);
+@grey-200:						lighten(@black, 80%);
+@grey-300:						lighten(@black, 70%);
+@grey-400:						lighten(@black, 60%);
+@grey-500:						lighten(@black, 50%);
+@grey-600:						lighten(@black, 40%);
+@grey-700:						lighten(@black, 30%);
+@grey-800:						lighten(@black, 20%);
+@grey-900:						lighten(@black, 10%);
+
+@black:                  		#000000;
+@white:                     	#ffffff;
+
+// Custom brand colors
+@color-primary:		       		#ae956d;
+@color-primary-variant-1:		lighten(@color-primary, 5%);
+@color-primary-variant-2:		lighten(@color-primary, 20%);
+
+@color-secondary:				#3F51B5;
+@color-secondary-variant-1:		lighten(@color-secondary, 5%);
+@color-secondary-variant-2:		lighten(@color-secondary, 20%);
+
+// UI colors
+@color-success:					#5cb85c;
+@color-warning:					#ed9c28;
+@color-danger:					#d9534f;
+@color-info:					#5bc0de;
+
+// Social Media colors
+@color-behance:                 #053eff;
+@color-blogger:                 #fb8f3d;
+@color-dribbble:                #ea4c89;
+@color-dropbox:                 #0d84de;
+@color-facebook:                #3b5998;
+@color-flickr:                  #ff0084;
+@color-foursquare:              #0072b1;
+@color-github:                  #333333;
+@color-google-plus:             #dd4b39;
+@color-heimo:                   #ffb549;
+@color-instagram:               #517fa4;
+@color-linkedin:                #007bb6;
+@color-pinterest:               #e0242a;
+@color-rss:                     #ee802f;
+@color-skype:                   #ee802f;
+@color-souncloud:               #ff3a00;
+@color-spotify:                 #81b71a;
+@color-tumblr:                  #35465c;
+@color-twitter:                 #00aced;
+@color-vimeo:                   #aad450;
+@color-wordpress:               #21759b;
+@color-youtube:                 #bb0000;
+
+// Basic colors for body
+@base-background: 				@white;
+@base-color:					@grey-800;
+@base-link-color: 				@color-primary;
+
+// Selections
+@selection-background: 			@base-link-color;
+@selection-color: 				@white;
+
+// Hr
+@hr-color: 						@grey-100;
+
+
+// FORMS, INPUTS & BUTTONS
+// -------------------------------------------------------
+
+@form-item-spacing:             @base-spacing-unit;
+
+// Fieldset with border
+@fieldset-border-width:         1px;
+@fieldset-border-style:         solid;
+@fieldset-border-color:         @grey-100;
+
+// Label & legend
+@label-font-size:               inherit;
+@label-color:                   @base-color;
+@legend-font-weight:            700;
+
+// Inputs, textarea, select
+@input-color: 					@grey-800;
+@input-placeholder-color:		@grey-400;
+@input-background:              transparent;
+@input-border-color:			@grey-200;
+@input-border-color-hover:		@grey-600;
+@input-border-color-focus:		@grey-600;
+@input-border-width:			1px;
+@input-border-radius:			0;
+@input-font-size:				@base-font-size;
+@input-height:					48px;
+@input-horizontal-padding:		.5em;
+@input-box-shadow:              none;
+@input-focus-box-shadow:        inset 0 0 5px rgba(red(@grey-500), green(@grey-500), blue(@grey-500), 0.25);
+
+// Checkbox & radio buttons
+@input-box-size:                @base-spacing-unit;
+@input-checkbox-checked-color:  currentColor;
+@input-checkbox-border-radius:	0;
+@input-radio-checked-color:     currentColor;
+
+// Buttons
+// Different button sizes will be multiples of base sizes
+// btn-sm: 0,8x, btn-lg: 1.5x, btn-xl: 2x of default size
+@button-font-size:				14px;
+@button-font-weight:			700;
+@button-height:					40px;
+@button-horizontal-padding:		1.5em;
+@button-border-width:			1px;
+@button-border-radius:			0;
+
+
+// TABLES
+// -------------------------------------------------------
+// Use table styles via classes: table-border, table-border-rows, 
+// table-border-cells, table-stripes, table-responsive
+
+@table-font-size:				14px;
+@table-cell-padding:			6px @base-spacing-unit-half;
+@table-background:				transparent;
+@table-headfoot-color:			@grey-800;
+@table-headfoot-font-weight:	700;
+@table-border-color:			@grey-100;
+@table-stripes-bg:				@grey-25;
+
+
+// MISC
+// -------------------------------------------------------
+
+// Iconography
+@icon-font-size:               14px;
+
+// Border-radius
+@border-radius-default:         4px;
+@border-radius-large:			8px;
+
+// Box-shadow
+@box-shadow-default:			0 8px 16px rgba(230, 230, 230, 0.4);
+
+// Transition
+@transition-duration-default:   200ms;
+@transition-easing-default:     linear;
+
+
+// TOOLTIPS
+// -------------------------------------------------------
+@tooltip-background:            @grey-800;
+@tooltip-color:                 @white;
+@tooltip-border-radius:         3px;
+@tooltip-vertical-padding:      8px;
+@tooltip-horizontal-padding:    10px;
+@tooltip-padding:               1em;
+@tooltip-multiline-width:       160px;
+@tooltip-box-shadow:            none;
+@tooltip-offset:                4px;
+@tooltip-anim-duration:         @transition-duration-default;
+@tooltip-anim-delay:            100ms;
+@tooltip-font-size:             12px;
+@tooltip-font-weight:           400;
+@tooltip-arrow-size:            6px;
+
+
+// INCLUDES
+// -------------------------------------------------------
+// Set whatever components you want included
+// in your project to `true` and any components
+// you do not wish to be included to `false`
+
+@use-normalize:   				true;
+@use-clearfix:    				true;
+
+@use-container:                 true;
+@use-columns:					true;
+	@use-push:					true;
+	@use-pull:					true;
+	@use-offset:				true;
+
+@use-forms:      				true;
+    @use-form-styles:			true;
+@use-button-styles:				true;
+@use-tables:                    true;
+    @use-table-styles:			true;
+
+@use-conditional-styles:		true;
+@use-helper-classes:			true;
+@use-print-styles: 				false;
+
+@use-icons:   					true;
+@use-tooltips:   				true;
+@use-animations:   				true;

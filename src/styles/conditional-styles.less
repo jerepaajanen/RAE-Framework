@@ -1,0 +1,133 @@
+.conditional-styles(@boolean) when (@boolean = true) {
+//
+// Conditionals Styles
+// -------------------------------------------------------
+  
+  // Variables
+  .show-conditional() {
+    display: inherit !important;
+  }
+  .hide-conditional() {
+    display: none !important;
+  }
+  
+  .show-sm-only,
+  .show-sm-up,
+  .show-sm-down,
+  .hide-md-only,
+  .hide-md-up,
+  .show-md-down,
+  .hide-lg-only,
+  .hide-lg-up,
+  .show-lg-down,
+  .hide-xl-only,
+  .hide-xl-up {
+    display: inherit !important;
+  }
+  .hide-sm-only,
+  .hide-sm-up,
+  .hide-sm-down,
+  .show-md-only,
+  .show-md-up,
+  .hide-md-down,
+  .show-lg-only,
+  .show-lg-up,
+  .hide-lg-down,
+  .show-xl-only,
+  .show-xl-up,
+  .hide-xl-down {
+    .hide-conditional();
+  }
+  
+  @media @medium-up {
+    .hide-sm-only,
+    .show-sm-up,
+    .hide-sm-down,
+    .show-md-only,
+    .show-md-up,
+    .show-md-down,
+    .hide-lg-only,
+    .hide-lg-up,
+    .show-lg-down,
+    .hide-xl-only,
+    .hide-xl-up {
+      .show-conditional();
+    }
+    .show-sm-only,
+    .hide-sm-up,
+    .show-sm-down,
+    .hide-md-only,
+    .hide-md-up,
+    .hide-md-down,
+    .show-lg-only,
+    .show-lg-up,
+    .hide-lg-down,
+    .show-xl-only,
+    .show-xl-up,
+    .hide-xl-down {
+      .hide-conditional();
+    }
+  }
+  
+  @media @large-up {
+    .hide-sm-only,
+    .show-sm-up,
+    .hide-sm-down,
+    .hide-md-only,
+    .show-md-up,
+    .hide-md-down,
+    .show-lg-only,
+    .show-lg-up,
+    .show-lg-down,
+    .hide-xl-only,
+    .hide-xl-up {
+      .show-conditional();
+    }
+    .show-sm-only,
+    .hide-sm-up,
+    .show-sm-down,
+    .show-md-only,
+    .hide-md-up,
+    .show-md-down,
+    .hide-lg-only,
+    .hide-lg-up,
+    .hide-lg-down,
+    .show-xl-only,
+    .show-xl-up,
+    .hide-xl-down {
+      .hide-conditional();
+    }
+  }
+  
+  @media @xlarge-up {
+    .hide-sm-only,
+    .show-sm-up,
+    .hide-sm-down,
+    .hide-md-only,
+    .show-md-up,
+    .hide-md-down,
+    .hide-lg-only,
+    .show-lg-up,
+    .hide-lg-down,
+    .show-xl-only,
+    .show-xl-up {
+      .show-conditional();
+    }
+    .show-sm-only,
+    .hide-sm-up,
+    .show-sm-down,
+    .show-md-only,
+    .hide-md-up,
+    .show-md-down,
+    .show-lg-only,
+    .hide-lg-up,
+    .show-lg-down,
+    .hide-xl-only,
+    .hide-xl-up,
+    .hide-xl-down {
+      .hide-conditional();
+    }
+  }
+	
+}
+.conditional-styles(@use-conditional-styles); 

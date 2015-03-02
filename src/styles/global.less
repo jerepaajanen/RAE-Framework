@@ -1,0 +1,172 @@
+//
+// Global
+// -------------------------------------------------------
+
+//Box model adjustments
+//http://cbrac.co/RQrDL5
+*,
+*:before,
+*:after {
+	box-sizing:border-box;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale;
+	font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+	overflow-y: scroll; // Force a vertical scrollbar
+	font-size: (unit(@base-font-size / 16) * 100%); // Set base font-size
+	tap-highlight-color: transparent;
+}
+
+
+body {
+    font-family: @base-font-family;
+    font-size: 1rem;
+    line-height: @line-height-ratio;
+	color: @base-color;
+	background-color: @base-background;
+}
+
+// Selection colors
+// -------------------------------------------------------
+::selection{
+	background: @selection-background;
+	color: @selection-color;
+	text-shadow: none; // Remove `text-shadow` selection highlight - http://cbrac.co/Q6swON
+}
+img::selection{
+	background: transparent;
+}
+
+
+// Links
+// -------------------------------------------------------
+a {
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
+	&:active, &:hover {
+		outline: 0;
+		color: @base-link-color;
+	}
+}
+// Basic typography
+// -------------------------------------------------------
+h1,h2,h3,h4,h5,h6, .h1, .h2, .h3, .h4, .h5, .h6{
+	font-family: @heading-font-family;
+	line-height: @heading-line-height;
+	letter-spacing: @heading-letter-spacing;
+	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
+	font-weight: @heading-font-weight;
+	a {
+		color: inherit;
+	}
+}
+
+h1, .h1 { .font-size(3,true);}
+h2, .h2 { .font-size(2,true);}
+h3, .h3 { .font-size(1,true);}
+h4, .h4,
+h5, .h5 { .font-size(0,true);}
+h6, .h6 { .font-size(-1,true);}
+
+@media @medium-up {
+h1, .h1 { .font-size(4,true);}
+h2, .h2 { .font-size(3,true);}
+h3, .h3 { .font-size(2,true);}
+h4, .h4 { .font-size(1,true);}
+h5, .h5 { .font-size(0,true);}
+h6, .h6 { .font-size(-1,true);}
+}
+
+p {
+	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
+}
+
+blockquote {
+	font-family: @blockquote-font-family;
+	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
+	font-style: italic;
+	p {
+		margin: 0;
+		+ p {
+			margin-top: @base-spacing-unit-half;
+		}
+	}
+	cite {
+		font-family: @base-font-family;
+		color: lighten(@base-color, 20%);
+		.font-size(-1,true);
+		font-style: normal;
+		&:before {
+			content:"\2014 \0020";
+		}
+	}
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, serif;
+	.font-size(14);
+}
+pre {
+	padding: 1rem;
+	overflow: auto;
+	white-space: pre;
+	word-wrap: normal;
+	word-break: normal;
+	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
+}
+hr, .hr {
+	border: solid @hr-color;
+	border-width: 1px 0 0 0; 
+	clear: both;
+	height: 0;
+	margin: 0 auto @base-spacing-unit auto; // set vertical rhytmn
+    &.hr-empty {
+        border-color: transparent;
+    }
+}
+
+// Lists
+// -------------------------------------------------------
+ul, ol, dl {
+	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
+}
+ul, ol,  {
+	margin-left: @base-spacing-unit;
+	padding-left: 0;
+	ul, ol {
+		margin-bottom: 0;
+	}
+}
+dl {
+	dt { 
+		font-weight: bold; 
+	}
+	dd { 
+		margin-left: 0;
+	}
+}
+
+// Navigation resets
+nav {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		li {
+			cursor: pointer;
+		}
+	}
+}

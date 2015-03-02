@@ -1,0 +1,8 @@
+{
+    "server": {
+        "host": "ftp.***.com",
+        "remotePath": "",
+        "user": "",
+        "pass": ""
+    }
+}

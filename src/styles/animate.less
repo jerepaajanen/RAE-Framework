@@ -1,0 +1,88 @@
+.animations(@boolean) when (@boolean = true) {
+/*! Animate Less is based on Dan Eden's animate.css */
+
+/**
+ * Animate.css - http://daneden.me/animate.
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ * Copyright (c) 2014 Daniel Eden
+ */
+  
+.animated {
+  animation-duration: 500ms;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+// Enable/disable only animations you need.
+
+
+// Sliding Enterances
+@import 'animate/slideInDown.less';
+@import 'animate/slideInLeft.less';
+@import 'animate/slideInRight.less';
+@import 'animate/slideInUp.less';
+
+
+// Sliding Exits
+@import 'animate/slideOutDown.less';
+@import 'animate/slideOutLeft.less';
+@import 'animate/slideOutRight.less';
+@import 'animate/slideOutUp.less';
+
+
+// Attention Seekers
+@import 'animate/bounce.less';
+@import 'animate/flash.less';
+@import 'animate/pulse.less';
+@import 'animate/shake.less';
+@import 'animate/swing.less';
+@import 'animate/tada.less';
+@import 'animate/wobble.less';
+
+
+// Bouncing Enterances
+@import 'animate/bounceIn.less';
+@import 'animate/bounceInDown.less';
+@import 'animate/bounceInLeft.less';
+@import 'animate/bounceInRight.less';
+@import 'animate/bounceInUp.less';
+
+
+// Bouncing Exits
+@import 'animate/bounceOut.less';
+@import 'animate/bounceOutDown.less';
+@import 'animate/bounceOutLeft.less';
+@import 'animate/bounceOutRight.less';
+@import 'animate/bounceOutUp.less';
+
+
+// Fading Enterances
+@import 'animate/fadeIn.less';
+@import 'animate/fadeInDown.less';
+@import 'animate/fadeInLeft.less';
+@import 'animate/fadeInRight.less';
+@import 'animate/fadeInUp.less';
+
+
+// Fading Exits
+@import 'animate/fadeOut.less';
+@import 'animate/fadeOutDown.less';
+@import 'animate/fadeOutLeft.less';
+@import 'animate/fadeOutRight.less';
+@import 'animate/fadeOutUp.less';
+
+
+// Zooms
+@import 'animate/zoomIn.less';
+@import 'animate/zoomOut.less';
+
+
+// Specials
+@import 'animate/rollIn.less';
+@import 'animate/rollOut.less';
+
+}
+.animations(@use-animations); 

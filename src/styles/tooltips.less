@@ -1,0 +1,171 @@
+.tooltips(@boolean) when (@boolean = true) {
+//
+// Tooltips
+// -------------------------------------------------------
+    
+    // Variables
+    @tooltip-position:  (@tooltip-offset + 2 + @tooltip-arrow-size);
+    @tooltip-height: @tooltip-font-size + 2 * @tooltip-vertical-padding;
+
+    
+    
+    // The 'before' pseudo element is concerned with the body 
+    // and 'after' pseudo element is concerned with the arrow.
+    // of tips
+    [data-tooltip] {
+        position: relative;
+        display: inline-block;
+        &:after,
+        &:before {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            position: absolute;
+            z-index: 10000; // always on top
+            transition: 
+                opacity @tooltip-anim-duration ease-in-out, 
+                transform @tooltip-anim-duration ease-in-out;
+            // HACK: Trigger hardware accelerated rendering,
+            // otherwise transform was not working on a hidden element
+            transform: translate3d(0, 0, 0);
+        }
+        
+        &:after {
+            content: "";
+            width: 0;
+            height: 0;
+            z-index: 10001;
+            background: transparent;
+            border: @tooltip-arrow-size solid transparent;
+        }
+        
+        &:before {
+            background: @tooltip-background;
+            border-radius: @tooltip-border-radius;
+            box-shadow: @tooltip-box-shadow;
+            color: @tooltip-color;
+            content: attr(data-tooltip);
+            font-size: @tooltip-font-size;
+            line-height: @tooltip-font-size;
+            text-align: left;
+            text-transform: none;
+            padding: @tooltip-vertical-padding @tooltip-horizontal-padding;
+            font-weight: @tooltip-font-weight;
+            width: auto;
+            white-space:pre;
+        }
+
+        &:hover,
+        &:focus {
+            &:after,
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        &:hover:before,
+        &:hover:after {
+            // Transition-delay will apply as soon as element is hovered.
+            transition-delay: @tooltip-anim-delay;
+        }
+        
+        
+        &[data-placement="top"] {
+            &:before, &:after {
+                bottom: 100%;
+                left: 50%;
+            }
+            &:after {
+                border-top-color: @tooltip-background;
+                margin-left: -(@tooltip-arrow-size); // Center arrow
+                margin-bottom: -(@tooltip-arrow-size * 2);
+            }
+            &:before {
+                margin-left: -2em;
+            }
+            &:hover,
+            &:focus {
+                &:after,
+                &:before {
+                    transform: translate3d(0, -@tooltip-position, 0);            
+                }
+            }
+        }
+        &[data-placement="bottom"] {
+            &:before, &:after {
+                top: 100%;
+                left: 50%;
+            }
+            &:after {
+                border-bottom-color: @tooltip-background;
+                margin-left: -(@tooltip-arrow-size); // Center arrow
+                margin-top: -(@tooltip-arrow-size * 2);            
+            }
+            &:before {
+                margin-left: -2em;
+            }
+            &:hover,
+            &:focus {
+                &:after,
+                &:before {
+                    transform: translate3d(0, @tooltip-position, 0);            
+                }
+            }
+        }
+        &[data-placement="left"] {
+            &:before, &:after {
+                right: 100%;
+                top: 50%;
+            }
+            &:after {
+                border-left-color: @tooltip-background;
+                margin-top: -(@tooltip-arrow-size); // Center arrow
+                margin-right: -(@tooltip-arrow-size * 2);
+            }
+            &:before {
+                margin-top: -(@tooltip-height / 2); // Center content
+            }
+            &:hover,
+            &:focus {
+                &:after,
+                &:before {
+                    transform: translate3d(-@tooltip-position, 0, 0);            
+                }
+            }
+        }
+        
+        &[data-placement="right"] {
+            &:before, &:after {
+                left: 100%;
+                top: 50%;
+            }
+            &:after {
+                border-right-color: @tooltip-background;
+                margin-top: -(@tooltip-arrow-size); // Center arrow
+                margin-left: -(@tooltip-arrow-size * 2);
+            }
+            &:before {
+                margin-top: -(@tooltip-height / 2); // Center content
+
+            }
+            &:hover,
+            &:focus {
+                &:after,
+                &:before {
+                    transform: translate3d(@tooltip-position, 0, 0);            
+                }
+            }
+        }
+        
+        &[data-tooltip-multiline] {
+            &:before {
+                white-space: pre-wrap;
+                line-height: @line-height-ratio;
+                width: @tooltip-multiline-width;
+                height: auto;
+            }
+        }
+    }
+    
+}
+.tooltips(@use-tooltips);

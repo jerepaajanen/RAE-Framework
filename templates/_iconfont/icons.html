@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 9]> <html class="no-js lt-ie10 ie9"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAE Framework</title>
+
+    <!-- favicon.png, apple-touch-icon.png & mstile.png -->
+    <link rel="icon" href="../images/favicon.png">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <meta name="msapplication-TileImage" content="../images/mstile.png">
+
+    <!-- Page styles -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- Styleguide styles -->
+    <style>
+        html:after {
+            top: 2.5rem;
+        }
+        
+        body {
+            background-color: #fff !important;
+        }
+        
+        .docs-header {
+            position: fixed;
+            top: 0;
+            height: 2.5rem;
+            background: white;
+            width: 100%;
+            z-index: 5;
+            background: #212121;
+        }
+        
+        .docs-header h1 {
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 2.5rem;
+            color: white;
+        }
+        
+        .docs-footer {
+            padding: 3rem 0;
+            background: #212121;
+            text-align: center;
+            color: white;
+            font-weight: 00;
+        }
+        
+        .docs-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .docs-navigation {
+            margin-top: 4rem;
+            position: relative;
+        }
+        
+        .docs-navigation .menu {
+            padding-top: 6rem;
+            position: fixed;
+        }
+        
+        .docs-navigation .menu li a {
+            padding: .25rem 1em;
+            line-height: 24px;
+            display: block;
+        }
+        
+        .docs-content {
+            margin-top: 6rem;
+        }
+        
+        .docs-content section {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .docs-content > section > article {
+            border-bottom: 1px solid #e6e6e6;
+            padding-bottom: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .docs-content > section > article:last-child {
+            border-bottom: 0;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .docs-content .hero {
+            padding-top: 2rem;
+            padding-bottom: 4.5rem;
+        }
+        
+        .docs-content .well {
+            border: 1px solid #e6e6e6;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .docs-content .trigger {
+            font-size: 12px;
+            cursor: pointer;
+            color: #999;
+            fill: #999;
+        }
+        
+        .docs-content .trigger:hover {
+            color: #333;
+            fill: #333;
+        }
+        
+        .docs-content .trigger .svg-code {
+            width: 1rem;
+            height: 1rem;
+            position: relative;
+            top: 3px;
+        }
+        
+        .docs-content .svg-heart,
+        .docs-footer .svg-heart {
+            height: 1em;
+            width: 1em;
+            position: relative;
+            top: 2px;
+            fill: #d9534f;
+        }
+        
+        .docs-content .preview-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .docs-content .preview-container pre {
+            margin: 0;
+            border: 1px solid #e6e6e6;
+            background: #f7f7f7;
+        }
+        
+        .docs-content .grid__columns [class*='col-'] {
+            background: #f2f2f2;
+            min-height: 1em;
+            margin-bottom: 1em;
+            background-clip: content-box;
+        }
+        
+        .docs-content .grid__columns [class*='col-'] .row {
+            background: white;
+        }
+        
+        .docs-content .grid__columns--nested {
+            margin-bottom: -1.5rem;
+        }
+        
+        .docs-content .condition-table tbody {
+            font-size: 12px !important;
+        }
+        
+        .docs-content .table-responsive #tables__responsive td {
+            min-width: 164px;
+        }
+        
+        .docs-content .buttons .btn {
+            margin-bottom: 1rem;
+        }
+        
+        .docs-content .addons__tooltips a {
+            float: left;
+            clear: both;
+        }
+        
+        .docs-content .animation {
+            cursor: pointer;
+        }
+        
+        .docs-content .animation:hover code {
+            color: #ae956d;
+        }
+        
+        .docs-content .animation {
+            text-align: center;
+        }
+        
+        .docs-content .animation > div {
+            text-align: center;
+            display: block;
+            height: 12px;
+            width: 100px;
+            margin: 0 auto 1rem auto;
+        }
+        
+        .docs-content .animation .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 8px;
+            border-radius: 100%;
+        }
+        
+        .docs-content .addons__animations .well {
+            overflow: hidden;
+        }
+        
+        .docs-content .icons ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .docs-content .icons ul li {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .docs-content .icons ul li:hover .magnify {
+            display: block;
+        }
+        
+        .docs-content .icons ul li .magnify {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            z-index: 999;
+            width: 240px;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+        }
+        
+        .docs-content .icons ul li .magnify:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .docs-content .icons .magnify ul {
+            width: 100%;
+            margin-bottom: .5rem;
+        }
+        
+        .docs-content .icons .magnify ul li {
+            display: table-cell;
+            width: 1%;
+            text-align: center;
+        }
+        
+        .docs-content .glyph-name {
+            padding-left: 6px;
+        }
+        
+        .docs-content .glyph-class {
+            font-size: .75em;
+            color: #999;
+            display: block;
+        }
+        
+        .docs-content.glyph-codepoint {
+            font-size: .75em;
+            color: #999;
+        }
+        
+        .bg25 {
+            background: #f7f7f7;
+        }
+        
+        .bg50 {
+            background: #f2f2f2;
+        }
+        
+        .bg100 {
+            background: #e6e6e6;
+        }
+        
+        .bg200 {
+            background: #cccccc;
+        }
+        
+        .bg300 {
+            background: #b3b3b3;
+        }
+        
+        .bg400 {
+            background: #999999;
+        }
+        
+        .bg500 {
+            background: #808080;
+        }
+        
+        .bg600 {
+            background: #666666;
+        }
+        
+        .bg700 {
+            background: #4d4d4d;
+        }
+        
+        .bg800 {
+            background: #333333;
+        }
+        
+        .bg900 {
+            background: #1a1a1a;
+        }
+    </style>
+</head>
+
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+        <symbol id="svg-heart" viewBox="0 0 768 1024">
+            <title>heart</title>
+            <path class="path1" d="M384 864c399-314 384-425 384-512s-72-192-192-192-192 128-192 128-72-128-192-128-192 105-192 192-15 198 384 512z"></path>
+        </symbol>
+
+        <symbol id="svg-code" viewBox="0 0 896 1024">
+            <title>code</title>
+            <path class="path1" d="M608 192l-96 96 224 224-224 224 96 96 288-320-288-320zM288 192l-288 320 288 320 96-96-224-224 224-224-96-96z"></path>
+        </symbol>
+
+    </svg>
+    <header class="docs-header" role="banner">
+
+        <div class="container">
+            <h1><strong>RAE</strong> Framework</h1>
+            <nav class="nav" role="navigation" style="display: none;">
+                <ul class="menu">
+                    <li>
+                        <a href=""></a>
+                    </li>
+                    <li>
+                        <a href=""></a>
+                    </li>
+                    <li>
+                        <a href=""></a>
+                    </li>
+                    <li>
+                        <a href=""></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="docs-content" role="main">
+        <section class="hero container">
+            <h2>Visual Style Guide &amp; Documentation</h2>
+            <p class="h4 weight-normal">Learn how to use all features that RAE Framework provides.</p>
+
+        </section>
+        <hr />
+        <section class="icons container">
+            <header>
+                <h3 class="weight-normal">Documentation for <%= fontName %></h3>
+            </header>
+            <article class="icons__list">
+                <header>
+                    <h4>List of <%= fontName %></h4>
+
+                </header>
+                <ul class="row">
+                    <% _.each(glyphs, function(glyph) { %>
+                        <li class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
+                            <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
+                            <div class="well magnify">
+                                <ul class="glyph-magnify">
+
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-2x"></i>
+                                    </li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-3x"></i>
+                                    </li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-4x"></i>
+
+                                </ul>
+                                <div>
+                                    <code class="glyph-codepoint">Unicode: <%= glyph.codepoint.toString(16).toUpperCase() %></code>
+                                </div>
+                            </div>
+                            </li>
+                            <% }); %>
+                </ul>
+
+                <div class="preview-container">
+                    <div class="trigger" data-tooltip="View source" data-placement="top">
+                        <svg class="svg-code">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-code"></use>
+                        </svg>
+                    </div><pre><code>&lt;i class="<%= className %> <%= className %>-[name]"&gt;&lt;/i&gt;
+&lt;i class="<%= className %> <%= className %>-[name] <%= className %>-lg"&gt;&lt;/i&gt;
+&lt;i class="<%= className %> <%= className %>-[name] <%= className %>-2x"&gt;&lt;/i&gt;
+&lt;i class="<%= className %> <%= className %>-[name] <%= className %>-3x"&gt;&lt;/i&gt;
+&lt;i class="<%= className %> <%= className %>-[name] <%= className %>-4x"&gt;&lt;/i&gt;
+&lt;i class="<%= className %> <%= className %>-[name] <%= className %>-5x"&gt;&lt;/i&gt;</code></pre>
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer class="docs-footer container-fluid" role="contentinfo">
+        <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2014</small>
+    </footer>
+
+    <script src="../scripts/vendor/modernizr-2.8.3.js"></script>
+    <script src="../scripts/vendor/jquery-2.1.3.js"></script>
+    <script src="../scripts/scripts.js"></script>
+
+    <!-- Styleguide JS -->
+    <script>
+        //Copied lovingy from http://codepen.io/davatron5000/pen/tzJKh
+        (function ($) {
+            'use strict';
+            $.fn.dataCodeBlock = function () {
+                var escapeHTML = function (code) {
+                    return code.replace(/(<pre[\s\S]*?>[\s\S]*?<\/pre>)| {2,}/ig, '$1').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                };
+                return $('[data-codeblock]').each(function () {
+                    var $this = $(this),
+                        target = $this.data('codeblock'),
+                        html = $this.clone().removeAttr('data-codeblock')[0].innerHTML,
+                        tidyhtml = html.trim(), // remove leading whitespace
+                        codeblock = $('<div class="preview-container"><div class="trigger" data-tooltip="View source" data-placement="top"><svg class="svg-code"><use xlink:href="#svg-code"></use></svg></div><pre><code>');
+                    codeblock.find('code').append(escapeHTML(tidyhtml));
+                    if (target && $(target).length) {
+                        $(target).append(codeblock);
+                    } else {
+                        $this.after(codeblock);
+                    }
+                });
+                $(".preview-container pre").hide();
+                $(".trigger").click(function () {
+                    $(this).toggleClass("active").next().slideToggle("normal");
+                    return false;
+                });
+            };
+            $.fn.dataCodeBlock();
+        })(jQuery);
+
+        // Toggle Codeblocks
+        $(function () {
+            $(".preview-container pre").hide();
+            $(".trigger").click(function () {
+                $(this).toggleClass("active").next().slideToggle("normal");
+                return false;
+            });
+        });
+
+        // Reset animations
+        $(function () {
+            $(".animation").click(function () {
+                var el = $(this).children('div'),
+                    elclass = el.attr("class"),
+                    newone = el.clone(true).addClass('animated');
+                el.before(newone);
+                el.remove();
+            });
+        });
+    </script>
+
+    <!-- Built with love using Rae Framework -->
+</body>
+
+</html>
