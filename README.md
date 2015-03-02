@@ -20,6 +20,7 @@ RAE Framework
 - $ gulp serve:dist - create distribution & test files on local server
 - $ gulp serve - start local server for development
 - $ gulp deploy - create distribution & deploy via ftp
+- $ gulp iconfont - build iconfonts from .svg-files in ./src/images/icons
 
 
 ## Gulp ftp-deploy
