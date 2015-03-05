@@ -39,11 +39,13 @@ input[type="submit"] {
             outline: 0;
         }
         &[disabled],
-        &.disabled,
+        &:disabled,
         fieldset[disabled] .btn {
-            opacity: .4;
+            opacity: .5;
             cursor: not-allowed;
             pointer-events: none;
+            box-shadow: none;
+            text-shadow: none;
         }
     }
 
