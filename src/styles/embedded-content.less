@@ -2,9 +2,20 @@
 // Embedded content
 // -------------------------------------------------------
 
+// Remove the gap between <img> elements and the bottom of their containers
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
 // Fluid-width <audio> & <video> elements
 audio,
-video {
+video,
+canvas {
     width: 100%;
     &:focus {
         outline: 1px dotted @black;
@@ -25,12 +36,20 @@ object {
     height: 100%;
 }
 
-img {
-    vertical-align: middle; // Remove the gap between <img> elements and the bottom of their containers
-    -ms-interpolation-mode: bicubic;
+// Reset `margin` for figure elements.
+figure {
+  margin-right: auto;
+  margin-left: auto;
 }
+
+// Set <img> elements as block-level inside <figure> elements.
+figure > img {
+  display: block;
+}
+
+// Inherit svg fill color from parent element that doesn't inherit by default.
 svg {
-    fill: currentColor; // Inherit svg fill color from parent element that doesn't  inherit by default.
+    fill: currentColor;
 }
 
 // Flexible video classes
@@ -41,6 +60,7 @@ svg {
 	height: 0;
 	overflow: hidden; 
 }
+
 .flex-video iframe,
 .flex-video object,
 .flex-video embed,
