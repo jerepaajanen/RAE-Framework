@@ -14,17 +14,12 @@
 	text-rendering: optimizeLegibility;
 }
 
-html,
-body {
-  height: 100%;
-}
-
 html {
-	overflow-y: scroll; // Force a vertical scrollbar
+    overflow-y: scroll; // Force a vertical scrollbar
 	font-size: (unit(@base-font-size / 16) * 100%); // Set base font-size
+    height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
 	tap-highlight-color: transparent;
 }
-
 
 body {
     font-family: @base-font-family;
@@ -32,6 +27,7 @@ body {
     line-height: @line-height-ratio;
 	color: @base-color;
 	background-color: @base-background;
+    min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
 }
 
 // Selection colors
