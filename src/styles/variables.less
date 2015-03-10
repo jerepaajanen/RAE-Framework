@@ -2,7 +2,9 @@
 // -------------------------------------------------------
 // Enabling current media query, displays currently used
 // media query.
-@current-media-query: 			true;
+// DO NOT USE THESE IN PRODUCTION!
+@use-current-media-query:       false;
+@use-debug:                     false;
 
 
 // GRID & BREAKPOINTS
@@ -80,14 +82,15 @@
 
 // Custom brand colors
 @color-primary:		       		#ae956d;
-@color-primary-variant-1:		lighten(@color-primary, 5%);
-@color-primary-variant-2:		lighten(@color-primary, 20%);
+@color-primary-variation-1:		lighten(@color-primary, 5%);
+@color-primary-variation-2:		lighten(@color-primary, 20%);
 
 @color-secondary:				#3F51B5;
-@color-secondary-variant-1:		lighten(@color-secondary, 5%);
-@color-secondary-variant-2:		lighten(@color-secondary, 20%);
+@color-secondary-variation-1:	lighten(@color-secondary, 5%);
+@color-secondary-variation-2:	lighten(@color-secondary, 20%);
 
 // UI colors
+@color-muted:                   .5;
 @color-success:					#5cb85c;
 @color-warning:					#ed9c28;
 @color-danger:					#d9534f;
@@ -189,6 +192,21 @@
 @table-headfoot-font-weight:	700;
 @table-border-color:			@grey-100;
 @table-stripes-bg:				@grey-25;
+
+
+// Z-INDEX HIERARCY
+// -------------------------------------------------------
+
+@z-index-1:                     1010; // i.e navbar
+@z-index-2:                     1020; // i.e navbar dropdown
+@z-index-3:                     1030; // i.e fixed navbar
+@z-index-4:                     1040; // i.e alerts & notifications
+@z-index-5:                     1050; // i.e modal background
+@z-index-6:                     1060; // i.e modal window
+@z-index-7:                     1070; // i.e popover
+@z-index-8:                     1080; // i.e tooltip
+@z-index-9:                     1090;
+@z-index-10:                    1100;
 
 
 // MISC

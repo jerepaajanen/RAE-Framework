@@ -35,14 +35,19 @@
         font-size: @label-font-size;
     }
     
-    input[type=text],
-    input[type=password],
-    input[type=email],
-    input[type=url],
-    input[type=date],
-    input[type=tel],
-    input[type=number],
-    input[type=search],
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"],
     select,
     textarea {
         width: 100%; // Let's make 'em responsive!
@@ -141,25 +146,26 @@
                 position: relative;
                 background-image: url(../images/form/select.svg);
                 background-repeat: no-repeat;
-                background-position: center right;
-                
-                @-moz-document url-prefix() {
-                    // Get rid of <select> arrow in FF > 30, idea for this hack:  
-                    // https://gist.github.com/joaocunha/6273016
-                    text-indent: 0.01px;
-                    text-overflow: '';
-                    //padding-right: 2rem; // not tested yet...
-                }
-                
+                background-position: right 1em center;
+                background-size: (@input-height / 3) auto;
                 &:focus:-moz-focusring {
                     color: transparent;
                     text-shadow: 0 0 0 #000;
                 }
                 &::-ms-expand {
-                    display: none;
+                    display: none; // Hide the arrow in IE10+
                 }
                 &:hover {
-                background-image: url(../images/form/select_hover.svg) no-repeat center right;
+                    background-image: url(../images/form/select_hover.svg);
+                }
+            }
+            @-moz-document url-prefix() {
+                select:not([multiple]) {
+                    // Get rid of <select> arrow in FF < 30, idea for this hack:  
+                    // https://gist.github.com/joaocunha/6273016
+                    text-indent: 0.01px;
+                    text-overflow: '';
+                    padding-right: 2rem;
                 }
             }
         }
@@ -215,16 +221,16 @@
                 }
                 
                 &:after {
-                    background-size: (@input-box-size - ceil(@input-box-size / 6)); // make background-size consistent in ie9 and modern browsers.
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                    background-origin: border-box; // fix IE9 background positioning
-                    transition: transform 100ms @transition-easing-default;
+                    //background-size: (@input-box-size - ceil(@input-box-size / 6)); // make background-size consistent in ie9 and modern browsers.
+                    //background-repeat: no-repeat;
+                    //background-position: center center;
+                    //background-origin: border-box; // fix IE9 background positioning
                     //transform: scale(0);
                     
                     //CSS Only method
-                    transform: scale(0) rotate(45deg);
                     font-size: @input-box-size; // set font-size for em-scaling
+                    transform: scale(0) rotate(45deg);
+                    transition: transform 100ms @transition-easing-default;
                 }
                 
                 &:hover::before {
@@ -293,13 +299,6 @@
     .form-item {
         display: block;
         margin: 0 0 @form-item-spacing 0; // set vertical rhytmn
-    }
-    
-    .form-inline {
-        .form-item {
-            display: inline-block;
-            margin-bottom: 0;
-        }
     }
     
     // Placeholder text color

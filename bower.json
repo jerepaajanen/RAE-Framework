@@ -3,5 +3,10 @@
   "version": "1.0.0",
   "dependencies": {
 
-  }
+  },
+    "overrides": {
+        "BOWER-PACKAGE-NAME": {
+            "main": ["**/*.js", "filename.js"]
+        }
+    }
 }

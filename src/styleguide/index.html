@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if IE 9]> <html class="no-js lt-ie10 ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
 <html class="no-js">
@@ -22,10 +21,6 @@
 
     <!-- Styleguide styles -->
     <style>
-        html:after {
-            top: 2.5rem;
-        }
-        
         body {
             background-color: #fff !important;
         }
@@ -37,14 +32,13 @@
             background: white;
             width: 100%;
             z-index: 5;
-            background: #212121;
+            background: white;
         }
         
         .docs-header h1 {
             font-size: 1rem;
             font-weight: 400;
             line-height: 2.5rem;
-            color: white;
         }
         
         .docs-footer {
@@ -145,7 +139,7 @@
             background: #f7f7f7;
         }
         
-        .docs-content .grid__columns [class*='col-'] {
+        .docs-content .grid__columns .row > [class*='col-'] {
             background: #f2f2f2;
             min-height: 1em;
             margin-bottom: 1em;
@@ -154,10 +148,11 @@
         
         .docs-content .grid__columns [class*='col-'] .row {
             background: white;
+            margin-bottom: -1rem;
         }
         
-        .docs-content .grid__columns--nested {
-            margin-bottom: -1.5rem;
+        .docs-content .condition-table th {
+            min-width: 100px;
         }
         
         .docs-content .condition-table tbody {
@@ -181,10 +176,6 @@
             cursor: pointer;
         }
         
-        .docs-content .animation:hover code {
-            color: #ae956d;
-        }
-        
         .docs-content .animation {
             text-align: center;
         }
@@ -192,17 +183,18 @@
         .docs-content .animation > div {
             text-align: center;
             display: block;
-            height: 12px;
+            height: 1rem;
             width: 100px;
             margin: 0 auto 1rem auto;
         }
         
         .docs-content .animation .dot {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 1rem;
+            height: 1rem;
             margin: 8px;
             border-radius: 100%;
+            background: #333333;
         }
         
         .docs-content .addons__animations .well {
@@ -264,7 +256,15 @@
             font-size: .75em;
             color: #999;
         }
-        
+        .white {
+            color: white;
+        }
+        .black {
+            color: black;
+        }
+        .bg0 {
+            background: white;
+        }
         .bg25 {
             background: #f7f7f7;
         }
@@ -308,12 +308,14 @@
         .bg900 {
             background: #1a1a1a;
         }
+        .bg1000 {
+            background: black;
+        }
     </style>
 </head>
 
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-
         <symbol id="svg-heart" viewBox="0 0 768 1024">
             <title>heart</title>
             <path class="path1" d="M384 864c399-314 384-425 384-512s-72-192-192-192-192 128-192 128-72-128-192-128-192 105-192 192-15 198 384 512z"></path>
@@ -323,10 +325,8 @@
             <title>code</title>
             <path class="path1" d="M608 192l-96 96 224 224-224 224 96 96 288-320-288-320zM288 192l-288 320 288 320 96-96-224-224 224-224-96-96z"></path>
         </symbol>
-
     </svg>
     <header class="docs-header" role="banner">
-
         <div class="container">
             <h1><strong>RAE</strong> Framework</h1>
             <nav class="nav" role="navigation" style="display: none;">
@@ -348,19 +348,13 @@
         </div>
     </header>
     <main class="docs-content" role="main">
-        <section class="hero container">
-            <h2>Visual Style Guide &amp; Documentation</h2>
-            <p class="h4 weight-normal">Learn how to use all features that RAE Framework provides.</p>
-
-        </section>
-        <hr>
         <section class="typography container">
             <header>
-                <h3 class="weight-normal color-primary">Typography</h3>
+                <h2 class="weight-normal">Typography</h2>
             </header>
             <article class="typography__bodycopy">
                 <header>
-                    <h4>Body copy</h4>
+                    <h3 class="color-muted">Body copy</h3>
                 </header>
                 <article>
                     <h1>One Morning, When Gregor Samsa Woke</h1>
@@ -395,7 +389,7 @@
             </article>
             <article class="typography__headings">
                 <header>
-                    <h4>Headings</h4>
+                    <h3 class="color-muted">Headings</h3>
                 </header>
                 <div data-codeblock>
                     <h1>This is heading 1 (h1)</h1>
@@ -414,7 +408,7 @@
             </article>
             <article class="typography__modularscale">
                 <header>
-                    <h4>Modular Scale</h4>
+                    <h3 class="color-muted">Modular Scale</h3>
                     <p>Instead of trying to maintain a baseline grid, RAE favors a modular scale and unit-less line heights</p>
                 </header>
                 Here are few common scale factors:
@@ -437,7 +431,7 @@
             </article>
             <article class="typography__blockquote">
                 <header>
-                    <h4>Blockquote</h4>
+                    <h3 class="color-muted">Blockquote</h3>
                 </header>
                 <div data-codeblock>
                     <blockquote>
@@ -448,9 +442,9 @@
             </article>
             <article class="typography__lists">
                 <header>
-                    <h4>Lists</h4>
+                    <h3 class="color-muted">Lists</h3>
                 </header>
-                <h5>Unordered list</h5>
+                <h4>Unordered list</h4>
                 <div data-codeblock>
 
                     <ul>
@@ -466,7 +460,7 @@
                     </ul>
                 </div>
 
-                <h5>Ordered list</h5>
+                <h4>Ordered list</h4>
                 <div data-codeblock>
 
                     <ol>
@@ -482,7 +476,7 @@
                     </ol>
                 </div>
 
-                <h5>Description</h5>
+                <h4>Description</h4>
                 <div data-codeblock>
 
                     <dl>
@@ -499,7 +493,7 @@
             </article>
             <article class="typography__hr">
                 <header>
-                    <h4>Horizontal rule</h4>
+                    <h3 class="color-muted">Horizontal rule</h3>
                 </header>
                 <div data-codeblock>
                     <p>Paragraph before horizontal-rule</p>
@@ -513,12 +507,19 @@
         <hr />
         <section class="embedded container">
             <header>
-                <h3 class="weight-normal color-primary">Embedded content</h3>
-                <p>RAE defines sensible default styles for embedded content. For instance, &lt;audio&gt;, &lt;img&gt;, and &lt;video&gt; tags are all given fluid properties. If you're embedding a video from YouTube, Vimeo, or another site that uses &lt;iframe&gt;, &lt;embed&gt; or &lt;object&gt; elements, wrap your video in <strong>div.flex-video</strong> and it will scale properly on any device.</p>
+                <h2 class="weight-normal">Embedded content</h2>
             </header>
+            <article class="embedded__image">
+                <header>
+                    <h3 class="color-muted">Image</h3>
+                </header>
+                <div data-codeblock>
+                    <img src="http://placehold.it/1600x900" alt="placeholder">
+                </div>
+            </article>
             <article class="embedded__audio">
                 <header>
-                    <h4>Html5 audio</h4>
+                    <h3 class="color-muted">Html5 audio</h3>
                 </header>
                 <div data-codeblock>
                     <audio controls=""></audio>
@@ -526,43 +527,32 @@
             </article>
             <article class="embedded__video">
                 <header>
-                    <h4>Html5 video</h4>
+                    <h3 class="color-muted">Html5 video</h3>
                 </header>
                 <div data-codeblock>
-                    <video controls="" style="background-color:#222;"></video>
-                </div>
-            </article>
-            <article class="embedded__image">
-                <header>
-                    <h4>Image</h4>
-                </header>
-                <div data-codeblock>
-                    <img src="http://placehold.it/1600x900" alt="placeholder">
+                    <video controls=""></video>
                 </div>
             </article>
             <article class="embedded__flex">
                 <header>
-                    <h4>Flexible video</h4>
+                    <h3 class="color-muted">Responsive video</h3>
                 </header>
-                <div class="row">
                     <div data-codeblock>
                         <!-- Default aspect-ratio is 16:9 -->
-                        <div class="flex-video">
+                        <div class="responsive-video">
                             <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" allowfullscreen></iframe>
                         </div>
                     </div>
-                </div>
             </article>
         </section>
         <hr />
         <section class="layout container">
             <header>
-                <h3 class="weight-normal color-primary">Layout</h3>
+                <h2 class="weight-normal">Layout</h2>
             </header>
-
             <article class="grid__breakpoints">
                 <header>
-                    <h4>Containers</h4>
+                    <h3 class="color-muted">Containers</h3>
                     <p>Use <code>.container</code> for a responsive fixed width container and <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
                 </header>
                 <div data-codeblock>
@@ -572,12 +562,9 @@
             </article>
             <article class="grid__columns">
                 <header>
-                    <h4>Grid system</h4>
-                    <h5 class="no-margin">Column classes</h5>
-                    <p><code>col-sm-*</code>, <code>col-md-*</code>, <code>col-lg-*</code>, <code>col-xl-*</code>
-                    </p>
+                    <h3 class="color-muted">Columns</h3>
+                    <h4>Basic columns layout</h4>
                 </header>
-
                 <div data-codeblock>
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-sm-6"></div>
@@ -596,10 +583,8 @@
                         <div class="col-md-8"></div>
                     </div>
                 </div>
-
-                <h5>Automatic column nesting with row-class
-					</h5>
-                <div data-codeblock class="grid__columns--nested">
+                <h4>Column nesting with row-classes</h4>
+                <div data-codeblock>
                     <div class="row">
                         <div class="col-xl-6 push-xl-6 col-md-6">
                             <div class="row">
@@ -629,7 +614,7 @@
                         </div>
                     </div>
                 </div>
-                <h5>Remove gutters, with .no-gutters class</h5>
+                <h4>Columns without gutters</h4>
                 <div data-codeblock>
                     <div class="row no-gutters">
                         <div class="col-xl-4 col-lg-5 col-sm-6"></div>
@@ -643,25 +628,25 @@
             </article>
             <article class="grid__conditionals">
                 <header>
-                    <h4>Conditional styles</h4>
-                    <p>RAE Framework uses a set of classes for conditional styling based on browser viewport size and screen resolution.
+                    <h3 class="color-muted">Conditional styles</h3>
+                    <p>Classes for conditional styling based on browser viewport size and screen resolution.
                         <br />
-                        <small>* Visible / Hidden in <strong>bold</strong> are currently active conditional styles</small>
+                        <small>Visible / Hidden in <strong>bold</strong> are currently active conditional styles</small>
                     </p>
                 </header>
                 <div class="table-responsive">
                     <table class="condition-table table-border table-stripes">
                         <thead>
                             <tr>
-                                <th style="min-width: 100px">Class
+                                <th scope="column">Class
                                 </th>
-                                <th>Small <small>≥ 768px</small>
+                                <th scope="column">Small <small>≥ 768px</small>
                                 </th>
-                                <th>Medium <small>≥ 768px</small>
+                                <th scope="column">Medium <small>≥ 768px</small>
                                 </th>
-                                <th>Large <small>≥ 992px</small>
+                                <th scope="column">Large <small>≥ 992px</small>
                                 </th>
-                                <th>Extra Large <small>≥ 1280px</small>
+                                <th scope="column">Extra Large <small>≥ 1280px</small>
                                 </th>
                             </tr>
                         </thead>
@@ -833,15 +818,15 @@
                     <table class="condition-table table-border table-stripes">
                         <thead>
                             <tr>
-                                <th style="min-width: 100px">Class
+                                <th scope="col">Class
                                 </th>
-                                <th>Small <small>≥ 768px</small>
+                                <th scope="col">Small <small>≥ 768px</small>
                                 </th>
-                                <th>Medium <small>≥ 768px</small>
+                                <th scope="col">Medium <small>≥ 768px</small>
                                 </th>
-                                <th>Large <small>≥ 992px</small>
+                                <th scope="col">Large <small>≥ 992px</small>
                                 </th>
-                                <th>Extra Large <small>≥ 1280px</small>
+                                <th scope="col">Extra Large <small>≥ 1280px</small>
                                 </th>
                             </tr>
                         </thead>
@@ -1006,23 +991,22 @@
         <hr />
         <section class="tables container">
             <header>
-                <h3 class="weight-normal color-primary">Tables</h3>
+                <h2 class="weight-normal">Tables</h2>
             </header>
             <article class="tables__basic">
                 <header>
-                    <h4>Basic table</h4>
-                    <p>The <code>&lt;table&gt;</code> element is given a basic layout with flexible table cells.</p>
+                    <h3 class="color-muted">Basic table</h3>
                 </header>
                 <div data-codeblock>
                     <table>
                         <caption>
-                            Default table without styling (caption is optional)
+                            Optional table caption
                         </caption>
                         <thead>
                             <tr>
-                                <th>Table Heading 1</th>
-                                <th>Table Heading 2</th>
-                                <th>Table Heading 3</th>
+                                <th scope="column">Table Heading 1</th>
+                                <th scope="column">Table Heading 2</th>
+                                <th scope="column">Table Heading 3</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -1049,20 +1033,19 @@
             </article>
             <article class="tables__styled">
                 <header>
-                    <h4>Styled tables</h4>
-                    <p>Tables can be styled with mix of various <code>.table-</code> classes.</p>
+                    <h3 class="color-muted">Styled tables</h3>
                 </header>
-                <h5>Table with borders</h5>
+                <h4>Table with borders</h4>
                 <div data-codeblock>
                     <table class="table-border">
                         <caption>
-                            Table with borders
+                            Optional table caption
                         </caption>
                         <thead>
                             <tr>
-                                <th>Heading 1</th>
-                                <th>Heading 2</th>
-                                <th>Heading 3</th>
+                                <th scope="column">Heading 1</th>
+                                <th scope="column">Heading 2</th>
+                                <th scope="column">Heading 3</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -1091,17 +1074,17 @@
                         </tbody>
                     </table>
                 </div>
-                <h5>Table with row borders</h5>
+                <h4>Table with row borders</h4>
                 <div data-codeblock>
                     <table class="table-border-rows">
                         <caption>
-                            Table with row borders
+                            Optional table caption
                         </caption>
                         <thead>
                             <tr>
-                                <th>Heading 1</th>
-                                <th>Heading 2</th>
-                                <th>Heading 3</th>
+                                <th scope="column">Heading 1</th>
+                                <th scope="column">Heading 2</th>
+                                <th scope="column">Heading 3</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -1130,17 +1113,17 @@
                         </tbody>
                     </table>
                 </div>
-                <h5>Table with cell borders</h5>
+                <h4>Table with cell borders</h4>
                 <div data-codeblock>
                     <table class="table-border-cells">
                         <caption>
-                            Table with cell borders
+                            Optional table caption
                         </caption>
                         <thead>
                             <tr>
-                                <th>Heading 1</th>
-                                <th>Heading 2</th>
-                                <th>Heading 3</th>
+                                <th scope="column">Heading 1</th>
+                                <th scope="column">Heading 2</th>
+                                <th scope="column">Heading 3</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -1169,17 +1152,17 @@
                         </tbody>
                     </table>
                 </div>
-                <h5>Table with stripes</h5>
+                <h4>Table with stripes</h4>
                 <div data-codeblock>
                     <table class="table-stripes">
                         <caption>
-                            Table with stripes class
+                            Optional table caption
                         </caption>
                         <thead>
                             <tr>
-                                <th>Heading 1</th>
-                                <th>Heading 2</th>
-                                <th>Heading 3</th>
+                                <th scope="column">Heading 1</th>
+                                <th scope="column">Heading 2</th>
+                                <th scope="column">Heading 3</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -1211,21 +1194,21 @@
             </article>
             <article class="tables__responsive">
                 <header>
-                    <h4>Responsive table</h4>
-                    <p>By wrapping a table in the <code>.table-responsive</code> class, width remains the same and horizontal scrollbar will show up in smaller screen sizes. Remember to set minimum widths for table cells.</p>
+                    <h3 class="color-muted">Responsive table</h3>
+                    <p>Wrap a table in the <code>.table-responsive</code> class, width remains the same and horizontal scrollbar will show up in smaller screen sizes. Remember to set minimum widths for table cells.</p>
                 </header>
                 <div data-codeblock>
                     <div class="table-responsive">
                         <table id="tables__responsive">
                             <caption>
-                                Responsive table
+                                Optional table caption
                             </caption>
                             <thead>
                                 <tr>
-                                    <th>Table Heading 1</th>
-                                    <th>Table Heading 2</th>
-                                    <th>Table Heading 3</th>
-                                    <th>Table Heading 4</th>
+                                    <th scope="column">Table Heading 1</th>
+                                    <th scope="column">Table Heading 2</th>
+                                    <th scope="column">Table Heading 3</th>
+                                    <th scope="column">Table Heading 4</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -1256,97 +1239,279 @@
             </article>
         </section>
         <hr />
-        <section class="forms container">
+        <section class="buttons container">
             <header>
-                <h3 class="weight-normal color-primary">Forms</h3>
+                <h2 class="weight-normal">Buttons</h2>
             </header>
-            <article class="forms__form">
+            <article class="buttons__styles">
                 <header>
-                    <h4>Basic form</h4>
-                    <p>Common form elements are given very basic structure and styles. Most inputs, select boxes, and textareas are styled as 100% width block elements (with the exception of radio and checkboxes).</p>
+                    <h3 class="color-muted">Button styles</h3>
                 </header>
                 <div data-codeblock>
-                    <form role="form" class="form">
-                        <fieldset>
-                            <legend>Fieldset Legend</legend>
-                            <div class="form-item">
-                                <label for="demo-input">Input</label>
-                                <input type="text" id="demo-input" placeholder="This is input">
-                            </div>
-                            <div class="form-item">
-                                <label for="demo-input-disabled">Input</label>
-                                <input type="text" disabled id="demo-input-disabled" placeholder="This is disabled input">
-                            </div>
-                            <div class="form-item">
-                                <label for="demo-textarea">Textarea</label>
-                                <textarea id="demo-textarea" placeholder="This is textarea" rows="6"></textarea>
-                            </div>
-                            <div class="form-item">
-                                <label for="demo-select">Select List</label>
-                                <select id="demo-select">
-                                    <option value="" disabled selected>Select your option</option>
-                                    <option value="Option 1">
-                                        Option 1
-                                    </option>
-                                    <option value="Option 2">
-                                        Option 2
-                                    </option>
-                                    <optgroup label="Option Group">
-                                        <option value="Option 3">
-                                            Option 3
-                                        </option>
-                                        <option value="Option 4">
-                                            Option 4
-                                        </option>
-                                    </optgroup>
-                                </select>
-                            </div>
-                            <div class="form-item">
-                                <label for="demo-multi-select">Multiple Select List</label>
-                                <select id="demo-multi-select" multiple="multiple">
-                                    <option value="Option 1">
-                                        Option 1
-                                    </option>
-                                    <option value="Option 2">
-                                        Option 2
-                                    </option>
+                    <button class="btn" type="button">Button</button>
+                    <button class="btn btn-default" type="button">Default Button</button>
+                    <button class="btn btn-primary" type="button">Primary button</button>
+                    <button class="btn btn-link" type="button">Link button</button>
+                </div>
+            </article>
+            <article class="buttons__states">
+                <header>
+                    <h3 class="color-muted">Button states</h3>
+                </header>
+                <div data-codeblock>
+                    <button class="btn btn-default" type="button" disabled>Disabled</button>
+                    <button class="btn btn-primary" type="button" disabled>Disabled</button>
+                </div>
+                <div data-codeblock>
+                    <button class="btn btn-default active" type="button">Active</button>
+                    <button class="btn btn-primary active" type="button">Active</button>
+                </div>
+            </article>
+            <article class="buttons__sizes">
+                <header>
+                    <h3 class="color-muted">Button sizes &amp; variations</h3>
+                </header>
+                <div data-codeblock>
+                    <button class="btn btn-default btn-sm" type="button">Small</button>
+                    <button class="btn btn-default" type="button">Regular</button>
+                    <button class="btn btn-default btn-lg" type="button">Large</button>
+                    <button class="btn btn-default btn-xl" type="button">Extra Large</button>
+                </div>
+                <div data-codeblock>
+                    <button class="btn btn-default btn-block" type="button">Block</button>
+                </div>
+                <div data-codeblock>
+                    <button class="btn btn-default btn-pill" type="button">Pill</button>
+                    <button class="btn btn-default btn-circle" type="button">Circle</button>
+                </div>
+            </article>
+            <article class="buttons__accessibility">
+                <header>
+                    <h3 class="color-muted">Accessibility</h3>
+                    <p>Use the snippets below to make buttons more accessible. If there is no <code>&lt;a href=""&gt;</code> then simply add the <code>tabindex="0"</code> to the div or span to make it focusable.</p>
+                </header>
+                <div data-codeblock>
+                    <a role="button" href="#" class="btn btn-default">Default Button</a>
+                    <a role="button" aria-label="submit form" href="#" class="btn btn-default">Submit</a>
+                    <div role="button" tabindex="0" class="btn btn-default">Default Button</div>
+                </div>
+            </article>
+        </section>
+        <hr />
+        <section class="forms container">
+            <header>
+                <h2 class="weight-normal">Forms</h2>
+            </header>
+            <article class="forms__text-fields">
+                <header>
+                    <h3 class="color-muted">Text fields</h3>
+                </header>
+                <div data-codeblock>
+                    <form role="form" class="form" action="">
+                        <div class="form-item">
+                            <label for="demo-input">Text Input</label>
+                            <input type="text" id="demo-input" placeholder="Type something...">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-disabled">Disabled Input</label>
+                            <input type="text" disabled id="demo-input-disabled" placeholder="I'm Disabled">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-password">Password</label>
+                            <input type="password" id="demo-input-password" placeholder="Type your password">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-textarea">Textarea</label>
+                            <textarea id="demo-textarea" placeholder="Enter your message here..." rows="6"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__text-fields">
+                <header>
+                    <h3 class="color-muted">Select menus</h3>
+                </header>
+                <div data-codeblock>
+                    <form role="form" class="form" action="">
+                        <div class="form-item">
+                            <label for="demo-select">Select List</label>
+                            <select id="demo-select">
+                                <option value="" disabled selected>Select your option</option>
+                                <option value="Option 1">
+                                    Option 1
+                                </option>
+                                <option value="Option 2">
+                                    Option 2
+                                </option>
+                                <optgroup label="Option Group">
                                     <option value="Option 3">
                                         Option 3
                                     </option>
-                                </select>
+                                    <option value="Option 4">
+                                        Option 4
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-multi-select">Multiple Select List</label>
+                            <select id="demo-multi-select" multiple="multiple">
+                                <option value="Option 1">
+                                    Option 1
+                                </option>
+                                <option value="Option 2">
+                                    Option 2
+                                </option>
+                                <option value="Option 3">
+                                    Option 3
+                                </option>
+                                <option value="Option 4">
+                                    Option 4
+                                </option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__checkboxes">
+                <header>
+                    <h3 class="color-muted">Checkboxes</h3>
+                </header>
+                <div data-codeblock>
+                    <form role="form" class="form" action="">
+                        <div class="form-item">
+                            <label>Normal checkboxes</label>
+                            <div class="checkbox">
+                                <input id="demo-checkbox1" type="checkbox" name="optionsCheckboxes" value="1" checked>
+                                <label for="demo-checkbox1">Option one</label>
                             </div>
-                            <div class="form-item">
-                                <label>Inline-checkboxes</label>
-                                <div class="checkbox checkbox-inline">
-                                    <input id="demo-checkbox-inline1" type="checkbox">
-                                    <label for="demo-checkbox-inline1">Option one</label>
-                                </div>
-                                <div class="checkbox checkbox-inline">
-                                    <input id="demo-checkbox-inline2" type="checkbox">
-                                    <label for="demo-checkbox-inline2">Option two is a much longer option</label>
-                                </div>
+                            <div class="checkbox">
+                                <input id="demo-checkbox2" type="checkbox" name="optionsCheckboxes" value="2">
+                                <label for="demo-checkbox2">Option two is a much longer option</label>
                             </div>
-                            <div class="form-item">
-                                <label>Checkboxes</label>
-                                <div class="checkbox">
-                                    <input id="demo-checkbox1" type="checkbox">
-                                    <label for="demo-checkbox1">Option one</label>
-                                </div>
-                                <div class="checkbox">
-                                    <input id="demo-checkbox2" type="checkbox" disabled>
-                                    <label for="demo-checkbox2">Option two, a much longer option, and disabled</label>
-                                </div>
+                            <div class="checkbox">
+                                <input id="demo-checkbox3" type="radio" name="optionsCheckboxes" value="3" disabled>
+                                <label for="demo-checkbox3">Option three is disabled</label>
                             </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Inline checkboxes</label>
+                            <div class="checkbox checkbox-inline">
+                                <input id="demo-checkbox-inline1" type="checkbox" name="optionsCheckboxesInline" value="1" checked>
+                                <label for="demo-checkbox-inline1">Option one</label>
+                            </div>
+                            <div class="checkbox checkbox-inline">
+                                <input id="demo-checkbox-inline2" type="checkbox" name="optionsCheckboxesInline" value="2">
+                                <label for="demo-checkbox-inline2">Option two is a much longer option</label>
+                            </div>
+                            <div class="checkbox checkbox-inline">
+                                <input id="demo-checkbox-inline3" type="checkbox" name="optionsCheckboxesInline" value="3" disabled>
+                                <label for="demo-checkbox-inline3">Option three is disabled</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__radios">
+                <header>
+                    <h3 class="color-muted">Radio buttons</h3>
+                </header>
+                <div data-codeblock>
+                    <form role="form" class="form" action="">
+
+                        <div class="form-item">
+                            <label>Normal radios</label>
+                            <div class="radio">
+                                <input id="demo-radio1" type="radio" name="optionsRadios" value="1" checked>
+                                <label for="demo-radio1">Option one</label>
+                            </div>
+                            <div class="radio">
+                                <input id="demo-radio2" type="radio" name="optionsRadios" value="2">
+                                <label for="demo-radio2">Option two is a much longer option</label>
+                            </div>
+                            <div class="radio">
+                                <input id="demo-radio3" type="radio" name="optionsRadios" value="3" disabled>
+                                <label for="demo-radio3">Option three is disabled</label>
+                            </div>
+                        </div>
+                        <div class="form-item">
+                            <label>Inline radios</label>
+                            <div class="radio radio-inline">
+                                <input id="demo-radio-inline1" type="radio" name="optionsRadiosInline" value="1" checked>
+                                <label for="demo-radio-inline1">Option one</label>
+                            </div>
+                            <div class="radio radio-inline">
+                                <input id="demo-radio-inline2" type="radio" name="optionsRadiosInline" value="2">
+                                <label for="demo-radio-inline2">Option two is a much longer option</label>
+                            </div>
+                            <div class="radio radio-inline">
+                                <input id="demo-radio-inline3" type="radio" name="optionsRadiosInline" value="3" disabled>
+                                <label for="demo-radio-inline3">Option three is disabled</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__html5inputs">
+                <header>
+                    <h3 class="color-muted">Html5 inputs</h3>
+                </header>
+                <div data-codeblock>
+                    <form role="form" class="form" action="">
+                        <div class="form-item">
+                            <label for="demo-input-telephone">Telephone</label>
+                            <input type="tel" id="demo-input-telephone" placeholder="(123) 555-5555">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-url">Web address</label>
+                            <input type="url" id="demo-input-url" placeholder="http://www.rae.fi">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-email">Email address</label>
+                            <input type="email" id="demo-input-email" placeholder="hello@rae.fi">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-search">Search input</label>
+                            <input type="search" id="demo-input-search" placeholder="(123) 555-5555">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-number">Number input</label>
+                            <input type="number" id="demo-input-number" placeholder="Enter a number">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-date">Date input</label>
+                            <input type="date" id="demo-input-date" value="1987-08-29">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-color">Color input</label>
+                            <input type="color" id="demo-input-color" value="#ae956d">
+                        </div>
+                        <div class="form-item">
+                            <label for="demo-input-range">Range input</label>
+                            <input type="range" id="demo-input-range" value="10">
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__fieldset">
+                <header>
+                    <h3 class="color-muted">Fieldsets</h3>
+                </header>
+                <div data-codeblock>
+                    <form role="form" class="form" action="">
+                        <fieldset>
+                            <legend>Fieldset legend</legend>
                             <div class="form-item">
-                                <label>Radios</label>
-                                <div class="radio">
-                                    <input id="demo-radio1" type="radio" name="optionsRadios">
-                                    <label for="demo-radio1">Option one</label>
-                                </div>
-                                <div class="radio">
-                                    <input id="demo-radio2" type="radio" name="optionsRadios">
-                                    <label for="demo-radio2">Option two is a much longer option</label>
-                                </div>
+                                <label for="demo-input-fieldset1">Input</label>
+                                <input type="text" id="demo-input-fieldset1" placeholder="This is input">
+                            </div>
+                            <button class="btn btn-default" type="submit">Submit</button>
+                        </fieldset>
+                        <fieldset class="fieldset-border">
+                            <legend>Fieldset with borders</legend>
+                            <div class="form-item">
+                                <label for="demo-input__fieldset3">Input</label>
+                                <input type="text" id="demo-input__fieldset3" placeholder="This is input">
                             </div>
                             <button class="btn btn-default" type="submit">Submit</button>
                         </fieldset>
@@ -1355,10 +1520,10 @@
             </article>
             <article class="forms__grid">
                 <header>
-                    <h4>Form with grid</h4>
+                    <h3 class="color-muted">Form with grid</h3>
                 </header>
                 <div data-codeblock>
-                    <form role="form" class="form">
+                    <form role="form" class="form" action="">
                         <div class="form-item row">
                             <div class="col-md-2">
                                 <label for="demo-input__grid">Input</label>
@@ -1383,143 +1548,34 @@
                     </form>
                 </div>
             </article>
-            <article class="forms__grid">
-                <header>
-                    <h4>Inline form</h4>
-                </header>
-                <div data-codeblock>
-                    <form role="form" class="form form-inline">
-                        <div class="form-item">
-                            <label for="demo-input__email" class="hide">Email</label>
-                            <input type="email" id="demo-input__email" placeholder="Email">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input__password" class="hide">Password</label>
-                            <input type="password" id="demo-input__password" placeholder="Password">
-                        </div>
-                        <div class="form-item">
-                            <label class="hide">Remember user?</label>
-                            <div class="checkbox">
-                                <input id="demo-checkbox__remember" type="checkbox">
-                                <label for="demo-checkbox__remember">Remember Me</label>
-                            </div>
-                        </div>
-                        <button class="btn btn-default" type="submit">Sign in</button>
-                    </form>
-                </div>
-            </article>
-            <article class="forms__fieldset">
-                <header>
-                    <h4>Fieldset with borders</h4>
-                </header>
-                <div data-codeblock>
-                    <form role="form" class="form">
-                        <fieldset class="fieldset-border">
-                            <legend>Fieldset Legend</legend>
-                            <div class="form-item">
-                                <label for="demo-input__fieldset">Input</label>
-                                <input type="text" id="demo-input__fieldset" placeholder="This is input">
-                            </div>
-                            <div class="form-item">
-                                <label for="demo-textarea__fieldset">Textarea</label>
-                                <textarea id="demo-textarea__fieldset" placeholder="This is textarea" rows="6"></textarea>
-                            </div>
-                            <button class="btn btn-default" type="submit">Submit</button>
-
-                        </fieldset>
-                    </form>
-                </div>
-            </article>
-        </section>
-        <hr />
-        <section class="buttons container">
-            <header>
-                <h3 class="weight-normal color-primary">Buttons</h3>
-            </header>
-            <article class="buttons__styles">
-                <header>
-                    <h4>Button styles</h4>
-                </header>
-                <div data-codeblock>
-                    <button class="btn" type="button">Button</button>
-                    <button class="btn btn-default" type="button">Default Button</button>
-                    <button class="btn btn-primary" type="button">Primary button</button>
-                    <button class="btn btn-link" type="button">Link button</button>
-                </div>
-            </article>
-            <article class="buttons__states">
-                <header>
-                    <h4>Button states</h4>
-                    <p>Change appearance with button states <code>disabled</code> and <code>:active</code>. Or use classes <code>.disabled</code> and <code>.active</code>.</p>
-                </header>
-                <div data-codeblock>
-                    <button class="btn btn-default" type="button" disabled>Disabled</button>
-                    <button class="btn btn-primary" type="button" disabled>Disabled</button>
-                </div>
-                <div data-codeblock>
-                    <button class="btn btn-default active" type="button">Active</button>
-                    <button class="btn btn-primary active" type="button">Active</button>
-                </div>
-            </article>
-            <article class="buttons__sizes">
-                <header>
-                    <h4>Button sizes &amp; variants</h4>
-                </header>
-                <div data-codeblock>
-                    <button class="btn btn-default btn-sm" type="button">Small</button>
-                    <button class="btn btn-default" type="button">Regular</button>
-                    <button class="btn btn-default btn-lg" type="button">Large</button>
-                    <button class="btn btn-default btn-xl" type="button">Extra Large</button>
-                </div>
-                <div data-codeblock>
-                    <button class="btn btn-default btn-block" type="button">Block</button>
-                </div>
-                <div data-codeblock>
-                    <button class="btn btn-default btn-pill" type="button">Pill</button>
-                    <button class="btn btn-default btn-circle" type="button">Circle</button>
-                </div>
-            </article>
-            <article class="buttons__accessibility">
-                <header>
-                    <h4>Accessibility</h4>
-                    <p>Use the snippets below to make buttons more accessible. If there is no <code>&lt;a href=""&gt;</code> then simply add the <code>tabindex="0"</code> to the div or span to make it focusable.</p>
-                </header>
-                <div data-codeblock>
-                    <a role="button" href="#" class="btn btn-default">Default Button</a>
-                    <a role="button" aria-label="submit form" href="#" class="btn btn-default">Submit</a>
-                    <div role="button" tabindex="0" class="btn btn-default">Default Button</div>
-                </div>
-            </article>
         </section>
         <hr />
         <section class="helpers container">
             <header>
-                <h3 class="weight-normal color-primary">Helpers, mixins &amp; variables</h3>
+                <h2 class="weight-normal">Helpers, mixins &amp; variables</h2>
             </header>
             <article class="helpers__colors">
                 <header>
-                    <h4>Colors</h4>
-                    <p>RAE has few colors preconfigured that can be called with LESS-variables or with classes. All colors can be changed in variables.less-file.</p>
+                    <h3 class="color-muted">Grayscale colors</h3>
                 </header>
-                <h5>Grayscale variables</h5>
                 <table class="table-border" id="colors__greyscale">
                     <tr>
-                        <td style="background: black; color: white;">@black</td>
+                        <td class="bg1000 white">@black</td>
                     </tr>
                     <tr>
-                        <td class="bg900" style="color: white;">@grey-900</td>
+                        <td class="bg900 white">@grey-900</td>
                     </tr>
                     <tr>
-                        <td class="bg800" style="color: white;">@grey-800</td>
+                        <td class="bg800 white">@grey-800</td>
                     </tr>
                     <tr>
-                        <td class="bg700" style="color: white;">@grey-700</td>
+                        <td class="bg700 white">@grey-700</td>
                     </tr>
                     <tr>
-                        <td class="bg600" style="color: white;">@grey-600</td>
+                        <td class="bg600 white">@grey-600</td>
                     </tr>
                     <tr>
-                        <td class="bg500" style="color: white;">@grey-500</td>
+                        <td class="bg500 white">@grey-500</td>
                     </tr>
                     <tr>
                         <td class="bg400">@grey-400</td>
@@ -1540,22 +1596,22 @@
                         <td class="bg25">@grey-25</td>
                     </tr>
                     <tr>
-                        <td style="background: white;">@white</td>
+                        <td class="bg0">@white</td>
                     </tr>
                 </table>
 
             </article>
             <article class="helpers__classes">
                 <header>
-                    <h4>Helpers classes</h4>
+                    <h3 class="color-muted">Helpers classes</h3>
                 </header>
                 <div class="table-responsive">
                     <table class="table-border table-border-cells table-stripes">
                         <caption class="hide">List of Helpers classes</caption>
                         <thead>
                             <tr>
-                                <th>Class / Helper</th>
-                                <th>Result</th>
+                                <th scope="column">Class / Helper</th>
+                                <th scope="column">Result</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1692,6 +1748,13 @@
                             </tr>
                             <!-- Colors -->
                             <tr>
+                                <td><code>.color-muted</code>
+                                </td>
+                                <td>
+                                    <div class="color-muted">Set text color to "Muted", opacity 50%.</div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><code>.color-primary</code>
                                 </td>
                                 <td>
@@ -1738,42 +1801,42 @@
                                 <td><code>.bg-primary</code>
                                 </td>
                                 <td>
-                                    <div class="bg-primary inline-block" style="color: white;">Set element background-color to "Primary".</div>
+                                    <div class="bg-primary inline-block white">Set element background-color to "Primary".</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.bg-secondary</code>
                                 </td>
                                 <td>
-                                    <div class="bg-secondary inline-block" style="color: white;">Set element background-color to "Secondary".</div>
+                                    <div class="bg-secondary inline-block white">Set element background-color to "Secondary".</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.bg-success</code>
                                 </td>
                                 <td>
-                                    <div class="bg-success inline-block" style="color: white;">Set element background-color to "Success".</div>
+                                    <div class="bg-success inline-block white">Set element background-color to "Success".</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.bg-warning</code>
                                 </td>
                                 <td>
-                                    <div class="bg-warning inline-block" style="color: white;">Set element background-color to "Warning".</div>
+                                    <div class="bg-warning inline-block white">Set element background-color to "Warning".</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.bg-danger</code>
                                 </td>
                                 <td>
-                                    <div class="bg-danger inline-block" style="color: white;">Set element background-color to "Danger".</div>
+                                    <div class="bg-danger inline-block white">Set element background-color to "Danger".</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.bg-info</code>
                                 </td>
                                 <td>
-                                    <div class="bg-info inline-block" style="color: white;">Set element background-color to "Info".</div>
+                                    <div class="bg-info inline-block white">Set element background-color to "Info".</div>
                                 </td>
                             </tr>
 
@@ -1783,15 +1846,15 @@
             </article>
             <article class="helpers__mixins">
                 <header>
-                    <h4>Useful mixins</h4>
+                    <h3 class="color-muted">Useful mixins</h3>
                 </header>
                 <div class="table-responsive">
                     <table class="table-border table-border-cells table-stripes">
                         <caption class="hide">List of useful mixins</caption>
                         <thead>
                             <tr>
-                                <th>LESS Mixin</th>
-                                <th>Result</th>
+                                <th scope="column">LESS Mixin</th>
+                                <th scope="column">Result</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1829,19 +1892,19 @@
         <hr />
         <section class="addons container">
             <header>
-                <h3 class="weight-normal color-primary">Addons</h3>
+                <h2 class="weight-normal">Addons</h2>
             </header>
             <article class="addons__tooltips">
                 <header>
-                    <h4>Tooltips</h4>
-                    <p>Tooltips are easy way to display content when hovering over something. You can apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can also make tooltips multi-line with <code>data-tooltip-multiline</code>
+                    <h3 class="color-muted">Tooltips</h3>
+                    <p>Apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can make tooltips multi-line with <code>data-tooltip-multiline</code>
                     </p>
                 </header>
                 <div class="well clearfix" data-codeblock>
-                    <a href="#" data-tooltip="Regular tooltip" data-placement="top">Top tooltip</a>
+                    <a href="#" data-tooltip="Top tooltip" data-placement="top">Top tooltip</a>
                     <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">Bottom tooltip</a>
-                    <a href="#" data-tooltip="Bottom tooltip" data-placement="left">Left tooltip</a>
-                    <a href="#" data-tooltip="Bottom tooltip" data-placement="right">Right tooltip</a>
+                    <a href="#" data-tooltip="Left tooltip" data-placement="left">Left tooltip</a>
+                    <a href="#" data-tooltip="Right tooltip" data-placement="right">Right tooltip</a>
                     <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="top" data-tooltip-multiline>Multi-line top</a>
                     <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="bottom" data-tooltip-multiline>Multi-line bottom</a>
                     <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="left" data-tooltip-multiline>Multi-line left</a>
@@ -1850,8 +1913,7 @@
             </article>
             <article class="addons__animations">
                 <header>
-                    <h4>CSS3 Animations</h4>
-                    <p class="hide">Lorem ipsum</p>
+                    <h3 class="color-muted">Animations</h3>
                 </header>
                 <div class="well">
                     <div class="row">
@@ -1859,7 +1921,7 @@
                             <div class="col-md-3">
                                 <div class="animation">
                                     <div class="slideInLeft">
-                                        <span class="dot bg-primary">&nbsp;</span>
+                                        <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInLeft</code>
                                 </div>
@@ -1867,28 +1929,25 @@
                             <div class="col-md-3">
                                 <div class="animation">
                                     <div class="slideInUp">
-                                        <span class="dot bg-primary">&nbsp;</span>
+                                        <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInUp</code>
-
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="animation">
                                     <div class="slideInDown">
-                                        <span class="dot bg-primary">&nbsp;</span>
+                                        <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInDown</code>
-
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="animation">
                                     <div class="slideInRight">
-                                        <span class="dot bg-primary">&nbsp;</span>
+                                        <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInRight</code>
-
                                 </div>
                             </div>
                         </div>
@@ -1899,37 +1958,33 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="slideOutLeft">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutLeft</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="slideOutUp">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutUp</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="slideOutDown">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutDown</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="slideOutRight">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutRight</code>
-
                             </div>
                         </div>
                     </div>
@@ -1939,65 +1994,58 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounce">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounce</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="flash">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.flash</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="pulse">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.pulse</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="shake">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.shake</code>
-
                             </div>
                         </div>
-                        <div class="clearfix hide-sm-only" style="padding-bottom: 1.5rem"></div>
+                        <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="swing">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.swing</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="tada">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.tada</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="wobble">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.wobble</code>
-
                             </div>
                         </div>
                     </div>
@@ -2007,47 +2055,42 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceIn">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceIn</code>
-
                             </div>
                         </div>
-                        <div class="clearfix hide-sm-only" style="padding-bottom: 1.5rem"></div>
+                        <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceInLeft">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInLeft</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceInUp">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInUp</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceInDown">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInDown</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceInRight">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInRight</code>
-
                             </div>
                         </div>
                     </div>
@@ -2057,47 +2100,42 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceOut">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOut</code>
-
                             </div>
                         </div>
-                        <div class="clearfix hide-sm-only" style="padding-bottom: 1.5rem"></div>
+                        <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceOutLeft">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutLeft</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceOutUp">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutUp</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceOutDown">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutDown</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="bounceOutRight">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutRight</code>
-
                             </div>
                         </div>
                     </div>
@@ -2107,48 +2145,42 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeIn">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeIn</code>
-
                             </div>
                         </div>
-                        <div class="clearfix hide-sm-only" style="padding-bottom: 1.5rem"></div>
-
+                        <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeInLeft">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInLeft</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeInUp">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInUp</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeInDown">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInDown</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeInRight">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInRight</code>
-
                             </div>
                         </div>
                     </div>
@@ -2158,48 +2190,42 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeOut">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOut</code>
-
                             </div>
                         </div>
-                        <div class="clearfix hide-sm-only" style="padding-bottom: 1.5rem"></div>
-
+                        <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeOutLeft">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutLeft</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeOutUp">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutUp</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeOutDown">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutDown</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="fadeOutRight">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutRight</code>
-
                             </div>
                         </div>
                     </div>
@@ -2209,31 +2235,27 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="zoomIn">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.zoomIn</code>
-
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="zoomOut">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.zoomOut</code>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="well">
                     <div class="row ">
-
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="rollIn">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.rollIn</code>
                             </div>
@@ -2241,7 +2263,7 @@
                         <div class="col-md-3">
                             <div class="animation">
                                 <div class="rollOut">
-                                    <span class="dot bg-primary">&nbsp;</span>
+                                    <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.rollOut</code>
                             </div>
@@ -2252,16 +2274,17 @@
         </section>
     </main>
     <footer class="docs-footer container-fluid" role="contentinfo">
-        <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2014</small>
+        <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2015</small>
     </footer>
 
+    <!-- build:js ../scripts/scripts.min.js -->
     <script src="../scripts/vendor/modernizr-2.8.3.js"></script>
     <script src="../scripts/vendor/jquery-2.1.3.js"></script>
-    <script src="../scripts/scripts.js"></script>
+    <!-- endbuild -->
+
 
     <!-- Styleguide JS -->
     <script>
-        //Copied lovingy from http://codepen.io/davatron5000/pen/tzJKh
         (function ($) {
             'use strict';
             $.fn.dataCodeBlock = function () {
@@ -2313,4 +2336,5 @@
 
     <!-- Built with love using Rae Framework -->
 </body>
+
 </html>

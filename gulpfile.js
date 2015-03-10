@@ -20,7 +20,7 @@ var basePaths = {
 var paths = {
     src: basePaths.src,
     dest: basePaths.dest,
-    
+
     styles: {
         src: basePaths.src + 'styles/',
         dest: basePaths.dest + 'styles/'
@@ -43,23 +43,33 @@ var paths = {
     }
 };
 
-// Browser autoprefix config
-var autoprefix = [
+
+// Browser support config
+var browserSupport = [
     '> 1%',
-    'last 2 version',
+    'last 3 version',
     'ie >= 9'
 ];
 
-// Set name of your icon-font
+
+// Set name of your iconfont
 var fontName = 'Icons';
+
 
 // Banner to add to file headers
 var banner = ['/*',
  ' * <%= pkg.name %> - <%= pkg.version %>',
- ' * Copyright © 2014 Rae',
- ' * http://www.rae.fi',
+ ' * <%= pkg.homepage %>',
+ ' * <%= pkg.license %> License',
  ' */',
  ''].join('\n');
+
+
+// Handle Errors
+function errorHandler(error) {
+    console.log(error.toString());
+    this.emit('end');
+}
 
 
 // Lint JavaScript
@@ -74,6 +84,7 @@ gulp.task('lint:js', function () {
         .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
 });
 
+
 // Compile and Automatically Prefix Stylesheets
 gulp.task('compile:styles', function () {
     // For best performance, don't add Less partials to `gulp.src`
@@ -83,40 +94,51 @@ gulp.task('compile:styles', function () {
         }))
         .on('error', errorHandler)
         .pipe($.autoprefixer({
-            browsers: autoprefix
+            browsers: browserSupport
+        }))
+        .pipe($.header(banner, {
+            pkg: pkg
         }))
         .pipe(gulp.dest('./.tmp/styles/'))
-            .pipe(reload({
+        .pipe(reload({
             stream: true
         }))
         .pipe($.size({
-            title: 'Styles'
+            gzip: false,
+            title: 'Styles Unminified'
         }));
 });
 
+
 // Compile and Automatically Prefix Stylesheets
 gulp.task('build:styles', function () {
+    // For best performance, don't add Less partials to `gulp.src`
     return gulp.src([paths.styles.src + 'style.less'])
         .pipe($.less({
             compress: false
         }))
         .on('error', errorHandler)
         .pipe($.autoprefixer({
-            browsers: autoprefix
+            browsers: browserSupport
         }))
-        .pipe(gulp.dest('./.tmp/styles/'))
-        .pipe($.csso())
         .pipe($.header(banner, {
             pkg: pkg
         }))
+        .pipe($.csso())
         .pipe($.rename({
             suffix: '.min'
         }))
         .pipe(gulp.dest(paths.styles.dest))
         .pipe($.size({
-            title: 'Styles'
+            gzip: false,
+            title: 'Styles Minified'
+        }))
+        .pipe($.size({
+            gzip: true,
+            title: 'Styles Minified'
         }));
 });
+
 
 // Iconfont
 gulp.task('iconfont', function () {
@@ -128,28 +150,31 @@ gulp.task('iconfont', function () {
             //fontHeight: 576,
             descent: (14 * 6) //pixelgrid x baseline shift
         }))
-        .on('codepoints', function(codepoints) {
+        .on('codepoints', function (codepoints) {
             var options = {
                 glyphs: codepoints,
                 fontName: fontName,
                 fontPath: '../fonts/',
-                className: 'icon',
-                fontSize: 14
+                className: 'icon'
             };
             // build less-file for development
             gulp.src('./templates/_iconfont/icons.less')
                 .pipe($.consolidate('lodash', options))
-                .pipe($.rename({ basename:'icons' }))
+                .pipe($.rename({
+                    basename: 'icons'
+                }))
                 .pipe(gulp.dest(paths.styles.src));
             // build html-file for documentation
             gulp.src('./templates/_iconfont/icons.html')
                 .pipe($.consolidate('lodash', options))
-                .pipe($.rename({ basename:'icons' }))
+                .pipe($.rename({
+                    basename: 'icons'
+                }))
                 .pipe(gulp.dest(paths.src + 'styleguide/'));
         })
         .pipe(gulp.dest(paths.fonts.src))
         .pipe($.size({
-            title: 'Icon-fonts'
+            title: 'Iconfonts'
         }));
 });
 
@@ -159,19 +184,27 @@ gulp.task('html', function () {
     var assets = $.useref.assets({
         searchPath: ['./.tmp', paths.src]
     });
+
     return gulp.src(paths.src + '**/*.html')
         .pipe(assets)
         // Concatenate And Minify JavaScript
-        .pipe($.if('*.js', $.uglify({preserveComments: 'some'})))
+        .pipe($.if('*.js', $.uglify({})))
         // Concatenate And Minify Styles
         // In case you are still using useref build blocks
         .pipe($.if('*.css', $.csso()))
         .pipe(assets.restore())
         .pipe($.useref())
         .pipe($.replace('/style.css', '/style.min.css'))
-        .pipe($.if('*.html', $.minifyHtml()))
+        .pipe($.if('*.html', $.htmlmin({
+            collapseWhitespace: true,
+            removeComments: true,
+            minifyJS: $.uglify({}),
+            minifyCSS: $.csso({})
+        })))
         .pipe(gulp.dest(paths.dest))
         .pipe($.size({
+            gzip: false,
+            showFiles: false,
             title: 'Html'
         }));
 });
@@ -187,6 +220,7 @@ gulp.task('optimize:images', function () {
         }))
         .pipe(gulp.dest(paths.images.dest))
         .pipe($.size({
+            showFiles: false,
             title: 'Images'
         }));
 });
@@ -225,10 +259,12 @@ gulp.task('copy:assets', function () {
         }));
 });
 
+
 // Clean Output Directory
 gulp.task('clean', del.bind(null, ['./.tmp', paths.dest + '**/*', !paths.dest + '/.git'], {
     dot: true
 }));
+
 
 // Watch Files For Changes & Reload
 gulp.task('serve', ['compile:styles'], function () {
@@ -241,13 +277,13 @@ gulp.task('serve', ['compile:styles'], function () {
             baseDir: ['./.tmp/', paths.src]
         }
     });
-    
+
     gulp.watch(paths.src + '**/*.html', reload);
     gulp.watch(paths.styles.src + '**/*.less', ['compile:styles']);
     gulp.watch(paths.scripts.src + '*.js', ['lint:js']);
     gulp.watch(paths.images + '**/*.{gif,jpg,jpeg,png,svg}', reload);
     gulp.watch(paths.fonts + 'icons/**/*.svg', ['iconfont']);
-    
+
 });
 
 
@@ -269,6 +305,7 @@ gulp.task('default', ['clean'], function (cb) {
     runSequence('build:styles', ['lint:js', 'html', 'optimize:images', 'copy:fonts', 'copy:assets', 'copy'], cb);
 });
 
+
 // Deploy production files, to the remote server
 gulp.task('deploy', ['default'], function () {
     var ftpConfig = require('./ftp-config.json');
@@ -279,11 +316,3 @@ gulp.task('deploy', ['default'], function () {
         }))
         .pipe($.ftp(ftpConfig.server));
 });
-
-
-
-// Handle Errors
-function errorHandler(error) {
-    console.log(error.toString());
-    this.emit('end');
-}

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 9]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if IE 9]> <html class="no-js lt-ie10 ie9"> <![endif]-->
 <!--[if gt IE 9]><!-->
 <html class="no-js">
@@ -21,11 +20,7 @@
     <link rel="stylesheet" href="../styles/style.css">
 
     <!-- Styleguide styles -->
-    <style>
-        html:after {
-            top: 2.5rem;
-        }
-        
+        <style>
         body {
             background-color: #fff !important;
         }
@@ -37,14 +32,13 @@
             background: white;
             width: 100%;
             z-index: 5;
-            background: #212121;
+            background: white;
         }
         
         .docs-header h1 {
             font-size: 1rem;
             font-weight: 400;
             line-height: 2.5rem;
-            color: white;
         }
         
         .docs-footer {
@@ -145,7 +139,7 @@
             background: #f7f7f7;
         }
         
-        .docs-content .grid__columns [class*='col-'] {
+        .docs-content .grid__columns .row > [class*='col-'] {
             background: #f2f2f2;
             min-height: 1em;
             margin-bottom: 1em;
@@ -154,10 +148,11 @@
         
         .docs-content .grid__columns [class*='col-'] .row {
             background: white;
+            margin-bottom: -1rem;
         }
         
-        .docs-content .grid__columns--nested {
-            margin-bottom: -1.5rem;
+        .docs-content .condition-table th {
+            min-width: 100px;
         }
         
         .docs-content .condition-table tbody {
@@ -181,10 +176,6 @@
             cursor: pointer;
         }
         
-        .docs-content .animation:hover code {
-            color: #ae956d;
-        }
-        
         .docs-content .animation {
             text-align: center;
         }
@@ -192,17 +183,18 @@
         .docs-content .animation > div {
             text-align: center;
             display: block;
-            height: 12px;
+            height: 1rem;
             width: 100px;
             margin: 0 auto 1rem auto;
         }
         
         .docs-content .animation .dot {
             display: inline-block;
-            width: 12px;
-            height: 12px;
+            width: 1rem;
+            height: 1rem;
             margin: 8px;
             border-radius: 100%;
+            background: #333333;
         }
         
         .docs-content .addons__animations .well {
@@ -264,7 +256,15 @@
             font-size: .75em;
             color: #999;
         }
-        
+        .white {
+            color: white;
+        }
+        .black {
+            color: black;
+        }
+        .bg0 {
+            background: white;
+        }
         .bg25 {
             background: #f7f7f7;
         }
@@ -308,12 +308,14 @@
         .bg900 {
             background: #1a1a1a;
         }
+        .bg1000 {
+            background: black;
+        }
     </style>
 </head>
 
 <body>
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-
         <symbol id="svg-heart" viewBox="0 0 768 1024">
             <title>heart</title>
             <path class="path1" d="M384 864c399-314 384-425 384-512s-72-192-192-192-192 128-192 128-72-128-192-128-192 105-192 192-15 198 384 512z"></path>
@@ -323,10 +325,8 @@
             <title>code</title>
             <path class="path1" d="M608 192l-96 96 224 224-224 224 96 96 288-320-288-320zM288 192l-288 320 288 320 96-96-224-224 224-224-96-96z"></path>
         </symbol>
-
     </svg>
     <header class="docs-header" role="banner">
-
         <div class="container">
             <h1><strong>RAE</strong> Framework</h1>
             <nav class="nav" role="navigation" style="display: none;">
@@ -348,20 +348,13 @@
         </div>
     </header>
     <main class="docs-content" role="main">
-        <section class="hero container">
-            <h2>Visual Style Guide &amp; Documentation</h2>
-            <p class="h4 weight-normal">Learn how to use all features that RAE Framework provides.</p>
-
-        </section>
-        <hr />
         <section class="icons container">
             <header>
-                <h3 class="weight-normal">Documentation for <%= fontName %></h3>
+                <h2 class="weight-normal">Icons</h2>
             </header>
             <article class="icons__list">
                 <header>
-                    <h4>List of <%= fontName %></h4>
-
+                    <h3 class="color-muted">List of <%= fontName %></h3>
                 </header>
                 <ul class="row">
                     <% _.each(glyphs, function(glyph) { %>
@@ -370,7 +363,6 @@
                             <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
                             <div class="well magnify">
                                 <ul class="glyph-magnify">
-
                                     <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-2x"></i>
                                     </li>
                                     <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>-3x"></i>
@@ -385,7 +377,6 @@
                             </li>
                             <% }); %>
                 </ul>
-
                 <div class="preview-container">
                     <div class="trigger" data-tooltip="View source" data-placement="top">
                         <svg class="svg-code">
@@ -402,16 +393,17 @@
         </section>
     </main>
     <footer class="docs-footer container-fluid" role="contentinfo">
-        <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2014</small>
+        <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2015</small>
     </footer>
 
+    <!-- build:js ../scripts/styleguide.min.js -->
     <script src="../scripts/vendor/modernizr-2.8.3.js"></script>
     <script src="../scripts/vendor/jquery-2.1.3.js"></script>
     <script src="../scripts/scripts.js"></script>
+    <!-- endbuild -->
 
     <!-- Styleguide JS -->
     <script>
-        //Copied lovingy from http://codepen.io/davatron5000/pen/tzJKh
         (function ($) {
             'use strict';
             $.fn.dataCodeBlock = function () {
@@ -463,4 +455,5 @@
 
     <!-- Built with love using Rae Framework -->
 </body>
+
 </html>
