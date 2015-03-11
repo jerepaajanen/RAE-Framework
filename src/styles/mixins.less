@@ -14,15 +14,12 @@
 
 
 //
-//Font-face Mixin used in style.less setup
+//Font-face Mixin used in 'variables' setup
 // -------------------------------------------------------
-.font-face (@fontname, @fontfile, @weight: normal, @style: normal, @svg: @fontname) {
+.font-face (@fontname, @fontfile, @weight: normal, @style: normal) {
 	font-family: '@{fontname}';
-	src: url('../fonts/@{fontfile}.eot'); /* IE9 Compat Modes */
-	src: url('../fonts/@{fontfile}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('../fonts/@{fontfile}.woff') format('woff'), /* Pretty Modern Browsers; Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-    url('../fonts/@{fontfile}.ttf') format('truetype'), /* Safari, Android, iOS */
-    url('../fonts/@{fontfile}.svg#@{svg}') format('svg'); /* Legacy iOS */
+	src: url('../fonts/@{fontfile}.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('../fonts/@{fontfile}.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
 	font-weight: @weight;
 	font-style: @style;
 }
