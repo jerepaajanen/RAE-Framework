@@ -136,17 +136,16 @@ hr, .hr {
 
 // Lists
 // -------------------------------------------------------
-ul, ol, dl {
-	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
-}
-ul, ol,  {
-	margin-left: @base-spacing-unit;
-	padding-left: 0;
-	ul, ol {
-		margin-bottom: 0;
+ul, ol {
+	margin: 0 0 @base-spacing-unit @base-spacing-unit; // set vertical rhytmn
+    padding-left: 0;
+    ul, ol {
+		margin-bottom: auto;
 	}
 }
+
 dl {
+    margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
 	dt { 
 		font-weight: bold; 
 	}
