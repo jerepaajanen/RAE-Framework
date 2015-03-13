@@ -101,42 +101,15 @@
             margin-bottom: 1.5rem;
         }
         
-        .docs-content .trigger {
-            font-size: 12px;
-            cursor: pointer;
-            color: #999;
-            fill: #999;
-        }
-        
-        .docs-content .trigger:hover {
-            color: #333;
-            fill: #333;
-        }
-        
-        .docs-content .trigger .svg-code {
+        .docs-footer .svg-heart {
             width: 1rem;
             height: 1rem;
             position: relative;
-            top: 3px;
+            top: -.125em;
         }
         
-        .docs-content .svg-heart,
         .docs-footer .svg-heart {
-            height: 1em;
-            width: 1em;
-            position: relative;
-            top: 2px;
             fill: #d9534f;
-        }
-        
-        .docs-content .preview-container {
-            margin-bottom: 1.5rem;
-        }
-        
-        .docs-content .preview-container pre {
-            margin: 0;
-            border: 1px solid #e6e6e6;
-            background: #f7f7f7;
         }
         
         .docs-content .grid__columns .row > [class*='col-'] {
@@ -174,10 +147,29 @@
         
         .docs-content .animation {
             cursor: pointer;
+            text-align: center;
+            position: relative;
         }
         
-        .docs-content .animation {
+        .docs-content .animation:before {
+            content: "Click to reset";
+            font-size: 10px;
+            position: absolute;
+            bottom: -25%;
+            left: 0;
+            color: #666;
+            font-weight: 600;
             text-align: center;
+            width: 100%;
+        }
+        
+        .docs-content .animation.animation-reset:before {
+            display: none;
+        }
+
+        .docs-content .animation.animation-reset .animated {
+            -webkit-animation: animation-reset;
+            animation: animation-reset;
         }
         
         .docs-content .animation > div {
@@ -221,7 +213,7 @@
             position: absolute;
             background-color: #fff;
             z-index: 999;
-            width: 240px;
+            width: 180px;
             padding-top: .5rem;
             padding-bottom: .5rem;
         }
@@ -256,15 +248,19 @@
             font-size: .75em;
             color: #999;
         }
+        
         .white {
             color: white;
         }
+        
         .black {
             color: black;
         }
+        
         .bg0 {
             background: white;
         }
+        
         .bg25 {
             background: #f7f7f7;
         }
@@ -308,6 +304,7 @@
         .bg900 {
             background: #1a1a1a;
         }
+        
         .bg1000 {
             background: black;
         }
@@ -320,31 +317,10 @@
             <title>heart</title>
             <path class="path1" d="M384 864c399-314 384-425 384-512s-72-192-192-192-192 128-192 128-72-128-192-128-192 105-192 192-15 198 384 512z"></path>
         </symbol>
-
-        <symbol id="svg-code" viewBox="0 0 896 1024">
-            <title>code</title>
-            <path class="path1" d="M608 192l-96 96 224 224-224 224 96 96 288-320-288-320zM288 192l-288 320 288 320 96-96-224-224 224-224-96-96z"></path>
-        </symbol>
     </svg>
     <header class="docs-header" role="banner">
         <div class="container">
             <h1><strong>RAE</strong> Framework</h1>
-            <nav class="nav" role="navigation" style="display: none;">
-                <ul class="menu">
-                    <li>
-                        <a href=""></a>
-                    </li>
-                    <li>
-                        <a href=""></a>
-                    </li>
-                    <li>
-                        <a href=""></a>
-                    </li>
-                    <li>
-                        <a href=""></a>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </header>
     <main class="docs-content" role="main">
@@ -391,7 +367,7 @@
                 <header>
                     <h3 class="color-muted">Headings</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <h1>This is heading 1 (h1)</h1>
                     <h2>This is heading 2 (h2)</h2>
                     <h3>This is heading 3 (h3)</h3>
@@ -433,7 +409,7 @@
                 <header>
                     <h3 class="color-muted">Blockquote</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <blockquote>
                         <p>I've had I don't know how many cups of coffee in my life, but this is one of the best.</p>
                         <cite>Dale Cooper, Twin Peaks</cite>
@@ -445,7 +421,7 @@
                     <h3 class="color-muted">Lists</h3>
                 </header>
                 <h4>Unordered list</h4>
-                <div data-codeblock>
+                <div class="example">
 
                     <ul>
                         <li>Cras mattis consectetur purus sit amet fermentum.</li>
@@ -461,7 +437,7 @@
                 </div>
 
                 <h4>Ordered list</h4>
-                <div data-codeblock>
+                <div class="example">
 
                     <ol>
                         <li>Cras mattis consectetur purus sit amet fermentum.</li>
@@ -477,7 +453,7 @@
                 </div>
 
                 <h4>Description</h4>
-                <div data-codeblock>
+                <div class="example">
 
                     <dl>
                         <dt>Description lists</dt>
@@ -495,7 +471,7 @@
                 <header>
                     <h3 class="color-muted">Horizontal rule</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <p>Paragraph before horizontal-rule</p>
                     <hr>
                     <p>Paragraph after horizontal-rule, and before empty horizontal-rule</p>
@@ -513,7 +489,7 @@
                 <header>
                     <h3 class="color-muted">Image</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <img src="http://placehold.it/1600x900" alt="placeholder">
                 </div>
             </article>
@@ -521,7 +497,7 @@
                 <header>
                     <h3 class="color-muted">Html5 audio</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <audio controls=""></audio>
                 </div>
             </article>
@@ -529,7 +505,7 @@
                 <header>
                     <h3 class="color-muted">Html5 video</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <video controls=""></video>
                 </div>
             </article>
@@ -537,12 +513,12 @@
                 <header>
                     <h3 class="color-muted">Responsive video</h3>
                 </header>
-                    <div data-codeblock>
-                        <!-- Default aspect-ratio is 16:9 -->
-                        <div class="responsive-video">
-                            <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" allowfullscreen></iframe>
-                        </div>
+                <div class="example">
+                    <!-- Default aspect-ratio is 16:9 -->
+                    <div class="responsive-video">
+                        <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" allowfullscreen></iframe>
                     </div>
+                </div>
             </article>
         </section>
         <hr />
@@ -555,7 +531,7 @@
                     <h3 class="color-muted">Containers</h3>
                     <p>Use <code>.container</code> for a responsive fixed width container and <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <div class="container"></div>
                     <div class="container-fluid"></div>
                 </div>
@@ -565,7 +541,7 @@
                     <h3 class="color-muted">Columns</h3>
                     <h4>Basic columns layout</h4>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <div class="row">
                         <div class="col-xl-4 col-lg-5 col-sm-6"></div>
                         <div class="col-xl-8 col-lg-7 col-sm-6"></div>
@@ -584,7 +560,7 @@
                     </div>
                 </div>
                 <h4>Column nesting with row-classes</h4>
-                <div data-codeblock>
+                <div class="example">
                     <div class="row">
                         <div class="col-xl-6 push-xl-6 col-md-6">
                             <div class="row">
@@ -615,7 +591,7 @@
                     </div>
                 </div>
                 <h4>Columns without gutters</h4>
-                <div data-codeblock>
+                <div class="example">
                     <div class="row no-gutters">
                         <div class="col-xl-4 col-lg-5 col-sm-6"></div>
                         <div class="col-xl-8 col-lg-7 col-sm-6"></div>
@@ -943,7 +919,7 @@
                 <header>
                     <h3 class="color-muted">Basic table</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <table>
                         <caption>
                             Optional table caption
@@ -982,7 +958,7 @@
                     <h3 class="color-muted">Styled tables</h3>
                 </header>
                 <h4>Table with borders</h4>
-                <div data-codeblock>
+                <div class="example">
                     <table class="table-border">
                         <caption>
                             Optional table caption
@@ -1021,7 +997,7 @@
                     </table>
                 </div>
                 <h4>Table with row borders</h4>
-                <div data-codeblock>
+                <div class="example">
                     <table class="table-border-rows">
                         <caption>
                             Optional table caption
@@ -1060,7 +1036,7 @@
                     </table>
                 </div>
                 <h4>Table with cell borders</h4>
-                <div data-codeblock>
+                <div class="example">
                     <table class="table-border-cells">
                         <caption>
                             Optional table caption
@@ -1099,7 +1075,7 @@
                     </table>
                 </div>
                 <h4>Table with stripes</h4>
-                <div data-codeblock>
+                <div class="example">
                     <table class="table-stripes">
                         <caption>
                             Optional table caption
@@ -1143,7 +1119,7 @@
                     <h3 class="color-muted">Responsive table</h3>
                     <p>Wrap a table in the <code>.table-responsive</code> class, width remains the same and horizontal scrollbar will show up in smaller screen sizes. Remember to set minimum widths for table cells.</p>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <div class="table-responsive">
                         <table id="tables__responsive">
                             <caption>
@@ -1193,7 +1169,7 @@
                 <header>
                     <h3 class="color-muted">Button styles</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <button class="btn" type="button">Button</button>
                     <button class="btn btn-default" type="button">Default Button</button>
                     <button class="btn btn-primary" type="button">Primary button</button>
@@ -1204,11 +1180,11 @@
                 <header>
                     <h3 class="color-muted">Button states</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <button class="btn btn-default" type="button" disabled>Disabled</button>
                     <button class="btn btn-primary" type="button" disabled>Disabled</button>
                 </div>
-                <div data-codeblock>
+                <div class="example">
                     <button class="btn btn-default active" type="button">Active</button>
                     <button class="btn btn-primary active" type="button">Active</button>
                 </div>
@@ -1217,16 +1193,16 @@
                 <header>
                     <h3 class="color-muted">Button sizes &amp; variations</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <button class="btn btn-default btn-sm" type="button">Small</button>
                     <button class="btn btn-default" type="button">Regular</button>
                     <button class="btn btn-default btn-lg" type="button">Large</button>
                     <button class="btn btn-default btn-xl" type="button">Extra Large</button>
                 </div>
-                <div data-codeblock>
+                <div class="example">
                     <button class="btn btn-default btn-block" type="button">Block</button>
                 </div>
-                <div data-codeblock>
+                <div class="example">
                     <button class="btn btn-default btn-pill" type="button">Pill</button>
                     <button class="btn btn-default btn-circle" type="button">Circle</button>
                 </div>
@@ -1236,7 +1212,7 @@
                     <h3 class="color-muted">Accessibility</h3>
                     <p>Use the snippets below to make buttons more accessible. If there is no <code>&lt;a href=""&gt;</code> then simply add the <code>tabindex="0"</code> to the div or span to make it focusable.</p>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <a role="button" href="#" class="btn btn-default">Default Button</a>
                     <a role="button" aria-label="submit form" href="#" class="btn btn-default">Submit</a>
                     <div role="button" tabindex="0" class="btn btn-default">Default Button</div>
@@ -1252,7 +1228,7 @@
                 <header>
                     <h3 class="color-muted">Text fields</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
                         <div class="form-item">
                             <label for="demo-input">Text Input</label>
@@ -1273,11 +1249,11 @@
                     </form>
                 </div>
             </article>
-            <article class="forms__text-fields">
+            <article class="forms__selects">
                 <header>
                     <h3 class="color-muted">Select menus</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
                         <div class="form-item">
                             <label for="demo-select">Select List</label>
@@ -1323,7 +1299,7 @@
                 <header>
                     <h3 class="color-muted">Checkboxes</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
                         <div class="form-item">
                             <label>Normal checkboxes</label>
@@ -1362,9 +1338,8 @@
                 <header>
                     <h3 class="color-muted">Radio buttons</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
-
                         <div class="form-item">
                             <label>Normal radios</label>
                             <div class="radio">
@@ -1402,7 +1377,7 @@
                 <header>
                     <h3 class="color-muted">Html5 inputs</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
                         <div class="form-item">
                             <label for="demo-input-telephone">Telephone</label>
@@ -1443,7 +1418,7 @@
                 <header>
                     <h3 class="color-muted">Fieldsets</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
                         <fieldset>
                             <legend>Fieldset legend</legend>
@@ -1468,7 +1443,7 @@
                 <header>
                     <h3 class="color-muted">Form with grid</h3>
                 </header>
-                <div data-codeblock>
+                <div class="example">
                     <form role="form" class="form" action="">
                         <div class="form-item row">
                             <div class="col-md-2">
@@ -1846,7 +1821,7 @@
                     <p>Apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can make tooltips multi-line with <code>data-tooltip-multiline</code>
                     </p>
                 </header>
-                <div class="well clearfix" data-codeblock>
+                <div class="well clearfix example">
                     <a href="#" data-tooltip="Top tooltip" data-placement="top">Top tooltip</a>
                     <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">Bottom tooltip</a>
                     <a href="#" data-tooltip="Left tooltip" data-placement="left">Left tooltip</a>
@@ -1865,32 +1840,32 @@
                     <div class="row">
                         <div class="">
                             <div class="col-md-3">
-                                <div class="animation">
-                                    <div class="slideInLeft">
+                                <div class="animation animation-reset">
+                                    <div class="slideInLeft animated">
                                         <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInLeft</code>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="animation">
-                                    <div class="slideInUp">
+                                <div class="animation animation-reset">
+                                    <div class="slideInUp animated">
                                         <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInUp</code>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="animation">
-                                    <div class="slideInDown">
+                                <div class="animation animation-reset">
+                                    <div class="slideInDown animated">
                                         <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInDown</code>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="animation">
-                                    <div class="slideInRight">
+                                <div class="animation animation-reset">
+                                    <div class="slideInRight animated">
                                         <span class="dot">&nbsp</span>
                                     </div>
                                     <code>.slideInRight</code>
@@ -1902,32 +1877,32 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="slideOutLeft">
+                            <div class="animation animation-reset">
+                                <div class="slideOutLeft animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutLeft</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="slideOutUp">
+                            <div class="animation animation-reset">
+                                <div class="slideOutUp animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutUp</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="slideOutDown">
+                            <div class="animation animation-reset">
+                                <div class="slideOutDown animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutDown</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="slideOutRight">
+                            <div class="animation animation-reset">
+                                <div class="slideOutRight animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.slideOutRight</code>
@@ -1938,32 +1913,32 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounce">
+                            <div class="animation animation-reset">
+                                <div class="bounce animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounce</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="flash">
+                            <div class="animation animation-reset">
+                                <div class="flash animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.flash</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="pulse">
+                            <div class="animation animation-reset">
+                                <div class="pulse animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.pulse</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="shake">
+                            <div class="animation animation-reset">
+                                <div class="shake animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.shake</code>
@@ -1971,24 +1946,24 @@
                         </div>
                         <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="swing">
+                            <div class="animation animation-reset">
+                                <div class="swing animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.swing</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="tada">
+                            <div class="animation animation-reset">
+                                <div class="tada animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.tada</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="wobble">
+                            <div class="animation animation-reset">
+                                <div class="wobble animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.wobble</code>
@@ -1999,8 +1974,8 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceIn">
+                            <div class="animation animation-reset">
+                                <div class="bounceIn animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceIn</code>
@@ -2008,32 +1983,32 @@
                         </div>
                         <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceInLeft">
+                            <div class="animation animation-reset">
+                                <div class="bounceInLeft animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInLeft</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceInUp">
+                            <div class="animation animation-reset">
+                                <div class="bounceInUp animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInUp</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceInDown">
+                            <div class="animation animation-reset">
+                                <div class="bounceInDown animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInDown</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceInRight">
+                            <div class="animation animation-reset">
+                                <div class="bounceInRight animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceInRight</code>
@@ -2044,8 +2019,8 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceOut">
+                            <div class="animation animation-reset">
+                                <div class="bounceOut animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOut</code>
@@ -2053,32 +2028,32 @@
                         </div>
                         <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceOutLeft">
+                            <div class="animation animation-reset">
+                                <div class="bounceOutLeft animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutLeft</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceOutUp">
+                            <div class="animation animation-reset">
+                                <div class="bounceOutUp animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutUp</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceOutDown">
+                            <div class="animation animation-reset">
+                                <div class="bounceOutDown animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutDown</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="bounceOutRight">
+                            <div class="animation animation-reset">
+                                <div class="bounceOutRight animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.bounceOutRight</code>
@@ -2089,8 +2064,8 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeIn">
+                            <div class="animation animation-reset">
+                                <div class="fadeIn animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeIn</code>
@@ -2098,32 +2073,32 @@
                         </div>
                         <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeInLeft">
+                            <div class="animation animation-reset">
+                                <div class="fadeInLeft animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInLeft</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeInUp">
+                            <div class="animation animation-reset">
+                                <div class="fadeInUp animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInUp</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeInDown">
+                            <div class="animation animation-reset">
+                                <div class="fadeInDown animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInDown</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeInRight">
+                            <div class="animation animation-reset">
+                                <div class="fadeInRight animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeInRight</code>
@@ -2134,8 +2109,8 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeOut">
+                            <div class="animation animation-reset">
+                                <div class="fadeOut animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOut</code>
@@ -2143,32 +2118,32 @@
                         </div>
                         <hr class="hr-empty clearfix hide-sm-only" />
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeOutLeft">
+                            <div class="animation animation-reset">
+                                <div class="fadeOutLeft animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutLeft</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeOutUp">
+                            <div class="animation animation-reset">
+                                <div class="fadeOutUp animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutUp</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeOutDown">
+                            <div class="animation animation-reset">
+                                <div class="fadeOutDown animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutDown</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="fadeOutRight">
+                            <div class="animation animation-reset">
+                                <div class="fadeOutRight animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.fadeOutRight</code>
@@ -2179,16 +2154,16 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="zoomIn">
+                            <div class="animation animation-reset">
+                                <div class="zoomIn animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.zoomIn</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="zoomOut">
+                            <div class="animation animation-reset">
+                                <div class="zoomOut animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.zoomOut</code>
@@ -2199,16 +2174,16 @@
                 <div class="well">
                     <div class="row ">
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="rollIn">
+                            <div class="animation animation-reset">
+                                <div class="rollIn animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.rollIn</code>
                             </div>
                         </div>
                         <div class="col-md-3">
-                            <div class="animation">
-                                <div class="rollOut">
+                            <div class="animation animation-reset">
+                                <div class="rollOut animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.rollOut</code>
@@ -2222,65 +2197,18 @@
     <footer class="docs-footer container-fluid" role="contentinfo">
         <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2015</small>
     </footer>
-
-    <!-- build:js ../scripts/scripts.min.js -->
-    <script src="../scripts/vendor/modernizr-2.8.3.js"></script>
-    <script src="../scripts/vendor/jquery-2.1.3.js"></script>
-    <!-- endbuild -->
-
-
+    
     <!-- Styleguide JS -->
     <script>
-        (function ($) {
-            'use strict';
-            $.fn.dataCodeBlock = function () {
-                var escapeHTML = function (code) {
-                    return code.replace(/(<pre[\s\S]*?>[\s\S]*?<\/pre>)| {2,}/ig, '$1').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-                };
-                return $('[data-codeblock]').each(function () {
-                    var $this = $(this),
-                        target = $this.data('codeblock'),
-                        html = $this.clone().removeAttr('data-codeblock')[0].innerHTML,
-                        tidyhtml = html.trim(), // remove leading whitespace
-                        codeblock = $('<div class="preview-container"><div class="trigger" data-tooltip="View source" data-placement="top"><svg class="svg-code"><use xlink:href="#svg-code"></use></svg></div><pre><code>');
-                    codeblock.find('code').append(escapeHTML(tidyhtml));
-                    if (target && $(target).length) {
-                        $(target).append(codeblock);
-                    } else {
-                        $this.after(codeblock);
-                    }
-                });
-                $(".preview-container pre").hide();
-                $(".trigger").click(function () {
-                    $(this).toggleClass("active").next().slideToggle("normal");
-                    return false;
-                });
-            };
-            $.fn.dataCodeBlock();
-        })(jQuery);
-
-        // Toggle Codeblocks
-        $(function () {
-            $(".preview-container pre").hide();
-            $(".trigger").click(function () {
-                $(this).toggleClass("active").next().slideToggle("normal");
-                return false;
-            });
-        });
-
-        // Reset animations
-        $(function () {
-            $(".animation").click(function () {
-                var el = $(this).children('div'),
-                    elclass = el.attr("class"),
-                    newone = el.clone(true).addClass('animated');
-                el.before(newone);
-                el.remove();
+        [].forEach.call(document.getElementsByClassName("animation"), function (el) {
+            el.addEventListener("click", function () {
+                el.preventDefault;
+                
+                el.classList.toggle('animation-reset');
+                
             });
         });
     </script>
 
-    <!-- Built with love using Rae Framework -->
-</body>
-
 </html>
+<!-- Built with love using Rae Framework -->
