@@ -81,13 +81,15 @@
 @white:                     	#ffffff;
 
 // Custom brand colors
-@color-primary:		       		#ae956d;
-@color-primary-variation-1:		lighten(@color-primary, 5%);
-@color-primary-variation-2:		lighten(@color-primary, 20%);
+@color-primary:                 #ae956d;
+@color-primary-variant-1:       tint(@color-primary, 20%);
+@color-primary-variant-2:       shade(@color-primary, 20%);
+@color-primary-variant-3:       saturate(@color-primary, 100%);
 
-@color-secondary:				#3F51B5;
-@color-secondary-variation-1:	lighten(@color-secondary, 5%);
-@color-secondary-variation-2:	lighten(@color-secondary, 20%);
+@color-secondary:               #3F51B5;
+@color-secondary-variant-1:     tint(@color-primary, 20%);
+@color-secondary-variant-2:     shade(@color-primary, 20%);
+@color-secondary-variant-3:     saturate(@color-secondary, 100%);
 
 // UI colors
 @color-muted:                   .5;
@@ -170,14 +172,17 @@
 @input-radio-checked-color:     currentColor;
 
 // Buttons
-// Different button sizes will be multiples of base sizes
-// btn-sm: 0,8x, btn-lg: 1.5x, btn-xl: 2x of default size
 @button-font-size:				14px;
 @button-font-weight:			700;
 @button-height:					40px;
-@button-horizontal-padding:		1.5em;
+@button-horizontal-padding:		16px;
 @button-border-width:			1px;
 @button-border-radius:			0;
+
+// Button sizes will be derived from base button proportions
+@button-size-small:             0.8;
+@button-size-large:             1.5;
+@button-size-xlarge:            2;
 
 
 // TABLES
@@ -213,7 +218,7 @@
 // -------------------------------------------------------
 
 // Iconography
-@icon-font-size:               14px;
+@icon-font-size:                14px;
 
 // Border-radius
 @border-radius-default:         4px;
