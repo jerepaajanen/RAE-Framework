@@ -76,17 +76,17 @@ input[type="submit"] {
     }
 
     .btn-circle {
-        border-radius: 999em;
-        padding: 0;
+        border-radius: 100%;
+        padding: 0 !important;
         width: @button-height;
         &.btn-sm {
-            width: (@button-height * .8);
+            width: (@button-height * @button-size-small);
         }
         &.btn-lg {
-            width: (@button-height * 1.5);
+            width: (@button-height * @button-size-large);
         }
         &.btn-xl {
-            width: (@button-height * 2);
+            width: (@button-height * @button-size-xlarge);
         }
     }
 
