@@ -30,6 +30,7 @@ body {
     min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
 }
 
+
 // Selection colors
 // -------------------------------------------------------
 ::selection{
@@ -37,6 +38,7 @@ body {
 	color: @selection-color;
 	text-shadow: none; // Remove `text-shadow` selection highlight - http://cbrac.co/Q6swON
 }
+
 img::selection{
 	background: transparent;
 }
@@ -54,6 +56,8 @@ a {
 		color: @base-link-color;
 	}
 }
+
+
 // Basic typography
 // -------------------------------------------------------
 h1,h2,h3,h4,h5,h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -115,6 +119,7 @@ samp {
 	font-family: monospace, serif;
 	.font-size(14);
 }
+
 pre {
 	padding: 1rem;
 	overflow: auto;
@@ -123,9 +128,10 @@ pre {
 	word-break: normal;
 	margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
 }
+
 hr, .hr {
 	border: solid @hr-color;
-	border-width: 1px 0 0 0; 
+	border-width: 1px 0 0 0;
 	clear: both;
 	height: 0;
 	margin: 0 auto @base-spacing-unit auto; // set vertical rhytmn
@@ -133,6 +139,7 @@ hr, .hr {
         border-color: transparent;
     }
 }
+
 
 // Lists
 // -------------------------------------------------------
@@ -146,10 +153,10 @@ ul, ol {
 
 dl {
     margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
-	dt { 
-		font-weight: bold; 
+	dt {
+		font-weight: bold;
 	}
-	dd { 
+	dd {
 		margin-left: 0;
 	}
 }

@@ -13,7 +13,6 @@
 }
 
 
-//
 //Font-face Mixin used in 'variables' setup
 // -------------------------------------------------------
 .font-face (@fontname, @fontfile, @weight: normal, @style: normal) {
@@ -24,7 +23,7 @@
 	font-style: @style;
 }
 
-//
+
 //Media Query Mixins
 // -------------------------------------------------------
 
@@ -61,7 +60,7 @@
 // Retina
 @retina:					~"only screen and (-webkit-min-device-pixel-ratio: 2),only screen and (min--moz-device-pixel-ratio: 2),only screen and (-o-min-device-pixel-ratio: 2/1),only screen and (min-device-pixel-ratio: 2),only screen and (min-resolution: 192dpi),only screen and (min-resolution: 2dppx)";
 
-//
+
 // Retina images
 // -------------------------------------------------------
 // Short retina mixin for setting background-image and -size
@@ -74,6 +73,7 @@
 		background-size: @width-1x @height-1x;
 	}
 }
+
 
 // -------------------------------------------------------
 // Useful Mixins
@@ -90,6 +90,7 @@
 	padding: 0 round(@ph * @multiple, 3);
 }
 
+
 // CSS image replacement
 // -------------------------------------------------------
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
@@ -101,6 +102,7 @@
 	border: 0;
 }
 
+
 // Vertical align anything, even if you don’t know elements height.
 // Works only in CSS3 compatible browsers.
 // -------------------------------------------------------
@@ -109,6 +111,7 @@
 	top: 50%;
 	transform: translateY(-50%);	
 }
+
 
 // Aspect Ratio
 // -------------------------------------------------------
@@ -121,6 +124,7 @@
 	padding-bottom: (@height / @width * 100%);
 	overflow: hidden;
 }
+
 
 // Placeholder text
 // -------------------------------------------------------
@@ -141,7 +145,6 @@
 }
 
 
-//
 //Grid Mixins
 // -------------------------------------------------------
 
@@ -192,7 +195,7 @@
 	left: percentage((@pull / @grid-columns * -1));
 }
 
-//
+
 // Framework grid generation
 // -------------------------------------------------------
 
@@ -201,16 +204,19 @@
 		width: percentage((@index / @grid-columns));
 	}
 }
+
 .calc-grid(@index, @type, @class: ~'') when (@type = push) and (@use-columns = true) and (@use-push = true)  {
 	.push@{class}-@{index} {
 		left: percentage((@index / @grid-columns));
 	}
 }
+
 .calc-grid(@index, @type, @class: ~'') when (@type = pull) and (@use-columns = true) and (@use-pull = true) {
 	.pull@{class}-@{index} {
 		right: percentage((@index / @grid-columns));
 	}
 }
+
 .calc-grid(@index, @type, @class: ~'') when (@type = offset) and (@use-columns = true) and (@use-offset = true) {
 	.offset@{class}-@{index} {
 		margin-left: percentage((@index / @grid-columns));
