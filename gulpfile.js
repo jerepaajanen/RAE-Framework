@@ -4,9 +4,10 @@ var gulp = require('gulp'),
     $ = require('gulp-load-plugins')(),
     del = require('del'),
     runSequence = require('run-sequence'),
-    browserSync = require('browser-sync'),
     bowerFiles = require('main-bower-files'),
+    browserSync = require('browser-sync'),
     reload = browserSync.reload,
+    ftp = require('vinyl-ftp'),
     pkg = require('./package.json');
 
 
@@ -326,13 +327,17 @@ gulp.task('default', ['clean'], function (cb) {
 });
 
 
-// Deploy production files, to the remote server
-gulp.task('deploy', ['default'], function () {
-    var ftpConfig = require('./ftp-config.json');
 
-    return gulp.src(paths.dest + '**/*')
-        .pipe($.size({
-            title: 'Deploy'
-        }))
-        .pipe($.ftp(ftpConfig.server));
+
+gulp.task('deploy', ['default'], function () {
+    var config = require('./ftp-config.json');
+    var conn = ftp.create(config.server);
+    var globs = [paths.dest + '**'];
+
+    return gulp.src(globs, {
+            base: paths.dest,
+            buffer: false
+        })
+        .pipe(conn.differentSize(config.server.remotePath))
+        .pipe(conn.dest(config.server.remotePath));
 });
