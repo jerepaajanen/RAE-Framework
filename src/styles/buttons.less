@@ -92,14 +92,21 @@ input[type="submit"] {
 
     .btn-link {
         color: @base-color;
-        font-weight: 400;
         border-radius: 0;
+        border-width: 0;
+        padding: 0;
+        box-shadow: none;
+        height: auto;
+        line-height: inherit;
+        text-align: left; // reset button text-align
+        vertical-align: baseline;
+        white-space: normal;
         &,
         &:active,
         &.active,
         &[disabled],
         fieldset[disabled] & {
-            background-color: transparent;
+            background: rgba(0, 0, 0, 0);
         }
         &,
         &:hover,
