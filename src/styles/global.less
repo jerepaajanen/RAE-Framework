@@ -6,10 +6,9 @@
     background-color: @base-background;
     color: @base-color;
     height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
-	//font-size: (unit(@base-font-size / 16) * 100%); // Set base font-size
-    //line-height: @line-height-ratio;
-    //font-family: @base-font-family;
-	//tap-highlight-color: transparent;
+    font-family: @base-font-family;
+    font-size: (unit(@base-font-size / 16) * 100%);
+    line-height: @line-height-ratio;
 }
 
 body {
@@ -108,9 +107,12 @@ hr, .hr {
 // -------------------------------------------------------
 ul, ol {
 	margin: 0 0 @base-spacing-unit @base-spacing-unit; // set vertical rhytmn
-    ul, ol {
+    & & {
 		margin-bottom: auto;
 	}
+    nav & {
+        margin: 0;
+    }
 }
 
 dl {
