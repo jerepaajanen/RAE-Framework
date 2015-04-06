@@ -2,45 +2,19 @@
 // Global
 // -------------------------------------------------------
 
-//Box model adjustments
-//http://cbrac.co/RQrDL5
-*,
-*:before,
-*:after {
-	box-sizing:border-box;
-	-webkit-font-smoothing:antialiased;
-	-moz-osx-font-smoothing:grayscale;
-	font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-}
-
-html {
-    overflow-y: scroll; // Force a vertical scrollbar
-	font-size: (unit(@base-font-size / 16) * 100%); // Set base font-size
+:root {
+    background-color: @base-background;
+    color: @base-color;
     height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
-	tap-highlight-color: transparent;
+	//font-size: (unit(@base-font-size / 16) * 100%); // Set base font-size
+    //line-height: @line-height-ratio;
+    //font-family: @base-font-family;
+	//tap-highlight-color: transparent;
 }
 
 body {
-    font-family: @base-font-family;
     font-size: 1rem;
-    line-height: @line-height-ratio;
-	color: @base-color;
-	background-color: @base-background;
     min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
-}
-
-
-// Selection colors
-// -------------------------------------------------------
-::selection{
-	background: @selection-background;
-	color: @selection-color;
-	text-shadow: none; // Remove `text-shadow` selection highlight - http://cbrac.co/Q6swON
-}
-
-img::selection{
-	background: transparent;
 }
 
 
@@ -48,11 +22,9 @@ img::selection{
 // -------------------------------------------------------
 a {
 	color: inherit;
-	text-decoration: none;
 	cursor: pointer;
 	transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
 	&:active, &:hover {
-		outline: 0;
 		color: @base-link-color;
 	}
 }
@@ -112,17 +84,8 @@ blockquote {
 	}
 }
 
-code,
-kbd,
-pre,
-samp {
-	font-family: monospace, serif;
-	.font-size(14);
-}
-
 pre {
 	padding: 1rem;
-	overflow: auto;
 	white-space: pre;
 	word-wrap: normal;
 	word-break: normal;
@@ -145,7 +108,6 @@ hr, .hr {
 // -------------------------------------------------------
 ul, ol {
 	margin: 0 0 @base-spacing-unit @base-spacing-unit; // set vertical rhytmn
-    padding-left: 0;
     ul, ol {
 		margin-bottom: auto;
 	}
@@ -155,20 +117,5 @@ dl {
     margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
 	dt {
 		font-weight: bold;
-	}
-	dd {
-		margin-left: 0;
-	}
-}
-
-// Navigation resets
-nav {
-	ul {
-		list-style: none;
-		margin: 0;
-		padding: 0;
-		li {
-			cursor: pointer;
-		}
 	}
 }

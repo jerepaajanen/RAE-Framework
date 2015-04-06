@@ -2,15 +2,6 @@
 // Embedded content
 // -------------------------------------------------------
 
-// Remove the gap between <img> elements and the bottom of their containers
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
 
 // Fluid-width <audio> & <video> elements
 audio,
@@ -38,8 +29,7 @@ object {
 
 // Reset `margin` for figure elements.
 figure {
-  margin-right: auto;
-  margin-left: auto;
+    margin: 0 auto @base-spacing-unit auto; // set vertical rhytmn
 }
 
 // Set <img> elements as block-level inside <figure> elements.

@@ -1,16 +1,6 @@
 //
 // Buttons
 // -------------------------------------------------------
-button, 
-html input[type="button"], 
-input[type="reset"], 
-input[type="submit"] {
-	-webkit-appearance:none; //iOS rounding reset
-	&:focus {
-		outline: none;
-	}
-}
-
 .use-button-styles(@boolean) when (@boolean = true) {
     .btn {
         .button-size();
@@ -20,11 +10,9 @@ input[type="submit"] {
         font-weight: @button-font-weight;
         position: relative;
         vertical-align: middle;
-        margin: 0;
         text-align: center;
         white-space: nowrap; //prevent line-break
         cursor: pointer;
-        background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
         outline: 0;
         text-decoration: none;
         -webkit-touch-callout: none;
@@ -37,7 +25,6 @@ input[type="submit"] {
         }
         &:active, 
         &.active {
-            outline: 0;
         }
         &[disabled],
         &:disabled,
@@ -91,16 +78,12 @@ input[type="submit"] {
     }
 
     .btn-link {
-        color: @base-color;
         border-radius: 0;
-        border-width: 0;
-        padding: 0;
         box-shadow: none;
+        color: @base-color;
+        font-weight: 400;
         height: auto;
         line-height: inherit;
-        text-align: left; // reset button text-align
-        vertical-align: baseline;
-        white-space: normal;
         &,
         &:active,
         &.active,

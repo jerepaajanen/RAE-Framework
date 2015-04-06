@@ -8,8 +8,6 @@
     
     fieldset {
         margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
-        padding: 0;
-        border: 0;
         &:last-child {
             margin-bottom: 0; // remove unnecessary margin from last fieldset
         }
@@ -83,10 +81,6 @@
         }
     }
     
-    input[type="search"] {
-        box-sizing: border-box; // override content-box in Normalize
-    }
-    
     .use-form-styles(@boolean) when (@boolean = true) {
         
         // This is basic styled form. You can make variatios like .form-minimal
@@ -124,7 +118,6 @@
                 font-size: @input-font-size;
                 height: @input-height;
                 padding: ((@input-height - (@input-font-size * @line-height-ratio)) / 2) @input-horizontal-padding;
-                resize: none; // disable user resizing
                 transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
                 
                 &:hover {
@@ -152,9 +145,6 @@
                 &:focus:-moz-focusring {
                     color: transparent;
                     text-shadow: 0 0 0 #000;
-                }
-                &::-ms-expand {
-                    display: none; // Hide the arrow in IE10+
                 }
                 &:hover {
                     background-image: url(../images/form/select_hover.svg);

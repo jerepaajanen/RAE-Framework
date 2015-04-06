@@ -9,12 +9,10 @@
         width: 100%;
         empty-cells: show;
         margin: 0 0 @base-spacing-unit 0; // set vertical rhytmn
-        
         word-wrap: break-word; // for css3 browsers
         text-align: left;
         caption {
             padding: 1em 0;
-            font-size: 85%;
             text-align: center;
         }
         thead, tfoot {
@@ -31,8 +29,8 @@
             background-color: @table-background;
             //Table outerborder only
             &.table-border {
-        border: 1px solid @table-border-color;
-    }
+                border: 1px solid @table-border-color;
+            }
             //Borders for inner table cells
             &.table-border-cells {
         th, td {
