@@ -84,10 +84,10 @@
 // -------------------------------------------------------
 // .button-size(); Defaults to normal button size
 .button-size(@multiple: 1, @h: @button-height, @ph: @button-horizontal-padding, @fs: @button-font-size, @bw: @button-border-width) {
-    font-size: round(@fs * @multiple, 3);
-	height: round(@h * @multiple, 3);
-	line-height: round((@h  * @multiple) - (@bw * 2), 3);
-	padding: 0 round(@ph * @multiple, 3);
+    font-size: ceil(@fs * @multiple);
+	height: ceil(@h * @multiple);
+	line-height: ceil((@h  * @multiple) - (@bw * 2));
+	padding: 0 floor(@ph * @multiple);
 }
 
 
@@ -104,7 +104,7 @@
 
 
 // Vertical align anything, even if you don’t know elements height.
-// Works only in CSS3 compatible browsers.
+// Add to parenti-element: "transform-style: preserve-3d;"
 // -------------------------------------------------------
 .vertical-align() {
 	position: absolute;

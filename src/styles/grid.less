@@ -9,25 +9,44 @@
         .make-container();
     }
     
-    // Container widths
-    .container {
-        width: @container-sm;
-    }
-    @media @medium-up {
-        .container { 
-            width:@container-md;
-        }
-    }
-    @media @large-up {
+    // Container Small (Default)
+    .use-screen-sm(@boolean) when (@boolean = true) {
         .container {
-            width: @container-lg;
+            width: @container-sm;
         }
     }
-    @media @xlarge-up {
-        .container {
-            width: @container-xl;
+    .use-screen-sm(@use-screen-sm);
+    
+    // Container Medium
+    .use-screen-md(@boolean) when (@boolean = true) {
+        @media @medium-up {
+            .container { 
+                width:@container-md;
+            }
         }
     }
+    .use-screen-md(@use-screen-md);
+    
+    // Container Large
+    .use-screen-lg(@boolean) when (@boolean = true) {
+        @media @large-up {
+            .container {
+                width: @container-lg;
+            }
+        }
+    }
+    .use-screen-lg(@use-screen-lg);
+
+    
+    // Container Extra-Large
+    .use-screen-xl(@boolean) when (@boolean = true) {
+        @media @xlarge-up {
+            .container {
+                width: @container-xl;
+            }
+        }
+    }
+    .use-screen-xl(@use-screen-xl);
 }
 .use-container(@use-container);
 
