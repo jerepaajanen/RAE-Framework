@@ -1,0 +1,76 @@
+//
+// Forms
+// -------------------------------------------------------
+.use-forms(@boolean) when (@boolean = true) {
+
+    fieldset {
+        &:last-child {
+            margin-bottom: 0; // remove unnecessary margin from last fieldset
+        }
+    }
+
+    legend {
+        font-weight: @legend-font-weight;
+        margin-bottom: @base-spacing-unit-half;
+    }
+
+    label {
+        display: block; // labels goes for their own lines
+        cursor: pointer;
+        color: @label-color;
+        font-size: @label-font-size;
+    }
+
+    input[type="date"],
+    input[type="datetime"],
+    input[type="datetime-local"],
+    input[type="email"],
+    input[type="month"],
+    input[type="number"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="text"],
+    input[type="time"],
+    input[type="url"],
+    input[type="week"],
+    select,
+    textarea {
+        width: 100%; // Let's make 'em responsive!
+    }
+
+    input {
+        &[type="checkbox"],
+        &[type="radio"] {
+            + label {
+                display: inline-block; // labels goes to same line
+            }
+        }
+    }
+
+    input[disabled],
+    select[disabled],
+    textarea[disabled] {
+        &,
+        & + label {
+            // disable also [checkbox] & [radio] labels
+            cursor: not-allowed;
+            pointer-events: none;
+            opacity: .4;
+        }
+    }
+
+    input,
+    select,
+    textarea,
+    [contenteditable="true"] {
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    // Placeholder color
+    .placeholder();
+
+}
+.use-forms(@use-forms);

@@ -1,0 +1,20 @@
+//
+// Aspect ratio
+// -------------------------------------------------------
+
+// Maintain Aaspect ratio of unknown height/width element.
+
+// Usage
+// .selector {
+//    .aspect-ratio(16, 9); // 16:9
+// }
+
+// Add ´position: absolute; top: 0; left: 0; width:100%;´
+// to child-element
+
+.aspect-ratio(@width, @height) {
+    position: relative;
+    height: 0;
+    padding-bottom: (@height / @width * 100%);
+    overflow: hidden;
+}

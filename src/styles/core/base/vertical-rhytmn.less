@@ -1,0 +1,36 @@
+//
+// Vertical rhytmn
+// -------------------------------------------------------
+.vertical-rhytmn(@boolean) when (@boolean = true) {
+
+    blockquote,
+    dl,
+    fieldset,
+    figure,
+    form,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6,
+    hr,
+    .hr,
+    menu,
+    ol,
+    p,
+    pre,
+    summary,
+    table,
+    ul {
+        margin-bottom: @base-spacing-unit;
+    }
+
+}
+.vertical-rhytmn(@use-vertical-rhytmn);

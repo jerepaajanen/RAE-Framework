@@ -1,0 +1,61 @@
+//
+// Media Queries
+// -------------------------------------------------------
+
+// Usage
+// @media @medium-up {
+//    .selector {}
+// }
+
+// Variables
+
+@screen-sm-min: @screen-sm;
+@screen-md-min: @screen-md;
+@screen-lg-min: @screen-lg;
+@screen-xl-min: @screen-xl;
+
+@screen-xs-max: (@screen-sm-min - 1);
+@screen-sm-max: (@screen-md-min - 1);
+@screen-md-max: (@screen-lg-min - 1);
+@screen-lg-max: (@screen-xl-min - 1);
+
+
+// Landscape
+
+@landscape: ~"(orientation:landscape)";
+
+//  Potrait
+
+@potrait: ~"(orientation:portrait)";
+
+// Extra-small only
+
+@xsmall-only: ~"(max-width: @{screen-xs-max})";
+
+// Small only
+
+@small-only: ~"(max-width: @{screen-sm-max})";
+
+// Medium only
+
+@medium-only: ~"(min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
+
+// Medium and up
+
+@medium-up: ~"(min-width: @{screen-md-min})";
+
+// Large only
+
+@large-only: ~"(min-width: @{screen-lg-min}) and (max-width: @{screen-lg-max})";
+
+// Large and up
+
+@large-up: ~"(min-width: @{screen-lg-min})";
+
+// Extra-large and up
+
+@xlarge-up: ~"(min-width: @{screen-xl-min})";
+
+// Retina
+
+@retina: ~"only screen and (-webkit-min-device-pixel-ratio: 2),only screen and (min--moz-device-pixel-ratio: 2),only screen and (-o-min-device-pixel-ratio: 2/1),only screen and (min-device-pixel-ratio: 2),only screen and (min-resolution: 192dpi),only screen and (min-resolution: 2dppx)";

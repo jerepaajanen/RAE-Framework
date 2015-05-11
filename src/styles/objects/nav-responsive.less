@@ -1,0 +1,100 @@
+//
+// Responsive navigation
+// -------------------------------------------------------
+.responsive-navigation(@boolean) when (@boolean = true) {
+
+    .nav--responsive {
+        overflow-x: visible;
+        .clearfix();
+        -webkit-overflow-scrolling: touch;
+        .is-collapsible {
+            display: none;
+            visibility: hidden;
+            &.is-open {
+                display: block;
+                visibility: visible;
+                overflow-y: auto;
+            }
+        }
+
+        @media (min-width: (@nav-responsive-breakpoint)) {
+            width: auto;
+            .is-collapsible {
+                display: block!important;
+                height: auto!important;
+                overflow: visible!important;
+                visibility: visible!important;
+            }
+            // Hide toggle-buttons
+            .nav-toggle,
+            .nav-item__toggle {
+                display: none;
+            }
+        }
+    }
+
+
+    // Variables
+    @toggle-height:                     16px;
+    @toggle-width:                      24px;
+    @toggle-line-weight:                2px;
+    @toggle-line-border-radius:         0;
+
+    .nav-toggle {
+        cursor: pointer;
+        position: relative;
+        height: @toggle-height;
+        width: @toggle-width;
+        display: inline-block;
+        .nav-toggle__label {}
+        .nav-toggle__icon {
+            span {
+                background: @grey-800;
+                border-radius: @toggle-line-border-radius;
+                display: block;
+                height: @toggle-line-weight;
+                transition: @transition-duration-default @transition-easing-default;
+                position: absolute;
+                width: 100%;
+            }
+            .no-x {
+                top: ((@toggle-height / 2) - (@toggle-line-weight / 2));
+            }
+            .x-top {
+                top: 0;
+            }
+            .x-bottom {
+                bottom: 0;
+            }
+        }
+        &.is-active {
+            .nav-toggle__icon {
+
+                .no-x {
+                    opacity: 0;
+                }
+                .x-top {
+                    transform: rotate(45deg) scaleX(1.25);
+                    top: ((@toggle-height / 2) - (@toggle-line-weight / 2));
+                }
+                .x-bottom{
+                    transform: rotate(-45deg) scaleX(1.25);
+                    bottom: ((@toggle-height / 2) - (@toggle-line-weight / 2));
+                }
+            }
+        }
+        &.is-inactive:hover {
+            .nav-toggle__icon {
+                .x-top {
+                    transform: translateY(-@toggle-line-weight / 2);
+                }
+                .x-bottom{
+                    transform: translateY(@toggle-line-weight / 2);
+                }
+            }
+        }
+    }
+
+
+}
+.responsive-navigation(@use-responsive-navigation);

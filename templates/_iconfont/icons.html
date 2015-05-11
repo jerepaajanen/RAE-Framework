@@ -136,7 +136,7 @@
             min-width: 164px;
         }
         
-        .docs-content .buttons .btn {
+        .docs-content .buttons .button {
             margin-bottom: 1rem;
         }
         
@@ -229,7 +229,7 @@
         }
         
         .docs-content .icons .magnify ul li {
-            display: table-cell;
+            display: table--cell;
             width: 1%;
             text-align: center;
         }
@@ -326,11 +326,11 @@
     <main class="docs-content" role="main">
         <section class="typography container">
             <header>
-                <h2 class="weight-normal">Typography</h2>
+                <h2 class="u-text-normal">Typography</h2>
             </header>
             <article class="typography__bodycopy">
                 <header>
-                    <h3 class="color-muted">Body copy</h3>
+                    <h3 class="u-muted">Body copy</h3>
                 </header>
                 <article>
                     <h1>One Morning, When Gregor Samsa Woke</h1>
@@ -365,7 +365,7 @@
             </article>
             <article class="typography__headings">
                 <header>
-                    <h3 class="color-muted">Headings</h3>
+                    <h3 class="u-muted">Headings</h3>
                 </header>
                 <div>
                     <h1>This is heading 1 (h1)</h1>
@@ -384,7 +384,7 @@
             </article>
             <article class="typography__modularscale">
                 <header>
-                    <h3 class="color-muted">Modular Scale</h3>
+                    <h3 class="u-muted">Modular Scale</h3>
                     <p>Instead of trying to maintain a baseline grid, RAE favors a modular scale and unit-less line heights</p>
                 </header>
                 Here are few common scale factors:
@@ -407,7 +407,7 @@
             </article>
             <article class="typography__blockquote">
                 <header>
-                    <h3 class="color-muted">Blockquote</h3>
+                    <h3 class="u-muted">Blockquote</h3>
                 </header>
                 <div class="example">
                     <blockquote>
@@ -418,7 +418,7 @@
             </article>
             <article class="typography__lists">
                 <header>
-                    <h3 class="color-muted">Lists</h3>
+                    <h3 class="u-muted">Lists</h3>
                 </header>
                 <h4>Unordered list</h4>
                 <div class="example">
@@ -469,13 +469,13 @@
             </article>
             <article class="typography__hr">
                 <header>
-                    <h3 class="color-muted">Horizontal rule</h3>
+                    <h3 class="u-muted">Horizontal rule</h3>
                 </header>
                 <div class="example">
                     <p>Paragraph before horizontal-rule</p>
                     <hr>
                     <p>Paragraph after horizontal-rule, and before empty horizontal-rule</p>
-                    <hr class="hr-empty">
+                    <hr class="hr--transparent">
                     <p>Paragraph after empty horizontal-rule</p>
                 </div>
             </article>
@@ -483,11 +483,11 @@
         <hr />
         <section class="embedded container">
             <header>
-                <h2 class="weight-normal">Embedded content</h2>
+                <h2 class="u-text-normal">Embedded content</h2>
             </header>
             <article class="embedded__image">
                 <header>
-                    <h3 class="color-muted">Image</h3>
+                    <h3 class="u-muted">Image</h3>
                 </header>
                 <div class="example">
                     <img src="http://placehold.it/1600x900" alt="placeholder">
@@ -495,7 +495,7 @@
             </article>
             <article class="embedded__audio">
                 <header>
-                    <h3 class="color-muted">Html5 audio</h3>
+                    <h3 class="u-muted">Html5 audio</h3>
                 </header>
                 <div class="example">
                     <audio controls=""></audio>
@@ -503,7 +503,7 @@
             </article>
             <article class="embedded__video">
                 <header>
-                    <h3 class="color-muted">Html5 video</h3>
+                    <h3 class="u-muted">Html5 video</h3>
                 </header>
                 <div class="example">
                     <video controls=""></video>
@@ -511,11 +511,11 @@
             </article>
             <article class="embedded__flex">
                 <header>
-                    <h3 class="color-muted">Responsive video</h3>
+                    <h3 class="u-muted">Responsive video</h3>
                 </header>
                     <div class="example">
                         <!-- Default aspect-ratio is 16:9 -->
-                        <div class="responsive-video">
+                        <div class="embed-responsive">
                             <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -524,21 +524,21 @@
         <hr />
         <section class="layout container">
             <header>
-                <h2 class="weight-normal">Layout</h2>
+                <h2 class="u-text-normal">Layout</h2>
             </header>
             <article class="grid__breakpoints">
                 <header>
-                    <h3 class="color-muted">Containers</h3>
-                    <p>Use <code>.container</code> for a responsive fixed width container and <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
+                    <h3 class="u-muted">Containers</h3>
+                    <p>Use <code>.container</code> for a responsive fixed width container and <code>.container--fluid</code> for a full width container, spanning the entire width of your viewport.</p>
                 </header>
                 <div class="example">
                     <div class="container"></div>
-                    <div class="container-fluid"></div>
+                    <div class="container--fluid"></div>
                 </div>
             </article>
             <article class="grid__columns">
                 <header>
-                    <h3 class="color-muted">Columns</h3>
+                    <h3 class="u-muted">Columns</h3>
                     <h4>Basic columns layout</h4>
                 </header>
                 <div class="example">
@@ -592,7 +592,7 @@
                 </div>
                 <h4>Columns without gutters</h4>
                 <div class="example">
-                    <div class="row no-gutters">
+                    <div class="row row--without-gutters">
                         <div class="col-xl-4 col-lg-5 col-sm-6"></div>
                         <div class="col-xl-8 col-lg-7 col-sm-6"></div>
                         <div class="col-lg-7 col-md-6"></div>
@@ -604,14 +604,14 @@
             </article>
             <article class="grid__conditionals">
                 <header>
-                    <h3 class="color-muted">Conditional styles</h3>
+                    <h3 class="u-muted">Conditional styles</h3>
                     <p>Classes for conditional styling based on browser viewport size and screen resolution.
                         <br />
                         <small>Visible / Hidden in <strong>bold</strong> are currently active conditional styles</small>
                     </p>
                 </header>
                 <div class="table-responsive">
-                    <table class="condition-table table-border table-stripes">
+                    <table class="table condition-table table--border table--stripes">
                         <thead>
                             <tr>
                                 <th scope="column">Class
@@ -628,144 +628,144 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>.show-sm-only</code>
+                                <td><code>.u-show-sm-only</code>
                                 </td>
                                 <td>
-                                    <span class="show-sm-only"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-sm-only"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-sm-only"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-sm-only"><span class="u-color-success">Visible</span></span>
                                 </td>
                                 <td>Hidden</td>
                                 <td>Hidden</td>
                                 <td>Hidden</td>
                             </tr>
                             <tr>
-                                <td><code>.show-md-up</code>
+                                <td><code>.u-show-md-up</code>
                                 </td>
                                 <td>Hidden</td>
                                 <td>
-                                    <span class="show-md-up"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-md-up"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-md-up"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-md-up"><span class="u-color-success">Visible</span></span>
                                 </td>
                                 <td>
-                                    <span class="show-md-up"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-md-up"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-md-up"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-md-up"><span class="u-color-success">Visible</span></span>
                                 </td>
                                 <td>
-                                    <span class="show-md-up"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-md-up"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-md-up"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-md-up"><span class="u-color-success">Visible</span></span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.show-md-only</code>
+                                <td><code>.u-show-md-only</code>
                                 </td>
                                 <td>Hidden</td>
                                 <td>
-                                    <span class="show-md-only"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-md-only"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-md-only"><span class="color-success">Visible</span></span>
-                                </td>
-                                <td>Hidden</td>
-                                <td>Hidden</td>
-                            </tr>
-                            <tr>
-                                <td><code>.show-md-down</code>
-                                </td>
-                                <td>
-                                    <span class="show-md-down"><strong><span class="color-success">Visible</span>
-                                    </strong>
-                                    </span>
-                                    <span class="hide-md-down"><span class="color-success">Visible</span></span>
-                                </td>
-                                <td>
-                                    <span class="show-md-down"><strong><span class="color-success">Visible</span>
-                                    </strong>
-                                    </span>
-                                    <span class="hide-md-down"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-md-only"><span class="u-color-success">Visible</span></span>
                                 </td>
                                 <td>Hidden</td>
                                 <td>Hidden</td>
                             </tr>
                             <tr>
-                                <td><code>.show-lg-up</code>
-                                </td>
-                                <td>Hidden</td>
-                                <td>Hidden</td>
-                                <td>
-                                    <span class="show-lg-up"><strong><span class="color-success">Visible</span>
-                                    </strong>
-                                    </span>
-                                    <span class="hide-lg-up"><span class="color-success">Visible</span></span>
+                                <td><code>.u-show-md-down</code>
                                 </td>
                                 <td>
-                                    <span class="show-lg-up"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-md-down"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-lg-up"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-md-down"><span class="u-color-success">Visible</span></span>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td><code>.show-lg-only</code>
-                                </td>
-                                <td>Hidden</td>
-                                <td>Hidden</td>
                                 <td>
-                                    <span class="show-lg-only"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-md-down"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-lg-only"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-md-down"><span class="u-color-success">Visible</span></span>
                                 </td>
+                                <td>Hidden</td>
                                 <td>Hidden</td>
                             </tr>
                             <tr>
-                                <td><code>.show-lg-down</code>
+                                <td><code>.u-show-lg-up</code>
                                 </td>
+                                <td>Hidden</td>
+                                <td>Hidden</td>
                                 <td>
-                                    <span class="show-lg-down"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-lg-up"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-lg-down"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-lg-up"><span class="u-color-success">Visible</span></span>
                                 </td>
                                 <td>
-                                    <span class="show-lg-down"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-lg-up"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-lg-down"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-lg-up"><span class="u-color-success">Visible</span></span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-show-lg-only</code>
+                                </td>
+                                <td>Hidden</td>
+                                <td>Hidden</td>
                                 <td>
-                                    <span class="show-lg-down"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-lg-only"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-lg-down"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-lg-only"><span class="u-color-success">Visible</span></span>
                                 </td>
                                 <td>Hidden</td>
                             </tr>
                             <tr>
-                                <td><code>.show-xl-only</code>
+                                <td><code>.u-show-lg-down</code>
+                                </td>
+                                <td>
+                                    <span class="u-show-lg-down"><strong><span class="u-color-success">Visible</span>
+                                    </strong>
+                                    </span>
+                                    <span class="u-hide-lg-down"><span class="u-color-success">Visible</span></span>
+                                </td>
+                                <td>
+                                    <span class="u-show-lg-down"><strong><span class="u-color-success">Visible</span>
+                                    </strong>
+                                    </span>
+                                    <span class="u-hide-lg-down"><span class="u-color-success">Visible</span></span>
+                                </td>
+                                <td>
+                                    <span class="u-show-lg-down"><strong><span class="u-color-success">Visible</span>
+                                    </strong>
+                                    </span>
+                                    <span class="u-hide-lg-down"><span class="u-color-success">Visible</span></span>
+                                </td>
+                                <td>Hidden</td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-show-xl-only</code>
                                 </td>
                                 <td>Hidden</td>
                                 <td>Hidden</td>
                                 <td>Hidden</td>
                                 <td>
-                                    <span class="show-xl-only"><strong><span class="color-success">Visible</span>
+                                    <span class="u-show-xl-only"><strong><span class="u-color-success">Visible</span>
                                     </strong>
                                     </span>
-                                    <span class="hide-xl-only"><span class="color-success">Visible</span></span>
+                                    <span class="u-hide-xl-only"><span class="u-color-success">Visible</span></span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="table-responsive">
-                    <table class="condition-table table-border table-stripes">
+                    <table class="table condition-table table--border table--stripes">
                         <thead>
                             <tr>
                                 <th scope="col">Class
@@ -782,127 +782,127 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>.hide-sm-only</code>
+                                <td><code>.u-hide-sm-only</code>
                                 </td>
                                 <td>
-                                    <span class="show-sm-only"><strong>Hidden</strong></span>
-                                    <span class="hide-sm-only">Hidden</span>
+                                    <span class="u-show-sm-only"><strong>Hidden</strong></span>
+                                    <span class="u-hide-sm-only">Hidden</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-md-up</code>
+                                <td><code>.u-hide-md-up</code>
                                 </td>
-                                <td><span class="color-success">Visible</span>
-                                </td>
-                                <td>
-                                    <span class="show-md-up"><strong>Hidden</strong></span>
-                                    <span class="hide-md-up">Hidden</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                                 <td>
-                                    <span class="show-md-up"><strong>Hidden</strong></span>
-                                    <span class="hide-md-up">Hidden</span>
+                                    <span class="u-show-md-up"><strong>Hidden</strong></span>
+                                    <span class="u-hide-md-up">Hidden</span>
                                 </td>
                                 <td>
-                                    <span class="show-md-up"><strong>Hidden</strong></span>
-                                    <span class="hide-md-up">Hidden</span>
+                                    <span class="u-show-md-up"><strong>Hidden</strong></span>
+                                    <span class="u-hide-md-up">Hidden</span>
+                                </td>
+                                <td>
+                                    <span class="u-show-md-up"><strong>Hidden</strong></span>
+                                    <span class="u-hide-md-up">Hidden</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-md-only</code>
+                                <td><code>.u-hide-md-only</code>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                                 <td>
-                                    <span class="show-md-only"><strong>Hidden</strong></span>
-                                    <span class="hide-md-only">Hidden</span>
+                                    <span class="u-show-md-only"><strong>Hidden</strong></span>
+                                    <span class="u-hide-md-only">Hidden</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-md-down</code>
+                                <td><code>.u-hide-md-down</code>
                                 </td>
                                 <td>
-                                    <span class="show-md-down"><strong>Hidden</strong></span>
-                                    <span class="hide-md-down">Hidden</span>
+                                    <span class="u-show-md-down"><strong>Hidden</strong></span>
+                                    <span class="u-hide-md-down">Hidden</span>
                                 </td>
                                 <td>
-                                    <span class="show-md-down"><strong>Hidden</strong></span>
-                                    <span class="hide-md-down">Hidden</span>
+                                    <span class="u-show-md-down"><strong>Hidden</strong></span>
+                                    <span class="u-hide-md-down">Hidden</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-lg-up</code>
+                                <td><code>.u-hide-lg-up</code>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
-                                </td>
-                                <td>
-                                    <span class="show-lg-up"><strong>Hidden</strong></span>
-                                    <span class="hide-lg-up">Hidden</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                                 <td>
-                                    <span class="show-lg-up"><strong>Hidden</strong></span>
-                                    <span class="hide-lg-up">Hidden</span>
+                                    <span class="u-show-lg-up"><strong>Hidden</strong></span>
+                                    <span class="u-hide-lg-up">Hidden</span>
+                                </td>
+                                <td>
+                                    <span class="u-show-lg-up"><strong>Hidden</strong></span>
+                                    <span class="u-hide-lg-up">Hidden</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-lg-only</code>
+                                <td><code>.u-hide-lg-only</code>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                                 <td>
-                                    <span class="show-lg-only"><strong>Hidden</strong></span>
-                                    <span class="hide-lg-only">Hidden</span>
+                                    <span class="u-show-lg-only"><strong>Hidden</strong></span>
+                                    <span class="u-hide-lg-only">Hidden</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-lg-down</code>
+                                <td><code>.u-hide-lg-down</code>
                                 </td>
                                 <td>
-                                    <span class="show-lg-down"><strong>Hidden</strong></span>
-                                    <span class="hide-lg-down">Hidden</span>
+                                    <span class="u-show-lg-down"><strong>Hidden</strong></span>
+                                    <span class="u-hide-lg-down">Hidden</span>
                                 </td>
                                 <td>
-                                    <span class="show-lg-down"><strong>Hidden</strong></span>
-                                    <span class="hide-lg-down">Hidden</span>
+                                    <span class="u-show-lg-down"><strong>Hidden</strong></span>
+                                    <span class="u-hide-lg-down">Hidden</span>
                                 </td>
                                 <td>
-                                    <span class="show-lg-down"><strong>Hidden</strong></span>
-                                    <span class="hide-lg-down">Hidden</span>
+                                    <span class="u-show-lg-down"><strong>Hidden</strong></span>
+                                    <span class="u-hide-lg-down">Hidden</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.hide-xl-only</code>
+                                <td><code>.u-hide-xl-only</code>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
-                                <td><span class="color-success">Visible</span>
+                                <td><span class="u-color-success">Visible</span>
                                 </td>
                                 <td>
-                                    <span class="show-xl-only"><strong>Hidden</strong></span>
-                                    <span class="hide-xl-only">Hidden</span>
+                                    <span class="u-show-xl-only"><strong>Hidden</strong></span>
+                                    <span class="u-hide-xl-only">Hidden</span>
                                 </td>
                             </tr>
                         </tbody>
@@ -913,11 +913,11 @@
         <hr />
         <section class="tables container">
             <header>
-                <h2 class="weight-normal">Tables</h2>
+                <h2 class="u-text-normal">Tables</h2>
             </header>
             <article class="tables__basic">
                 <header>
-                    <h3 class="color-muted">Basic table</h3>
+                    <h3 class="u-muted">Basic table</h3>
                 </header>
                 <div class="example">
                     <table>
@@ -955,11 +955,11 @@
             </article>
             <article class="tables__styled">
                 <header>
-                    <h3 class="color-muted">Styled tables</h3>
+                    <h3 class="u-muted">Styled tables</h3>
                 </header>
                 <h4>Table with borders</h4>
                 <div class="example">
-                    <table class="table-border">
+                    <table class="table table--border">
                         <caption>
                             Optional table caption
                         </caption>
@@ -998,7 +998,7 @@
                 </div>
                 <h4>Table with row borders</h4>
                 <div class="example">
-                    <table class="table-border-rows">
+                    <table class="table table--border-rows">
                         <caption>
                             Optional table caption
                         </caption>
@@ -1037,7 +1037,7 @@
                 </div>
                 <h4>Table with cell borders</h4>
                 <div class="example">
-                    <table class="table-border-cells">
+                    <table class="table table--border-cells">
                         <caption>
                             Optional table caption
                         </caption>
@@ -1076,7 +1076,46 @@
                 </div>
                 <h4>Table with stripes</h4>
                 <div class="example">
-                    <table class="table-stripes">
+                    <table class="table table--stripes">
+                        <caption>
+                            Optional table caption
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th scope="column">Heading 1</th>
+                                <th scope="column">Heading 2</th>
+                                <th scope="column">Heading 3</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td>Footer 1</td>
+                                <td>Footer 2</td>
+                                <td>Footer 3</td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                            <tr>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                                <td>Table cell</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Table combined classes</h4>
+                <div class="example">
+                    <table class="table table--border table--border-cells table--stripes">
                         <caption>
                             Optional table caption
                         </caption>
@@ -1116,8 +1155,8 @@
             </article>
             <article class="tables__responsive">
                 <header>
-                    <h3 class="color-muted">Responsive table</h3>
-                    <p>Wrap a table in the <code>.table-responsive</code> class, width remains the same and horizontal scrollbar will show up in smaller screen sizes. Remember to set minimum widths for table cells.</p>
+                    <h3 class="u-muted">Responsive table</h3>
+                    <p>Wrap a table in the <code>.table-responsive</code> class, width remains the same and horizontal scrollbar will u-show up in smaller screen sizes. Remember to set minimum widths for table cells.</p>
                 </header>
                 <div class="example">
                     <div class="table-responsive">
@@ -1131,6 +1170,8 @@
                                     <th scope="column">Table Heading 2</th>
                                     <th scope="column">Table Heading 3</th>
                                     <th scope="column">Table Heading 4</th>
+                                    <th scope="column">Table Heading 5</th>
+                                    <th scope="column">Table Heading 6</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -1139,6 +1180,8 @@
                                     <td>Table Footer 2</td>
                                     <td>Table Footer 3</td>
                                     <td>Table Footer 4</td>
+                                    <td>Table Footer 5</td>
+                                    <td>Table Footer 6</td>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -1147,8 +1190,12 @@
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
+                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
+                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
                                 </tr>
                                 <tr>
+                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
+                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
                                     <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed.</td>
@@ -1163,70 +1210,70 @@
         <hr />
         <section class="buttons container">
             <header>
-                <h2 class="weight-normal">Buttons</h2>
+                <h2 class="u-text-normal">Buttons</h2>
             </header>
             <article class="buttons__styles">
                 <header>
-                    <h3 class="color-muted">Button styles</h3>
+                    <h3 class="u-muted">Button styles</h3>
                 </header>
                 <div class="example">
-                    <button class="btn" type="button">Button</button>
-                    <button class="btn btn-default" type="button">Default Button</button>
-                    <button class="btn btn-primary" type="button">Primary button</button>
-                    <button class="btn btn-link" type="button">Link button</button>
+                    <button class="button" type="button">Button</button>
+                    <button class="button button--default" type="button">Default Button</button>
+                    <button class="button button--primary" type="button">Primary button</button>
+                    <button class="button button--link" type="button">Link button</button>
                 </div>
             </article>
             <article class="buttons__states">
                 <header>
-                    <h3 class="color-muted">Button states</h3>
+                    <h3 class="u-muted">Button states</h3>
                 </header>
                 <div class="example">
-                    <button class="btn btn-default" type="button" disabled>Disabled</button>
-                    <button class="btn btn-primary" type="button" disabled>Disabled</button>
+                    <button class="button button--default" type="button" disabled>Disabled</button>
+                    <button class="button button--primary" type="button" disabled>Disabled</button>
                 </div>
                 <div class="example">
-                    <button class="btn btn-default active" type="button">Active</button>
-                    <button class="btn btn-primary active" type="button">Active</button>
+                    <button class="button button--default active" type="button">Active</button>
+                    <button class="button button--primary active" type="button">Active</button>
                 </div>
             </article>
             <article class="buttons__sizes">
                 <header>
-                    <h3 class="color-muted">Button sizes &amp; variations</h3>
+                    <h3 class="u-muted">Button sizes &amp; variations</h3>
                 </header>
                 <div class="example">
-                    <button class="btn btn-default btn-sm" type="button">Small</button>
-                    <button class="btn btn-default" type="button">Regular</button>
-                    <button class="btn btn-default btn-lg" type="button">Large</button>
-                    <button class="btn btn-default btn-xl" type="button">Extra Large</button>
+                    <button class="button button--default button--sm" type="button">Small</button>
+                    <button class="button button--default" type="button">Regular</button>
+                    <button class="button button--default button--lg" type="button">Large</button>
+                    <button class="button button--default button--xl" type="button">Extra Large</button>
                 </div>
                 <div class="example">
-                    <button class="btn btn-default btn-block" type="button">Block</button>
+                    <button class="button button--default button--block" type="button">Block</button>
                 </div>
                 <div class="example">
-                    <button class="btn btn-default btn-pill" type="button">Pill</button>
-                    <button class="btn btn-default btn-circle" type="button">Circle</button>
+                    <button class="button button--default button--pill" type="button">Pill</button>
+                    <button class="button button--default button--circle" type="button">Circle</button>
                 </div>
             </article>
             <article class="buttons__accessibility">
                 <header>
-                    <h3 class="color-muted">Accessibility</h3>
+                    <h3 class="u-muted">Accessibility</h3>
                     <p>Use the snippets below to make buttons more accessible. If there is no <code>&lt;a href=""&gt;</code> then simply add the <code>tabindex="0"</code> to the div or span to make it focusable.</p>
                 </header>
                 <div class="example">
-                    <a role="button" href="#" class="btn btn-default">Default Button</a>
-                    <a role="button" aria-label="submit form" href="#" class="btn btn-default">Submit</a>
-                    <div role="button" tabindex="0" class="btn btn-default">Default Button</div>
+                    <a role="button" href="#" class="button button--default">Default Button</a>
+                    <a role="button" aria-label="submit form" href="#" class="button button--default">Submit</a>
+                    <div role="button" tabindex="0" class="button button--default">Default Button</div>
                 </div>
             </article>
         </section>
         <hr />
         <section class="forms container">
             <header>
-                <h2 class="weight-normal">Forms</h2>
+                <h2 class="u-text-normal">Forms</h2>
             </header>
             <article class="forms__text-fields">
                 <header>
-                    <h3 class="color-muted">Text fields</h3>
+                    <h3 class="u-muted">Text fields</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1251,7 +1298,7 @@
             </article>
             <article class="forms__selects">
                 <header>
-                    <h3 class="color-muted">Select menus</h3>
+                    <h3 class="u-muted">Select menus</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1297,7 +1344,7 @@
             </article>
             <article class="forms__checkboxes">
                 <header>
-                    <h3 class="color-muted">Checkboxes</h3>
+                    <h3 class="u-muted">Checkboxes</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1318,17 +1365,17 @@
                         </div>
                         <div class="form-item">
                             <label>Inline checkboxes</label>
-                            <div class="checkbox checkbox-inline">
-                                <input id="demo-checkbox-inline1" type="checkbox" name="optionsCheckboxesInline" value="1" checked>
-                                <label for="demo-checkbox-inline1">Option one</label>
+                            <div class="checkbox checkbox--inline">
+                                <input id="demo-checkbox--inline1" type="checkbox" name="optionsCheckboxesInline" value="1" checked>
+                                <label for="demo-checkbox--inline1">Option one</label>
                             </div>
-                            <div class="checkbox checkbox-inline">
-                                <input id="demo-checkbox-inline2" type="checkbox" name="optionsCheckboxesInline" value="2">
-                                <label for="demo-checkbox-inline2">Option two is a much longer option</label>
+                            <div class="checkbox checkbox--inline">
+                                <input id="demo-checkbox--inline2" type="checkbox" name="optionsCheckboxesInline" value="2">
+                                <label for="demo-checkbox--inline2">Option two is a much longer option</label>
                             </div>
-                            <div class="checkbox checkbox-inline">
-                                <input id="demo-checkbox-inline3" type="checkbox" name="optionsCheckboxesInline" value="3" disabled>
-                                <label for="demo-checkbox-inline3">Option three is disabled</label>
+                            <div class="checkbox checkbox--inline">
+                                <input id="demo-checkbox--inline3" type="checkbox" name="optionsCheckboxesInline" value="3" disabled>
+                                <label for="demo-checkbox--inline3">Option three is disabled</label>
                             </div>
                         </div>
                     </form>
@@ -1336,7 +1383,7 @@
             </article>
             <article class="forms__radios">
                 <header>
-                    <h3 class="color-muted">Radio buttons</h3>
+                    <h3 class="u-muted">Radio buttons</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1357,17 +1404,17 @@
                         </div>
                         <div class="form-item">
                             <label>Inline radios</label>
-                            <div class="radio radio-inline">
-                                <input id="demo-radio-inline1" type="radio" name="optionsRadiosInline" value="1" checked>
-                                <label for="demo-radio-inline1">Option one</label>
+                            <div class="radio radio--inline">
+                                <input id="demo-radio--inline1" type="radio" name="optionsRadiosInline" value="1" checked>
+                                <label for="demo-radio--inline1">Option one</label>
                             </div>
-                            <div class="radio radio-inline">
-                                <input id="demo-radio-inline2" type="radio" name="optionsRadiosInline" value="2">
-                                <label for="demo-radio-inline2">Option two is a much longer option</label>
+                            <div class="radio radio--inline">
+                                <input id="demo-radio--inline2" type="radio" name="optionsRadiosInline" value="2">
+                                <label for="demo-radio--inline2">Option two is a much longer option</label>
                             </div>
-                            <div class="radio radio-inline">
-                                <input id="demo-radio-inline3" type="radio" name="optionsRadiosInline" value="3" disabled>
-                                <label for="demo-radio-inline3">Option three is disabled</label>
+                            <div class="radio radio--inline">
+                                <input id="demo-radio--inline3" type="radio" name="optionsRadiosInline" value="3" disabled>
+                                <label for="demo-radio--inline3">Option three is disabled</label>
                             </div>
                         </div>
                     </form>
@@ -1375,7 +1422,7 @@
             </article>
             <article class="forms__html5inputs">
                 <header>
-                    <h3 class="color-muted">Html5 inputs</h3>
+                    <h3 class="u-muted">Html5 inputs</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1416,7 +1463,7 @@
             </article>
             <article class="forms__fieldset">
                 <header>
-                    <h3 class="color-muted">Fieldsets</h3>
+                    <h3 class="u-muted">Fieldsets</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1426,22 +1473,22 @@
                                 <label for="demo-input-fieldset1">Input</label>
                                 <input type="text" id="demo-input-fieldset1" placeholder="This is input">
                             </div>
-                            <button class="btn btn-default" type="submit">Submit</button>
+                            <button class="button button--default" type="submit">Submit</button>
                         </fieldset>
-                        <fieldset class="fieldset-border">
+                        <fieldset class="fieldset--bordered">
                             <legend>Fieldset with borders</legend>
                             <div class="form-item">
                                 <label for="demo-input__fieldset3">Input</label>
                                 <input type="text" id="demo-input__fieldset3" placeholder="This is input">
                             </div>
-                            <button class="btn btn-default" type="submit">Submit</button>
+                            <button class="button button--default" type="submit">Submit</button>
                         </fieldset>
                     </form>
                 </div>
             </article>
             <article class="forms__grid">
                 <header>
-                    <h3 class="color-muted">Form with grid</h3>
+                    <h3 class="u-muted">Form with grid</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
@@ -1463,7 +1510,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-10 offset-md-2">
-                                <button class="btn btn-default" type="submit">Submit</button>
+                                <button class="button button--default" type="submit">Submit</button>
                             </div>
                         </div>
                     </form>
@@ -1473,11 +1520,11 @@
         <hr />
         <section class="icons container">
             <header>
-                <h2 class="weight-normal">Icons</h2>
+                <h2 class="u-text-normal">Icons</h2>
             </header>
             <article class="icons__list">
                 <header>
-                    <h3 class="color-muted">List of <%= fontName %></h3>
+                    <h3 class="u-muted">List of <%= fontName %></h3>
                 </header>
                 <ul class="row">
                     <% _.each(glyphs, function(glyph) { %>
@@ -1503,13 +1550,13 @@
         <hr />
         <section class="helpers container">
             <header>
-                <h2 class="weight-normal">Helpers, mixins &amp; variables</h2>
+                <h2 class="u-text-normal">Utilities, mixins &amp; variables</h2>
             </header>
             <article class="helpers__colors">
                 <header>
-                    <h3 class="color-muted">Grayscale colors</h3>
+                    <h3 class="u-muted">Grayscale colors</h3>
                 </header>
-                <table class="table-border" id="colors__greyscale">
+                <table class="table table--border" id="colors__greyscale">
                     <tr>
                         <td class="bg1000 white">@black</td>
                     </tr>
@@ -1554,285 +1601,235 @@
             </article>
             <article class="helpers__classes">
                 <header>
-                    <h3 class="color-muted">Helpers classes</h3>
+                    <h3 class="u-muted">Utility classes</h3>
                 </header>
                 <div class="table-responsive">
-                    <table class="table-border table-border-cells table-stripes">
-                        <caption class="hide">List of Helpers classes</caption>
+                    <table class="table table--border table--border-cells table--stripes">
+                        <caption class="u-hide">List of utility classes</caption>
                         <thead>
                             <tr>
-                                <th scope="column">Class / Helper</th>
+                                <th scope="column">Class</th>
                                 <th scope="column">Result</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>.inline</code>
+                                <td><code>.u-block</code>
                                 </td>
-                                <td>Sets element to be inline</td>
+                                <td><span class="u-block">Sets element to block</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td><code>.inline-block</code>
+                                <td><code>.u-inline-block</code>
                                 </td>
-                                <td>Sets element to be inline block</td>
+                                <td><span class="u-inline-block">Sets element to inline block</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><code>.u-table</code>
+                                </td>
+                                <td><span class="u-table">Sets element to table</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td><code>.block</code>
+                                <td><code>.u-table-cell</code>
                                 </td>
-                                <td>Sets element to be block</td>
+                                <td><span class="u-table-cell">Sets element to table-cell</span>
+                                </td>
                             </tr>
                             <tr>
-                                <td><code>.no-margin</code>
-                                </td>
-                                <td>Reset element margin to 0</td>
-                            </tr>
-                            <tr>
-                                <td><code>.show</code>
+                                <td><code>.u-show</code>
                                 </td>
                                 <td>Show element.</td>
                             </tr>
                             <tr>
-                                <td><code>.hide</code>
+                                <td><code>.u-hide</code>
                                 </td>
                                 <td>Hide element.</td>
                             </tr>
                             <tr>
-                                <td><code>.visually-hidden</code>
+                                <td><code>.u-visually-hidden</code>
                                 </td>
                                 <td>Hide only visually, but have it available for screen-readers</td>
                             </tr>
                             <tr>
-                                <td><code>.clearfix</code>
+                                <td><code>.u-clearfix</code>
                                 </td>
-                                <td>Easily clear floats by adding .clearfix to the parent element</td>
+                                <td>Clear floats, add to parent element</td>
                             </tr>
                             <tr>
-                                <td><code>.no-margin</code>
+                                <td><code>.u-float-left</code>
                                 </td>
                                 <td>
-                                    <div class="no-margin">Remove element margin</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.text-left</code>
-                                </td>
-                                <td>
-                                    <div class="text-left">Aligns text to the left left</div>
+                                    <div class="u-float-left">Floats the element left</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.text-center</code>
+                                <td><code>.u-float-right</code>
                                 </td>
                                 <td>
-                                    <div class="text-center">Centers the text</div>
+                                    <div class="u-float-right">Floats the element right</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.text-right</code>
+                                <td><code>.u-float-none</code>
                                 </td>
                                 <td>
-                                    <div class="text-right">Aligns text to the right</div>
+                                    <div class="u-float-none">Remove float from element</div>
+                                </td>
+                            </tr>
+                            <tr style="height: 96px;">
+                                <td><code>.u-flex-center</code>
+                                </td>
+                                <td>
+                                    <div class="u-flex-center">Set element vertically center using flex-box.</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.text-justify</code>
+                                <td><code>.u-text-left</code>
                                 </td>
                                 <td>
-                                    <div class="text-justify">Aligns text with justify</div>
+                                    <div class="u-text-left">Aligns text to the left left</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.float-left</code>
+                                <td><code>.u-text-center</code>
                                 </td>
                                 <td>
-                                    <div class="float-left">Floats the element left</div>
+                                    <div class="u-text-center">Centers the text</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.float-right</code>
+                                <td><code>.u-text-right</code>
                                 </td>
                                 <td>
-                                    <div class="float-right">Floats the element right</div>
+                                    <div class="u-text-right">Aligns text to the right</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.float-none</code>
+                                <td><code>.u-text-light</code>
                                 </td>
                                 <td>
-                                    <div class="float-none">Remove float from element</div>
+                                    <div class="u-text-light">Set font-weight to 300.</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.center</code>
+                                <td><code>.u-text-normal</code>
                                 </td>
                                 <td>
-                                    <div class="center">Set an element to display: block and center via margin.</div>
+                                    <div class="u-text-normal">Set font-weight to 400.</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.weight-light</code>
+                                <td><code>.u-text-semibold</code>
                                 </td>
                                 <td>
-                                    <div class="weight-light">Set font-weight to 300.</div>
+                                    <div class="u-text-semibold">Set font-weight to 600.</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.weight-normal</code>
+                                <td><code>.u-text-bold</code>
                                 </td>
                                 <td>
-                                    <div class="weight-normal">Set font-weight to 400.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.weight-semibold</code>
-                                </td>
-                                <td>
-                                    <div class="weight-semibold">Set font-weight to 600.</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.weight-bold</code>
-                                </td>
-                                <td>
-                                    <div class="weight-bold">Set font-weight to 700.</div>
+                                    <div class="u-text-bold">Set font-weight to 700.</div>
                                 </td>
                             </tr>
                             <!-- Colors -->
                             <tr>
-                                <td><code>.color-muted</code>
+                                <td><code>.u-muted</code>
                                 </td>
                                 <td>
-                                    <div class="color-muted">Set text color to "Muted", opacity 50%.</div>
+                                    <div class="u-muted">Set element or text to "muted", opacity 50%.</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.color-primary</code>
+                                <td><code>.u-color-success</code>
                                 </td>
                                 <td>
-                                    <div class="color-primary">Set text color to "Primary".</div>
+                                    <div class="u-color-success">Set text color to "Success".</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.color-secondary</code>
+                                <td><code>.u-color-warning</code>
                                 </td>
                                 <td>
-                                    <div class="color-secondary">Set text color to "Secondary".</div>
+                                    <div class="u-color-warning">Set text color to "Warning".</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.color-success</code>
+                                <td><code>.u-color-danger</code>
                                 </td>
                                 <td>
-                                    <div class="color-success">Set text color to "Success".</div>
+                                    <div class="u-color-danger">Set text color to "Danger".</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.color-warning</code>
+                                <td><code>.u-color-info</code>
                                 </td>
                                 <td>
-                                    <div class="color-warning">Set text color to "Warning".</div>
+                                    <div class="u-color-info">Set text color to "Info".</div>
                                 </td>
                             </tr>
-                            <tr>
-                                <td><code>.color-danger</code>
-                                </td>
-                                <td>
-                                    <div class="color-danger">Set text color to "Danger".</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.color-info</code>
-                                </td>
-                                <td>
-                                    <div class="color-info">Set text color to "Info".</div>
-                                </td>
-                            </tr>
-                            <!-- Backgrounds -->
-                            <tr>
-                                <td><code>.bg-primary</code>
-                                </td>
-                                <td>
-                                    <div class="bg-primary inline-block white">Set element background-color to "Primary".</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.bg-secondary</code>
-                                </td>
-                                <td>
-                                    <div class="bg-secondary inline-block white">Set element background-color to "Secondary".</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.bg-success</code>
-                                </td>
-                                <td>
-                                    <div class="bg-success inline-block white">Set element background-color to "Success".</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.bg-warning</code>
-                                </td>
-                                <td>
-                                    <div class="bg-warning inline-block white">Set element background-color to "Warning".</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.bg-danger</code>
-                                </td>
-                                <td>
-                                    <div class="bg-danger inline-block white">Set element background-color to "Danger".</div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td><code>.bg-info</code>
-                                </td>
-                                <td>
-                                    <div class="bg-info inline-block white">Set element background-color to "Info".</div>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>
             </article>
             <article class="helpers__mixins">
                 <header>
-                    <h3 class="color-muted">Useful mixins</h3>
+                    <h3 class="u-muted">Useful mixins</h3>
                 </header>
                 <div class="table-responsive">
-                    <table class="table-border table-border-cells table-stripes">
-                        <caption class="hide">List of useful mixins</caption>
+                    <table class="table table--border table--border-cells table--stripes">
+                        <caption class="u-hide">List of mixins</caption>
                         <thead>
                             <tr>
-                                <th scope="column">LESS Mixin</th>
+                                <th scope="column">Mixin</th>
                                 <th scope="column">Result</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td><code>.font-size(<strong></strong>);value</code>
+                                <td><code>.font-size(<strong>px-size</strong>);</code>
                                 </td>
-                                <td>Converts font-size from px-value to rems</td>
+                                <td>Converts font-size from px-value to rem-units
+                                </td>
                             </tr>
                             <tr>
-                                <td><code>.font-size(<strong>value, true</strong>);</code>
+                                <td><code>.font-size(<strong>scale-value, true</strong>);</code>
                                 </td>
-                                <td>Uses modular scale, and output value as rem. Set modular scale factor with @modular-scale-factor</td>
+                                <td>Uses modular scale, and output value as rem. Set modular scale factor with @modular-scale-factor
+                                </td>
                             </tr>
+
                             <tr>
                                 <td><code>.hide-text();</code>
                                 </td>
-                                <td>Hide text properly for css image replacement</td>
+                                <td>Hide text properly for css image replacement
+                                </td>
                             </tr>
                             <tr>
-                                <td><code>.vertical-align();</code>
+                                <td><code>.vertically-centered();</code>
                                 </td>
-                                <td>Vertical align anything, even if you don’t know elements height</td>
+                                <td>Vertical align anything, even if you don’t know elements height
+                                </td>
                             </tr>
                             <tr>
                                 <td><code>.aspect-ratio(<strong>width,height</strong>);</code>
                                 </td>
                                 <td>Maintain aspect ratio of an fluid element. Specify .aspect-ratio() to parent div. Add following parameters for child element: <code>position: absolute; top: 0; left: 0; width:100%;</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.momentun-scrolling();</code>
+                                </td>
+                                <td>Add momentum scrolling to element
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.webkit-scrollbars();</code>
+                                </td>
+                                <td>Add styled -webkit scrollbars to element if child elements are larger than parent.
                                 </td>
                             </tr>
                         </tbody>
@@ -1843,15 +1840,15 @@
         <hr />        
         <section class="addons container">
             <header>
-                <h2 class="weight-normal">Addons</h2>
+                <h2 class="u-text-normal">Addons</h2>
             </header>
             <article class="addons__tooltips">
                 <header>
-                    <h3 class="color-muted">Tooltips</h3>
+                    <h3 class="u-muted">Tooltips</h3>
                     <p>Apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can make tooltips multi-line with <code>data-tooltip-multiline</code>
                     </p>
                 </header>
-                <div class="well clearfix example">
+                <div class="well u-clearfix example">
                     <a href="#" data-tooltip="Top tooltip" data-placement="top">Top tooltip</a>
                     <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">Bottom tooltip</a>
                     <a href="#" data-tooltip="Left tooltip" data-placement="left">Left tooltip</a>
@@ -1864,7 +1861,7 @@
             </article>
             <article class="addons__animations">
                 <header>
-                    <h3 class="color-muted">Animations</h3>
+                    <h3 class="u-muted">Animations</h3>
                 </header>
                 <div class="well">
                     <div class="row">
@@ -1974,7 +1971,7 @@
                                 <code>.shake</code>
                             </div>
                         </div>
-                        <hr class="hr-empty clearfix hide-sm-only" />
+                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="swing animated">
@@ -2011,7 +2008,7 @@
                                 <code>.bounceIn</code>
                             </div>
                         </div>
-                        <hr class="hr-empty clearfix hide-sm-only" />
+                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="bounceInLeft animated">
@@ -2056,7 +2053,7 @@
                                 <code>.bounceOut</code>
                             </div>
                         </div>
-                        <hr class="hr-empty clearfix hide-sm-only" />
+                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="bounceOutLeft animated">
@@ -2101,7 +2098,7 @@
                                 <code>.fadeIn</code>
                             </div>
                         </div>
-                        <hr class="hr-empty clearfix hide-sm-only" />
+                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="fadeInLeft animated">
@@ -2146,7 +2143,7 @@
                                 <code>.fadeOut</code>
                             </div>
                         </div>
-                        <hr class="hr-empty clearfix hide-sm-only" />
+                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="fadeOutLeft animated">
@@ -2224,7 +2221,7 @@
             </article>
         </section>
     </main>
-    <footer class="docs-footer container-fluid" role="contentinfo">
+    <footer class="docs-footer container--fluid" role="contentinfo">
         <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2015</small>
     </footer>
     

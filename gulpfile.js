@@ -48,8 +48,8 @@ var paths = {
 
 // Browser support config
 var browserSupport = [
-    '> 1%',
     'last 3 version',
+    '> 1%',
     'ie >= 9'
 ];
 
@@ -214,12 +214,7 @@ gulp.task('html', function () {
         .pipe(assets.restore())
         .pipe($.useref())
         .pipe($.replace('/style.css', '/style.min.css'))
-        .pipe($.if('*.html', $.htmlmin({
-            collapseWhitespace: true,
-            removeComments: true,
-            minifyJS: $.uglify({}),
-            minifyCSS: $.csso({})
-        })))
+        .pipe($.if('*.html', $.minifyHtml({conditionals: true})))
         .pipe(gulp.dest(paths.dest))
         .pipe($.size({
             gzip: false,
@@ -245,7 +240,7 @@ gulp.task('optimize:images', function () {
 });
 
 
-// Copy all files at root level of src-folder to Output-folder 
+// Copy all files at root level of src-folder to Output-folder
 gulp.task('copy', function () {
     return gulp.src([
     paths.src + '.*',

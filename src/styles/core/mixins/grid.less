@@ -1,0 +1,55 @@
+//
+// Grid mixins
+// -------------------------------------------------------
+
+// Container mixin
+
+.make-container() {
+    padding-left:(@grid-gutter-width / 2);
+    padding-right: (@grid-gutter-width / 2);
+    margin-left: auto;
+    margin-right: auto;
+    .clearfix();
+}
+
+// Row mixins
+
+.make-row(@gutter: @grid-gutter-width) when (@gutter > 0) {
+    margin-left: (@gutter / -2);
+    margin-right: (@gutter / -2);
+    .clearfix();
+}
+
+.make-row(@gutter: @grid-gutter-width) when (@gutter = 0) {
+    .clearfix();
+}
+
+
+// Column mixins
+
+.make-column(@gutter: @grid-gutter-width) when (@gutter > 0) {
+    //position: relative;
+    float: left;
+    padding-left:(@gutter / 2);
+    padding-right: (@gutter / 2);
+}
+.make-column(@gutter: @grid-gutter-width) when (@gutter = 0) {
+    //position: relative;
+    float: left;
+}
+
+.column(@column:@grid-columns) {
+    width: percentage((@column / @grid-columns));
+}
+
+.offset(@offset:1) {
+    margin-left: percentage((@offset / @grid-columns));
+}
+
+.push(@push:1) {
+    left: percentage((@push / @grid-columns));
+}
+
+.pull(@pull:1) {
+    left: percentage((@pull / @grid-columns * -1));
+}

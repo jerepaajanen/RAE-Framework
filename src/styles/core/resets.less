@@ -1,0 +1,217 @@
+//
+// Resets
+// -------------------------------------------------------
+.resets(@boolean) when (@boolean = true) {
+
+    // Resets built atop of Sanitize.css, meaning
+    // all browsers render consistently.
+    // http://github.com/jonathantneal/sanitize.css
+
+    // Normalization
+
+    :root {
+        box-sizing: border-box; //Box model adjustment http://cbrac.co/RQrDL5
+        cursor: default;
+        -ms-overflow-style: -ms-autohiding-scrollbar; // IE11+
+        overflow-y: scroll; // All browsers without overlaying scrollbars
+        text-size-adjust: 100%; // iOS 8+
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-font-feature-settings: "liga" on;
+        text-rendering: optimizeLegibility;
+    }
+
+    audio:not([controls]) {
+        display: none; // Chrome 40+, iOS 8+, Safari 8+
+    }
+
+    details {
+        display: block; // Firefox 36+, Internet Explorer 11+, Windows Phone 8.1+
+    }
+
+    input {
+        &[type="number"] {
+            width: auto; // Firefox 36+
+        }
+        &[type="search"] {
+            -webkit-appearance: textfield; // Safari 8+
+            &::-webkit-search-cancel-button, &::-webkit-search-decoration {
+                -webkit-appearance: none; // Safari 8+
+            }
+        }
+    }
+
+    // Correct `block` display not defined for any HTML5 element in IE 9.
+    // Correct `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+    // Correct `block` display not defined for `main` in IE 11.
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    main,
+    menu,
+    nav,
+    section,
+    summary {
+        display: block;
+    }
+
+    pre {
+        overflow: auto; // Internet Explorer 11+
+    }
+
+    progress {
+        display: inline-block; // Internet Explorer 11+, Windows Phone 8.1+
+    }
+
+    small {
+        font-size: 75%; // All browsers
+    }
+
+    template {
+        display: none; // Android 4.3-, Internet Explorer 9/10/11+, iOS 7-, Safari 7-, Windows Phone 8.1+
+    }
+
+    textarea {
+        overflow: auto; // Internet Explorer 9/10/11+
+    }
+
+    [hidden] {
+        display: none; // Internet Explorer 10-
+    }
+
+    [unselectable] {
+        user-select: none; // Android 4.4+, Chrome 40+, Firefox 36+, iOS 8+, Safari 8+
+    }
+
+    // Universal inheritance
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: inherit;
+        // Specify solid border style of all elements
+        border-style: solid;
+        border-width: 0;
+    }
+
+    * {
+        font-size: inherit;
+        line-height: inherit;
+        // Remove margin and padding of all elements
+        margin: 0;
+        padding: 0;
+    }
+
+    ::before,
+    ::after {
+        text-decoration: inherit;
+        vertical-align: inherit;
+    }
+
+    // Opinionated defaults
+
+    // Specify the text decoration of anchors and improve readability of focused elements when they are also in an active/hover state.
+    a {
+        text-decoration: none;
+        &:active, &:hover {
+            outline: 0;
+        }
+    }
+
+    // Remove the gap between images, videos, audio and canvas and the bottom of their containers: h5bp.com/i/440
+    audio,
+    canvas,
+    iframe,
+    img,
+    svg,
+    video {
+        vertical-align: middle;
+    }
+
+    // Specify the background color of form elements
+    button,
+    input,
+    select,
+    textarea {
+        background-color: transparent;
+    }
+
+    // Specify inheritance of form elements
+    button,
+    input,
+    select,
+    textarea {
+        color: inherit;
+        font-family: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+    }
+
+    // specify the minimum height of form elements
+    button,
+    input,
+    select,
+    textarea {
+        min-height: unit(@line-height-ratio, em);
+    }
+
+    // Specify the font family of code elements and address odd `em`-unit font size rendering in all browsers.
+    code,
+    kbd,
+    pre,
+    samp {
+        font-family: monospace, serif;
+        font-size: 1em;
+    }
+
+    // Specify the list style of nav lists
+    nav ol,
+    nav ul {
+        list-style: none;
+    }
+
+    // Style select like a standard input
+    select {
+        -moz-appearance: none; // Firefox 36+
+        -webkit-appearance: none; // Chrome 41+
+        &::-ms-expand {
+            display: none; // Internet Explorer 11+
+        }
+        &::-ms-value {
+            color: currentColor; // Internet Explorer 11+
+        }
+    }
+
+    // Specify the border styles of tables
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    // Specify textarea resizability
+    textarea {
+        resize: vertical;
+    }
+
+    // Specify text selection background color and omit drop shadow
+    ::selection {
+        background-color: @selection-background; // required when declaring ::selection
+        text-shadow: none;
+    }
+
+    @media screen {
+        [hidden~="screen"] {
+            display: inherit;
+        }
+        [hidden~="screen"]:not(:active):not(:focus):not(:target) {
+            clip: rect(0 0 0 0) !important;
+            position: absolute !important;
+        }
+    }
+}
+.resets(@use-resets);

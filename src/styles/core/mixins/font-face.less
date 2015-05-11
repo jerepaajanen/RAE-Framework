@@ -1,0 +1,11 @@
+//
+// @Font-face mixin (used in Variables)
+// -------------------------------------------------------
+
+.font-face (@fontname, @fontfile, @weight: normal, @style: normal) {
+    font-family: '@{fontname}';
+    src: url('../fonts/@{fontfile}.woff') format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    url('../fonts/@{fontfile}.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+    font-weight: @weight;
+    font-style: @style;
+}

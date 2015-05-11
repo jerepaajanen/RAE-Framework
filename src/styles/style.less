@@ -1,29 +1,241 @@
-@charset "UTF-8"; 
+@charset "UTF-8";
 
 //
-// Imports
+// RAE Framework
 // -------------------------------------------------------
 
-	@import 'variables';
-	@import 'mixins';
-	@import 'debug';
-	@import 'current-media-query';
-	@import 'resets';
-	@import	'print';
-	@import 'icons';
-	@import 'animate';
-	@import 'global';
-	@import 'embedded-content';
-	@import	'tables';
-	@import 'forms';
-	@import 'buttons';
-	@import 'grid';
-	@import 'tooltips';
-	@import	'clearfix';
-	@import 'helper-classes';
-	@import 'responsive-helper-classes';
+    @import 'core/variables';
+    @import 'core/mixins';
+
+    @import 'utilities/debug';
+    @import 'utilities/current-media-query';
+
+    @import 'core/resets';
+
+    @import 'core/base/main';
+    @import 'core/base/vertical-rhytmn';
+    @import 'core/base/typography';
+    @import 'core/base/horizontal-rule';
+    @import 'core/base/lists';
+    @import 'core/base/embedded-content';
+    @import 'core/base/forms';
+    @import 'core/base/tables';
+    @import	'core/base/print';
+
+    @import 'layout/containers';
+    @import 'layout/grids';
+
+    @import 'objects/animate';
+    @import 'objects/icons';
+    @import 'objects/buttons';
+    @import 'objects/form-styles';
+    @import	'objects/table-styles';
+    @import 'objects/tooltips';
+    @import 'objects/embed-responsive';
+    @import 'objects/nav-responsive';
+
+    @import 'utilities/utilities';
+    @import 'utilities/responsive-utilities';
 
 
 //
 // Site styles
 // -------------------------------------------------------
+
+
+@thecolor: #f44336;
+@second: #ffb549;
+@third: spin(@second, 25);
+@fourth: #673AB7;
+
+.color {
+    height: 6rem;
+    width: 6rem;
+    display: block;
+    font-size: 10px;
+    color: rgba(255,255,255,.8);
+    position: relative;
+}
+
+// Make actual + demo mixin!!!
+
+// COLOR LOOP
+.colorLoop(@colors, @main: 10, @alt: 4) {
+  .loop(@i) when (@i > 0) {
+    .loop((@i - 1));
+    @move : @i+0;
+    &:nth-child(@{move}) {
+      background: extract(@colors, @i);
+    }
+  }
+  .loop(14);
+}
+
+.tintshade(@c, @d: 10%) {
+
+    @c50:  tint(@c, @d * 9);
+    @c100: tint(@c, @d * 8);
+    @c200: tint(@c, @d * 6);
+    @c300: tint(@c, @d * 4);
+    @c400: tint(@c, @d * 2);
+    @c500: @c;
+    @c600: shade(@c, @d * 1);
+    @c700: shade(@c, @d * 2);
+    @c800: shade(@c, @d * 3);
+    @c900: shade(@c, @d * 4);
+
+    @ca100: overlay(@c, lighten(@black, @d * 8));
+    @ca200: overlay(@c, lighten(@black, @d * 6));
+    @ca400: overlay(@c, lighten(@black, @d * 2));
+    @ca700: overlay(@c, lighten(@black, @d * -2));
+
+    @colors:
+      @c50,
+      @c100,
+      @c200,
+      @c300,
+      @c400,
+      @c500,
+      @c600,
+      @c700,
+      @c800,
+      @c900,
+      @ca100,
+      @ca200,
+      @ca400,
+      @ca700;
+
+  .colorLoop(@colors);
+}
+
+.google {
+    display: none;
+    &:before {
+        content: "Google";
+        position: absolute;
+        top: 0;
+    }
+}
+
+.tintshade {
+    &:before {
+        content: "Tint/Shade";
+        position: absolute;
+        top: 0;
+    }
+    .color{
+        .tintshade(@thecolor);
+    }
+}
+.tintshade2 {
+    &:before {
+        content: "Tint/Shade2";
+        position: absolute;
+        top: 0;
+    }
+    .color{
+        .tintshade(@second);
+    }
+}
+
+.tintshade3 {
+    &:before {
+        content: "Tint/Shade3";
+        position: absolute;
+        top: 0;
+    }
+    .color{
+        .tintshade(@third);
+    }
+}
+
+.tintshade4 {
+    &:before {
+        content: "Tint/Shade4";
+        position: absolute;
+        top: 0;
+    }
+    .color{
+        .tintshade(@fourth);
+    }
+}
+
+
+
+@keyframes pacman-balls {
+    0% {
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 1;
+
+    }
+    100% {
+        transform: translate(-200px, 0);
+        opacity: 1;
+    }
+}
+@keyframes pacman {
+  100% {
+    transform: none;
+  }
+}
+@a-time: 2s;
+.pacman {
+    position: relative;
+
+}
+  .pacman > div:nth-child(2) {
+            animation: pacman-balls @a-time (@a-time / 5 * 0) infinite linear; }
+  .pacman > div:nth-child(3) {
+            animation: pacman-balls @a-time (@a-time / 5 * 1) infinite linear; }
+  .pacman > div:nth-child(4) {
+            animation: pacman-balls @a-time (@a-time / 5 * 2) infinite linear; }
+  .pacman > div:nth-child(5) {
+            animation: pacman-balls @a-time (@a-time / 5 * 3) infinite linear; }
+.pacman > div:nth-child(6) {
+            animation: pacman-balls @a-time (@a-time / 5 * 4) infinite linear; }
+
+.pacman > div:first-of-type {
+  width:  24px;
+  height: 24px;
+    overflow: hidden;
+  border-radius: 50%;
+    position: relative;
+  transform: translate3d(0, 0, 0);
+    &:before,
+  &:after {
+    content: "";
+    background-color: @second;
+    width: 150%;
+    height: 100%;
+    position: absolute;
+    left: -35%;
+
+    animation: pacman (@a-time / 10) linear infinite alternate;
+  }
+    &:before {
+    top: -50%;
+    transform-origin: bottom center;
+    transform: rotate(-40deg);
+  }
+  &:after {
+    bottom: -50%;
+    transform-origin: top center;
+    transform: rotate(40deg);
+  }
+
+}
+
+.pacman > div:nth-child(2), .pacman > div:nth-child(3), .pacman > div:nth-child(4), .pacman > div:nth-child(5), .pacman > div:nth-child(6) {
+    opacity: 0;
+    background-color: transparent;
+    border-radius: 100%;
+    border: 2px solid @second;
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    top: (9px - 2px/2);
+    left: 200px;
+}

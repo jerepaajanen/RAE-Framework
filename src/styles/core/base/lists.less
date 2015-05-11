@@ -1,0 +1,23 @@
+//
+// Lists
+// -------------------------------------------------------
+.lists(@boolean) when (@boolean = true) {
+
+    ul, ol {
+        margin-left: @base-spacing-unit;
+        & & {
+            margin-bottom: auto;
+        }
+        nav & {
+            margin: 0;
+        }
+    }
+
+    dl {
+        dt {
+            font-weight: bold;
+        }
+    }
+
+}
+.lists(@use-lists);

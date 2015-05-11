@@ -1,0 +1,42 @@
+//
+// Current Media Query
+// -------------------------------------------------------
+.current-media-query(@boolean) when (@boolean = true) {
+
+    //This adds a label in the top-left corner that displays the current media query state.
+
+    html:after {
+        color: @white;
+        content: "undefined";
+        padding: 6px;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9999;
+        text-align: center;
+        font-family: sans-serif;
+        font-weight: bold;
+        font-size: 10px;
+        letter-spacing: .025em;
+        border-radius: 0 0 0 3px;
+        background: rgba(0,0,0,0.5);
+
+        @media @small-only {
+            content: "@sm";
+        }
+
+        @media @medium-up {
+            content: "@md";
+        }
+
+        @media @large-up {
+            content: "@lg";
+        }
+
+        @media @xlarge-up {
+            content: "@xl";
+        }
+    }
+
+}
+.current-media-query(@use-current-media-query);

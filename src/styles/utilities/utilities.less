@@ -1,0 +1,133 @@
+//
+// Utilities
+// -------------------------------------------------------
+.utilities(@boolean) when (@boolean = true) {
+
+    // Display utilities
+
+    .u-block {
+        display: block !important;
+    }
+
+    .u-inline-block {
+        display: inline-block !important;
+    }
+
+    .u-table {
+        display: table !important;
+        &:before {
+            height: auto !important;
+            display: inherit !important;
+        }
+    }
+
+    .u-table-cell {
+        display: table-cell !important
+    }
+
+
+    // Visibility utilities
+
+    .u-show {
+        display: block !important;
+    }
+
+    .u-hide {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    .u-visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+
+    // Clearfix
+
+    .u-clearfix {
+        .clearfix();
+    }
+
+
+    // Float and flex utilities
+
+    .u-float-left {
+        float: left !important;
+    }
+
+    .u-float-right {
+        float: right !important;
+    }
+
+    .u-float-none {
+        float: none;
+    }
+
+    .u-flex-center {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+
+    // Text utilities
+
+    .u-text-left  {
+        text-align: left !important;
+    }
+
+    .u-text-right {
+        text-align: right !important;
+    }
+
+    .u-text-center {
+        text-align: center !important;
+    }
+
+    .u-text-light {
+        font-weight: 300;
+    }
+
+    .u-text-normal {
+        font-weight: 400;
+    }
+
+    .u-text-semibold {
+        font-weight: 600;
+    }
+
+    .u-text-bold {
+        font-weight: 700;
+    }
+
+
+    // Color utilities
+
+    .u-muted {
+        opacity: .5;
+    }
+
+    .u-color-success {
+       color: @color-success;
+    }
+
+    .u-color-warning {
+       color: @color-warning;
+    }
+
+    .u-color-danger {
+       color: @color-danger;
+    }
+
+    .u-color-info {
+        color: @color-info;
+    }
+
+}
+.utilities(@use-utilities);

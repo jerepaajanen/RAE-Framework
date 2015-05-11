@@ -1,0 +1,27 @@
+//
+// Font-size & Modular Scale (REM)
+// -------------------------------------------------------
+
+// Convert unitless pixel values to rem.
+
+// Usage
+// .selector {
+//    .font-size(24);
+// }
+
+.font-size(@font-size-value, @use-modular-scale:false) when (@use-modular-scale = false){
+    @rem-value: (@font-size-value / @base-font-size * 1rem);
+    font-size: ~'@{rem-value}';
+}
+
+// Convert unitless modular-scale values to rem.
+// Set @modular-scale-factor in variables.
+
+// Usage
+// .selector {
+//    .font-size(2,true);
+// }
+
+.font-size(@font-size-value, @use-modular-scale:false)  when (@use-modular-scale = true) {
+    font-size: round((pow(@modular-scale-factor, @font-size-value) * 1rem), 3);
+}

@@ -1,0 +1,21 @@
+//
+// Main
+// -------------------------------------------------------
+.main(@boolean) when (@boolean = true) {
+
+    :root {
+        background-color: @base-background;
+        color: @base-color;
+        font-family: @base-font-family;
+        font-size: (unit(@base-font-size / 16) * 100%);
+        height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
+        line-height: @line-height-ratio;
+    }
+
+    body {
+        font-size: 1rem;
+        min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
+    }
+
+}
+.main(@use-main);

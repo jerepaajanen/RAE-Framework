@@ -1,0 +1,110 @@
+//
+// Responsive utilities
+// -------------------------------------------------------
+.responsive-utilities(@boolean) when (@boolean = true) {
+
+    // Variables
+    .show-conditional() {
+        display: inherit !important;
+    }
+
+    .hide-conditional() {
+        display: none !important;
+    }
+
+    .u-show-sm-only,
+    .u-hide-md-only,
+    .u-hide-md-up,
+    .u-show-md-down,
+    .u-hide-lg-only,
+    .u-hide-lg-up,
+    .u-show-lg-down,
+    .u-hide-xl-only {
+        .show-conditional();
+    }
+
+    .u-hide-sm-only,
+    .u-show-md-only,
+    .u-show-md-up,
+    .u-hide-md-down,
+    .u-show-lg-only,
+    .u-show-lg-up,
+    .u-hide-lg-down,
+    .u-show-xl-only {
+        .hide-conditional();
+    }
+
+    @media @medium-up {
+        .u-hide-sm-only,
+        .u-show-md-only,
+        .u-show-md-up,
+        .u-show-md-down,
+        .u-hide-lg-only,
+        .u-hide-lg-up,
+        .u-show-lg-down,
+        .u-hide-xl-only {
+            .show-conditional();
+        }
+
+        .u-show-sm-only,
+        .u-hide-md-only,
+        .u-hide-md-up,
+        .u-hide-md-down,
+        .u-show-lg-only,
+        .u-show-lg-up,
+        .u-hide-lg-down,
+        .u-show-xl-only {
+            .hide-conditional();
+        }
+    }
+
+    @media @large-up {
+        .u-hide-sm-only
+        .u-hide-md-only,
+        .u-show-md-up,
+        .u-hide-md-down,
+        .u-show-lg-only,
+        .u-show-lg-up,
+        .u-show-lg-down,
+        .u-hide-xl-only {
+            .show-conditional();
+        }
+
+        .u-show-sm-only,
+        .u-show-md-only,
+        .u-hide-md-up,
+        .u-show-md-down,
+        .u-hide-lg-only,
+        .u-hide-lg-up,
+        .u-hide-lg-down,
+        .u-show-xl-only {
+            .hide-conditional();
+        }
+    }
+
+    @media @xlarge-up {
+        .u-hide-sm-only,
+        .u-hide-md-only,
+        .u-show-md-up,
+        .u-hide-md-down,
+        .u-hide-lg-only,
+        .u-show-lg-up,
+        .u-hide-lg-down,
+        .u-show-xl-only {
+            .show-conditional();
+        }
+
+        .u-show-sm-only,
+        .u-show-md-only,
+        .u-hide-md-up,
+        .u-show-md-down,
+        .u-show-lg-only,
+        .u-hide-lg-up,
+        .u-show-lg-down,
+        .u-hide-xl-only {
+            .hide-conditional();
+        }
+    }
+
+}
+.responsive-utilities(@use-responsive-utilities);
