@@ -4,52 +4,70 @@
 
 // Container mixin
 
-.make-container() {
-    padding-left:(@grid-gutter-width / 2);
-    padding-right: (@grid-gutter-width / 2);
+.make-container(@gutter: @grid-gutter-width) {
     margin-left: auto;
     margin-right: auto;
+    & when (@gutter > 0) {
+        padding-left: (@gutter / 2);
+        padding-right: (@gutter / 2);
+    }
     .clearfix();
 }
 
 // Row mixins
 
-.make-row(@gutter: @grid-gutter-width) when (@gutter > 0) {
-    margin-left: (@gutter / -2);
-    margin-right: (@gutter / -2);
-    .clearfix();
-}
-
-.make-row(@gutter: @grid-gutter-width) when (@gutter = 0) {
+.make-row(@gutter: @grid-gutter-width) {
+    & when (@gutter > 0) {
+        margin-left: ceil(@gutter / -2);
+        margin-right: floor(@gutter / -2);
+    }
     .clearfix();
 }
 
 
 // Column mixins
 
-.make-column(@gutter: @grid-gutter-width) when (@gutter > 0) {
-    //position: relative;
+.make-column(@gutter: @grid-gutter-width) {
     float: left;
-    padding-left:(@gutter / 2);
-    padding-right: (@gutter / 2);
-}
-.make-column(@gutter: @grid-gutter-width) when (@gutter = 0) {
-    //position: relative;
-    float: left;
+    position: relative;
+    & when (@gutter > 0) {
+        padding-left:(@gutter / 2);
+        padding-right: (@gutter / 2);
+    }
 }
 
 .column(@column:@grid-columns) {
-    width: percentage((@column / @grid-columns));
+    & when (@column >= 1) {
+        width: percentage((@column / @grid-columns));
+    }
+    & when (@column < 1) {
+        width: percentage((@column));
+    }
 }
 
 .offset(@offset:1) {
-    margin-left: percentage((@offset / @grid-columns));
+    & when (@column >= 1) {
+        margin-left: percentage((@offset / @grid-columns));
+    }
+    & when (@column < 1) {
+        margin-left: percentage((@offset));
+    }
 }
 
 .push(@push:1) {
-    left: percentage((@push / @grid-columns));
+    & when (@column >= 1) {
+        left: percentage((@push / @grid-columns));
+    }
+    & when (@column < 1) {
+        left: percentage((@push));
+    }
 }
 
 .pull(@pull:1) {
-    left: percentage((@pull / @grid-columns * -1));
+    & when (@column >= 1) {
+        left: percentage((@push / @grid-columns * -1));
+    }
+    & when (@column < 1) {
+        left: percentage((@push * -1));
+    }
 }
