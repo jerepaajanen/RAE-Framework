@@ -9,18 +9,17 @@ RAE Framework
 
 ## Install dependencies
 
-- $ npm install
-- $ bower install
+- $ npm install && bower install
 - ...or just use shortcut Terminal .commands like gulp serve in ./gulp -forlder
 
 
 ## Gulp tasks
 
-- $ gulp - create distribution
-- $ gulp serve:dist - create distribution & test files on local server
-- $ gulp serve - start local server for development
-- $ gulp deploy - create distribution & deploy via ftp
-- $ gulp iconfont - build iconfonts from .svg-files in ./src/images/icons
+- $ gulp / create distribution
+- $ gulp serve:dist / create distribution & test files on local server
+- $ gulp serve / start local server for development
+- $ gulp deploy / create distribution & deploy via ftp
+- $ gulp build:iconfont / build iconfonts from .svg-files in ./src/images/icons
 
 
 ## Gulp ftp-deploy

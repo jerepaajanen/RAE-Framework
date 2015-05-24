@@ -21,13 +21,13 @@
     @container-sm:              100%;
     @screen-sm:                 480px; //30em
 @use-screen-md:                 true;
-    @container-md:              (@screen-md-min - 16px);
+    @container-md:              (@screen-md-min - @grid-gutter-width);
     @screen-md:                 768px; //48em
 @use-screen-lg:                 true;
-    @container-lg:              (@screen-lg-min - 16px);
+    @container-lg:              (@screen-lg-min - @grid-gutter-width);
     @screen-lg:                 992px; //62em
 @use-screen-xl:                 true;
-    @container-xl:              (@screen-xl-min - 16px);
+    @container-xl:              (@screen-xl-min - @grid-gutter-width);
     @screen-xl:                 1280px; //80em
 
 
@@ -37,17 +37,35 @@
 @base-font-size:                16px;
 @base-line-height:              24px;
 
-// Line-height ratio & element spacing
+// Line-height (unitless)
+@line-height-tightest:          1;
+@line-height-tighter:           1.25;
+@line-height-tight:             1.375;
 @line-height-ratio:             (unit(@base-line-height / @base-font-size));
-@base-spacing-unit:             @base-line-height;
-@base-spacing-unit-third:       round(@base-line-height / 3);
-@base-spacing-unit-half:        round(@base-line-height / 2);
-@base-spacing-unit-double:      round(@base-line-height * 2);
+@line-height-loose:             1.625;
+@line-height-looser:            1.75;
+@line-height-loosest:           2;
 
-// Modular Scale – Rate of growth for headings, buttons, etc.
+// Letter-spacing
+@letter-spacing-tightest:       -0.05em;
+@letter-spacing-tighter:        -0.025em;
+@letter-spacing-tight:          -0.01em;
+@letter-spacing-normal:         0;
+@letter-spacing-loose:          0.01em;
+@letter-spacing-looser:         0.025em;
+@letter-spacing-loosest:        0.05em;
+
+// Spacing
+@spacing-base:                  @base-line-height;
+@spacing-third:                 round(@base-line-height / 3);
+@spacing-half:                  round(@base-line-height / 2);
+@spacing-double:                round(@base-line-height * 2);
+
+// Modular Scale
+// Rate of growth for headings, buttons, etc.
 @modular-scale-factor:          1.333;
 
-// @Font-Face
+// @Font-Face (uncomment to use)
 // Options: 'font-family', 'font-file-name', font-weight, font-style
 //@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
 //@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
@@ -58,8 +76,8 @@
 
 // Heading styles
 @heading-font-weight:           700;
-@heading-letter-spacing:        -0.010em;
-@heading-line-height:           1.25;
+@heading-letter-spacing:        @letter-spacing-tight;
+@heading-line-height:           @line-height-tighter;
 
 
 // COLORS
@@ -83,13 +101,13 @@
 
 // Custom brand colors
 @color-primary:                 #ae956d;
-@color-primary-variant-1:       tint(@color-primary, 20%);
-@color-primary-variant-2:       shade(@color-primary, 20%);
+@color-primary-variant-1:       darken(@color-primary, 10%);
+@color-primary-variant-2:       lighten(@color-primary, 10%);
 @color-primary-variant-3:       saturate(@color-primary, 100%);
 
 @color-secondary:               #3F51B5;
-@color-secondary-variant-1:     tint(@color-primary, 20%);
-@color-secondary-variant-2:     shade(@color-primary, 20%);
+@color-secondary-variant-1:     darken(@color-primary, 10%);
+@color-secondary-variant-2:     lighten(@color-primary, 10%);
 @color-secondary-variant-3:     saturate(@color-secondary, 100%);
 
 // UI colors
@@ -137,7 +155,7 @@
 // FORMS, INPUTS & BUTTONS
 // -------------------------------------------------------
 
-@form-item-spacing:             @base-spacing-unit;
+@form-item-spacing:             @spacing-base;
 
 // Fieldset with border
 @fieldset-border-width:         1px;
@@ -165,7 +183,7 @@
 @input-focus-box-shadow:        inset 0 0 5px rgba(red(@grey-500), green(@grey-500), blue(@grey-500), 0.25);
 
 // Checkbox & radio buttons
-@input-box-size:                @base-spacing-unit;
+@input-box-size:                @spacing-base;
 @input-checkbox-checked-color:  currentColor;
 @input-checkbox-border-radius:  0;
 @input-radio-checked-color:     currentColor;
@@ -191,17 +209,17 @@
 
 @table-font-size:               14px;
 @table-background:              transparent;
-@table-caption-padding-bottom:  @base-spacing-unit-half;
+@table-caption-padding-bottom:  @spacing-half;
 @table-headfoot-color:          @grey-800;
 @table-headfoot-font-weight:    700;
 @table-headfoot-background:     transparent;
-@table-cell-padding:            6px @base-spacing-unit-half;
+@table-cell-padding:            6px @spacing-half;
 @table-border-width:            1px;
 @table-border-color:            @grey-100;
 @table-stripe-background:       @grey-25;
 
 
-// Z-INDEX HIERARCY
+// Z-INDEX SCALE
 // -------------------------------------------------------
 
 @z-index-1:                     100; // i.e navbar
@@ -216,9 +234,7 @@
 @z-index-10:                    1000; // development
 
 // Z-Index Applications
-
 @z-index-9--tooltip:            @z-index-9;
-
 
 
 // MISC
@@ -239,7 +255,7 @@
 
 // Transition
 @transition-duration-default:   200ms;
-@transition-easing-default:     linear;
+@transition-easing-default:     ease-in-out;
 
 
 // TOOLTIPS
@@ -286,7 +302,6 @@
     @use-push:                  true;
     @use-pull:                  true;
     @use-offset:                true;
-
 
 // Objects
 @use-animations:                true;
