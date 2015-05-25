@@ -68,19 +68,6 @@
     }
 
 
-    // Lint JavaScript
-    gulp.task('build:scripts', function () {
-        return gulp.src(paths.scripts.src + 'scripts.js')
-            .pipe(reload({
-                stream: true,
-                once: true
-            }))
-            .pipe($.jshint())
-            .pipe($.jshint.reporter('jshint-stylish'))
-            .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
-    });
-
-
     // Inject JavaScripts from scripts and bower_components-folders
     gulp.task('inject:scripts', function () {
         gulp.src(paths.src + '**/*.html')
@@ -121,6 +108,19 @@
                 gzip: false,
                 title: 'Styles Unminified'
             }));
+    });
+
+
+    // Build & lint JavaScript
+    gulp.task('build:scripts', function () {
+        return gulp.src(paths.scripts.src + 'scripts.js')
+            .pipe(reload({
+                stream: true,
+                once: true
+            }))
+            .pipe($.jshint())
+            .pipe($.jshint.reporter('jshint-stylish'))
+            .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
     });
 
 
@@ -244,10 +244,16 @@
                     iconsPath: '/'
                 },
                 settings: {
-                    background: '#ffffff'
+                    background: '#ffffff',
+                    index: 'index.html'
                 }
             }))
-            .pipe(gulp.dest(paths.dest));
+            .pipe(gulp.dest(paths.dest))
+            .pipe($.size({
+                gzip: false,
+                showFiles: false,
+                title: 'Favicons'
+            }));
     });
 
     gulp.task('dist:templates', function () {
@@ -349,11 +355,10 @@
                     ['build:styles', 'build:images', 'build:scripts'],
                     ['inject:scripts'],
                     ['dist:bundle'],
+                    ['dist:favicons'],
                     ['dist:copy', 'dist:fonts', 'dist:assets', 'dist:templates'],
                     callback);
     });
-
-
 
 
     gulp.task('deploy', ['default'], function () {
@@ -368,5 +373,6 @@
             .pipe(conn.differentSize(config.server.remotePath))
             .pipe(conn.dest(config.server.remotePath));
     });
+
 
 }());
