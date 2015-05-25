@@ -155,6 +155,22 @@
     });
 
 
+    // Build optimized images
+    gulp.task('build:images', function () {
+        return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
+            .pipe($.imagemin({
+                optimizationLevel: 5,
+                progressive: true,
+                interlaced: true
+            }))
+            .pipe(gulp.dest(paths.images.dest))
+            .pipe($.size({
+                showFiles: false,
+                title: 'Images'
+            }));
+    });
+
+
     // Iconfont
     gulp.task('build:iconfont', function () {
         return gulp.src(paths.images.src + 'icons/*.svg')
@@ -246,24 +262,8 @@
     });
 
 
-    // Build optimized images
-    gulp.task('build:images', function () {
-        return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
-            .pipe($.imagemin({
-                optimizationLevel: 5,
-                progressive: true,
-                interlaced: true
-            }))
-            .pipe(gulp.dest(paths.images.dest))
-            .pipe($.size({
-                showFiles: false,
-                title: 'Images'
-            }));
-    });
-
-
     // Copy all files at root level of src-folder to Output-folder
-    gulp.task('copy', function () {
+    gulp.task('dist:copy', function () {
         return gulp.src([
             !paths.src + '**/*.html',
             !paths.images.src + '**/*',
@@ -283,7 +283,7 @@
 
 
     // Copy Web Fonts To Output-folder
-    gulp.task('copy:fonts', function () {
+    gulp.task('dist:fonts', function () {
         return gulp.src(paths.fonts.src + '*')
             .pipe(gulp.dest(paths.fonts.dest))
             .pipe($.size({
@@ -292,7 +292,7 @@
     });
 
     // Copy Other design assets Output-folder
-    gulp.task('copy:assets', function () {
+    gulp.task('dist:assets', function () {
         return gulp.src(paths.assets.src + '**/*')
             .pipe(gulp.dest(paths.assets.dest))
             .pipe($.size({
@@ -302,7 +302,7 @@
 
 
     // Clean Output Directory
-    gulp.task('dist:clean', del.bind(null, ['./.tmp', paths.dest + '**/*', !paths.dest + '/.git'], {
+    gulp.task('clean', del.bind(null, ['./.tmp', paths.dest + '**/*', !paths.dest + '/.git'], {
         dot: true
     }));
 
@@ -345,11 +345,11 @@
 
     // Build production files, the default task
     gulp.task('default', function (callback) {
-        runSequence(['dist:clean'],
+        runSequence(['clean'],
                     ['build:styles', 'build:images', 'build:scripts'],
                     ['inject:scripts'],
                     ['dist:bundle'],
-                    ['copy', 'copy:fonts', 'copy:assets', 'dist:templates'],
+                    ['dist:copy', 'dist:fonts', 'dist:assets', 'dist:templates'],
                     callback);
     });
 
