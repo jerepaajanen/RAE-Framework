@@ -4,13 +4,16 @@
 // RAE Framework
 // -------------------------------------------------------
 
+    // Core
     @import 'base/core/variables';
     @import 'base/core/mixins';
     @import 'base/core/resets';
 
+    // Utilities for development
     @import 'utilities/debug';
     @import 'utilities/current-media-query';
 
+    // Base
     @import	'base/print';
     @import 'base/main';
     @import 'base/vertical-rhytmn';
@@ -21,9 +24,11 @@
     @import 'base/forms';
     @import 'base/tables';
 
+    // Layout
     @import 'layout/containers';
     @import 'layout/grids';
 
+    // Objects
     @import 'objects/animate';
     @import 'objects/icons';
     @import 'objects/buttons';
@@ -33,128 +38,15 @@
     @import 'objects/embed-wrap';
     @import 'objects/nav-responsive';
 
+    // Utilities
     @import 'utilities/utilities';
     @import 'utilities/responsive-utilities';
 
+    // Vendor and external stylesheets
+    //@import 'vendor/';
 
-//
-// Site styles
-// -------------------------------------------------------
+    // Components
+    //@import 'components/';
 
-
-@thecolor: #f44336;
-@second: #ffb549;
-@third: spin(@second, 25);
-@fourth: #673AB7;
-
-.color {
-    height: 6rem;
-    width: 6rem;
-    display: block;
-    font-size: 10px;
-    color: rgba(255,255,255,.8);
-    position: relative;
-}
-
-// Make actual + demo mixin!!!
-
-// COLOR LOOP
-.colorLoop(@colors, @main: 10, @alt: 4) {
-  .loop(@i) when (@i > 0) {
-    .loop((@i - 1));
-    @move : @i+0;
-    &:nth-child(@{move}) {
-      background: extract(@colors, @i);
-    }
-  }
-  .loop(14);
-}
-
-.tintshade(@c, @d: 10%) {
-
-    @c50:  tint(@c, @d * 9);
-    @c100: tint(@c, @d * 8);
-    @c200: tint(@c, @d * 6);
-    @c300: tint(@c, @d * 4);
-    @c400: tint(@c, @d * 2);
-    @c500: @c;
-    @c600: shade(@c, @d * 1);
-    @c700: shade(@c, @d * 2);
-    @c800: shade(@c, @d * 3);
-    @c900: shade(@c, @d * 4);
-
-    @ca100: overlay(@c, lighten(@black, @d * 8));
-    @ca200: overlay(@c, lighten(@black, @d * 6));
-    @ca400: overlay(@c, lighten(@black, @d * 2));
-    @ca700: overlay(@c, lighten(@black, @d * -2));
-
-    @colors:
-      @c50,
-      @c100,
-      @c200,
-      @c300,
-      @c400,
-      @c500,
-      @c600,
-      @c700,
-      @c800,
-      @c900,
-      @ca100,
-      @ca200,
-      @ca400,
-      @ca700;
-
-  .colorLoop(@colors);
-}
-
-.google {
-    display: none;
-    &:before {
-        content: "Google";
-        position: absolute;
-        top: 0;
-    }
-}
-
-.tintshade {
-    &:before {
-        content: "Tint/Shade";
-        position: absolute;
-        top: 0;
-    }
-    .color{
-        .tintshade(@thecolor);
-    }
-}
-.tintshade2 {
-    &:before {
-        content: "Tint/Shade2";
-        position: absolute;
-        top: 0;
-    }
-    .color{
-        .tintshade(@second);
-    }
-}
-
-.tintshade3 {
-    &:before {
-        content: "Tint/Shade3";
-        position: absolute;
-        top: 0;
-    }
-    .color{
-        .tintshade(@third);
-    }
-}
-
-.tintshade4 {
-    &:before {
-        content: "Tint/Shade4";
-        position: absolute;
-        top: 0;
-    }
-    .color{
-        .tintshade(@fourth);
-    }
-}
+    // Pages
+    //@import 'pages/';
