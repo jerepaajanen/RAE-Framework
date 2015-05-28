@@ -14,7 +14,7 @@
             dropdownToggleClass = 'nav-item__toggle';
 
         // Build 'nav--responsive' elements
-        nav.prepend('<a href="#" role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span class="nav-toggle__label u-visually-hidden">Menu</span><span class="nav-toggle__icon"><span class="x-top"></span><span class="no-x"></span><span class="x-bottom"></span></span></a>');
+        nav.prepend('<a href="#" role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span class="nav-toggle__label u-visually-hidden">Menu</span><span class="nav-toggle__icon"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></a>');
         menu.addClass('is-collapsible');
         dropdown.addClass('is-collapsible');
         dropdown.parent('li').addClass('with-dropdown').prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');

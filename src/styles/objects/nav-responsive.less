@@ -3,6 +3,8 @@
 // -------------------------------------------------------
 .responsive-navigation(@boolean) when (@boolean = true) {
 
+    // Responsive navigation
+
     .nav--responsive {
         overflow-x: visible;
         .clearfix();
@@ -34,10 +36,13 @@
     }
 
 
+    // Nav-toggle
+
     // Variables
-    @toggle-height:                     16px;
-    @toggle-width:                      24px;
-    @toggle-line-weight:                2px;
+
+    @toggle-height:                     @spacing-base;
+    @toggle-width:                      30px;
+    @toggle-line-weight:                3px;
     @toggle-line-border-radius:         0;
 
     .nav-toggle {
@@ -48,53 +53,56 @@
         display: inline-block;
         .nav-toggle__label {}
         .nav-toggle__icon {
-            span {
+            .bar {
                 background: @grey-800;
                 border-radius: @toggle-line-border-radius;
                 display: block;
                 height: @toggle-line-weight;
-                transition: @transition-duration-default @transition-easing-default;
+                transition: opacity @transition-duration-default linear @transition-duration-default, margin @transition-duration-default linear @transition-duration-default, transform @transition-duration-default linear 0s;
                 position: absolute;
                 width: 100%;
             }
-            .no-x {
-                top: ((@toggle-height / 2) - (@toggle-line-weight / 2));
+            .bar:nth-child(2) {
+                top: ((@toggle-height / 2) - round(@toggle-line-weight / 2));
             }
-            .x-top {
+            .bar:nth-child(1) {
                 top: 0;
             }
-            .x-bottom {
+            .bar:nth-child(3) {
                 bottom: 0;
             }
         }
         &.is-active {
             .nav-toggle__icon {
+                span {
+                    transition: opacity @transition-duration-default linear 0s, margin @transition-duration-default linear 0s, transform @transition-duration-default linear @transition-duration-default;
+                }
 
-                .no-x {
+                .bar:nth-child(2) {
                     opacity: 0;
                 }
-                .x-top {
-                    transform: rotate(45deg) scaleX(1.25);
-                    top: ((@toggle-height / 2) - (@toggle-line-weight / 2));
+                .bar:nth-child(1) {
+                    transform: rotate(45deg);
+                    //transform: rotate(45deg) scaleX(1.25);
+                    margin-top: ((@toggle-height / 2) - (@toggle-line-weight / 2));
                 }
-                .x-bottom{
-                    transform: rotate(-45deg) scaleX(1.25);
-                    bottom: ((@toggle-height / 2) - (@toggle-line-weight / 2));
+                .bar:nth-child(3) {
+                    transform: rotate(-45deg);
+                    //transform: rotate(-45deg) scaleX(1.25);
+                    margin-bottom: ((@toggle-height / 2) - (@toggle-line-weight / 2));
                 }
             }
         }
         &.is-inactive:hover {
             .nav-toggle__icon {
-                .x-top {
+                .bar:nth-child(1) {
                     transform: translateY(-@toggle-line-weight / 2);
                 }
-                .x-bottom{
+                .bar:nth-child(3) {
                     transform: translateY(@toggle-line-weight / 2);
                 }
             }
         }
     }
-
-
 }
 .responsive-navigation(@use-responsive-navigation);
