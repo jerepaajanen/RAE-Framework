@@ -236,12 +236,25 @@
             }));
     });
 
+
+    // Favicons
     gulp.task('dist:favicons', function () {
         return gulp.src(paths.dest + 'index.html')
             .pipe($.favicons({
                 files: {
                     dest: '.' + paths.dest,
                     iconsPath: '/'
+                },
+                icons: {
+                    android: true,
+                    appleIcon: true,
+                    appleStartup: false,
+                    coast: false,
+                    favicons: true,
+                    firefox: false,
+                    opengraph: true,
+                    windows: true,
+                    yandex: false
                 },
                 settings: {
                     background: '#ffffff',
