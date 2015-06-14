@@ -39,6 +39,9 @@
                 -webkit-appearance: none; // Safari 8+
             }
         }
+        &:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0px 1000px #fff inset; // Remove forced yellow input background in Chrome
+        }
     }
 
     // Correct `block` display not defined for any HTML5 element in IE 9.
@@ -150,8 +153,6 @@
         font-family: inherit;
         font-style: inherit;
         font-weight: inherit;
-        // specify the minimum height of form elements
-        //min-height: unit(@line-height-ratio, em);
     }
 
     // Specify the font family of code elements and address odd `em`-unit font size rendering in all browsers.
