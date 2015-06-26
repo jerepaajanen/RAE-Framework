@@ -44,14 +44,17 @@
                 dest: basePaths.dest + 'assets/'
             }
         },
+
         // Browser support config
         browserSupport = [
             'last 3 version',
             '> 1%',
             'ie >= 9'
         ],
+
         // Set name of your iconfont
-        fontName = 'Icons',
+        fontName = 'icons',
+
         // Banner to add to file headers
         banner = ['/*',
                   ' * <%= pkg.name %> - <%= pkg.version %>',
@@ -177,25 +180,24 @@
             .pipe($.imagemin())
             .pipe($.iconfont({
                 fontName: fontName,
-                // normalize: true, // use for svg:s from different sources
-                //fontHeight: 576, // icon min height must be more than 500px
                 centerHorizontally: true,
-                descent: (14 * 7) //pixelgrid x baseline shift
+                descent: (14 * 6) //pixelgrid x baseline shift
             }))
-            .on('codepoints', function (codepoints) {
+            .on('glyphs', function (glyphs) {
                 var options = {
-                    glyphs: codepoints,
+                    glyphs: glyphs,
                     fontName: fontName,
                     fontPath: '../fonts/',
                     className: 'icon'
                 };
+                //console.log(glyphs, options);
                 // build less-file for development
                 gulp.src('./templates/_iconfont/icons.less')
                     .pipe($.consolidate('lodash', options))
                     .pipe($.rename({
                         basename: 'icons'
                     }))
-                    .pipe(gulp.dest(paths.styles.src));
+                    .pipe(gulp.dest(paths.styles.src + 'objects'));
                 // build html-file for documentation
                 gulp.src('./templates/_iconfont/icons.html')
                     .pipe($.consolidate('lodash', options))
