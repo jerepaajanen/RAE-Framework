@@ -346,8 +346,8 @@
         gulp.watch(paths.styles.src + '**/*.less', ['serve:styles']);
         gulp.watch(paths.scripts.src + '*.js', ['build:scripts']);
         gulp.watch('bower.json', ['inject:scripts']);
-        gulp.watch(paths.images + '**/*.{gif,jpg,jpeg,png,svg}', reload);
-        gulp.watch(paths.fonts + 'icons/**/*.svg', ['build:iconfont']);
+        gulp.watch(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}', reload);
+        gulp.watch(paths.images.src + 'icons/**/*.svg', ['build:iconfont']);
     });
 
 
