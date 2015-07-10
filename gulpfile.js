@@ -180,8 +180,9 @@
             .pipe($.imagemin())
             .pipe($.iconfont({
                 fontName: fontName,
+                //autohint: true,
                 centerHorizontally: true,
-                descent: (14 * 6) //pixelgrid x baseline shift
+                descent: (14 * 7) //pixelgrid x baseline shift
             }))
             .on('glyphs', function (glyphs) {
                 var options = {

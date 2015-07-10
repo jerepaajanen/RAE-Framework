@@ -19,7 +19,8 @@ RAE Framework
 - $ gulp serve:dist / create distribution & test files on local server
 - $ gulp serve / start local server for development
 - $ gulp deploy / create distribution & deploy via ftp
-- $ gulp build:iconfont / build iconfonts from .svg-files in ./src/images/icons
+- $ gulp build:iconfont / build iconfonts from .svg-files in ./src/images/icons.
+    (You may want to auto hint your fonts; uncomment "//autohint:true", and install autohint on your system with Homebrew "brew install ttfautohint --with-qt")
 
 
 ## Gulp ftp-deploy
