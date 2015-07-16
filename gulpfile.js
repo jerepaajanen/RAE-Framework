@@ -73,7 +73,9 @@
 
     // Inject JavaScripts from scripts and bower_components-folders
     gulp.task('inject:scripts', function () {
-        gulp.src(paths.src + '**/*.html')
+        gulp.src([
+            paths.src + '**/*.html',
+            '!' + paths.src + 'styleguide/index.html'])
             .pipe($.inject(gulp.src(bowerFiles(), {
                 read: false
             }), {
@@ -287,14 +289,14 @@
     // Copy all files at root level of src-folder to Output-folder
     gulp.task('dist:copy', function () {
         return gulp.src([
-            !paths.src + '**/*.html',
-            !paths.images.src + '**/*',
-            !paths.styles.src + '**/*',
-            !paths.scripts.src + '**/*',
-            !paths.fonts.src + '**/*',
-            !paths.assets.src + '**/*',
             paths.src + '*',
-            'node_modules/apache-server-configs/dist/.htaccess'], {
+            'node_modules/apache-server-configs/dist/.htaccess',
+            '!' + paths.src + '**/*.html',
+            '!' + paths.images.src + '**/*',
+            '!' + paths.styles.src + '**/*',
+            '!' + paths.scripts.src + '**/*',
+            '!' + paths.fonts.src + '**/*',
+            '!' + paths.assets.src + '**/*'], {
             dot: true
         })
             .pipe(gulp.dest(paths.dest))
