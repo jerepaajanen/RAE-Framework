@@ -1838,25 +1838,25 @@
             <article class="addons__tooltips">
                 <header>
                     <h3 class="u-muted">Tooltips</h3>
-                    <p>Apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can make tooltips multi-line with <code>data-tooltip-multiline</code>
+                    <p>Add tooltips built entirely in CSS to nearly any element. Use  accessible <code>aria-label="<em>Tooltip content</em>"</code> attribute for tooltip content and <code>class="tooltip tooltip--top"</code> attributes. You can make tooltips multiline with additional <code>tooltip--multiline</code> class.
                     </p>
                 </header>
                 <div class="well u-clearfix u-text-center example">
                     <div class="row">
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="Top tooltip" data-placement="top">&nbsp</a>
+                            <a href="#" class="tooltip tooltip--top" aria-label="Top tooltip">&nbsp</a>
                             <div>Tooltip top</div>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="Right tooltip" data-placement="right">&nbsp</a>
+                            <a href="#" class="tooltip tooltip--right" aria-label="Right tooltip">&nbsp</a>
                             <div>Tooltip right</div>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">&nbsp</a>
+                            <a href="#" class="tooltip tooltip--bottom" aria-label="Bottom tooltip">&nbsp</a>
                             <div>Tooltip bottom</div>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="Left tooltip" data-placement="left">&nbsp</a>
+                            <a href="#" class="tooltip tooltip--left" aria-label="Left tooltip">&nbsp</a>
                             <div>Tooltip left</div>
                         </div>
 
@@ -1865,19 +1865,19 @@
                 <div class="well u-clearfix u-text-center example">
                     <div class="row">
                         <div class="col-md-3">
-                            <a data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="top" data-tooltip-multiline>&nbsp</a>
+                            <a class="tooltip tooltip--top tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences." data-placement="top" class="tooltip"-multiline>&nbsp</a>
                             <div>Multiline top</div>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="right" data-tooltip-multiline>&nbsp</a>
+                            <a href="#" class="tooltip tooltip--right tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences." data-placement="right" class="tooltip"-multiline>&nbsp</a>
                             <div>Multiline right</div>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="bottom" data-tooltip-multiline>&nbsp</a>
+                            <a href="#" class="tooltip tooltip--bottom tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences." data-placement="bottom" class="tooltip"-multiline>&nbsp</a>
                             <div>Multiline bottom</div>
                         </div>
                         <div class="col-md-3">
-                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="left" data-tooltip-multiline>&nbsp</a>
+                            <a href="#" class="tooltip tooltip--left tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences." data-placement="left" class="tooltip"-multiline>&nbsp</a>
                             <div>Multiline left</div>
                         </div>
 
