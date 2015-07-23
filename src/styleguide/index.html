@@ -140,11 +140,6 @@
             margin-bottom: 1rem;
         }
 
-        .docs-content .addons__tooltips a {
-            float: left;
-            clear: both;
-        }
-
         .docs-content .animation {
             cursor: pointer;
             text-align: center;
@@ -180,7 +175,8 @@
             margin: 0 auto 1rem auto;
         }
 
-        .docs-content .animation .dot {
+        .docs-content .dot,
+        .docs-content .addons__tooltips .example a {
             display: inline-block;
             width: 1rem;
             height: 1rem;
@@ -1649,6 +1645,13 @@
                                     <div class="u-float-none">Remove float from element</div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td><code>.u-center-block</code>
+                                </td>
+                                <td>
+                                    <div class="u-center-block" style="max-width: 200px;">Set element horizontally center using margin and display block.</div>
+                                </td>
+                            </tr>
                             <tr style="height: 96px;">
                                 <td><code>.u-flex-center</code>
                                 </td>
@@ -1805,6 +1808,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><code>.text-overflow();</code>
+                                </td>
+                                <td>Text-overflow will shorten text with an ellipsis.
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><code>.momentun-scrolling();</code>
                                 </td>
                                 <td>Add momentum scrolling to element
@@ -1824,7 +1833,7 @@
         <hr />
         <section class="addons container">
             <header>
-                <h2 class="u-text-normal">Addons</h2>
+                <h2 class="u-text-normal">Additional components</h2>
             </header>
             <article class="addons__tooltips">
                 <header>
@@ -1832,15 +1841,47 @@
                     <p>Apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can make tooltips multi-line with <code>data-tooltip-multiline</code>
                     </p>
                 </header>
-                <div class="well u-clearfix example">
-                    <a href="#" data-tooltip="Top tooltip" data-placement="top">Top tooltip</a>
-                    <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">Bottom tooltip</a>
-                    <a href="#" data-tooltip="Left tooltip" data-placement="left">Left tooltip</a>
-                    <a href="#" data-tooltip="Right tooltip" data-placement="right">Right tooltip</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="top" data-tooltip-multiline>Multi-line top</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="bottom" data-tooltip-multiline>Multi-line bottom</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="left" data-tooltip-multiline>Multi-line left</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="right" data-tooltip-multiline>Multi-line right</a>
+                <div class="well u-clearfix u-text-center example">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Top tooltip" data-placement="top">&nbsp</a>
+                            <div>Tooltip top</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Right tooltip" data-placement="right">&nbsp</a>
+                            <div>Tooltip right</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">&nbsp</a>
+                            <div>Tooltip bottom</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Left tooltip" data-placement="left">&nbsp</a>
+                            <div>Tooltip left</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="well u-clearfix u-text-center example">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="top" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline top</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="right" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline right</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="bottom" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline bottom</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="left" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline left</div>
+                        </div>
+
+                    </div>
                 </div>
             </article>
             <article class="addons__animations">

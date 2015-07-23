@@ -21,7 +21,6 @@
 
     [data-tooltip] {
         position: relative;
-        display: inline-block;
         &:after,
         &:before {
             opacity: 0;
@@ -30,14 +29,13 @@
             position: absolute;
             z-index: @z-index-8;
             transition:
-                opacity @tooltip-anim-duration ease-in-out,
-                transform @tooltip-anim-duration ease-in-out;
-            // HACK: Trigger hardware accelerated rendering,
-            // otherwise transform was not working on a hidden element
-            transform: translate3d(0, 0, 0);
+                opacity @tooltip-anim-duration @transition-easing-default @tooltip-anim-delay,
+                transform @tooltip-anim-duration @transition-easing-default @tooltip-anim-delay;
+            animation-duration: @tooltip-anim-duration;
         }
 
         &:after when (@tooltip-arrow-size >= 1) {
+            // Render tooltip arrow only when arrow size is larger than 0.
             content: "";
             width: 0;
             height: 0;
@@ -55,16 +53,18 @@
             font-size: @tooltip-font-size;
             line-height: @tooltip-font-size;
             letter-spacing: @tooltip-letter-spacing;
-            text-align: left;
+            text-align: center;
             text-transform: none;
             padding: @tooltip-vertical-padding @tooltip-horizontal-padding;
             font-weight: @tooltip-font-weight;
-            width: auto;
+            word-wrap: break-word;
             white-space:pre;
+            -webkit-font-smoothing: subpixel-antialiased; // Make tooltips more readable
         }
 
         &:hover,
-        &:focus {
+        &:focus
+        &:active {
             &:after,
             &:before {
                 opacity: 1;
@@ -74,103 +74,111 @@
         &:hover:before,
         &:hover:after {
             // Transition-delay will apply as soon as element is hovered.
-            transition-delay: @tooltip-anim-delay;
+
         }
 
+        // Tooltip top & bottom
+        &[data-placement="top"],
+        &[data-placement="bottom"] {
+            &:after,
+            &:before {
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+        }
 
         &[data-placement="top"] {
-            &:before, &:after {
+            &:before,
+            &:after {
                 bottom: 100%;
-                left: 50%;
             }
             &:after when (@tooltip-arrow-size >= 1) {
                 border-top-color: @tooltip-background;
-                margin-left: -(@tooltip-arrow-size); // Center arrow
                 margin-bottom: -(@tooltip-arrow-size * 2);
-            }
-            &:before {
-                margin-left: -2em;
             }
             &:hover,
             &:focus {
                 &:after,
                 &:before {
-                    transform: translate3d(0, -@tooltip-position, 0);
+                transform: translate(-50%, -@tooltip-position);
                 }
             }
         }
         &[data-placement="bottom"] {
-            &:before, &:after {
+            &:before,
+            &:after {
                 top: 100%;
-                left: 50%;
             }
             &:after when (@tooltip-arrow-size >= 1) {
                 border-bottom-color: @tooltip-background;
-                margin-left: -(@tooltip-arrow-size); // Center arrow
                 margin-top: -(@tooltip-arrow-size * 2);
-            }
-            &:before {
-                margin-left: -2em;
             }
             &:hover,
             &:focus {
                 &:after,
                 &:before {
-                    transform: translate3d(0, @tooltip-position, 0);
+                    transform: translate(-50%, @tooltip-position);
                 }
             }
         }
-        &[data-placement="left"] {
-            &:before, &:after {
-                right: 100%;
+
+        // Tooltip left & right
+        &[data-placement="left"],
+        &[data-placement="right"] {
+            &:after,
+            &:before {
                 top: 50%;
+                transform: translate(0, -50%);
+            }
+        }
+
+        &[data-placement="left"] {
+            &:before,
+            &:after {
+                right: 100%;
             }
             &:after when (@tooltip-arrow-size >= 1) {
                 border-left-color: @tooltip-background;
-                margin-top: -(@tooltip-arrow-size); // Center arrow
                 margin-right: -(@tooltip-arrow-size * 2);
-            }
-            &:before {
-                margin-top: -(@tooltip-height / 2); // Center content
             }
             &:hover,
             &:focus {
                 &:after,
                 &:before {
-                    transform: translate3d(-@tooltip-position, 0, 0);
+                transform: translate(-@tooltip-position, -50%);
                 }
             }
         }
 
         &[data-placement="right"] {
-            &:before, &:after {
+            &:before,
+            &:after {
                 left: 100%;
-                top: 50%;
             }
             &:after when (@tooltip-arrow-size >= 1) {
                 border-right-color: @tooltip-background;
-                margin-top: -(@tooltip-arrow-size); // Center arrow
                 margin-left: -(@tooltip-arrow-size * 2);
-            }
-            &:before {
-                margin-top: -(@tooltip-height / 2); // Center content
-
             }
             &:hover,
             &:focus {
                 &:after,
                 &:before {
-                    transform: translate3d(@tooltip-position, 0, 0);
+                transform: translate(@tooltip-position, -50%);
                 }
             }
         }
 
+
         &[data-tooltip-multiline] {
             &:before {
-                white-space: pre-wrap;
+                white-space: pre-line;
                 line-height: @line-height-ratio;
-                width: @tooltip-multiline-width;
-                height: auto;
+                width: max-content;
+                max-width: @tooltip-multiline-width;
+                @media @ie9-10 {
+                    // Fixed width for IE9 and IE10
+                    width: @tooltip-multiline-width;
+                }
             }
         }
     }

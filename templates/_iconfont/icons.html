@@ -140,11 +140,6 @@
             margin-bottom: 1rem;
         }
 
-        .docs-content .addons__tooltips a {
-            float: left;
-            clear: both;
-        }
-
         .docs-content .animation {
             cursor: pointer;
             text-align: center;
@@ -180,7 +175,8 @@
             margin: 0 auto 1rem auto;
         }
 
-        .docs-content .animation .dot {
+        .docs-content .dot,
+        .docs-content .addons__tooltips .example a {
             display: inline-block;
             width: 1rem;
             height: 1rem;
@@ -367,7 +363,7 @@
                 <header>
                     <h3 class="u-muted">Headings</h3>
                 </header>
-                <div>
+                <div class="example">
                     <h1>This is heading 1 (h1)</h1>
                     <h2>This is heading 2 (h2)</h2>
                     <h3>This is heading 3 (h3)</h3>
@@ -513,12 +509,12 @@
                 <header>
                     <h3 class="u-muted">Responsive video</h3>
                 </header>
-                    <div class="example">
-                        <!-- Default aspect-ratio is 16:9 -->
-                        <div class="embed-wrap">
-                            <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" allowfullscreen></iframe>
-                        </div>
+                <div class="example">
+                    <!-- Default aspect-ratio is 16:9 -->
+                    <div class="embed-wrap">
+                        <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" width="500" height="281" allowfullscreen></iframe>
                     </div>
+                </div>
             </article>
         </section>
         <hr />
@@ -1160,7 +1156,7 @@
                 </header>
                 <div class="example">
                     <div class="table-responsive">
-                        <table id="tables__responsive">
+                        <table id="tables__responsive" class="table" class="table">
                             <caption>
                                 Optional table caption
                             </caption>
@@ -1264,6 +1260,36 @@
                     <a role="button" aria-label="submit form" href="#" class="button button--default">Submit</a>
                     <div role="button" tabindex="0" class="button button--default">Default Button</div>
                 </div>
+            </article>
+        </section>
+        <hr />
+        <section class="icons container">
+            <header>
+                <h2 class="u-text-normal">Icons</h2>
+            </header>
+            <article class="icons__list">
+                <header>
+                    <h3 class="u-muted">List of <%= fontName %></h3>
+                </header>
+                <ul class="row">
+                    <% _.each(glyphs, function(glyph) { %>
+                        <li class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
+                            <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
+                            <div class="well magnify">
+                                <ul class="glyph-magnify">
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--lg"></i></li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--3x"></i></li>
+
+                                </ul>
+                                <div>
+                                    <code class="glyph-codepoint">Unicode: <%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %></code>
+                                </div>
+                            </div>
+                            </li>
+                            <% }); %>
+                </ul>
             </article>
         </section>
         <hr />
@@ -1518,36 +1544,6 @@
             </article>
         </section>
         <hr />
-        <section class="icons container">
-            <header>
-                <h2 class="u-text-normal">Icons</h2>
-            </header>
-            <article class="icons__list">
-                <header>
-                    <h3 class="u-muted">List of <%= fontName %></h3>
-                </header>
-                <ul class="row">
-                    <% _.each(glyphs, function(glyph) { %>
-                        <li class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
-                            <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
-                            <div class="well magnify">
-                                <ul class="glyph-magnify">
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--lg"></i></li>
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--3x"></i></li>
-
-                                </ul>
-                                <div>
-                                    <code class="glyph-codepoint">Unicode: <%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %></code>
-                                </div>
-                            </div>
-                            </li>
-                            <% }); %>
-                </ul>
-            </article>
-        </section>
-        <hr />
         <section class="helpers container">
             <header>
                 <h2 class="u-text-normal">Utilities, mixins &amp; variables</h2>
@@ -1677,6 +1673,13 @@
                                 </td>
                                 <td>
                                     <div class="u-float-none">Remove float from element</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-center-block</code>
+                                </td>
+                                <td>
+                                    <div class="u-center-block" style="max-width: 200px;">Set element horizontally center using margin and display block.</div>
                                 </td>
                             </tr>
                             <tr style="height: 96px;">
@@ -1835,6 +1838,12 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td><code>.text-overflow();</code>
+                                </td>
+                                <td>Text-overflow will shorten text with an ellipsis.
+                                </td>
+                            </tr>
+                            <tr>
                                 <td><code>.momentun-scrolling();</code>
                                 </td>
                                 <td>Add momentum scrolling to element
@@ -1854,7 +1863,7 @@
         <hr />
         <section class="addons container">
             <header>
-                <h2 class="u-text-normal">Addons</h2>
+                <h2 class="u-text-normal">Additional components</h2>
             </header>
             <article class="addons__tooltips">
                 <header>
@@ -1862,15 +1871,47 @@
                     <p>Apply tooltips to any element as long as you are using <code>data-tooltip="<strong>Tooltip content</strong>"</code> and <code>data-placement="<strong>position</strong>"</code> attributes. You can make tooltips multi-line with <code>data-tooltip-multiline</code>
                     </p>
                 </header>
-                <div class="well u-clearfix example">
-                    <a href="#" data-tooltip="Top tooltip" data-placement="top">Top tooltip</a>
-                    <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">Bottom tooltip</a>
-                    <a href="#" data-tooltip="Left tooltip" data-placement="left">Left tooltip</a>
-                    <a href="#" data-tooltip="Right tooltip" data-placement="right">Right tooltip</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="top" data-tooltip-multiline>Multi-line top</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="bottom" data-tooltip-multiline>Multi-line bottom</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="left" data-tooltip-multiline>Multi-line left</a>
-                    <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="right" data-tooltip-multiline>Multi-line right</a>
+                <div class="well u-clearfix u-text-center example">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Top tooltip" data-placement="top">&nbsp</a>
+                            <div>Tooltip top</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Right tooltip" data-placement="right">&nbsp</a>
+                            <div>Tooltip right</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Bottom tooltip" data-placement="bottom">&nbsp</a>
+                            <div>Tooltip bottom</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="Left tooltip" data-placement="left">&nbsp</a>
+                            <div>Tooltip left</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="well u-clearfix u-text-center example">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <a data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="top" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline top</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="right" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline right</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="bottom" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline bottom</div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="#" data-tooltip="This is a multiline tooltip that fits longer sentences." data-placement="left" data-tooltip-multiline>&nbsp</a>
+                            <div>Multiline left</div>
+                        </div>
+
+                    </div>
                 </div>
             </article>
             <article class="addons__animations">
