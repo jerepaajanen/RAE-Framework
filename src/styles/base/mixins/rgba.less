@@ -1,0 +1,13 @@
+//
+// Convert HEX color to RGBA color
+// -------------------------------------------------------
+
+// Usage
+// .selector {
+//    .rgba(#ae956d, .5);
+//     background: @rgba;
+// }
+
+.rgba(@color, @opacity: 1){
+    @rgba: rgba( red(@color), green(@color), blue(@color), @opacity );
+}

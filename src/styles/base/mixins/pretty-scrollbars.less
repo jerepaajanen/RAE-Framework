@@ -1,12 +1,16 @@
 //
-// Webkit-scrollbars
+// Pretty scrollbars
 // -------------------------------------------------------
 
-.webkit-scrollbars() {
+.pretty-scrollbars() {
+    ms-overflow-style: -ms-autohiding-scrollbar;
+
     &::-webkit-scrollbar {
-        height: (@spacing-half / 2);
-        width: (@spacing-half / 2);
-        -webkit-appearance: none;
+        height: 4px;
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
     }
 
     &::-webkit-scrollbar-thumb {
