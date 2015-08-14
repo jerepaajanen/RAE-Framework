@@ -22,21 +22,20 @@
 
     // Columns
     [class*='col-'] {
-        //position: relative;
         .make-column(@grid-gutter-width);
         .column(); // default width for mobile column
     }
 
     // Small Grid for Mobile devices
     .use-screen-sm(@boolean) when (@boolean = true) {
-        .make-grid(@grid-columns, width, -sm);
+        .make-grid(@grid-columns, column, -sm);
     }
     .use-screen-sm(@use-screen-sm);
 
     // Medium Grid for Tablet devices
     .use-screen-md(@boolean) when (@boolean = true) {
         @media @medium-up {
-            .make-grid(@grid-columns, width, -md);
+            .make-grid(@grid-columns, column, -md);
             .make-grid(@grid-columns, pull, -md);
             .make-grid(@grid-columns, push, -md);
             .make-grid(@grid-columns, offset, -md);
@@ -47,7 +46,7 @@
     // Large Grid, optimal for laptop & desktop devices
     .use-screen-lg(@boolean) when (@boolean = true) {
         @media @large-up {
-            .make-grid(@grid-columns, width, -lg);
+            .make-grid(@grid-columns, column, -lg);
             .make-grid(@grid-columns, pull, -lg);
             .make-grid(@grid-columns, push, -lg);
             .make-grid(@grid-columns, offset, -lg);
@@ -58,7 +57,7 @@
     // Extra Large Grid for Large desktop devices
     .use-screen-xl(@boolean) when (@boolean = true) {
         @media @xlarge-up {
-            .make-grid(@grid-columns, width, -xl);
+            .make-grid(@grid-columns, column, -xl);
             .make-grid(@grid-columns, pull, -xl);
             .make-grid(@grid-columns, push, -xl);
             .make-grid(@grid-columns, offset, -xl);

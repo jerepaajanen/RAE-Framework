@@ -4,7 +4,7 @@
 
 // Used only by RAE Framework to generate grid classes
 
-.calc-grid(@index, @type, @class: ~'') when (@type = width) and (@index > 0) and (@use-columns = true){
+.calc-grid(@index, @type, @class: ~'') when (@type = column) and (@index > 0) and (@use-columns = true){
     .col@{class}-@{index} {
         width: percentage((@index / @grid-columns));
     }
