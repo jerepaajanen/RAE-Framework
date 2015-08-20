@@ -198,7 +198,7 @@
     .radio {
         label {
             &:before {
-                border-radius: 50%;
+                border-radius: 100%;
             }
             &:after {
                 //background-image: url(../images/form/icon-radio.svg);
@@ -206,8 +206,8 @@
                 //CSS Only method (wip)
                 background-color: @input-radio-checked-color;
                 background-clip: padding-box;
-                border: (1em / 4.5) solid transparent;
-                border-radius: 999em;
+                border: @input-radio-checked-margin solid transparent;
+                border-radius: 100%;
             }
         }
     }
