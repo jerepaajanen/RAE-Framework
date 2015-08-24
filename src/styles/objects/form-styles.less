@@ -142,13 +142,14 @@
             }
 
             &:after {
+                // Background-image method
                 //background-size: (@input-box-size - ceil(@input-box-size / 6)); // make background-size consistent in ie9 and modern browsers.
                 //background-repeat: no-repeat;
                 //background-position: center center;
                 //background-origin: border-box; // fix IE9 background positioning
                 //transform: scale(0);
 
-                //CSS Only method
+                // CSS-only method
                 font-size: @input-box-size; // set font-size for em-scaling
                 transform: scale(0) rotate(45deg);
                 transition: transform 100ms @transition-easing-default;
@@ -180,9 +181,10 @@
                 border-radius: @input-checkbox-border-radius;
             }
             &:after {
+                // Background-image method
                 //background-image: url(../images/form/icon-checkbox.svg);
 
-                //CSS Only method
+                // CSS-only method
                 border: solid @input-checkbox-checked-color;
                 border-width: 0 (1em / 6) (1em / 6) 0 ;
                 height: (1em / 1.5);
@@ -201,9 +203,10 @@
                 border-radius: 100%;
             }
             &:after {
+                // Background-image method
                 //background-image: url(../images/form/icon-radio.svg);
 
-                //CSS Only method (wip)
+                // CSS-only method
                 background-color: @input-radio-checked-color;
                 background-clip: padding-box;
                 border: @input-radio-checked-margin solid transparent;
@@ -216,6 +219,15 @@
     .form-item {
         display: block;
         margin-bottom: @form-item-spacing;
+
+        // Margin for labels
+        label + input,
+        label + select,
+        label + textarea,
+        label + .checkbox,
+        label + .radio {
+            margin-top: @label-margin;
+        }
     }
 
 }
