@@ -65,8 +65,10 @@
 @spacing-double:                round(@base-line-height * 2);
 
 // Modular Scale
-// Rate of growth for headings, buttons, etc.
-@modular-scale-factor:          1.333;
+// Produce font-size in default modular-scale steps. Used in headings etc.
+@modular-scale-base:            @base-font-size;
+@modular-scale-ratio:           @perfect-fourth;
+@modular-scale-px-output:       false;
 
 // @Font-Face (uncomment to use)
 // Options: 'font-family', 'font-file-name', font-weight, font-style
