@@ -28,31 +28,30 @@
 
 @potrait: ~"(orientation:portrait)";
 
-// Extra-small only
+// Extra-small
 
+@xsmall-down: ~"(max-width: @{screen-xs-max})";
 @xsmall-only: ~"(max-width: @{screen-xs-max})";
 
-// Small only
+// Small
 
-@small-only: ~"(max-width: @{screen-sm-max})";
+@small-up: ~"(min-width: @{screen-sm-min})";
+@small-down: ~"(max-width: @{screen-sm-max})";
+@small-only: ~"(min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
 
-// Medium only
-
-@medium-only: ~"(min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
-
-// Medium and up
+// Medium
 
 @medium-up: ~"(min-width: @{screen-md-min})";
+@medium-down: ~"(max-width: @{screen-md-max})";
+@medium-only: ~"(min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
 
-// Large only
-
-@large-only: ~"(min-width: @{screen-lg-min}) and (max-width: @{screen-lg-max})";
-
-// Large and up
+// Large
 
 @large-up: ~"(min-width: @{screen-lg-min})";
+@large-down: ~"(max-width: @{screen-lg-max})";
+@large-only: ~"(min-width: @{screen-lg-min}) and (max-width: @{screen-lg-max})";
 
-// Extra-large and up
+// Extra-large
 
 @xlarge-up: ~"(min-width: @{screen-xl-min})";
 

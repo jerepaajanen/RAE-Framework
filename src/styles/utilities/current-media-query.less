@@ -7,7 +7,7 @@
 
     html:after {
         color: @white;
-        content: "undefined";
+        content: "@xs";
         padding: 6px;
         position: fixed;
         top: 0;
@@ -21,7 +21,7 @@
         border-radius: 0 0 0 3px;
         background: rgba(0,0,0,0.5);
 
-        @media @small-only {
+        @media @small-up {
             content: "@sm";
         }
 
