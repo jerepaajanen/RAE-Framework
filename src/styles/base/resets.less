@@ -21,6 +21,41 @@
         text-rendering: optimizeLegibility;
     }
 
+    // Universal inheritance
+    
+    *,
+    ::before,
+    ::after {
+        box-sizing: inherit;
+        // Specify solid border style of all elements
+        border-style: solid;
+        border-width: 0;
+    }
+
+    * {
+        font-size: inherit;
+        line-height: inherit;
+        // Remove margin and padding of all elements
+        margin: 0;
+        padding: 0;
+    }
+
+    ::before,
+    ::after {
+        text-decoration: inherit;
+        vertical-align: inherit;
+    }
+    
+    // Make viewport responsive
+
+    // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in some cases.
+
+    @-moz-viewport      { width: device-width; }
+    @-ms-viewport       { width: device-width; }
+    @-o-viewport        { width: device-width; }
+    @-webkit-viewport   { width: device-width; }
+    @viewport           { width: device-width; }
+
     audio:not([controls]) {
         display: none; // Chrome 40+, iOS 8+, Safari 8+
     }
@@ -88,28 +123,8 @@
         user-select: none; // Android 4.4+, Chrome 40+, Firefox 36+, iOS 8+, Safari 8+
     }
 
-    // Universal inheritance
-    *,
-    ::before,
-    ::after {
-        box-sizing: inherit;
-        // Specify solid border style of all elements
-        border-style: solid;
-        border-width: 0;
-    }
-
-    * {
-        font-size: inherit;
-        line-height: inherit;
-        // Remove margin and padding of all elements
-        margin: 0;
-        padding: 0;
-    }
-
-    ::before,
-    ::after {
-        text-decoration: inherit;
-        vertical-align: inherit;
+    [role="button"] {
+        cursor: pointer; // iOS "clickable elements" fix for role="button"
     }
 
     // Specify the text decoration of anchors and improve readability of focused elements when they are also in an active/hover state.
