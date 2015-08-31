@@ -3,21 +3,21 @@
 // -------------------------------------------------------
 
 // Usage
-// @media @medium-up {
+// @media @md-up {
 //    .selector {}
 // }
 
 // Variables
 
-@screen-sm-min: @screen-sm;
-@screen-md-min: @screen-md;
-@screen-lg-min: @screen-lg;
-@screen-xl-min: @screen-xl;
+@breakpoint-sm-min: @breakpoint-sm;
+@breakpoint-md-min: @breakpoint-md;
+@breakpoint-lg-min: @breakpoint-lg;
+@breakpoint-xl-min: @breakpoint-xl;
 
-@screen-xs-max: (@screen-sm-min - 1);
-@screen-sm-max: (@screen-md-min - 1);
-@screen-md-max: (@screen-lg-min - 1);
-@screen-lg-max: (@screen-xl-min - 1);
+@breakpoint-xs-max: (@breakpoint-sm-min - 1);
+@breakpoint-sm-max: (@breakpoint-md-min - 1);
+@breakpoint-md-max: (@breakpoint-lg-min - 1);
+@breakpoint-lg-max: (@breakpoint-xl-min - 1);
 
 
 // Landscape
@@ -30,30 +30,30 @@
 
 // Extra-small
 
-@xsmall-down: ~"(max-width: @{screen-xs-max})";
-@xsmall-only: ~"(max-width: @{screen-xs-max})";
+@xs-down: ~"(max-width: @{breakpoint-xs-max})";
+@xs-only: ~"(max-width: @{breakpoint-xs-max})";
 
 // Small
 
-@small-up: ~"(min-width: @{screen-sm-min})";
-@small-down: ~"(max-width: @{screen-sm-max})";
-@small-only: ~"(min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
+@sm-up: ~"(min-width: @{breakpoint-sm-min})";
+@sm-down: ~"(max-width: @{breakpoint-sm-max})";
+@sm-only: ~"(min-width: @{breakpoint-sm-min}) and (max-width: @{breakpoint-sm-max})";
 
 // Medium
 
-@medium-up: ~"(min-width: @{screen-md-min})";
-@medium-down: ~"(max-width: @{screen-md-max})";
-@medium-only: ~"(min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
+@md-up: ~"(min-width: @{breakpoint-md-min})";
+@md-down: ~"(max-width: @{breakpoint-md-max})";
+@md-only: ~"(min-width: @{breakpoint-md-min}) and (max-width: @{breakpoint-md-max})";
 
 // Large
 
-@large-up: ~"(min-width: @{screen-lg-min})";
-@large-down: ~"(max-width: @{screen-lg-max})";
-@large-only: ~"(min-width: @{screen-lg-min}) and (max-width: @{screen-lg-max})";
+@lg-up: ~"(min-width: @{breakpoint-lg-min})";
+@lg-down: ~"(max-width: @{breakpoint-lg-max})";
+@lg-only: ~"(min-width: @{breakpoint-lg-min}) and (max-width: @{breakpoint-lg-max})";
 
 // Extra-large
 
-@xlarge-up: ~"(min-width: @{screen-xl-min})";
+@xl-up: ~"(min-width: @{breakpoint-xl-min})";
 
 // Retina
 

@@ -17,18 +17,16 @@
 @grid-gutter-width:             24px;
 
 // Breakpoints & container widths
-@use-screen-sm:                 true;
-    @container-sm:              100%;
-    @screen-sm:                 480px; //30em
-@use-screen-md:                 true;
-    @container-md:              (@screen-md-min - @grid-gutter-width);
-    @screen-md:                 768px; //48em
-@use-screen-lg:                 true;
-    @container-lg:              (@screen-lg-min - @grid-gutter-width);
-    @screen-lg:                 992px; //62em
-@use-screen-xl:                 true;
-    @container-xl:              (@screen-xl-min - @grid-gutter-width);
-    @screen-xl:                 1280px; //80em
+@breakpoint-xs:                 0;
+@breakpoint-sm:                 480px; //30em;
+@breakpoint-md:                 768px; //48em;
+@breakpoint-lg:                 992px; //62em;
+@breakpoint-xl:                 1280px; //80em;
+
+@container-sm:                  100%;
+@container-md:                  (@breakpoint-md - @grid-gutter-width);
+@container-lg:                  (@breakpoint-lg - @grid-gutter-width);
+@container-xl:                  (@breakpoint-xl - @grid-gutter-width);
 
 
 // TYPOGRAPHY & BASELINE PROPORTIONS
@@ -305,6 +303,11 @@
 @use-print:                     true;
 
 // Layout
+@use-screen-sm:                 true;
+@use-screen-md:                 true;
+@use-screen-lg:                 true;
+@use-screen-xl:                 true;
+
 @use-container:                 true;
 @use-columns:                   true;
     @use-push:                  true;

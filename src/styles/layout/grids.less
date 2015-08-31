@@ -34,7 +34,7 @@
 
     // Medium Grid for Tablet devices
     .use-screen-md(@boolean) when (@boolean = true) {
-        @media @medium-up {
+        @media @md-up {
             .make-grid(@grid-columns, column, -md);
             .make-grid(@grid-columns, pull, -md);
             .make-grid(@grid-columns, push, -md);
@@ -45,7 +45,7 @@
 
     // Large Grid, optimal for laptop & desktop devices
     .use-screen-lg(@boolean) when (@boolean = true) {
-        @media @large-up {
+        @media @lg-up {
             .make-grid(@grid-columns, column, -lg);
             .make-grid(@grid-columns, pull, -lg);
             .make-grid(@grid-columns, push, -lg);
@@ -56,7 +56,7 @@
 
     // Extra Large Grid for Large desktop devices
     .use-screen-xl(@boolean) when (@boolean = true) {
-        @media @xlarge-up {
+        @media @xl-up {
             .make-grid(@grid-columns, column, -xl);
             .make-grid(@grid-columns, pull, -xl);
             .make-grid(@grid-columns, push, -xl);
