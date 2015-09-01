@@ -54,8 +54,11 @@
 @letter-spacing-loosest:        0.05em;
 
 // Spacing
+// The base spacing unit is set equal to the "line-height" by default.
+// This helps create a consistent vertical rhythm throughout the framework.
 @spacing-base:                  @base-line-height;
 @spacing-half:                  round(@base-line-height / 2);
+@spacing-two-thirds:            round(@spacing-third * 2);
 @spacing-third:                 round(@base-line-height / 3);
 @spacing-fourth:                round(@base-line-height / 4);
 @spacing-fifth:                 round(@base-line-height / 5);
