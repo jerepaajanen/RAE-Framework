@@ -6,7 +6,14 @@
 
 .calc-grid(@index, @type, @class: ~'') when (@type = column) and (@index > 0) and (@use-columns = true){
     .col@{class}-@{index} {
-        width: percentage((@index / @grid-columns));
+
+        & when (@use-flex-grid = false) {
+            width: percentage((@index / @grid-columns));
+        }
+
+        & when (@use-flex-grid = true) {
+            flex: 0 0 percentage(@index / @grid-columns);
+        }
     }
 }
 

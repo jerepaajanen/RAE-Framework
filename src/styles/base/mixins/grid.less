@@ -7,11 +7,15 @@
 .make-container(@gutter: @grid-gutter-width) {
     margin-left: auto;
     margin-right: auto;
+
     & when (@gutter > 0) {
         padding-left: (@gutter / 2);
         padding-right: (@gutter / 2);
     }
-    .clearfix();
+
+    & when (@use-flex-grid = false) {
+        .clearfix();
+    }
 }
 
 // Row mixins
@@ -21,19 +25,31 @@
         margin-left: ceil(@gutter / -2);
         margin-right: floor(@gutter / -2);
     }
-    .clearfix();
+
+    & when (@use-flex-grid = false) {
+        .clearfix();
+    }
+
+    & when (@use-flex-grid = true) {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 
 
 // Column mixins
 
 .make-column(@gutter: @grid-gutter-width) {
-    float: left;
     position: relative;
     min-height: 1px;
+
     & when (@gutter > 0) {
         padding-left:(@gutter / 2);
         padding-right: (@gutter / 2);
+    }
+
+    & when (@use-flex-grid = false) {
+        float: left;
     }
 }
 

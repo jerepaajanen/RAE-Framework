@@ -112,16 +112,11 @@
             fill: #d9534f;
         }
 
-        .docs-content .grid__columns .row > [class*='col-'] {
+        .docs-content .grid__columns .column {
             background: #f2f2f2;
             min-height: 1em;
             margin-bottom: 1em;
-            background-clip: content-box;
-        }
-
-        .docs-content .grid__columns [class*='col-'] .row {
-            background: white;
-            margin-bottom: -1rem;
+            display: block;
         }
 
         .docs-content .condition-table th {
@@ -539,20 +534,20 @@
                 </header>
                 <div class="example">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"></div>
-                        <div class="col-lg-7 col-md-6"></div>
-                        <div class="col-lg-5 col-md-6"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-8"></div>
+                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
+                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
+                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
+                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
+                        <div class="col-md-4"><span class="column"></span></div>
+                        <div class="col-md-8"><span class="column"></span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"></div>
-                        <div class="col-lg-7 col-md-6"></div>
-                        <div class="col-lg-5 col-md-6"></div>
-                        <div class="col-md-4"></div>
-                        <div class="col-md-8"></div>
+                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
+                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
+                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
+                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
+                        <div class="col-md-4"><span class="column"></span></div>
+                        <div class="col-md-8"><span class="column"></span></div>
                     </div>
                 </div>
                 <h4>Column nesting with row-classes</h4>
@@ -560,28 +555,28 @@
                     <div class="row">
                         <div class="col-xl-6 push-xl-6 col-md-6">
                             <div class="row">
-                                <div class="col-xl-3 col-sm-6"></div>
-                                <div class="col-xl-3 col-sm-6"></div>
-                                <div class="col-xl-3 col-sm-6"></div>
-                                <div class="col-xl-3 col-sm-6"></div>
+                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
+                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
+                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
+                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="row">
-                                        <div class="col-md-6 col-sm-6"></div>
-                                        <div class="col-md-6 col-sm-6"></div>
+                                        <div class="col-md-6 col-sm-6"><span class="column"></span></div>
+                                        <div class="col-md-6 col-sm-6"><span class="column"></span></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-xl-6 pull-xl-6 col-md-6">
                             <div class="row">
-                                <div class="col-lg-4 col-sm-4"></div>
-                                <div class="col-lg-8 col-sm-8"></div>
-                                <div class="col-lg-4 col-sm-4"></div>
-                                <div class="col-lg-8 col-sm-8"></div>
-                                <div class="col-lg-4 col-sm-4"></div>
-                                <div class="col-lg-8 col-sm-8"></div>
+                                <div class="col-lg-4 col-sm-4"><span class="column"></span></div>
+                                <div class="col-lg-8 col-sm-8"><span class="column"></span></div>
+                                <div class="col-lg-4 col-sm-4"><span class="column"></span></div>
+                                <div class="col-lg-8 col-sm-8"><span class="column"></span></div>
+                                <div class="col-lg-4 col-sm-4"><span class="column"></span></div>
+                                <div class="col-lg-8 col-sm-8"><span class="column"></span></div>
                             </div>
                         </div>
                     </div>
@@ -589,39 +584,39 @@
                 <h4>Columns with half-gutters</h4>
                 <div class="example">
                     <div class="row row--half-gutters">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"></div>
-                        <div class="col-lg-7 col-md-6"></div>
-                        <div class="col-lg-5 col-md-6"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
+                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
+                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
+                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
+                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
                     </div>
                 </div>
                 <!-- Under condiseration
                 <h4>Columns with double-gutters</h4>
                 <div class="example">
                     <div class="row row--double-gutters">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"></div>
-                        <div class="col-lg-7 col-md-6"></div>
-                        <div class="col-lg-5 col-md-6"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
+                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
+                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
+                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
+                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
 
                     </div>
                 </div>-->
                 <h4>Columns without gutters</h4>
                 <div class="example">
                     <div class="row row--without-gutters">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"></div>
-                        <div class="col-lg-7 col-md-6"></div>
-                        <div class="col-lg-5 col-md-6"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
-                        <div class="col-sm-4"></div>
+                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
+                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
+                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
+                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
+                        <div class="col-sm-4"><span class="column"></span></div>
                     </div>
                 </div>
             </article>
