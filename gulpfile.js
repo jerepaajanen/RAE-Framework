@@ -140,11 +140,11 @@
             .pipe($.autoprefixer({
                 browsers: browserSupport
             }))
+            .pipe($.combineMediaQueries())
+            .pipe($.csso())
             .pipe($.header(banner, {
                 pkg: pkg
             }))
-            .pipe($.combineMediaQueries())
-            .pipe($.csso())
             .pipe($.rename({
                 suffix: '.min'
             }))
