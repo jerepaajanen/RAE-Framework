@@ -135,10 +135,15 @@
             margin-bottom: 1rem;
         }
 
+        .docs-content .addons__animations .well {
+            padding-bottom: .5rem;
+        }
+
         .docs-content .animation {
             cursor: pointer;
             text-align: center;
             position: relative;
+            margin-bottom: 1rem;
         }
 
         .docs-content .animation:before {
@@ -620,6 +625,7 @@
                     </div>
                 </div>
             </article>
+
             <article class="grid__conditionals">
                 <header>
                     <h3 class="u-muted">Conditional styles</h3>
@@ -1395,20 +1401,24 @@
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
-                        <div class="form-item row">
-                            <div class="col-md-2">
-                                <label for="demo-input__grid">Input</label>
-                            </div>
-                            <div class="col-md-10">
-                                <input type="text" id="demo-input__grid" placeholder="This is input">
+                        <div class="form-item">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="demo-input__grid">Input</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <input type="text" id="demo-input__grid" placeholder="This is input">
+                                </div>
                             </div>
                         </div>
-                        <div class="form-item row">
-                            <div class="col-md-2">
-                                <label for="demo-textarea__grid">Textarea</label>
-                            </div>
-                            <div class="col-md-10">
-                                <textarea id="demo-textarea__grid" placeholder="This is textarea" rows="6"></textarea>
+                        <div class="form-item">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="demo-textarea__grid">Textarea</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <textarea id="demo-textarea__grid" placeholder="This is textarea" rows="6"></textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -1589,11 +1599,25 @@
                                     <div class="u-center-block" style="max-width: 200px;">Set element horizontally center using margin and display block.</div>
                                 </td>
                             </tr>
-                            <tr style="height: 96px;">
+                            <tr>
                                 <td><code>.u-flex-center</code>
                                 </td>
                                 <td>
-                                    <div class="u-flex-center">Set element vertically center using flex-box.</div>
+                                    <div class="u-flex-center" style="height: 64px;">Set element vertically center using flex-box.</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-flex-top</code>
+                                </td>
+                                <td>
+                                    <div class="u-flex-top" style="height: 64px;">Set element vertically top using flex-box.</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-flex-bottom</code>
+                                </td>
+                                <td>
+                                    <div class="u-flex-bottom" style="height: 64px;">Set element vertically bottom using flex-box.</div>
                                 </td>
                             </tr>
                             <tr>
@@ -1720,12 +1744,11 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.font-size(<strong>scale-value, true</strong>);</code>
+                                <td><code>.font-size-fluid(<strong>min-size</strong>, <strong>max-size</strong>, <strong>min-range</strong>, <strong>max-range</strong>);</code>
                                 </td>
-                                <td>Uses modular scale, and output value as rem. Set modular scale factor with @modular-scale-factor
+                                <td>Fluid font-size that has min and max fontsize, between min and max range (breakpoint).
                                 </td>
                             </tr>
-
                             <tr>
                                 <td><code>.hide-text();</code>
                                 </td>
@@ -1751,7 +1774,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.momentun-scrolling();</code>
+                                <td><code>.modular-scale(<strong>step</strong>, <strong>base</strong>);</code>
+                                </td>
+                                <td>Converts font-size to specified modular-scale step.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.momentum-scrolling();</code>
                                 </td>
                                 <td>Add momentum scrolling to element
                                 </td>
@@ -1827,38 +1856,36 @@
                 </header>
                 <div class="well">
                     <div class="row">
-                        <div class="">
-                            <div class="col-md-3">
-                                <div class="animation animation-reset">
-                                    <div class="slideInLeft animated">
-                                        <span class="dot">&nbsp</span>
-                                    </div>
-                                    <code>.slideInLeft</code>
+                        <div class="col-md-3">
+                            <div class="animation animation-reset">
+                                <div class="slideInLeft animated">
+                                    <span class="dot">&nbsp</span>
                                 </div>
+                                <code>.slideInLeft</code>
                             </div>
-                            <div class="col-md-3">
-                                <div class="animation animation-reset">
-                                    <div class="slideInUp animated">
-                                        <span class="dot">&nbsp</span>
-                                    </div>
-                                    <code>.slideInUp</code>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="animation animation-reset">
+                                <div class="slideInUp animated">
+                                    <span class="dot">&nbsp</span>
                                 </div>
+                                <code>.slideInUp</code>
                             </div>
-                            <div class="col-md-3">
-                                <div class="animation animation-reset">
-                                    <div class="slideInDown animated">
-                                        <span class="dot">&nbsp</span>
-                                    </div>
-                                    <code>.slideInDown</code>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="animation animation-reset">
+                                <div class="slideInDown animated">
+                                    <span class="dot">&nbsp</span>
                                 </div>
+                                <code>.slideInDown</code>
                             </div>
-                            <div class="col-md-3">
-                                <div class="animation animation-reset">
-                                    <div class="slideInRight animated">
-                                        <span class="dot">&nbsp</span>
-                                    </div>
-                                    <code>.slideInRight</code>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="animation animation-reset">
+                                <div class="slideInRight animated">
+                                    <span class="dot">&nbsp</span>
                                 </div>
+                                <code>.slideInRight</code>
                             </div>
                         </div>
                     </div>
@@ -1933,7 +1960,6 @@
                                 <code>.shake</code>
                             </div>
                         </div>
-                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="swing animated">
@@ -1970,7 +1996,6 @@
                                 <code>.bounceIn</code>
                             </div>
                         </div>
-                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="bounceInLeft animated">
@@ -2015,7 +2040,6 @@
                                 <code>.bounceOut</code>
                             </div>
                         </div>
-                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="bounceOutLeft animated">
@@ -2060,7 +2084,6 @@
                                 <code>.fadeIn</code>
                             </div>
                         </div>
-                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="fadeInLeft animated">
@@ -2105,7 +2128,6 @@
                                 <code>.fadeOut</code>
                             </div>
                         </div>
-                        <hr class="hr--transparent u-clearfix u-hide-sm-only" />
                         <div class="col-md-3">
                             <div class="animation animation-reset">
                                 <div class="fadeOutLeft animated">
