@@ -1,0 +1,93 @@
+//
+// Grids
+// -------------------------------------------------------
+.use-columns(@boolean) when (@boolean = true) {
+
+    // Row
+    .row {
+        .make-row();
+    }
+
+    // Row with half gutters
+    .row--half-gutters {
+        &.row {
+            margin-left: ceil(@grid-gutter-width / -4);
+            margin-right: floor(@grid-gutter-width / -4);
+        }
+        > [class*='col-'] {
+            padding-left:(@grid-gutter-width / 4);
+            padding-right: (@grid-gutter-width / 4);
+        }
+    }
+
+    // Under condiseration
+    // Row with double gutters
+    /*.row--double-gutters {
+        &.row {
+            margin-left: -@grid-gutter-width;
+            margin-right: -@grid-gutter-width;
+        }
+        > [class*='col-'] {
+            padding-left: @grid-gutter-width;
+            padding-right:  @grid-gutter-width;
+        }
+    }*/
+
+    // Row without gutters
+    .row--without-gutters {
+        &.row {
+            margin-left: 0;
+            margin-right: 0;
+        }
+        > [class*='col-'] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+
+    // Columns
+    [class*='col-'] {
+        .make-column(@grid-gutter-width);
+        .column(); // default width for mobile column
+    }
+
+    // Small Grid for Mobile devices
+    .use-screen-sm(@boolean) when (@boolean = true) {
+        .make-grid(@grid-columns, column, -sm);
+    }
+    .use-screen-sm(@use-screen-sm);
+
+    // Medium Grid for Tablet devices
+    .use-screen-md(@boolean) when (@boolean = true) {
+        @media @md-up {
+            .make-grid(@grid-columns, column, -md);
+            .make-grid(@grid-columns, pull, -md);
+            .make-grid(@grid-columns, push, -md);
+            .make-grid(@grid-columns, offset, -md);
+        }
+    }
+    .use-screen-md(@use-screen-md);
+
+    // Large Grid, optimal for laptop & desktop devices
+    .use-screen-lg(@boolean) when (@boolean = true) {
+        @media @lg-up {
+            .make-grid(@grid-columns, column, -lg);
+            .make-grid(@grid-columns, pull, -lg);
+            .make-grid(@grid-columns, push, -lg);
+            .make-grid(@grid-columns, offset, -lg);
+        }
+    }
+    .use-screen-lg(@use-screen-lg);
+
+    // Extra Large Grid for Large desktop devices
+    .use-screen-xl(@boolean) when (@boolean = true) {
+        @media @xl-up {
+            .make-grid(@grid-columns, column, -xl);
+            .make-grid(@grid-columns, pull, -xl);
+            .make-grid(@grid-columns, push, -xl);
+            .make-grid(@grid-columns, offset, -xl);
+        }
+    }
+    .use-screen-xl(@use-screen-xl);
+}
+.use-columns(@use-columns);

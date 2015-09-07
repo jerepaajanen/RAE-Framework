@@ -1,0 +1,187 @@
+//
+// Tooltips
+// -------------------------------------------------------
+.tooltips(@boolean) when (@boolean = true) {
+
+    // Usage
+    // <element class="tooltip tooltip--*" aria-label="..."/>
+    // Make tooltip multi-line with class "tooltip--multiline"
+
+    // Variables
+    @tooltip-position: (@tooltip-offset + 2 + @tooltip-arrow-size);
+    @tooltip-height: @tooltip-font-size + 2 * @tooltip-vertical-padding;
+
+
+    // The 'before' pseudo element is concerned with the body
+    // and 'after' pseudo element is concerned with the arrow.
+    // of tips
+
+    // The 'after' pseudo elements is generated only if arrow
+    // size is larger than 0.
+
+    .tooltip {
+        position: relative;
+        &:after,
+        &:before {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            position: absolute;
+            z-index: @z-index-8;
+            transition:
+                opacity @tooltip-anim-duration @transition-easing-default @tooltip-anim-delay,
+                transform @tooltip-anim-duration @transition-easing-default @tooltip-anim-delay;
+            animation-duration: @tooltip-anim-duration;
+        }
+
+        &:after when (@tooltip-arrow-size >= 1) {
+            // Render tooltip arrow only when arrow size is larger than 0.
+            content: "";
+            width: 0;
+            height: 0;
+            z-index: (@z-index-8 + 1);
+            background: transparent;
+            border: @tooltip-arrow-size solid transparent;
+        }
+
+        &:before {
+            background: @tooltip-background;
+            border-radius: @tooltip-border-radius;
+            box-shadow: @tooltip-box-shadow;
+            color: @tooltip-color;
+            content: attr(aria-label);
+            font-size: @tooltip-font-size;
+            line-height: @tooltip-line-height !important;
+            letter-spacing: @tooltip-letter-spacing;
+            text-align: center;
+            text-transform: none;
+            padding: @tooltip-vertical-padding @tooltip-horizontal-padding;
+            font-weight: @tooltip-font-weight;
+            word-wrap: break-word;
+            white-space:pre;
+        }
+
+        &:hover,
+        &:focus
+        &:active {
+            &:after,
+            &:before {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    // Tooltip variations
+
+    // Top & bottom tooltips
+
+    .tooltip--top {
+        &:before,
+        &:after {
+            bottom: 100%;
+        }
+        &:after when (@tooltip-arrow-size >= 1) {
+            border-top-color: @tooltip-background;
+            margin-bottom: -(@tooltip-arrow-size * 2);
+        }
+        &:hover,
+        &:focus {
+            &:after,
+            &:before {
+            transform: translate(-50%, -@tooltip-position);
+            }
+        }
+    }
+
+    .tooltip--bottom {
+        &:before,
+        &:after {
+            top: 100%;
+        }
+        &:after when (@tooltip-arrow-size >= 1) {
+            border-bottom-color: @tooltip-background;
+            margin-top: -(@tooltip-arrow-size * 2);
+        }
+        &:hover,
+        &:focus {
+            &:after,
+            &:before {
+                transform: translate(-50%, @tooltip-position);
+            }
+        }
+    }
+
+    .tooltip--top,
+    .tooltip--bottom {
+        &:after,
+        &:before {
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+    }
+
+    // Left & right tooltips
+
+    .tooltip--left {
+        &:before,
+        &:after {
+            right: 100%;
+        }
+        &:after when (@tooltip-arrow-size >= 1) {
+            border-left-color: @tooltip-background;
+            margin-right: -(@tooltip-arrow-size * 2);
+        }
+        &:hover,
+        &:focus {
+            &:after,
+            &:before {
+            transform: translate(-@tooltip-position, -50%);
+            }
+        }
+    }
+
+    .tooltip--right {
+        &:before,
+        &:after {
+            left: 100%;
+        }
+        &:after when (@tooltip-arrow-size >= 1) {
+            border-right-color: @tooltip-background;
+            margin-left: -(@tooltip-arrow-size * 2);
+        }
+        &:hover,
+        &:focus {
+            &:after,
+            &:before {
+            transform: translate(@tooltip-position, -50%);
+            }
+        }
+    }
+
+    .tooltip--left,
+    .tooltip--right {
+        &:after,
+        &:before {
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+    }
+
+    // Multiline tooltip
+
+    .tooltip--multiline {
+        &:before {
+            white-space: pre-line;
+            line-height: @line-height-ratio;
+            width: max-content;
+            max-width: @tooltip-multiline-width;
+            @media @ie9-10 {
+                // Fixed width for IE9 and IE10
+                width: @tooltip-multiline-width;
+            }
+        }
+    }
+
+}
+.tooltips(@use-tooltips);

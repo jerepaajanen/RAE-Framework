@@ -1,0 +1,19 @@
+//
+// Button size
+// -------------------------------------------------------
+
+// Usage
+// .selector {
+//    .button-size(2);
+// }
+
+.button-size(@multiple: 1,
+    @h: @button-height,
+    @ph: @button-horizontal-padding,
+    @fs: @button-font-size,
+    @bw: @button-border-width) {
+    font-size: ceil(@fs * @multiple);
+    height: ceil(@h * @multiple);
+    line-height: ceil((@h * @multiple) - (@bw * 2));
+    padding: 0 floor(@ph * @multiple);
+}

@@ -2,9 +2,9 @@
 //
 // Icon fonts
 // -------------------------------------------------------
-	@font-face {.font-face('<%= fontName %>', '<%= fontName %>', normal, normal);}
-	
-	.<%= className %> {
+    @font-face {.font-face('<%= fontName %>', '<%= fontName %>', normal, normal);}
+
+    .<%= className %> {
         font: normal normal normal @icon-font-size/1 '<%= fontName %>';
         display: inline-block;
         speak: none;
@@ -13,21 +13,21 @@
         text-transform: none;
         font-feature-settings: "liga";
         user-select: none;
-		.btn & {
-			line-height: inherit;
-		}
-	}
-    
-    .<%= className %>-lg:before { font-size: 1.5em; }
-    .<%= className %>-2x:before { font-size: 2em; }
-    .<%= className %>-3x:before { font-size: 3em; }
-    .<%= className %>-4x:before { font-size: 4em; }
-    .<%= className %>-5x:before { font-size: 5em; }
-    
-    
-<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.codepoint.toString(16).toUpperCase() %>" }
-<% }); %> 	
-	
+        .button & {
+            line-height: inherit;
+        }
+    }
+
+    .<%= className %>--lg:before { font-size: 1.5em; }
+    .<%= className %>--2x:before { font-size: 2em; }
+    .<%= className %>--3x:before { font-size: 3em; }
+    .<%= className %>--4x:before { font-size: 4em; }
+    .<%= className %>--5x:before { font-size: 5em; }
+
+
+<% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" }
+<% }); %>
+
 }
 .icons(@use-icons);
 
@@ -37,9 +37,9 @@
 //
 // Icon fonts
 // -------------------------------------------------------
-	@font-face {.font-face('icons', 'icons', normal, normal);}
-	
-	.icon {
+    @font-face {.font-face('icons', 'icons', normal, normal);}
+
+    .icon {
         font: normal normal normal @icon-font-size/1 'icons';
         display: inline-block;
         speak: none;
@@ -48,21 +48,21 @@
         text-transform: none;
         font-feature-settings: "liga";
         user-select: none;
-		.btn & {
-			line-height: inherit;
-		}
-	}
-    
-    .icon-lg:before { font-size: 1.5em; }
-    .icon-2x:before { font-size: 2em; }
-    .icon-3x:before { font-size: 3em; }
-    .icon-4x:before { font-size: 4em; }
-    .icon-5x:before { font-size: 5em; }
-    
-    
+        .button & {
+            line-height: inherit;
+        }
+    }
+
+    .icon--lg:before { font-size: 1.5em; }
+    .icon--2x:before { font-size: 2em; }
+    .icon--3x:before { font-size: 3em; }
+    .icon--4x:before { font-size: 4em; }
+    .icon--5x:before { font-size: 5em; }
+
+
     // Insert icon styles here
-	
-	
+
+
 }
 .icons(@use-icons);
 */

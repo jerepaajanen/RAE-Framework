@@ -1,0 +1,43 @@
+//
+// Grid Framework
+// -------------------------------------------------------
+
+// Used only by RAE Framework to generate grid classes
+
+.calc-grid(@index, @type, @class: ~'') when (@type = column) and (@index > 0) and (@use-columns = true){
+    .col@{class}-@{index} {
+
+        & when (@use-flex-grid = false) {
+            width: percentage((@index / @grid-columns));
+        }
+
+        & when (@use-flex-grid = true) {
+            flex: 0 0 percentage(@index / @grid-columns);
+        }
+    }
+}
+
+.calc-grid(@index, @type, @class: ~'') when (@type = push) and (@use-columns = true) and (@use-push = true)  {
+    .push@{class}-@{index} {
+        left: percentage((@index / @grid-columns));
+    }
+}
+
+.calc-grid(@index, @type, @class: ~'') when (@type = pull) and (@use-columns = true) and (@use-pull = true) {
+    .pull@{class}-@{index} {
+        right: percentage((@index / @grid-columns));
+    }
+}
+
+.calc-grid(@index, @type, @class: ~'') when (@type = offset) and (@use-columns = true) and (@use-offset = true) {
+    .offset@{class}-@{index} {
+        margin-left: percentage((@index / @grid-columns));
+    }
+}
+
+// Basic looping in LESS
+.make-grid(@index, @type, @class) when (@index >= 0) {
+    .calc-grid(@index, @type, @class);
+    // next iteration
+    .make-grid(@index - 1, @type, @class);
+}

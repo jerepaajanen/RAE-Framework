@@ -1,0 +1,133 @@
+//
+// Typography
+// -------------------------------------------------------
+.typography(@boolean) when (@boolean = true) {
+
+    // Links
+
+    a {
+        color: inherit;
+        cursor: pointer;
+        transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
+        &:active,
+        &:hover {
+            color: @base-link-color;
+        }
+    }
+
+    // Headings
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5,
+    .h6 {
+        font-family: @heading-font-family;
+        font-weight: @heading-font-weight;
+        line-height: @heading-line-height;
+        letter-spacing: @heading-letter-spacing;
+        a {
+            color: inherit;
+        }
+    }
+
+    h1,
+    .h1 {
+        .modular-scale(3);
+    }
+
+    h2,
+    .h2 {
+        .modular-scale(2);
+    }
+
+    h3,
+    .h3 {
+        .modular-scale(1);
+    }
+
+    h4,
+    .h4,
+    h5,
+    .h5 {
+        .modular-scale(0);
+    }
+
+    h6,
+    .h6 {
+        .modular-scale(-1);
+    }
+
+    @media @md-up {
+        h1,
+        .h1 {
+            .modular-scale(4);
+        }
+
+        h2,
+        .h2 {
+            .modular-scale(3);
+        }
+
+        h3,
+        .h3 {
+            .modular-scale(2);
+        }
+
+        h4,
+        .h4 {
+            .modular-scale(1);
+        }
+
+        h5,
+        .h5 {
+            .modular-scale(0);
+        }
+
+        h6,
+        .h6 {
+            .modular-scale(-1);
+        }
+    }
+
+    // Blockquotes
+
+    blockquote {
+        font-family: @blockquote-font-family;
+        font-style: italic;
+        p {
+            margin: 0;
+            + p {
+                margin-top: @spacing-half;
+            }
+        }
+        cite {
+            font-family: @base-font-family;
+            color: lighten(@base-color, 20%);
+            .modular-scale(-1);
+            font-style: normal;
+            // ´–´ line before cite
+            &:before {
+                content:"\2014 \0020";
+            }
+        }
+    }
+
+    // Other elements
+
+    pre {
+        padding: 1rem;
+        white-space: pre;
+        word-wrap: normal;
+        word-break: normal;
+    }
+
+}
+.typography(@use-typography);

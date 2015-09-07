@@ -1,0 +1,17 @@
+//
+// Horizontal rule
+// -------------------------------------------------------
+.horizontal-rule(@boolean) when (@boolean = true) {
+
+    hr, .hr {
+        border: solid @hr-color;
+        border-width: 1px 0 0 0;
+        clear: both;
+        height: 0;
+        &.hr--transparent {
+            border-color: transparent;
+        }
+    }
+
+}
+.horizontal-rule(@use-horizontal-rule);

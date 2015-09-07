@@ -1,0 +1,73 @@
+//
+// Responsive utilities
+// -------------------------------------------------------
+.responsive-utilities(@boolean) when (@boolean =true) {
+
+    // Variables
+    .hide-conditional() {
+        display: none !important;
+    }
+
+    // Extra-small
+    .u-hide-xs-up {
+        .hide-conditional();
+    }
+    @media @xs-down {
+        .u-hide-xs-down {
+            .hide-conditional();
+        }
+    }
+
+    // Small
+
+    @media @sm-up {
+        .u-hide-sm-up {
+            .hide-conditional();
+        }
+    }
+
+    @media @sm-down {
+        .u-hide-sm-down {
+            .hide-conditional();
+        }
+    }
+
+    // Medium
+
+    @media @md-up {
+        .u-hide-md-up {
+            .hide-conditional();
+        }
+    }
+    @media @md-down {
+        .u-hide-md-down {
+            .hide-conditional();
+        }
+    }
+
+    // Large
+
+    @media @lg-up {
+        .u-hide-lg-up {
+            .hide-conditional();
+        }
+    }
+    @media @lg-down {
+        .u-hide-lg-down {
+            .hide-conditional();
+        }
+    }
+
+    // Extra-large
+
+    @media @xl-up {
+        .u-hide-xl-up {
+            .hide-conditional();
+        }
+    }
+    .u-hide-xl-down {
+        .hide-conditional();
+    }
+}
+
+.responsive-utilities(@use-responsive-utilities);

@@ -1,0 +1,21 @@
+//
+// Main
+// -------------------------------------------------------
+.main(@boolean) when (@boolean = true) {
+
+    :root {
+        font-size: @base-font-size; // Default `font-size` for used with `rem` type scales.
+        height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
+    }
+
+    body {
+        background-color: @base-background;
+        color: @base-color;
+        font-family: @base-font-family;
+        font-size: 1rem;
+        line-height: @line-height-ratio;
+        min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
+    }
+
+}
+.main(@use-main);

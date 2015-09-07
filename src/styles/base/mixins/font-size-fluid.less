@@ -1,0 +1,35 @@
+//
+// Font-size (Fluid)
+// -------------------------------------------------------
+
+// Produces fluid font-size that has min and max fontsize.
+// You can also set font range that specifies the viewport widths
+// between which the font size is fluid.
+
+// Usage
+// .selector {
+//    .font-size-responsive(16px, 24px, 480px, 1280px);
+// }
+
+.font-size-fluid (
+    @min-font-size: @base-font-size,
+    @max-font-size: @base-line-height,
+    @min-font-range: @breakpoint-sm,
+    @max-font-range: @breakpoint-xl) {
+
+    // Pre-calculated mixin values
+    @font-size-return: unit(@max-font-size - @min-font-size);
+    @font-range-return: unit(@min-font-range - @max-font-range);
+
+    // Mixin
+    font-size: ~"calc(@{min-font-size} - @{font-size-return} * ((100vw - @{min-font-range}) / @{font-range-return}))";
+
+    @media screen and (max-width: @min-font-range) {
+        font-size: @min-font-size;
+    }
+
+    @media screen and (min-width: @max-font-range) {
+        font-size: @max-font-size;
+    }
+
+};

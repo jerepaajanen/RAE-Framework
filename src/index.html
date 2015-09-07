@@ -5,48 +5,45 @@
 <!--<![endif]-->
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAE Framework</title>
 
-    <!-- favicon.png, apple-touch-icon.png & mstile.png -->
-    <link rel="icon" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <meta name="msapplication-TileImage" content="images/mstile.png">
+    <meta charset="utf-8" />
+    <meta name="author" content="RAE – Jere Paajanen" />
+    <meta name="description" content="Simple frameworks" />
+    <link rel="canonical" href="http://rae.fi/" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Page styles -->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css" />
+
+    <!-- Favicons are build automatically -->
 </head>
 
 <body>
     <!-- Old Browser Warning -->
     <!--[if lt IE 9]>
-        <div class="container-fluid text-center color-danger"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> for a faster, better, and safer web experience.</p>
+        <div class="container--fluid u-text-center u-color-danger"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> for a faster, better, and safer web experience.</p>
         </div>
     <![endif]-->
     <header class="page-header" role="banner">
         <div class="logo">
             <a href="/">
                 <img src="images/logo.svg" alt="Logo" style="height: 24px;">
-                <span class="visually-hidden">RAE Framework</span>
+                <span class="u-visually-hidden">RAE Framework</span>
             </a>
         </div>
-        <nav class="primary-nav nav-responsive" role="navigation">
-            <ul class="menu">
-                <li class="menu__item">
+        <nav class="nav nav--primary nav--responsive" role="navigation">
+            <ul class="nav__list">
+                <li class="nav-item">
                     <a href="styleguide/index.html">Visual Style Guide &amp; Documentation</a>
                 </li>
-                <li class="menu__item">
-                    <a href="styleguide/icons.html">Documentation for generated iconfont</a>
-                </li>
-                <li class="menu__item">
+                <li class="nav-item">
                     <a href="http://www.rae.fi">RAE Framework</a>
                     <ul class="dropdown">
-                        <li class="menu__item"><a href="http://www.rae.fi">Just a subnav</a>
+                        <li class="nav-item"><a href="http://www.rae.fi">Just a subnav</a>
                         </li>
-                        <li class="menu__item"><a href="http://www.rae.fi">Just a subnav</a>
+                        <li class="nav-item"><a href="http://www.rae.fi">Just a subnav</a>
                         </li>
                     </ul>
                 </li>
@@ -85,6 +82,7 @@
     <!-- endinject -->
     <!-- inject:js -->
     <script src="scripts/_modernizr-custom.js"></script>
+    <script src="scripts/nav-responsive.js"></script>
     <script src="scripts/scripts.js"></script>
     <!-- endinject -->
     <!-- endbuild -->

@@ -1,8 +1,8 @@
 {
     "server": {
         "host": "ftp.myserver.com",
-        "user": "",
-        "password": "",
+        "user": "username",
+        "password": "password",
         "port": "21",
         "remotePath": ""
     }
