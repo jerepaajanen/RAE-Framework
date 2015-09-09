@@ -52,8 +52,11 @@
             'ie >= 9'
         ],
 
-        // Set name of your iconfont
-        fontName = 'icons',
+        // Icon-font config
+        iconFontName = 'icons',
+        iconFontClass = 'icon',
+        iconFontGridSize = 32,
+        iconFontBaselineShift = 8, // Percentage value
 
         // Banner to add to file headers
         banner = ['/*',
@@ -181,17 +184,19 @@
         return gulp.src(paths.images.src + 'icons/*.svg')
             .pipe($.imagemin())
             .pipe($.iconfont({
-                fontName: fontName,
-                //autohint: true,
+                fontName: iconFontName,
+                autohint: true,
+                normalize: true,
+                fontHeight: (iconFontGridSize * iconFontGridSize * 2),
                 centerHorizontally: true,
-                descent: (14 * 7) //pixelgrid x baseline shift
+                descent: ((iconFontGridSize * iconFontGridSize * 2) / iconFontBaselineShift)
             }))
             .on('glyphs', function (glyphs) {
                 var options = {
                     glyphs: glyphs,
-                    fontName: fontName,
+                    fontName: iconFontName,
                     fontPath: '../fonts/',
-                    className: 'icon'
+                    className: iconFontClass
                 };
                 //console.log(glyphs, options);
                 // build less-file for development
