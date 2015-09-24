@@ -253,7 +253,7 @@
             .pipe($.favicons({
                 files: {
                     dest: '.' + paths.dest,
-                    iconsPath: '/'
+                    iconsPath: './'
                 },
                 icons: {
                     android: true,

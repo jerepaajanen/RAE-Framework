@@ -93,14 +93,18 @@
 
     // Radios and checkboxes
     .radio, .checkbox {
-        margin-bottom: @spacing-half / 2; // add some spacing between checkboxes/radios
+        margin-bottom: @input-checkbox-radio-margin; // add some spacing between checkboxes/radios
         user-select: none;
+        &:last-child {
+            margin-bottom: 0;
+        }
 
         // Inline styles
         &.checkbox--inline,
         &.radio--inline {
             @media @md-up {
                 display: inline-block;
+                margin-bottom: 0; // reset @input-checkbox-radio-margin
                 margin-right: @spacing-base; // space out consecutive inline controls
             }
         }
@@ -220,13 +224,9 @@
         display: block;
         margin-bottom: @form-item-spacing;
 
-        // Margin for labels
-        label + input,
-        label + select,
-        label + textarea,
-        label + .checkbox,
-        label + .radio {
-            margin-top: @label-margin;
+        // Margin for labels immediately after .form-item
+        > label {
+            margin-bottom: @label-margin;
         }
     }
 
