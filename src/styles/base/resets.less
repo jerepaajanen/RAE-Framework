@@ -22,7 +22,7 @@
     }
 
     // Universal inheritance
-    
+
     *,
     ::before,
     ::after {
@@ -45,7 +45,7 @@
         text-decoration: inherit;
         vertical-align: inherit;
     }
-    
+
     // Make viewport responsive
 
     // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in some cases.
@@ -61,6 +61,8 @@
     }
 
     input {
+        line-height: normal; // Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet
+
         &[type="number"] {
             width: auto; // Firefox 36+
         }

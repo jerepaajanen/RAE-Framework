@@ -2,14 +2,29 @@
 // Placeholder text
 // -------------------------------------------------------
 
-.placeholder(@color: @input-placeholder-color) {
+.placeholder(@color: @input-placeholder-color, @hover-color: @input-placeholder-hover-color) {
     ::-webkit-input-placeholder {
         color: @color;
+    }
+
+    :hover::-webkit-input-placeholder {
+        color: @hover-color;
     } // Safari and Chrome
+
     ::-moz-placeholder {
         color: @color;
+
+    }
+    :hover::-moz-placeholder {
+        color: @hover-color;
     } // Firefox 19+
+
     :-ms-input-placeholder {
         color: @color;
+    }
+
+    :hover:-ms-input-placeholder {
+        color: @hover-color;
     } // Internet Explorer 10+
+
 }
