@@ -228,7 +228,7 @@
         });
 
         return gulp.src(paths.src + '**/*.html')
-            .pipe($.injectString.before('</head>', '<link rel="favicons" href="images/favicon-1024x1024.png">'))
+            .pipe($.injectString.after('<!-- inject:favicons -->', '<link rel="favicons" href="images/favicon-1024x1024.png">'))
             .pipe(assets)
             // Concatenate And Minify JavaScript
             .pipe($.if('*.js', $.uglify({})))
@@ -267,8 +267,7 @@
                     yandex: false
                 },
                 settings: {
-                    background: '#ffffff',
-                    index: 'index.html'
+                    background: '#ffffff'
                 }
             }))
             .pipe(gulp.dest(paths.dest))
