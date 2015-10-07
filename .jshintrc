@@ -1,5 +1,6 @@
 {
   "node": true,
+  "jquery": true,
   "browser": true,
   "esnext": true,
   "bitwise": true,
@@ -14,5 +15,4 @@
   "undef": true,
   "unused": "vars",
   "strict": true
-  }
 }
