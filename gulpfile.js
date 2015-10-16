@@ -119,16 +119,11 @@
     });
 
 
-    // Build & lint JavaScript
-    gulp.task('build:scripts', function () {
-        return gulp.src(paths.scripts.src + 'scripts.js')
-            .pipe(reload({
-                stream: true,
-                once: true
-            }))
+    // Lint Scripts
+    gulp.task('lint:scripts', function () {
+        return gulp.src(paths.scripts.src + '**/*.js')
             .pipe($.jshint())
-            .pipe($.jshint.reporter('jshint-stylish'))
-            .pipe($.if(!browserSync.active, $.jshint.reporter('fail')));
+            .pipe($.jshint.reporter('jshint-stylish'));
     });
 
 
@@ -167,9 +162,12 @@
     gulp.task('build:images', function () {
         return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
             .pipe($.imagemin({
-                optimizationLevel: 5,
+                optimizationLevel: 7,
                 progressive: true,
-                interlaced: true
+                interlaced: true,
+                svgoPlugins: [{
+                    removeViewBox: false
+                }]
             }))
             .pipe(gulp.dest(paths.images.dest))
             .pipe($.size({
@@ -280,7 +278,9 @@
 
     gulp.task('dist:templates', function () {
         return gulp.src(paths.dest + '**/*.html')
-            .pipe($.minifyHtml({conditionals: true}))
+            .pipe($.minifyHtml({
+                conditionals: true
+            }))
             .pipe(gulp.dest(paths.dest))
             .pipe($.size({
                 gzip: false,
@@ -301,8 +301,8 @@
             '!' + paths.scripts.src + '**/*',
             '!' + paths.fonts.src + '**/*',
             '!' + paths.assets.src + '**/*'], {
-            dot: true
-        })
+                dot: true
+            })
             .pipe(gulp.dest(paths.dest))
             .pipe($.size({
                 title: 'Copy'
@@ -351,7 +351,7 @@
 
         gulp.watch(paths.src + '**/*.html', reload);
         gulp.watch(paths.styles.src + '**/*.less', ['serve:styles']);
-        gulp.watch(paths.scripts.src + '*.js', ['build:scripts']);
+        gulp.watch(paths.scripts.src + '**/*.js', ['lint:scripts', reload]);
         gulp.watch('bower.json', ['inject:scripts']);
         gulp.watch(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}', reload);
         gulp.watch(paths.images.src + 'icons/**/*.svg', ['build:iconfont']);
@@ -373,13 +373,8 @@
 
     // Build production files, the default task
     gulp.task('default', function (callback) {
-        runSequence(['clean'],
-                    ['build:styles', 'build:images', 'build:scripts'],
-                    ['inject:scripts'],
-                    ['dist:bundle'],
-                    ['dist:favicons'],
-                    ['dist:copy', 'dist:fonts', 'dist:assets', 'dist:templates'],
-                    callback);
+        runSequence(['clean'], ['build:styles', 'build:images', 'lint:scripts'], ['inject:scripts'], ['dist:bundle'], ['dist:favicons'], ['dist:copy', 'dist:fonts', 'dist:assets', 'dist:templates'],
+            callback);
     });
 
 
@@ -389,9 +384,9 @@
             globs = [paths.dest + '**'];
 
         return gulp.src(globs, {
-            base: paths.dest,
-            buffer: false
-        })
+                base: paths.dest,
+                buffer: false
+            })
             .pipe(conn.differentSize(config.server.remotePath))
             .pipe(conn.dest(config.server.remotePath));
     });
