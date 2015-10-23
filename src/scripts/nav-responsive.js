@@ -2,19 +2,22 @@
     'use strict';
 
     // Simple responsive navigation with subnav
-    $('.js .nav--responsive').each(function () {
+    $('.nav--responsive').each(function () {
 
         var nav = $(this),
-            menu = nav.find('> ul'),
-            dropdown = menu.find('li ul'),
+            navMenuClass = 'nav__list',
+            navItemClass = 'nav-item',
+            dropdownClass = 'dropdown',
             navToggleClass = 'nav-toggle',
-            dropdownToggleClass = 'nav-item__toggle';
+            dropdownToggleClass = 'dropdown-toggle',
+            menu = nav.children('.' + navMenuClass),
+            dropdown = menu.find('li .' + dropdownClass);
 
         // Build 'nav--responsive' elements
-        nav.prepend('<a href="#" role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span class="nav-toggle__label u-visually-hidden">Menu</span><span class="nav-toggle__icon"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></a>');
+        nav.prepend('<div role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span class="nav-toggle__label u-visually-hidden">Menu</span><span class="nav-toggle__icon"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></div>');
         menu.addClass('is-collapsible');
         dropdown.addClass('is-collapsible');
-        dropdown.parent('li').addClass('with-dropdown').prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');
+        dropdown.parent('li').addClass(navItemClass + '--with-' + dropdownClass).prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');
 
         // Toggle responsive navigation
         $('.' + navToggleClass).click(function () {
@@ -33,12 +36,15 @@
         });
 
         // Toggle dropdowns
-        $(menu).on('click', '.' + dropdownToggleClass, function () {
-            // Toggle the nested nav
-            $(dropdown).toggleClass('is-open');
-            var toggleLabel = $(dropdown).is(':visible') ? '-' : '+';
-            $(this).text(toggleLabel);
+        $('.' + dropdownToggleClass).click(function () {
+
+            var toggleLabel = $(this).parent().children('.' + dropdownClass).is(':visible') ? '+' : '-';
+
             $(this).toggleClass('is-active');
+            $(this).parent().children('.' + dropdownClass).toggleClass('is-open');
+            $(this).text(toggleLabel);
+
+            return false;
         });
     });
 

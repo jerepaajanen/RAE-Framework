@@ -41,14 +41,16 @@
     @ms-ratio: @modular-scale-ratio,
     @ms-px-output: @modular-scale-px-output) {
 
-    // Calculate modular-scale value
-    @modular-scale-return: (pow(@ms-ratio, @ms-step) * unit(@ms-base));
+    // Calculate modular-scale value, and round it
+    @modular-scale-return: round((pow(@ms-ratio, @ms-step) * unit(@ms-base)), 0);
 
+    // Convert to px-value
     & when (@ms-px-output = true) {
-        font-size: round(unit(@modular-scale-return, px), 3);
+        font-size: unit(@modular-scale-return, px);
     }
 
+    // Convert to rem-value
     & when (@ms-px-output = false) {
-        font-size: round(unit(@modular-scale-return / @base-font-size, rem), 3);
+        font-size: round(unit(@modular-scale-return / @base-font-size, rem), 4);
     }
 }
