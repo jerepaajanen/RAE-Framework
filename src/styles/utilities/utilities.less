@@ -154,5 +154,22 @@
         color: @color-info !important;
     }
 
+
+    // Utility tools
+
+    .u-disable-pointer-events {
+        pointer-events: none !important
+    }
+
+    .u-no-user-select {
+        user-select: none !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important
+    }
+
+    .u-prevent-scroll {
+        overflow: hidden !important;
+        height: 100% !important
+    }
+
 }
 .utilities(@use-utilities);
