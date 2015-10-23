@@ -4,8 +4,8 @@ RAE Framework
 ## Environment setup
 
 - install npm (http://nodejs.org/)
-- install gulp client: $ sudo npm install -g gulp
-- install gulp client: $ sudo npm install -g bower
+- install gulp client: $ npm install -g gulp
+- install gulp client: $ npm install -g bower
 
 ## Install dependencies
 
