@@ -5,7 +5,7 @@ RAE Framework
 
 - install npm (http://nodejs.org/)
 - install gulp client: $ npm install -g gulp
-- install gulp client: $ npm install -g bower
+- install bower: $ npm install -g bower
 
 ## Install dependencies
 
