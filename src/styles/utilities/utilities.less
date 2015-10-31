@@ -1,10 +1,9 @@
 //
 // Utilities
 // -------------------------------------------------------
-.utilities(@boolean) when (@boolean = true) {
+.utilities(@boolean) when (@boolean =true) {
 
     // Display utilities
-
     .u-block {
         display: block !important;
     }
@@ -24,7 +23,6 @@
     .u-table-cell {
         display: table-cell !important
     }
-
 
     // Visibility utilities
 
@@ -48,16 +46,12 @@
         width: 1px;
     }
 
-
     // Clearfix
-
     .u-clearfix {
         .clearfix();
     }
 
-
     // Float and flex utilities
-
     .u-float-left {
         float: left !important;
     }
@@ -68,13 +62,6 @@
 
     .u-float-none {
         float: none !important;
-    }
-
-    .u-center-block {
-        display: block;
-        float: none;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     .u-flex-center {
@@ -92,10 +79,16 @@
         align-items: flex-end !important;
     }
 
+    .u-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 
     // Text utilities
 
-    .u-text-left  {
+    .u-text-left {
         text-align: left !important;
     }
 
@@ -123,7 +116,6 @@
         font-weight: 700 !important;
     }
 
-
     // Color utilities
 
     .u-muted {
@@ -131,29 +123,28 @@
     }
 
     .u-color-primary {
-       color: @color-primary !important;
+        color: @color-primary !important;
     }
 
     .u-color-secondary {
-       color: @color-secondary !important;
+        color: @color-secondary !important;
     }
 
     .u-color-success {
-       color: @color-success !important;
+        color: @color-success !important;
     }
 
     .u-color-warning {
-       color: @color-warning !important;
+        color: @color-warning !important;
     }
 
     .u-color-danger {
-       color: @color-danger !important;
+        color: @color-danger !important;
     }
 
     .u-color-info {
         color: @color-info !important;
     }
-
 
     // Utility tools
 
@@ -172,4 +163,5 @@
     }
 
 }
+
 .utilities(@use-utilities);

@@ -94,7 +94,7 @@
     });
 
 
-    // Compile and Automatically Prefix Stylesheets
+    // Compile & Autoprefix Stylesheets
     gulp.task('serve:styles', function () {
         // For best performance, don't add Less partials to `gulp.src`
         return gulp.src(paths.styles.src + 'style.less')
@@ -127,7 +127,7 @@
     });
 
 
-    // Compile and Automatically Prefix Stylesheets
+    // Compile, Autoprefix & Minify Stylesheets
     gulp.task('build:styles', function () {
         // For best performance, don't add Less partials to `gulp.src`
         return gulp.src(paths.styles.src + 'style.less')
@@ -158,7 +158,7 @@
     });
 
 
-    // Build optimized images
+    // Optimize images
     gulp.task('build:images', function () {
         return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
             .pipe($.imagemin({
@@ -177,7 +177,7 @@
     });
 
 
-    // Iconfont
+    // Build Iconfont
     gulp.task('build:iconfont', function () {
         return gulp.src(paths.images.src + 'icons/*.svg')
             .pipe($.imagemin())
@@ -245,7 +245,7 @@
     });
 
 
-    // Favicons
+    // Build Favicons
     gulp.task('dist:favicons', function () {
         return gulp.src(paths.dest + 'index.html')
             .pipe($.favicons({
