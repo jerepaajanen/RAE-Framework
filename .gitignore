@@ -2,9 +2,8 @@
 # @author Jere Paajanen
 
 ## Framework
-ftp-config.json
+config-ftp.json
 bower_components
-.tmp
 dist
 
 
