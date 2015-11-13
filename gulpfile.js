@@ -273,6 +273,7 @@ gulp.task('fonts:icons', function () {
         .pipe($.changed(paths.images.dest + 'icons/**/*.svg'))
         .pipe($.iconfont({
             fontName: config.iconfont.fontName,
+            appendUnicode: true,
             autohint: config.iconfont.autohint,
             formats: ['ttf', 'woff', 'woff2'],
             normalize: true,
@@ -343,22 +344,22 @@ gulp.task('images:favicons', function () {
 
     return gulp.src(paths.images.src + '/favicon.png')
         .pipe($.if(isProduction, $.favicons({
-            appName: config.title,
-            appDescription: config.description,
+            appName: config.siteTitle,
+            appDescription: config.siteDescription,
+            url: config.siteURL,
             developerName: pkg.author,
             developerURL: pkg.homepage,
             background: 'transparent',
-            url: config.siteURL,
             path: 'images/favicons',
             display: 'standalone',
             orientation: 'portrait',
             version: 1.0,
             logging: false,
             online: false,
-            html: '../../' + paths.src + 'partials/favicons.html'
+            html: paths.src + 'partials/favicons.html'
         })))
 
-        .pipe(gulp.dest(paths.dest));
+        .pipe(gulp.dest(paths.images.dest + 'favicons'));
 
 });
 
