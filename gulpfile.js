@@ -9,6 +9,9 @@ var
     gulp = require('gulp'),
     fs = require('fs'),
     del = require('del'),
+    autoprefixer = require('autoprefixer'),
+    mqpacker = require('css-mqpacker'),
+    cssnano = require('cssnano'),
     sequence = require('run-sequence'),
     bowerFiles = require('main-bower-files'),
     browserSync = require('browser-sync'),
@@ -118,7 +121,7 @@ gulp.task('default:production', function () {
 // MARKUP
 // -------------------------------------------------------
 
-var markupTask = function (isNotPartial) {
+var markupProcess = function (isNotPartial) {
     gulp.src(paths.src + '**/*.html', {
         base: paths.src
     })
@@ -148,16 +151,63 @@ var markupTask = function (isNotPartial) {
 
 // Markup : Main
 gulp.task('markup', function () {
-    return markupTask(true);
+    return markupProcess(true);
 });
 
 
 // Markup : Partials
 gulp.task('markup:partials', function () {
-    return markupTask();
+    return markupProcess();
 });
 
 
+// STYLES
+// -------------------------------------------------------
+
+gulp.task('styles', function () {
+
+    return gulp.src(paths.styles.src + 'style.less')
+        .pipe($.less({
+            compress: false
+        }))
+        .on('error', handleErrors)
+        .pipe($.postcss([
+            autoprefixer({
+                browsers: config.browserSupport
+            })
+        ]))
+        .pipe(gulp.dest(paths.styles.dest))
+
+        .pipe($.if(isProduction, $.postcss([
+            autoprefixer({
+                browsers: config.browserSupport
+            }),
+            mqpacker,
+            cssnano({
+                preserveHacks: true,
+                removeAllComments: true
+            })
+        ])))
+
+        .pipe($.if(isProduction, $.header(banner, {
+            pkg: pkg
+        })))
+        .pipe($.if(isProduction, $.rename({
+            suffix: '.min'
+        })))
+        .pipe($.if(isProduction, gulp.dest(paths.styles.dest)))
+        .pipe($.if(isProduction, $.size({
+            gzip: false,
+            title: 'Styles'
+        })))
+        .pipe($.if(isProduction, $.size({
+            gzip: true,
+            title: 'Styles'
+        })))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
 
 
 // SCRIPTS
@@ -216,41 +266,6 @@ gulp.task('scripts:main', ['scripts:hint'], function () {
         }));
 });
 
-
-// STYLES
-// -------------------------------------------------------
-
-gulp.task('styles', function () {
-    return gulp.src(paths.styles.src + 'style.less')
-        .pipe($.less({
-            compress: false
-        }))
-        .on('error', handleErrors)
-        .pipe($.autoprefixer({
-            browsers: config.browserSupport
-        }))
-        .pipe(gulp.dest(paths.styles.dest))
-        .pipe($.if(isProduction, $.combineMediaQueries()))
-        .pipe($.if(isProduction, $.csso()))
-        .pipe($.if(isProduction, $.header(banner, {
-            pkg: pkg
-        })))
-        .pipe($.if(isProduction, $.rename({
-            suffix: '.min'
-        })))
-        .pipe($.if(isProduction, gulp.dest(paths.styles.dest)))
-        .pipe($.if(isProduction, $.size({
-            gzip: false,
-            title: 'Styles'
-        })))
-        .pipe($.if(isProduction, $.size({
-            gzip: true,
-            title: 'Styles'
-        })))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
 
 // FONTS
 // -------------------------------------------------------
@@ -395,8 +410,16 @@ gulp.task('copy:assets', function () {
 // CLEAN
 // -------------------------------------------------------
 
-gulp.task('clean', function () {
+gulp.task('clean', ['clean:files', 'clean:cache']);
+
+// Clean : Files
+gulp.task('clean:files', function () {
     del([paths.dest + '**/*']);
+});
+
+// Clean : Cache (image)
+gulp.task('clean:cache', function () {
+    return $.cache.clearAll();
 });
 
 
