@@ -94,23 +94,24 @@ gulp.task('default', function () {
 });
 
 gulp.task('default:development', function () {
-    sequence(['markup', 'styles', 'scripts', 'images'], function () {
-        if (isServe) {
+    sequence(['markup', 'fonts', 'styles', 'scripts', 'images'], function () {
+        if (isServe && isDeploy) {
+            gulp.start(['serve', 'watch', 'deploy:watch']);
+        } else if (isDeploy) {
+            gulp.start(['deploy']);
+        } else if (isServe) {
             gulp.start(['serve', 'watch']);
         }
-        if (isDeploy) {
-            gulp.start(['deploy']);
-        }
+
     });
 });
 
 gulp.task('default:production', function () {
-    sequence(['clean'], ['images'], ['markup', 'styles', 'scripts'], function () {
+    sequence(['clean'], ['images', 'fonts'], ['markup', 'styles', 'scripts', 'copy'], function () {
         console.log($.util.colors.green('✔ Build done!'));
         if (isServe) {
             gulp.start(['serve']);
-        }
-        if (isDeploy) {
+        } else if (isDeploy) {
             gulp.start(['deploy']);
         }
 
@@ -140,9 +141,7 @@ var markupProcess = function (isNotPartial) {
                 }
             }
         }))
-        .pipe($.if(isProduction, $.minifyHtml({
-            conditionals: true
-        })))
+        .pipe($.if(isProduction, $.htmlclean()))
         .pipe(gulp.dest(paths.dest))
         .pipe(browserSync.reload({
             stream: true
@@ -217,10 +216,10 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
-    return gulp.src(bowerFiles(), {
+    return gulp.src(bowerFiles('**/*.js'), {
         base: './bower_components'
     })
-        .pipe($.if('*.js', $.concat('vendor.js')))
+        .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
         .on('error', handleErrors)
@@ -251,6 +250,7 @@ gulp.task('scripts:main', ['scripts:hint'], function () {
     return gulp.src(paths.scripts.src + '**/*.js')
 
         .pipe($.concat('main.js'))
+        .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
         .on('error', handleErrors)
         .pipe($.if(isProduction, $.rename({
@@ -271,7 +271,13 @@ gulp.task('scripts:main', ['scripts:hint'], function () {
 // -------------------------------------------------------
 
 gulp.task('fonts', function () {
+    sequence(['fonts:icons'], ['fonts:convert']);
+});
+
+
+gulp.task('fonts:convert', function () {
     return gulp.src(paths.fonts.src + '**/*.ttf')
+        .pipe($.changed(paths.fonts.dest))
         .pipe($.ttf2woff({
             clone: true
         }))
@@ -290,7 +296,7 @@ gulp.task('fonts:icons', function () {
             fontName: config.iconfont.fontName,
             appendUnicode: true,
             autohint: config.iconfont.autohint,
-            formats: ['ttf', 'woff', 'woff2'],
+            formats: ['ttf'],
             normalize: true,
             fontHeight: (config.iconfont.gridSize * config.iconfont.gridSize * 2),
             centerHorizontally: true,
@@ -320,7 +326,7 @@ gulp.task('fonts:icons', function () {
                 }))
                 .pipe(gulp.dest(paths.src + 'styleguide/'));
         })
-        .pipe(gulp.dest(paths.fonts.dest))
+        .pipe(gulp.dest(paths.fonts.src))
         .pipe(browserSync.reload({
             stream: true
         }));
@@ -396,7 +402,7 @@ gulp.task('copy:root', function () {
         '!' + paths.fonts.src + '**/*',
         '!' + paths.assets.src + '**/*'], {
         dot: true
-    })
+        })
         .pipe(gulp.dest(paths.dest));
 });
 
@@ -471,38 +477,41 @@ gulp.task('serve', function () {
 
 // DEPLOY
 // -------------------------------------------------------
+var configFtp = require('./config-ftp.json'),
+    conn = ftp.create({
+        host:     configFtp.server.host,
+        user:     configFtp.server.user,
+        password: configFtp.server.password,
+        parallel: 10,
+        log:      null //$.util.log
+    });
 
 gulp.task('deploy', function () {
 
-    var configFtp = require('./config-ftp.json'),
-        conn = ftp.create(configFtp.server);
+    return gulp.src(paths.dest + '**', {
+        base: './' + paths.dest,
+        buffer: false
+    })
+        .pipe(conn.newer(configFtp.server.remotePath))
+        .pipe(conn.dest(configFtp.server.remotePath));
+        //.pipe($.if(isServe, gulp.start(['deploy:watch'])));
 
-    if (isServe) {
+});
 
-        console.log($.util.colors.grey('Watching changes...'));
+gulp.task('deploy:watch', ['deploy'], function () {
 
-        gulp.watch(paths.dest + '**/*')
-            .on('change', function (event) {
+    console.log($.util.colors.grey('Watching changes...'));
 
-                console.log($.util.colors.cyan('Updating remote...'));
+    gulp.watch(paths.dest + '**')
+        .on('change', function (event) {
 
-                return gulp.src([event.path], {
-                    base: paths.dest,
-                    buffer: false
-                })
-                    .pipe(conn.newerOrDifferentSize(configFtp.server.remotePath))
-                    .pipe(conn.dest(configFtp.server.remotePath));
-            });
+            console.log($.util.colors.cyan('Updating remote...'));
 
-    } else {
-
-        return gulp.src(paths.dest + '**/*', {
-            base: paths.dest,
-            buffer: false
-        })
-
-            .pipe(conn.newerOrDifferentSize(configFtp.server.remotePath))
-            .pipe(conn.dest(configFtp.server.remotePath));
-    }
-
+            return gulp.src([event.path], {
+                base: './' + paths.dest,
+                buffer: false
+            })
+                .pipe(conn.newer(configFtp.server.remotePath))
+                .pipe(conn.dest(configFtp.server.remotePath));
+        });
 });
