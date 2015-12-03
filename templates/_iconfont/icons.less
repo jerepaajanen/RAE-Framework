@@ -18,11 +18,11 @@
         }
     }
 
-    .<%= className %>--lg:before { font-size: 1.5em; }
-    .<%= className %>--2x:before { font-size: 2em; }
-    .<%= className %>--3x:before { font-size: 3em; }
-    .<%= className %>--4x:before { font-size: 4em; }
-    .<%= className %>--5x:before { font-size: 5em; }
+    .<%= className %>--lg:before { (@icon-font-size * 1.5); }
+    .<%= className %>--2x:before { (@icon-font-size * 2); }
+    .<%= className %>--3x:before { (@icon-font-size * 3); }
+    .<%= className %>--4x:before { (@icon-font-size * 4); }
+    .<%= className %>--5x:before { (@icon-font-size * 5); }
 
 
 <% _.each(glyphs, function(glyph) { %>.<%= className %>-<%= glyph.name %>:before { content: "\<%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %>" }

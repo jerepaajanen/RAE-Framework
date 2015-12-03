@@ -116,9 +116,8 @@
         // Control inputs with label
         label {
             position: relative;
-            margin: 0;
-            padding-left: (@input-box-size + (@spacing-half / 2));
-            line-height: @input-box-size;
+            padding-left: (@input-box-size + @spacing-third);
+            line-height: @input-box-size - (@input-border-width * 2);
             &:before,
             &:after {
                 content: '';
@@ -127,6 +126,8 @@
                 top: 0;
                 width: @input-box-size;
                 height: @input-box-size;
+                line-height: @input-box-size;
+
             }
             &:before {
                 background-color: @input-background;
