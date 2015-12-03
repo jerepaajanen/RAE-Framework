@@ -294,12 +294,12 @@ gulp.task('fonts:icons', function () {
         .pipe($.changed(paths.images.dest + 'icons/**/*.svg'))
         .pipe($.iconfont({
             fontName: config.iconfont.fontName,
-            appendUnicode: true,
+            appendUnicode: false,
             autohint: config.iconfont.autohint,
             formats: ['ttf'],
             normalize: true,
             fontHeight: (config.iconfont.gridSize * config.iconfont.gridSize * 2),
-            centerHorizontally: true,
+            centerHorizontally: false,
             descent: ((config.iconfont.gridSize * config.iconfont.gridSize * 2) / config.iconfont.baselineShift)
         }))
         .on('glyphs', function (glyphs) {
@@ -324,12 +324,9 @@ gulp.task('fonts:icons', function () {
                 .pipe($.rename({
                     basename: 'index'
                 }))
-                .pipe(gulp.dest(paths.src + 'styleguide/'));
+                .pipe(gulp.dest(paths.dest + 'styleguide/'));
         })
-        .pipe(gulp.dest(paths.fonts.src))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
+        .pipe(gulp.dest(paths.fonts.src));
 });
 
 
@@ -452,8 +449,8 @@ gulp.task('watch', function () {
     gulp.watch(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}', ['images:optimize']);
 
     // Watch Fonts
-    gulp.watch(paths.fonts.src + '**/*', ['fonts']);
-    gulp.watch(paths.images.src + 'icons/**/*.svg', ['fonts:icons']);
+    gulp.watch(paths.fonts.src + '**/*', ['fonts:convert']);
+    gulp.watch(paths.images.src + 'icons/**/*.svg', ['fonts']);
 });
 
 
