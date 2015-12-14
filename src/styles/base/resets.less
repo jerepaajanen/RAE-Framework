@@ -3,66 +3,26 @@
 // -------------------------------------------------------
 .resets(@boolean) when (@boolean = true) {
 
-    // Resets built atop of Sanitize.css, meaning
-    // all browsers render consistently.
-    // http://github.com/jonathantneal/sanitize.css
-
     // Normalization
 
-    :root {
-        box-sizing: border-box; //Box model adjustment http://cbrac.co/RQrDL5
-        cursor: default;
-        -ms-overflow-style: -ms-autohiding-scrollbar; // IE11+
+    html {
+        -ms-overflow-style: -ms-autohiding-scrollbar; // Edge 12+, Internet Explorer 11-
         overflow-y: scroll; // All browsers without overlaying scrollbars
-        text-size-adjust: 100%; // iOS 8+
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        -moz-font-feature-settings: "liga" on;
-        text-rendering: optimizeLegibility;
+        -webkit-text-size-adjust: 100%; // iOS 8+
     }
 
-    // Universal inheritance
-
-    *,
-    ::before,
-    ::after {
-        box-sizing: inherit;
-        // Specify solid border style of all elements
-        border-style: solid;
-        border-width: 0;
-    }
-
-    * {
-        font-size: inherit;
-        line-height: inherit;
-        // Remove margin and padding of all elements
-        margin: 0;
-        padding: 0;
-    }
-
-    ::before,
-    ::after {
-        text-decoration: inherit;
-        vertical-align: inherit;
-    }
-
-    // Make viewport responsive
-
-    // @viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in some cases.
-
-    @-moz-viewport      { width: device-width; }
+    // @ms-viewport is needed because IE 10+ doesn't honor <meta name="viewport"> in some cases.
     @-ms-viewport       { width: device-width; }
-    @-o-viewport        { width: device-width; }
-    @-webkit-viewport   { width: device-width; }
-    @viewport           { width: device-width; }
 
     audio:not([controls]) {
         display: none; // Chrome 40+, iOS 8+, Safari 8+
     }
 
     input {
-        line-height: normal; // Address Firefox 4+ setting `line-height` on `input` using `!important` in the UA stylesheet
 
+        &[type="button"], &[type="reset"], &[type="submit"] {
+            -webkit-appearance: button; // iOS 8+
+        }
         &[type="number"] {
             width: auto; // Firefox 36+
         }
@@ -76,6 +36,13 @@
         &:-webkit-autofill {
             -webkit-box-shadow: 0 0 0px 1000px #fff inset; // Remove forced yellow input background in Chrome
         }
+    }
+
+    // Firefox inner outline on buttons
+    input::-moz-focus-inner,
+    button::-moz-focus-inner {
+        padding: 0;
+        border: 0;
     }
 
     // Correct `block` display not defined for any HTML5 element in IE 9.
@@ -109,30 +76,74 @@
         font-size: 75%; // All browsers
     }
 
+    svg:not(:root) {
+        overflow: hidden; // Internet Explorer 11-
+    }
+
     template {
         display: none; // Android 4.3-, Internet Explorer 9/10/11+, iOS 7-, Safari 7-, Windows Phone 8.1+
     }
 
     textarea {
-        overflow: auto; // Internet Explorer 9/10/11+
+        overflow: auto; // Edge 12+, Internet Explorer 11-
     }
 
     [hidden] {
         display: none; // Internet Explorer 10-
     }
 
-    [unselectable] {
-        user-select: none; // Android 4.4+, Chrome 40+, Firefox 36+, iOS 8+, Safari 8+
-    }
-
     [role="button"] {
         cursor: pointer; // iOS "clickable elements" fix for role="button"
+    }
+
+
+    // Universal inheritance
+
+    *,
+    ::before,
+    ::after {
+        box-sizing: inherit;
+    }
+
+    * {
+        font-size: inherit;
+        line-height: inherit;
+        // Remove margin and padding of all elements
+        margin: 0;
+        padding: 0;
+    }
+
+    ::before,
+    ::after {
+        text-decoration: inherit;
+        vertical-align: inherit;
+    }
+
+
+    // Defaults
+
+    *,
+    ::before,
+    ::after {
+        // Specify solid border style of all elements
+        border-style: solid;
+        border-width: 0;
+    }
+
+    :root {
+        box-sizing: border-box; //Box model adjustment http://cbrac.co/RQrDL5
+        cursor: default;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        -moz-font-feature-settings: "liga" on;
+        text-rendering: optimizeLegibility;
     }
 
     // Specify the text decoration of anchors and improve readability of focused elements when they are also in an active/hover state.
     a {
         text-decoration: none;
-        &:active, &:hover {
+        &:active,
+        &:hover {
             outline: 0;
         }
     }
@@ -172,7 +183,6 @@
     pre,
     samp {
         font-family: monospace, serif;
-        font-size: 1em;
     }
 
     // Specify the list style of nav lists
@@ -193,13 +203,6 @@
         }
     }
 
-    // Firefox inner outline on buttons
-    input::-moz-focus-inner,
-    button::-moz-focus-inner {
-        padding: 0;
-        border: 0;
-    }
-
     // Specify the border styles of tables
     table {
         border-collapse: collapse;
@@ -218,14 +221,29 @@
     }
 
 
-    // Hide content from screens but not screenreaders
-    @media screen {
-        [hidden~="screen"] {
-            display: inherit;
-        }
-        [hidden~="screen"]:not(:active):not(:focus):not(:target) {
-            clip: rect(0 0 0 0) !important;
-            position: absolute !important;
+    // Specify the progress cursor of updating elements
+    [aria-busy="true"] {
+        cursor: progress;
+    }
+
+    // Specify the pointer cursor of trigger elements
+    [aria-controls] {
+        cursor: pointer;
+    }
+
+    // Specify the unstyled cursor of disabled, not-editable, or otherwise inoperable elements
+    [aria-disabled] {
+        cursor: default;
+    }
+
+    // Specify the style of visually hidden yet accessible elements
+
+    [hidden][aria-hidden="false"] {
+        clip: rect(0 0 0 0);
+        display: inherit;
+        position: absolute;
+        &:focus {
+            clip: auto;
         }
     }
 }

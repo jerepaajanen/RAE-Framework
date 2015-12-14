@@ -74,15 +74,6 @@
             background-image: url(../images/form/select_hover.svg);
         }
     }
-    @-moz-document url-prefix() {
-        select:not([multiple]) {
-            // Get rid of <select> arrow in FF < 30, idea for this hack:
-            // https://gist.github.com/joaocunha/6273016
-            text-indent: 0.01px;
-            text-overflow: '';
-            padding-right: 2rem;
-        }
-    }
 
     // Radios and checkboxes
     .radio,
