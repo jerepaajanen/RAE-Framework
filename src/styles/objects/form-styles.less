@@ -4,6 +4,7 @@
 .use-form-styles(@boolean) when (@boolean =true) {
 
     // Fieldset with borders
+
     fieldset.fieldset--bordered {
         border: @fieldset-border-width @fieldset-border-style @fieldset-border-color;
         padding: @spacing-half @spacing-base @spacing-base @spacing-base;
@@ -14,6 +15,7 @@
     }
 
     // Basic styles for form elements
+
     input[type="date"],
     input[type="datetime"],
     input[type="datetime-local"],
@@ -76,6 +78,7 @@
     }
 
     // Radios and checkboxes
+
     .radio,
     .checkbox {
         margin-bottom: @input-checkbox-radio-margin; // add some spacing between checkboxes/radios
@@ -156,6 +159,7 @@
     }
 
     // Checkbox styles
+
     .checkbox {
         label {
             &:before {
@@ -177,6 +181,7 @@
     }
 
     // Radio styles
+
     .radio {
         label {
             &:before {
@@ -195,6 +200,7 @@
     }
 
     // Block-level form items
+
     .form-item {
         display: block;
         margin-bottom: @form-item-spacing;

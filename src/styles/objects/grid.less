@@ -3,7 +3,16 @@
 // -------------------------------------------------------
 .use-grid-classes(@boolean) when (@boolean =true) {
 
+    // Usage
+    // <element class="container">
+    //    <element class="row">
+    //        <element class="column u-width-sm-*">
+    //        </element>
+    //    </element>
+    // </element>
+
     // Container
+
     .use-container(@boolean) when (@boolean =true) {
         .container,
         .container-fluid {
@@ -13,6 +22,7 @@
         // Container widths
 
         // Container Small (Default)
+
         .use-screen-sm(@boolean) when (@boolean =true) {
             .container {
                 max-width: @container-sm;
@@ -21,6 +31,7 @@
         .use-screen-sm(@use-screen-sm);
 
         // Container Medium
+
         .use-screen-md(@boolean) when (@boolean =true) {
             @media @md-up {
                 .container {
@@ -31,6 +42,7 @@
         .use-screen-md(@use-screen-md);
 
         // Container Large
+
         .use-screen-lg(@boolean) when (@boolean =true) {
             @media @lg-up {
                 .container {
@@ -41,6 +53,7 @@
         .use-screen-lg(@use-screen-lg);
 
         // Container Extra-Large
+
         .use-screen-xl(@boolean) when (@boolean =true) {
             @media @xl-up {
                 .container {
@@ -53,6 +66,7 @@
     .use-container(@use-container);
 
     // Row
+
     .use-row(@boolean) when (@boolean =true) {
         .row {
             .make-row();
@@ -61,6 +75,7 @@
     .use-row(@use-row);
 
     // Column
+
     .use-column(@boolean) when (@boolean =true) {
         .column {
             .make-column(@grid-gutter-width);
@@ -70,6 +85,7 @@
     .use-column(@use-column);
 
     // Row variations
+
     .use-row-variations(@boolean) when (@boolean =true) {
 
         // Row with half gutters
@@ -83,6 +99,7 @@
         }
 
         // Row with narrow 2px gutters
+
         .row--narrow {
             margin-left: -1px;
             margin-right: -1px;
@@ -104,6 +121,7 @@
         // Flex-grid only features
 
         // Row with centered columns
+
         .row--centered {
             & when (@use-flex-grid =true) {
                 justify-content: center;
@@ -111,6 +129,7 @@
         }
 
         // Row with equal height columns
+
         .row--equal-height {
             & when (@use-flex-grid =true) {
                 > .column {

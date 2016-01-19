@@ -3,7 +3,6 @@
 // -------------------------------------------------------
 
 // Calculate grids
-
 .calc-grid(@index, @type, @class: ~'') when (@type = width) and (@index > 0) {
     .u-width@{class}-@{index}of@{grid-columns} {
         width: percentage((@index / @grid-columns));
@@ -17,10 +16,8 @@
     .make-grid(@index - 1, @type, @class);
 }
 
-
 //
 // Grid mixins
-
 
 // Container mixin
 .make-container(@gutter: @grid-gutter-width) {
