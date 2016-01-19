@@ -2,42 +2,109 @@
 // Grid Framework
 // -------------------------------------------------------
 
-// Used only by RAE Framework to generate grid classes
+// Calculate grids
 
-.calc-grid(@index, @type, @class: ~'') when (@type = column) and (@index > 0) and (@use-columns = true){
-    .col@{class}-@{index} {
-
-        & when (@use-flex-grid = false) {
-            width: percentage((@index / @grid-columns));
-        }
-
-        & when (@use-flex-grid = true) {
-            flex: 0 0 percentage(@index / @grid-columns);
-        }
+.calc-grid(@index, @type, @class: ~'') when (@type = width) and (@index > 0) {
+    .u-width@{class}-@{index}of@{grid-columns} {
+        width: percentage((@index / @grid-columns));
     }
 }
 
-.calc-grid(@index, @type, @class: ~'') when (@type = push) and (@use-columns = true) and (@use-push = true)  {
-    .push@{class}-@{index} {
-        left: percentage((@index / @grid-columns));
-    }
-}
-
-.calc-grid(@index, @type, @class: ~'') when (@type = pull) and (@use-columns = true) and (@use-pull = true) {
-    .pull@{class}-@{index} {
-        right: percentage((@index / @grid-columns));
-    }
-}
-
-.calc-grid(@index, @type, @class: ~'') when (@type = offset) and (@use-columns = true) and (@use-offset = true) {
-    .offset@{class}-@{index} {
-        margin-left: percentage((@index / @grid-columns));
-    }
-}
-
-// Basic looping in LESS
+// Loop grid variables
 .make-grid(@index, @type, @class) when (@index >= 0) {
     .calc-grid(@index, @type, @class);
     // next iteration
     .make-grid(@index - 1, @type, @class);
+}
+
+
+//
+// Grid mixins
+
+
+// Container mixin
+.make-container(@gutter: @grid-gutter-width) {
+    & when (@gutter > 0) {
+        padding-left: (@gutter / 2);
+        padding-right: (@gutter / 2);
+    }
+    & when (@use-flex-grid =false) {
+        .clearfix();
+    }
+    margin-left: auto;
+    margin-right: auto;
+}
+
+// Row mixin
+.make-row(@gutter: @grid-gutter-width) {
+    & when (@use-flex-grid =false) {
+        .clearfix();
+    }
+    & when (@use-flex-grid =true) {
+        display: flex;
+        clear: both;
+        flex-wrap: wrap;
+    }
+    & when (@gutter > 0) {
+        margin-left: ceil(@gutter / -2);
+        margin-right: floor(@gutter / -2);
+    }
+
+    list-style: none; // Row can be used with list items
+
+}
+
+// Column mixin
+.make-column(@gutter: @grid-gutter-width) {
+    position: relative;
+    min-height: 1px;
+    & when (@gutter > 0) {
+        padding-left: (@gutter / 2);
+        padding-right: (@gutter / 2);
+    }
+    & when (@use-flex-grid =false) {
+        float: left;
+    }
+}
+
+// Width mixin
+.width(@column: @grid-columns) {
+    & when (@column >=1) {
+        width: percentage((@column / @grid-columns));
+    }
+    & when (@column < 1) {
+        width: percentage((@column));
+    }
+}
+
+// Offset mixin
+.offset(@offset: 1) {
+    & when (@column >=1) {
+        margin-left: percentage((@offset / @grid-columns));
+    }
+    & when (@column < 1) {
+        margin-left: percentage((@offset));
+    }
+}
+
+// Push mixin
+.push(@push: 1) {
+    & when (@column >=1) {
+        left: percentage((@push / @grid-columns));
+    }
+    & when (@column < 1) {
+        left: percentage((@push));
+    }
+    right: auto;
+}
+
+// Pull mixin
+.pull(@pull: 1) {
+    left: auto;
+    & when (@column >=1) {
+        right: percentage((@push / @grid-columns));
+    }
+    & when (@column < 1) {
+        right: percentage((@push));
+    }
 }

@@ -1,0 +1,23 @@
+//
+// Utilities – Flex-alignment
+// -------------------------------------------------------
+.use-flex-alignment(@boolean) when (@boolean =true) {
+
+    .u-flex-center {
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .u-flex-top {
+        display: flex !important;
+        align-items: flex-start !important;
+    }
+
+    .u-flex-bottom {
+        display: flex !important;
+        align-items: flex-end !important;
+    }
+
+}
+
+.use-flex-alignment(@use-flex-alignment);

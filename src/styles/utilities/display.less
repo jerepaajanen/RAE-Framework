@@ -1,0 +1,27 @@
+//
+// Utilities – Display
+// -------------------------------------------------------
+.use-display(@boolean) when (@boolean =true) {
+
+    .u-block {
+        display: block !important;
+    }
+
+    .u-inline-block {
+        display: inline-block !important;
+    }
+
+    .u-table {
+        display: table !important;
+        &:before {
+            height: auto !important;
+            display: inherit !important;
+        }
+    }
+
+    .u-table-cell {
+        display: table-cell !important
+    }
+}
+
+.use-display(@use-display);

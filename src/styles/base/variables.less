@@ -15,7 +15,7 @@
 // Gutter width between columns (use px|%|rem)
 @grid-columns:                  12;
 @grid-gutter-width:             24px;
-@use-flex-grid:                 false;
+@use-flex-grid:                 true;
 
 // Breakpoints & container widths
 @breakpoint-xs:                 0;
@@ -120,7 +120,7 @@
 // UI colors
 @color-success:                 #5cb85c;
 @color-warning:                 #ed9c28;
-@color-danger:                  #d9534f;
+@color-error:                   #d9534f;
 @color-info:                    #5bc0de;
 
 // Social Media colors
@@ -211,7 +211,7 @@
 // Button sizes will be derived from base button proportions
 @button-size-small:             0.8;
 @button-size-large:             1.5;
-@button-size-xlarge:            2;
+@button-size-huge:              2;
 
 
 // TABLES
@@ -309,28 +309,35 @@
 @use-tables:                    true;
 @use-print:                     true;
 
-// Layout
+// Screen sizes
 @use-screen-sm:                 true;
 @use-screen-md:                 true;
 @use-screen-lg:                 true;
 @use-screen-xl:                 true;
-
-@use-container:                 true;
-@use-columns:                   true;
-    @use-push:                  true;
-    @use-pull:                  true;
-    @use-offset:                true;
 
 // Objects
 @use-animations:                true;
 @use-icons:                     true;
 @use-buttons:                   true;
 @use-form-styles:               true;
+@use-grid-classes:              true;
+    @use-container:             true;
+    @use-row:                   true;
+    @use-column:                true;
+    @use-row-variations:        true;
 @use-table-styles:              true;
 @use-tooltips:                  true;
 @use-embed-wrap:                true;
 @use-responsive-navigation:     true;
 
 // Utilities
-@use-utilities:                 true;
-@use-responsive-utilities:      true;
+@use-centering:                 true;
+@use-display:                   true;
+@use-flex-alignment:            true;
+@use-floats:                    true;
+@use-grid:                      true;
+@use-text-alignment:            true;
+@use-text-color:                true;
+@use-text-weight:               true;
+@use-tools:                     true;
+@use-visibility:                true;

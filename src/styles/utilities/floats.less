@@ -1,0 +1,24 @@
+//
+// Utilities – Floats
+// -------------------------------------------------------
+.use-floats(@boolean) when (@boolean =true) {
+
+    .u-float-none {
+        float: none !important;
+    }
+
+    .u-float-left {
+        float: left !important;
+    }
+
+    .u-float-right {
+        float: right !important;
+    }
+
+    .u-clearfix {
+        .clearfix();
+    }
+
+}
+
+.use-floats(@use-floats);

@@ -39,22 +39,22 @@
     }
 
     //Buttons sizes
-    .button--sm {
+    .button--small {
         .button-size(@button-size-small);
     }
 
-    .button--lg {
+    .button--large {
         .button-size(@button-size-large);
     }
 
-    .button--xl {
-        .button-size(@button-size-xlarge);
+    .button--huge {
+        .button-size(@button-size-huge);
     }
 
     .button--block {
-        width:100%;
-        padding-left:0;
-        padding-right:0;
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
         white-space: normal !important; // line-break for mobile
     }
 
@@ -67,14 +67,14 @@
         border-radius: 100%;
         padding: 0 !important;
         width: @button-height;
-        &.button--sm {
+        &.button--small {
             width: (@button-height * @button-size-small);
         }
-        &.button--lg {
+        &.button--large {
             width: (@button-height * @button-size-large);
         }
-        &.button--xl {
-            width: (@button-height * @button-size-xlarge);
+        &.button--huge {
+            width: (@button-height * @button-size-huge);
         }
     }
 

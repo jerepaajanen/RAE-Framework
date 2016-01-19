@@ -21,7 +21,7 @@
         "fontName": "icons",
         "className": "icon",
         "gridSize": 32,
-        "baselineShift": 8,
-        "autohint": false
+        "baselineShift": 5,
+        "autohint": true
     }
 }

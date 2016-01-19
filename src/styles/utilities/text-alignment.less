@@ -1,0 +1,24 @@
+//
+// Utilities – Text-alignment
+// -------------------------------------------------------
+.use-text-alignment(@boolean) when (@boolean =true) {
+
+    .u-text-left {
+        text-align: left !important;
+    }
+
+    .u-text-right {
+        text-align: right !important;
+    }
+
+    .u-text-center {
+        text-align: center !important;
+    }
+    
+    .u-text-justify {
+        text-align: justify !important;
+    }
+
+}
+
+.use-text-alignment(@use-text-alignment);

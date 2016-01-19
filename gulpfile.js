@@ -129,7 +129,7 @@ var markupProcess = function (isNotPartial) {
         .pipe(isNotPartial || isProduction ? $.changed(paths.dest) : $.util.noop())
         .pipe($.preprocess({
             context: {
-                ENV: flags.production || flags.p === true ? 'production' : 'development',
+                ENV: isProduction ? 'production' : 'development',
                 UA: config.analyticsUA,
                 META: {
                     author: pkg.author,
@@ -324,7 +324,7 @@ gulp.task('fonts:icons', function () {
                 .pipe($.rename({
                     basename: 'index'
                 }))
-                .pipe(gulp.dest(paths.dest + 'styleguide/'));
+                .pipe(gulp.dest(paths.src + 'styleguide/'));
         })
         .pipe(gulp.dest(paths.fonts.src));
 });
@@ -436,6 +436,7 @@ gulp.task('watch', function () {
 
     // Watch Html-files
     gulp.watch(paths.src + '*.html', ['markup']);
+    gulp.watch(paths.src + 'styleguide/*.html', ['markup']);
     gulp.watch(paths.src + 'partials/**/*', ['markup:partials']);
 
     // Watch Styles
@@ -474,14 +475,26 @@ gulp.task('serve', function () {
 
 // DEPLOY
 // -------------------------------------------------------
-var configFtp = require('./config-ftp.json'),
-    conn = ftp.create({
+
+try {
+    var configFtp = require('./config-ftp.json');
+} catch (error) {
+
+    console.log($.util.colors.red('Config-ftp.json file needed for deploy!'));
+
+}
+
+if (configFtp) {
+    //console.log(configFtp);
+    console.log($.util.colors.grey('Config-ftp.json found.'));
+    var conn = ftp.create({
         host:     configFtp.server.host,
         user:     configFtp.server.user,
         password: configFtp.server.password,
         parallel: 10,
         log:      null //$.util.log
     });
+}
 
 gulp.task('deploy', function () {
 

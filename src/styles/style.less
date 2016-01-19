@@ -4,13 +4,15 @@
 // RAE Framework
 // -------------------------------------------------------
 
-    // Development Utilities
+    // Variables and mixins
+    @import 'base/variables';
+    @import 'base/mixins';
+
+    // Utilities for development
     @import 'utilities/debug';
     @import 'utilities/current-media-query';
 
-    // Base
-    @import 'base/variables';
-    @import 'base/mixins';
+    // Base CSS
     @import 'base/resets';
     @import	'base/print';
     @import 'base/main';
@@ -22,23 +24,28 @@
     @import 'base/forms';
     @import 'base/tables';
 
-    // Layout
-    @import 'layout/containers';
-    @import 'layout/grids';
-
     // Objects
     @import 'objects/animate';
-    @import 'objects/icons';
     @import 'objects/buttons';
     @import 'objects/form-styles';
-    @import	'objects/table-styles';
-    @import 'objects/tooltips';
+    @import 'objects/grid';
+    @import 'objects/icons';
     @import 'objects/embed-wrap';
     @import 'objects/nav-responsive';
+    @import	'objects/table-styles';
+    @import 'objects/tooltips';
 
     // Utilities
-    @import 'utilities/utilities';
-    @import 'utilities/responsive-utilities';
+    @import 'utilities/centering';
+    @import 'utilities/display';
+    @import 'utilities/flex-alignment';
+    @import 'utilities/floats';
+    @import 'utilities/text-alignment';
+    @import 'utilities/text-weight';
+    @import 'utilities/text-color';
+    @import 'utilities/tools';
+    @import 'utilities/visibility';
+    @import 'utilities/widths';
 
     // Vendor and external stylesheets
     //@import 'vendor/';
@@ -48,8 +55,3 @@
 
     // Pages
     //@import 'pages/';
-
-
-//
-// Site styles
-// -------------------------------------------------------

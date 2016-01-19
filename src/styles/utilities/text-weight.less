@@ -1,0 +1,23 @@
+//
+// Utilities – Text-weight
+// -------------------------------------------------------
+.use-text-weight(@boolean) when (@boolean =true) {
+
+    .u-text-light {
+        font-weight: 300 !important;
+    }
+
+    .u-text-normal {
+        font-weight: 400 !important;
+    }
+
+    .u-text-semibold {
+        font-weight: 600 !important;
+    }
+
+    .u-text-bold {
+        font-weight: 700 !important;
+    }
+}
+
+.use-text-weight(@use-text-weight);

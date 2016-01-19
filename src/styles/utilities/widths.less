@@ -1,0 +1,41 @@
+//
+// Utilities – Widths
+// -------------------------------------------------------
+.use-grid(@boolean) when (@boolean =true) {
+
+
+    // Small Grid for Mobile devices
+    .use-screen-sm(@boolean) when (@boolean =true) {
+        .make-grid(@grid-columns, width, -sm);
+    }
+    .use-screen-sm(@use-screen-sm);
+
+
+    // Medium Grid for Tablet devices
+    .use-screen-md(@boolean) when (@boolean =true) {
+        @media @md-up {
+            .make-grid(@grid-columns, width, -md);
+        }
+    }
+    .use-screen-md(@use-screen-md);
+
+
+    // Large Grid, optimal for laptop & desktop devices
+    .use-screen-lg(@boolean) when (@boolean =true) {
+        @media @lg-up {
+            .make-grid(@grid-columns, width, -lg);
+        }
+    }
+    .use-screen-lg(@use-screen-lg);
+
+
+    // Extra Large Grid for Large desktop devices
+    .use-screen-xl(@boolean) when (@boolean =true) {
+        @media @xl-up {
+            .make-grid(@grid-columns, width, -xl);
+        }
+    }
+    .use-screen-xl(@use-screen-xl);
+}
+
+.use-grid(@use-grid);

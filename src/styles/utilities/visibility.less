@@ -1,0 +1,96 @@
+//
+// Utilities – Visibility
+// -------------------------------------------------------
+.use-visibility(@boolean) when (@boolean =true) {
+
+    // Hide content only visually, but have it available for screen readers.
+
+    .u-visually-hidden {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .u-show {
+        display: block !important;
+    }
+
+    .u-hide {
+        display: none !important;
+    }
+
+
+    // Extra-small
+
+    .u-hide-xs-up {
+        display: none !important;
+    }
+
+    @media @xs-down {
+        .u-hide-xs-down {
+            display: none !important;
+        }
+    }
+
+    // Small
+
+    @media @sm-up {
+        .u-hide-sm-up {
+            display: none !important;
+        }
+    }
+    @media @sm-down {
+        .u-hide-sm-down {
+            display: none !important;
+        }
+    }
+
+    // Medium
+
+    @media @md-up {
+        .u-hide-md-up {
+            display: none !important;
+        }
+    }
+
+    @media @md-down {
+        .u-hide-md-down {
+            display: none !important;
+        }
+    }
+
+    // Large
+
+    @media @lg-up {
+        .u-hide-lg-up {
+            display: none !important;
+        }
+    }
+
+    @media @lg-down {
+        .u-hide-lg-down {
+            display: none !important;
+        }
+    }
+
+    // Extra-large
+
+    @media @xl-up {
+        .u-hide-xl-up {
+            display: none !important;
+        }
+    }
+
+    .u-hide-xl-down {
+        display: none !important;
+    }
+
+
+}
+
+.use-visibility(@use-visibility);
