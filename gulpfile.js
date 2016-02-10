@@ -443,7 +443,7 @@ gulp.task('watch', function () {
     gulp.watch(paths.styles.src + '**/*.less', ['styles']);
 
     // Watch Scripts
-    gulp.watch(paths.scripts.src + '**/*.js', ['scripts:hint']);
+    gulp.watch(paths.scripts.src + '**/*.js', ['scripts:main']);
     gulp.watch('bower.json', ['scripts:vendor']);
 
     // Watch Images
