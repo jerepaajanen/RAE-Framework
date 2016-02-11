@@ -311,7 +311,7 @@ gulp.task('fonts:icons', function () {
             };
 
             // Build Less-files
-            gulp.src('./templates/_iconfont/icons.less')
+            gulp.src(paths.styles.src + 'objects/icons-template.less')
                 .pipe($.consolidate('lodash', options))
                 .pipe($.rename({
                     basename: 'icons'
@@ -319,7 +319,7 @@ gulp.task('fonts:icons', function () {
                 .pipe(gulp.dest(paths.styles.src + 'objects'));
 
             // Build html-file for documentation
-            gulp.src('./templates/_iconfont/icons.html')
+            gulp.src(paths.src + 'styleguide/icons-template.html')
                 .pipe($.consolidate('lodash', options))
                 .pipe($.rename({
                     basename: 'index'

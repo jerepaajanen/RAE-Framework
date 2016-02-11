@@ -9,7 +9,8 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     <!-- Page styles -->
     <link rel="stylesheet" href="../styles/style.css">
@@ -85,6 +86,10 @@
             padding-bottom: 0;
         }
 
+        .docs-content .example {
+            padding-bottom: 1.5rem;
+        }
+
         .docs-content .hero {
             padding-top: 2rem;
             padding-bottom: 4.5rem;
@@ -107,11 +112,17 @@
             fill: #d9534f;
         }
 
-        .docs-content .grid__columns .column {
+        .docs-content .grid__columns .column__inner {
             background: #f2f2f2;
-            min-height: 1em;
-            margin-bottom: 1em;
+            margin-top: .5em;
+            margin-bottom: .5em;
+            padding: .5em;
             display: block;
+            width: 100%;
+        }
+
+        .docs-content .grid__columns .column__inner .column__inner {
+            background: #fff;
         }
 
         .docs-content .condition-table th {
@@ -520,103 +531,119 @@
             <article class="grid__breakpoints">
                 <header>
                     <h3 class="u-muted">Containers</h3>
-                    <p>Use <code>.container</code> for a responsive fixed width container and <code>.container--fluid</code> for a full width container, spanning the entire width of your viewport.</p>
+                    <p>Use <code>.container</code> for a responsive fixed width container and <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
                 </header>
-                <div class="example">
+                <div class="example u-hide">
                     <div class="container"></div>
-                    <div class="container--fluid"></div>
+                    <div class="container-fluid"></div>
                 </div>
             </article>
             <article class="grid__columns">
                 <header>
-                    <h3 class="u-muted">Columns</h3>
+                    <h3 class="u-muted">Row &amp; columns</h3>
                     <h4>Basic columns layout</h4>
                 </header>
                 <div class="example">
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
-                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
-                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
-                        <div class="col-md-4"><span class="column"></span></div>
-                        <div class="col-md-8"><span class="column"></span></div>
+                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-md-4of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-md-8of12"><span class="column__inner"></span></div>
                     </div>
                     <div class="row">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
-                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
-                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
-                        <div class="col-md-4"><span class="column"></span></div>
-                        <div class="col-md-8"><span class="column"></span></div>
+                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-md-4of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-md-8of12"><span class="column__inner"></span></div>
                     </div>
                 </div>
+
                 <h4>Column nesting with row-classes</h4>
                 <div class="example">
-                    <div class="row">
-                        <div class="col-xl-6 push-xl-6 col-md-6">
+                    <div class="row row--equal-height">
+                        <div class="column u-width-sm-6of12"><span class="column__inner">
                             <div class="row">
-                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
-                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
-                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
-                                <div class="col-xl-3 col-sm-6"><span class="column"></span></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-6"><span class="column"></span></div>
-                                        <div class="col-md-6 col-sm-6"><span class="column"></span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 pull-xl-6 col-md-6">
-                            <div class="row">
-                                <div class="col-lg-4 col-sm-4"><span class="column"></span></div>
-                                <div class="col-lg-8 col-sm-8"><span class="column"></span></div>
-                                <div class="col-lg-4 col-sm-4"><span class="column"></span></div>
-                                <div class="col-lg-8 col-sm-8"><span class="column"></span></div>
-                                <div class="col-lg-4 col-sm-4"><span class="column"></span></div>
-                                <div class="col-lg-8 col-sm-8"><span class="column"></span></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <h4>Columns with half-gutters</h4>
-                <div class="example">
-                    <div class="row row--half-gutters">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
-                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
-                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                    </div>
-                </div>
-                <!-- Under condiseration
-                <h4>Columns with double-gutters</h4>
-                <div class="example">
-                    <div class="row row--double-gutters">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
-                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
-                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
+                            <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
+
+                        <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
+
 
                     </div>
-                </div>-->
-                <h4>Columns without gutters</h4>
+
+                    </span>
+
+
+                </div>
+                <div class="column u-width-sm-6of12"><span class="column__inner">
+                            <div class="row">
+                                <div class="column u-width-sm-4of12"><span class="column__inner"></span></div>
+                <div class="column u-width-sm-8of12"><span class="column__inner"></span></div>
+                <div class="column u-width-sm-4of12"><span class="column__inner"></span></div>
+                <div class="column u-width-sm-8of12"><span class="column__inner"></span></div>
+                <div class="column u-width-sm-4of12"><span class="column__inner"></span></div>
+                <div class="column u-width-sm-8of12"><span class="column__inner"></span></div>
+                </div>
+                </span>
+                </div>
+                </div>
+                </div>
+                <h4>Column gutters</h4>
+
                 <div class="example">
-                    <div class="row row--without-gutters">
-                        <div class="col-xl-4 col-lg-5 col-sm-6"><span class="column"></span></div>
-                        <div class="col-xl-8 col-lg-7 col-sm-6"><span class="column"></span></div>
-                        <div class="col-lg-7 col-md-6"><span class="column"></span></div>
-                        <div class="col-lg-5 col-md-6"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
-                        <div class="col-sm-4"><span class="column"></span></div>
+                    <h5>Half</h5>
+                    <div class="row row--half">
+                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                    </div>
+                </div>
+                <div class="example">
+                    <h5>Narrow</h5>
+
+                    <div class="row row--narrow">
+                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+
+                    </div>
+                </div>
+                <div class="example">
+                    <h5>Collpase</h5>
+
+                    <div class="row row--collapse">
+                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                    </div>
+                </div>
+                <h4>Centered columns</h4>
+
+                <div class="example">
+                    <div class="row row--centered">
+                        <div class="column u-width-sm-3of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-3of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
+                    </div>
+                </div>
+                <h4>Equal height columns</h4>
+
+                <div class="example">
+                    <div class="row row--equal-height">
+                        <div class="column u-width-sm-3of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-3of12"><span class="column__inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero porro ullam iusto totam maxime doloribus qui est quaerat quae quia sint tempore amet, excepturi quisquam, odit ipsa facilis enim accusamus vel itaque nobis architecto, iste sit.</span></div>
+                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
+                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
                     </div>
                 </div>
             </article>
@@ -1145,10 +1172,10 @@
                     <h3 class="u-muted">Button sizes &amp; variations</h3>
                 </header>
                 <div class="example">
-                    <button class="button button--default button--sm" type="button">Small</button>
+                    <button class="button button--default button--small" type="button">Small</button>
                     <button class="button button--default" type="button">Regular</button>
-                    <button class="button button--default button--lg" type="button">Large</button>
-                    <button class="button button--default button--xl" type="button">Extra Large</button>
+                    <button class="button button--default button--large" type="button">Large</button>
+                    <button class="button button--default button--huge" type="button">Huge</button>
                 </div>
                 <div class="example">
                     <button class="button button--default button--block" type="button">Block</button>
@@ -1398,26 +1425,26 @@
                     <form role="form" class="form" action="">
                         <div class="form-item">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="column u-width-md-2of12">
                                     <label for="demo-input__grid">Input</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="column u-width-md-10of12">
                                     <input type="text" id="demo-input__grid" placeholder="This is input">
                                 </div>
                             </div>
                         </div>
                         <div class="form-item">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="column u-width-md-2of12">
                                     <label for="demo-textarea__grid">Textarea</label>
                                 </div>
-                                <div class="col-md-10">
+                                <div class="column u-width-md-10of12">
                                     <textarea id="demo-textarea__grid" placeholder="This is textarea" rows="6"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-10 offset-md-2">
+                            <div class="column u-width-md-10of12">
                                 <button class="button button--default" type="submit">Submit</button>
                             </div>
                         </div>
@@ -1436,12 +1463,12 @@
                 </header>
                 <ul class="row">
                     <% _.each(glyphs, function(glyph) { %>
-                        <li class="col-sm-6 col-md-4 col-lg-3 col-xl-2">
+                        <li class="column u-width-sm-6of12 u-width-md-4of12 u-width-lg-3of12 u-width-xl-2of12">
                             <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
                             <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
                             <div class="well magnify">
                                 <ul class="glyph-magnify">
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--lg"></i></li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--large"></i></li>
                                     <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
                                     <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--3x"></i></li>
 
@@ -1484,7 +1511,7 @@
                         <td class="bg500 white">@grey-500</td>
                     </tr>
                     <tr>
-                        <td class="bg400">@grey-400</td>
+                        <td class="bg400">@grey-4of1200</td>
                     </tr>
                     <tr>
                         <td class="bg300">@grey-300</td>
@@ -1611,31 +1638,55 @@
                             <tr>
                                 <td><code>.u-center</code>
                                 </td>
+                                <td>
+                                    <div class="u-center" style="max-width: 60%;">Set element horizontally center, inside parent element.</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-center-all</code>
+                                </td>
                                 <td style="height: 96px; position:relative;">
-                                    <div class="u-center">Set element with unknown height and/or width vertically and horizontally center, inside parent element.</div>
+                                    <div class="u-center-all">Set element with unknown height and/or width vertically and horizontally center, inside parent element.</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.u-text-left</code>
                                 </td>
                                 <td>
-                                    <div class="u-text-left">Aligns text to the left left</div>
+                                    <div class="u-text-left">Aligns text to the left left.</div>
                                 </td>
                             </tr>
                             <tr>
                                 <td><code>.u-text-center</code>
                                 </td>
                                 <td>
-                                    <div class="u-text-center">Centers the text</div>
+                                    <div class="u-text-center">Centers the text.</div>
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.u-text-right</code>
+                                <td><code>.u-text-justify</code>
                                 </td>
                                 <td>
-                                    <div class="u-text-right">Aligns text to the right</div>
+                                    <div class="u-text-justify">Justified text.</div>
                                 </td>
                             </tr>
+                            <tr>
+                                <td><code>.u-text-truncate</code>
+                                </td>
+                                <td >
+                                    <div class="u-text-truncate">Truncate too long texts with three dots..</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.u-text-nowrap</code>
+                                </td>
+                                <td>
+                                    <div class="u-text-nowrap">Text will never wrap to the next line.
+</div>
+                                </td>
+                            </tr>
+
+
                             <tr>
                                 <td><code>.u-text-light</code>
                                 </td>
@@ -1701,10 +1752,10 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td><code>.u-color-danger</code>
+                                <td><code>.u-color-error</code>
                                 </td>
                                 <td>
-                                    <div class="u-color-danger">Set text color to "Danger".</div>
+                                    <div class="u-color-error">Set text color to "Danger".</div>
                                 </td>
                             </tr>
                             <tr>
@@ -1801,6 +1852,18 @@
                                 <td>Add styled -webkit scrollbars to element if child elements are larger than parent. Also autohide scrollbars in IE.
                                 </td>
                             </tr>
+                            <tr>
+                                <td><code>.arrow(side, size, align, color,border-width, border-color);</code>
+                                </td>
+                                <td>Create an arrow to box element.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><code>.caret(size, color);</code>
+                                </td>
+                                <td>Create simple caret inside element.
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1819,19 +1882,19 @@
                 </header>
                 <div class="well u-clearfix u-text-center example">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--top" aria-label="Top tooltip">&nbsp</a>
                             <div>Tooltip top</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--right" aria-label="Right tooltip">&nbsp</a>
                             <div>Tooltip right</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--bottom" aria-label="Bottom tooltip">&nbsp</a>
                             <div>Tooltip bottom</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--left" aria-label="Left tooltip">&nbsp</a>
                             <div>Tooltip left</div>
                         </div>
@@ -1840,19 +1903,19 @@
                 </div>
                 <div class="well u-clearfix u-text-center example">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a class="tooltip tooltip--top tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline top</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--right tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline right</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--bottom tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline bottom</div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--left tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline left</div>
                         </div>
@@ -1866,79 +1929,79 @@
                 </header>
                 <div class="well">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideInLeft animated">
+                                <div class="slide-in-left animated">
                                     <span class="dot">&nbsp</span>
                                 </div>
-                                <code>.slideInLeft</code>
+                                <code>.slide-in-left</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideInUp animated">
+                                <div class="slide-in-up animated">
                                     <span class="dot">&nbsp</span>
                                 </div>
-                                <code>.slideInUp</code>
+                                <code>.slide-in-up</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideInDown animated">
+                                <div class="slide-in-down animated">
                                     <span class="dot">&nbsp</span>
                                 </div>
-                                <code>.slideInDown</code>
+                                <code>.slide-in-down</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideInRight animated">
+                                <div class="slide-in-right animated">
                                     <span class="dot">&nbsp</span>
                                 </div>
-                                <code>.slideInRight</code>
+                                <code>.slide-in-right</code>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="well">
                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideOutLeft animated">
+                                <div class="slide-out-left animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.slideOutLeft</code>
+                                <code>.slide-out-left</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideOutUp animated">
+                                <div class="slide-out-up animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.slideOutUp</code>
+                                <code>.slide-out-up</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideOutDown animated">
+                                <div class="slide-out-down animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.slideOutDown</code>
+                                <code>.slide-out-down</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="slideOutRight animated">
+                                <div class="slide-out-right animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.slideOutRight</code>
+                                <code>.slide-out-right</code>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="well">
                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="bounce animated">
                                     <span class="dot">&nbsp;</span>
@@ -1946,7 +2009,7 @@
                                 <code>.bounce</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="flash animated">
                                     <span class="dot">&nbsp;</span>
@@ -1954,7 +2017,7 @@
                                 <code>.flash</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="pulse animated">
                                     <span class="dot">&nbsp;</span>
@@ -1962,7 +2025,7 @@
                                 <code>.pulse</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="shake animated">
                                     <span class="dot">&nbsp;</span>
@@ -1970,7 +2033,7 @@
                                 <code>.shake</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="swing animated">
                                     <span class="dot">&nbsp;</span>
@@ -1978,7 +2041,7 @@
                                 <code>.swing</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="tada animated">
                                     <span class="dot">&nbsp;</span>
@@ -1986,7 +2049,7 @@
                                 <code>.tada</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="wobble animated">
                                     <span class="dot">&nbsp;</span>
@@ -1998,216 +2061,228 @@
                 </div>
                 <div class="well">
                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="bounceIn animated">
+                                <div class="bounce-in animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.bounceIn</code>
+                                <code>.bounce-in</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="bounceInLeft animated">
+                                <div class="bounce-in-left animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.bounceInLeft</code>
+                                <code>.bounce-in-left</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="bounceInUp animated">
+                                <div class="bounce-in-up animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.bounceInUp</code>
+                                <code>.bounce-in-up</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="bounceInDown animated">
+                                <div class="bounce-in-down animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.bounceInDown</code>
+                                <code>.bounce-in-down</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="bounceInRight animated">
+                                <div class="bounce-in-right animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.bounceInRight</code>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="well">
-                    <div class="row ">
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="bounceOut animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.bounceOut</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="bounceOutLeft animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.bounceOutLeft</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="bounceOutUp animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.bounceOutUp</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="bounceOutDown animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.bounceOutDown</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="bounceOutRight animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.bounceOutRight</code>
+                                <code>.bounce-in-right</code>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="well">
                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="fadeIn animated">
+                                <div class="bounce-out animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.fadeIn</code>
+                                <code>.bounce-out</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="fadeInLeft animated">
+                                <div class="bounce-out-left animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.fadeInLeft</code>
+                                <code>.bounce-out-left</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="fadeInUp animated">
+                                <div class="bounce-out-up animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.fadeInUp</code>
+                                <code>.bounce-out-up</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="fadeInDown animated">
+                                <div class="bounce-out-down animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.fadeInDown</code>
+                                <code>.bounce-out-down</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="fadeInRight animated">
+                                <div class="bounce-out-right animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.fadeInRight</code>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="well">
-                    <div class="row ">
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="fadeOut animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.fadeOut</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="fadeOutLeft animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.fadeOutLeft</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="fadeOutUp animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.fadeOutUp</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="fadeOutDown animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.fadeOutDown</code>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="animation animation-reset">
-                                <div class="fadeOutRight animated">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.fadeOutRight</code>
+                                <code>.bounce-out-right</code>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="well">
                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="zoomIn animated">
+                                <div class="fade-in animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.zoomIn</code>
+                                <code>.fade-in</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="zoomOut animated">
+                                <div class="fade-in-left animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.zoomOut</code>
+                                <code>.fade-in-left</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="fade-in-up animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.fade-in-up</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="fade-in-down animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.fade-in-down</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="fade-in-right animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.fade-in-right</code>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="well">
                     <div class="row ">
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="rollIn animated">
+                                <div class="fade-out animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.rollIn</code>
+                                <code>.fade-out</code>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="column u-width-md-3of12">
                             <div class="animation animation-reset">
-                                <div class="rollOut animated">
+                                <div class="fade-out-left animated">
                                     <span class="dot">&nbsp;</span>
                                 </div>
-                                <code>.rollOut</code>
+                                <code>.fade-out-left</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="fade-out-up animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.fade-out-up</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="fade-out-down animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.fade-out-down</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="fade-out-right animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.fade-out-right</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row ">
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="zoom-in animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.zoom-in</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="zoom-out animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.zoom-out</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row ">
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="roll-in animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.roll-in</code>
+                            </div>
+                        </div>
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="roll-out animated">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.roll-out</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row ">
+                        <div class="column u-width-md-3of12">
+                            <div class="animation animation-reset">
+                                <div class="spin-around animated animated--loop">
+                                    <span class="dot">&nbsp;</span>
+                                </div>
+                                <code>.spin-around</code>
                             </div>
                         </div>
                     </div>
@@ -2215,8 +2290,9 @@
             </article>
         </section>
     </main>
-    <footer class="docs-footer container--fluid" role="contentinfo">
-        <small>Hand crafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2015</small>
+
+    <footer class="docs-footer container-fluid" role="contentinfo">
+        <small>Handcrafted with <svg class="svg-heart"><use xlink:href="#svg-heart"></use></svg> by <a href="www.rae.fi">RAE</a><br />© 2015</small>
     </footer>
 
     <!-- Styleguide JS -->
@@ -2224,9 +2300,7 @@
         [].forEach.call(document.getElementsByClassName("animation"), function (el) {
             el.addEventListener("click", function () {
                 el.preventDefault;
-
                 el.classList.toggle('animation-reset');
-
             });
         });
     </script>
