@@ -238,12 +238,12 @@
 
         .docs-content .glyph-name {
             padding-left: 6px;
+            display: block;
         }
 
         .docs-content .glyph-class {
             font-size: .75em;
             color: #999;
-            display: block;
         }
 
         .docs-content.glyph-codepoint {
@@ -1198,6 +1198,36 @@
             </article>
         </section>
         <hr />
+        <section class="icons container">
+            <header>
+                <h2 class="u-text-normal">Icons</h2>
+            </header>
+            <article class="icons__list">
+                <header>
+                    <h3 class="u-muted">List of <%= fontName %></h3>
+                </header>
+                <ul class="row">
+                    <% _.each(glyphs, function(glyph) { %>
+                        <li class="column u-width-sm-6of12 u-width-md-4of12 u-width-lg-3of12 u-width-xl-2of12">
+                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
+                            <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
+                            <div class="well magnify">
+                                <ul class="glyph-magnify">
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--large"></i></li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
+                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--3x"></i></li>
+
+                                </ul>
+                                <div>
+                                    <code class="glyph-codepoint">Unicode: <%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %></code>
+                                </div>
+                            </div>
+                            </li>
+                            <% }); %>
+                </ul>
+            </article>
+        </section>
+        <hr />
         <section class="forms container">
             <header>
                 <h2 class="u-text-normal">Forms</h2>
@@ -1450,36 +1480,6 @@
                         </div>
                     </form>
                 </div>
-            </article>
-        </section>
-        <hr />
-        <section class="icons container">
-            <header>
-                <h2 class="u-text-normal">Icons</h2>
-            </header>
-            <article class="icons__list">
-                <header>
-                    <h3 class="u-muted">List of <%= fontName %></h3>
-                </header>
-                <ul class="row">
-                    <% _.each(glyphs, function(glyph) { %>
-                        <li class="column u-width-sm-6of12 u-width-md-4of12 u-width-lg-3of12 u-width-xl-2of12">
-                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
-                            <code class="glyph-class">.<%= className %>-<%= glyph.name %></code>
-                            <div class="well magnify">
-                                <ul class="glyph-magnify">
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--large"></i></li>
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--3x"></i></li>
-
-                                </ul>
-                                <div>
-                                    <code class="glyph-codepoint">Unicode: <%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %></code>
-                                </div>
-                            </div>
-                            </li>
-                            <% }); %>
-                </ul>
             </article>
         </section>
         <hr />
