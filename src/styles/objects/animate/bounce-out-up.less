@@ -1,0 +1,17 @@
+@keyframes bounce-out-up {
+    0% {
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(@spacing-base);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+.bounce-out-up {
+    animation-name: bounce-out-up;
+}

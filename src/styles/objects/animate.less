@@ -1,35 +1,30 @@
 //
 // Animations
 // -------------------------------------------------------
-.animations(@boolean) when (@boolean = true) {
-
-//Animations is based on Dan Eden's animate.css, http://daneden.me/animate. */
+.animations(@boolean) when (@boolean =true) {
 
     .animated {
-      animation-duration: 500ms;
-      animation-fill-mode: both;
+        animation-duration: 500ms;
+        animation-fill-mode: both;
     }
 
-    .animated--infinite {
-      animation-iteration-count: infinite;
+    .animated--loop {
+        animation-iteration-count: infinite;
     }
 
     // Enable/disable only animations you need.
 
-
     // Sliding Enterances
-    @import 'animate/slideInDown.less';
-    @import 'animate/slideInLeft.less';
-    @import 'animate/slideInRight.less';
-    @import 'animate/slideInUp.less';
-
+    @import 'animate/slide-in-down.less';
+    @import 'animate/slide-in-left.less';
+    @import 'animate/slide-in-right.less';
+    @import 'animate/slide-in-up.less';
 
     // Sliding Exits
-    @import 'animate/slideOutDown.less';
-    @import 'animate/slideOutLeft.less';
-    @import 'animate/slideOutRight.less';
-    @import 'animate/slideOutUp.less';
-
+    @import 'animate/slide-out-down.less';
+    @import 'animate/slide-out-left.less';
+    @import 'animate/slide-out-right.less';
+    @import 'animate/slide-out-up.less';
 
     // Attention Seekers
     @import 'animate/bounce.less';
@@ -40,47 +35,44 @@
     @import 'animate/tada.less';
     @import 'animate/wobble.less';
 
-
     // Bouncing Enterances
-    @import 'animate/bounceIn.less';
-    @import 'animate/bounceInDown.less';
-    @import 'animate/bounceInLeft.less';
-    @import 'animate/bounceInRight.less';
-    @import 'animate/bounceInUp.less';
-
+    @import 'animate/bounce-in.less';
+    @import 'animate/bounce-in-down.less';
+    @import 'animate/bounce-in-left.less';
+    @import 'animate/bounce-in-right.less';
+    @import 'animate/bounce-in-up.less';
 
     // Bouncing Exits
-    @import 'animate/bounceOut.less';
-    @import 'animate/bounceOutDown.less';
-    @import 'animate/bounceOutLeft.less';
-    @import 'animate/bounceOutRight.less';
-    @import 'animate/bounceOutUp.less';
-
+    @import 'animate/bounce-out.less';
+    @import 'animate/bounce-out-down.less';
+    @import 'animate/bounce-out-left.less';
+    @import 'animate/bounce-out-right.less';
+    @import 'animate/bounce-out-up.less';
 
     // Fading Enterances
-    @import 'animate/fadeIn.less';
-    @import 'animate/fadeInDown.less';
-    @import 'animate/fadeInLeft.less';
-    @import 'animate/fadeInRight.less';
-    @import 'animate/fadeInUp.less';
-
+    @import 'animate/fade-in.less';
+    @import 'animate/fade-in-down.less';
+    @import 'animate/fade-in-left.less';
+    @import 'animate/fade-in-right.less';
+    @import 'animate/fade-in-up.less';
 
     // Fading Exits
-    @import 'animate/fadeOut.less';
-    @import 'animate/fadeOutDown.less';
-    @import 'animate/fadeOutLeft.less';
-    @import 'animate/fadeOutRight.less';
-    @import 'animate/fadeOutUp.less';
-
+    @import 'animate/fade-out.less';
+    @import 'animate/fade-out-down.less';
+    @import 'animate/fade-out-left.less';
+    @import 'animate/fade-out-right.less';
+    @import 'animate/fade-out-up.less';
 
     // Zooms
-    @import 'animate/zoomIn.less';
-    @import 'animate/zoomOut.less';
-
+    @import 'animate/zoom-in.less';
+    @import 'animate/zoom-out.less';
 
     // Specials
-    @import 'animate/rollIn.less';
-    @import 'animate/rollOut.less';
+    @import 'animate/roll-in.less';
+    @import 'animate/roll-out.less';
 
+    // Spin-around for ie. loader
+    @import 'animate/spin-around.less';
 }
+
 .animations(@use-animations);

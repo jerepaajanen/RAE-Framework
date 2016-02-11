@@ -1,0 +1,20 @@
+@keyframes bounce-in-left {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(@spacing-base);
+    }
+    80% {
+        transform: translateX(-@spacing-half);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.bounce-in-left {
+    animation-name: bounce-in-left;
+}

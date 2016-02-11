@@ -1,0 +1,14 @@
+@keyframes fade-out-left {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-@spacing-base);
+    }
+}
+
+.fade-out-left {
+    animation-name: fade-out-left;
+}

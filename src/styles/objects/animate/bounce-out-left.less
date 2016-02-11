@@ -1,0 +1,17 @@
+@keyframes bounce-out-left {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateX(@spacing-base);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+}
+
+.bounce-out-left {
+    animation-name: bounce-out-left;
+}

@@ -1,0 +1,13 @@
+@keyframes spin-around {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+.spin-around {
+    animation-name: spin-around;
+    animation-timing-function: linear; // this is needed for smooth spin
+}
