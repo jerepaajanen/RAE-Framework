@@ -120,13 +120,34 @@
         }
     }
 
-    // Other elements
+    // Code and pre elements
 
+    code,
     pre {
-        padding: 1rem;
         white-space: pre;
         word-wrap: normal;
         word-break: normal;
+        line-height: 1.25;
+    }
+
+    code {
+        background: @code-background;
+        color: @code-color;
+        font-size: 12px;
+        font-weight: normal;
+        padding: 1px 2px 2px;
+    }
+
+    pre {
+        background: @pre-background;
+        color: @pre-color;
+        code {
+            background: @pre-background;
+            color: @pre-color;
+            display: block;
+            overflow-x: auto;
+            padding: @spacing-two-thirds @spacing-base;
+        }
     }
 
 }
