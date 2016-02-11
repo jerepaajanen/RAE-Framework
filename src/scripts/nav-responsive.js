@@ -2,19 +2,19 @@
     'use strict';
 
     // Simple responsive navigation with subnav
-    $('.nav--responsive').each(function () {
+    $('.js-responsive-nav').each(function () {
 
         var nav = $(this),
-            navMenuClass = 'nav__list',
-            navItemClass = 'nav-item',
+            navMenuClass = 'navbar__list',
+            navItemClass = 'navbar-item',
             dropdownClass = 'dropdown',
-            navToggleClass = 'nav-toggle',
+            navToggleClass = 'navbar-toggle',
             dropdownToggleClass = 'dropdown-toggle',
             menu = nav.children('.' + navMenuClass),
             dropdown = menu.find('li .' + dropdownClass);
 
         // Build 'nav--responsive' elements
-        nav.prepend('<div role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span class="nav-toggle__label u-visually-hidden">Menu</span><span class="nav-toggle__icon"><span class="bar"></span><span class="bar"></span><span class="bar"></span></span></div>');
+        nav.prepend('<div role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span></span><span></span><span></span><div class="u-visually-hidden">Menu</div></div>');
         menu.addClass('is-collapsible');
         dropdown.addClass('is-collapsible');
         dropdown.parent('li').addClass(navItemClass + '--with-' + dropdownClass).prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');

@@ -1,0 +1,63 @@
+//
+// Hamburger (Menu)
+// -------------------------------------------------------
+
+// Usage
+// .selector {
+//    .hamburger(height, width, stroke-width, stroke-radius, color, color-active, duration, close: true/false)
+// }
+
+.hamburger(@height: @spacing-base, @width: @spacing-base * 1.5, @stroke-width: @spacing-sixth, @stroke-radius: 0, @color: @base-color, @color-active: @base-color, @duration: @transition-duration-default, @close: true) {
+    cursor: pointer;
+    position: relative;
+    height: @height;
+    width: @width;
+    span {
+        background: @color;
+        border-radius: @stroke-radius;
+        display: block;
+        height: @stroke-width;
+        transition: opacity @duration linear @duration, margin @duration linear @duration, transform @duration linear 0s;
+        position: absolute;
+        width: 100%;
+        &:nth-child(2) {
+            top: ((@height / 2) - round(@stroke-width / 2));
+        }
+        &:nth-child(1) {
+            top: 0;
+        }
+        &:nth-child(3) {
+            bottom: 0;
+        }
+    }
+    &.is-active,
+    &:active {
+        span {
+            background: @color-active;
+            transition: opacity @duration linear 0s, margin @duration linear 0s, transform @duration linear @duration;
+            & when (@close = true) {
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+                &:nth-child(1) {
+                    transform: rotate(45deg);
+                    margin-top: ((@height / 2) - (@stroke-width / 2));
+                }
+                &:nth-child(3) {
+                    transform: rotate(-45deg);
+                    margin-bottom: ((@height / 2) - (@stroke-width / 2));
+                }
+            }
+        }
+    }
+    &.is-inactive:hover {
+        span {
+            &:nth-child(1) {
+                transform: translateY(-@stroke-width / 2);
+            }
+            &:nth-child(3) {
+                transform: translateY(@stroke-width / 2);
+            }
+        }
+    }
+}
