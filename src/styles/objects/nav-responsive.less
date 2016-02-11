@@ -4,7 +4,7 @@
 .responsive-navigation(@boolean) when (@boolean =true) {
 
     // Responsive navigation
-    .navbar--responsive {
+    .nav--responsive {
         overflow-x: visible;
         .clearfix();
         -webkit-overflow-scrolling: touch;
@@ -26,16 +26,16 @@
                 visibility: visible!important;
             }
             // Hide toggle-buttons
-            .navbar-toggle,
+            .nav-toggle,
             .dropdown-toggle {
                 display: none;
             }
         }
     }
 
-    // Navbar-toggle
+    // Nav-toggle
 
-    .navbar-toggle {
+    .nav-toggle {
         .hamburger();
     }
 }

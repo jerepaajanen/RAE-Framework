@@ -5,10 +5,10 @@
     $('.js-responsive-nav').each(function () {
 
         var nav = $(this),
-            navMenuClass = 'navbar__list',
-            navItemClass = 'navbar-item',
+            navMenuClass = 'nav__list',
+            navItemClass = 'nav__item',
             dropdownClass = 'dropdown',
-            navToggleClass = 'navbar-toggle',
+            navToggleClass = 'nav-toggle',
             dropdownToggleClass = 'dropdown-toggle',
             menu = nav.children('.' + navMenuClass),
             dropdown = menu.find('li .' + dropdownClass);
