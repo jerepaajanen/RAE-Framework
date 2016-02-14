@@ -25,7 +25,7 @@
             text-decoration: none; // strip styling from <a>.
         }
         &:active,
-        &.active {
+        &.is-active {
         }
         &[disabled],
         &:disabled,
@@ -40,15 +40,15 @@
 
     //Buttons sizes
     .button--small {
-        .button-size(@button-size-small);
+        .button-size(.75);
     }
 
     .button--large {
-        .button-size(@button-size-large);
+        .button-size(1.5);
     }
 
     .button--huge {
-        .button-size(@button-size-huge);
+        .button-size(2);
     }
 
     .button--block {
@@ -68,13 +68,13 @@
         padding: 0 !important;
         width: @button-height;
         &.button--small {
-            width: (@button-height * @button-size-small);
+            width: (@button-height * .75);
         }
         &.button--large {
-            width: (@button-height * @button-size-large);
+            width: (@button-height * 1.5);
         }
         &.button--huge {
-            width: (@button-height * @button-size-huge);
+            width: (@button-height * 2);
         }
     }
 
@@ -85,23 +85,20 @@
         font-weight: 400;
         height: auto;
         line-height: inherit;
-        &,
-        &:active,
-        &.active,
-        &[disabled],
-        fieldset[disabled] & {
-            background: rgba(0, 0, 0, 0);
-        }
+        padding: 0;
+        vertical-align: baseline;
+        white-space: normal;
+        text-align: left;
         &,
         &:hover,
         &:focus,
-        &:active {
-            border-color: transparent;
+        &:active,
+        &.is-active {
+            border-width: 0;
         }
         &:hover,
         &:focus {
             color: @base-link-color;
-            background-color: transparent;
         }
     }
 
@@ -113,7 +110,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active{
+        &.is-active{
             background-color: @grey-800;
             border-color: @grey-800;
             color: contrast(@grey-800, @base-color);
@@ -129,7 +126,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             background-color: @color-primary;
             border-color: @color-primary;
@@ -146,7 +143,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             //background-color: @black;
             //border-color: @black;
@@ -162,7 +159,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             //background-color: @black;
             //border-color: @black;
@@ -178,7 +175,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             //background-color: @black;
             //border-color: @black;
@@ -195,7 +192,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             //background-color: @black;
             //border-color: @black;
@@ -211,7 +208,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             //background-color: @black;
             //border-color: @black;
@@ -227,7 +224,7 @@
         &:hover,
         &:focus,
         &:active,
-        &.active {
+        &.is-active {
             // styles here
             //background-color: @black;
             //border-color: @black;
