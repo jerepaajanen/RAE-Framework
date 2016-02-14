@@ -137,10 +137,6 @@
             min-width: 164px;
         }
 
-        .docs-content .buttons .button {
-            margin-bottom: 1rem;
-        }
-
         .docs-content .addons__animations .well {
             padding-bottom: .5rem;
         }
@@ -474,11 +470,9 @@
                     <h3 class="u-muted">Horizontal rule</h3>
                 </header>
                 <div class="example">
-                    <p>Paragraph before horizontal-rule</p>
+                    <p>Paragraph before horizontal-rule.</p>
                     <hr>
-                    <p>Paragraph after horizontal-rule, and before empty horizontal-rule</p>
-                    <hr class="hr--transparent">
-                    <p>Paragraph after empty horizontal-rule</p>
+                    <p>Paragraph after horizontal-rule.</p>
                 </div>
             </article>
         </section>
@@ -1142,6 +1136,9 @@
         <section class="buttons container">
             <header>
                 <h2 class="u-text-normal">Buttons</h2>
+                <p>Use the <code>&lt;a&gt;</code> tag if the button is a link to another page, or a link to an anchor within a page. Generally anchors don't require JavaScript to work.
+                    <br /> Use the <code>&lt;button&gt;</code> tag if the button performs an action that changes something on the current page. <code>&lt;button&gt;</code> elements almost always require JavaScript to function.
+                    <br /> Add the attribute <code>type="button"</code> to <code>&lt;button&gt;</code> elements, unless the button submits a form, in which case you use <code>type="submit"</code></p>
             </header>
             <article class="buttons__styles">
                 <header>
@@ -1163,8 +1160,8 @@
                     <button class="button button--primary" type="button" disabled>Disabled</button>
                 </div>
                 <div class="example">
-                    <button class="button button--default active" type="button">Active</button>
-                    <button class="button button--primary active" type="button">Active</button>
+                    <button class="button button--default is-active" type="button">Active</button>
+                    <button class="button button--primary is-active" type="button">Active</button>
                 </div>
             </article>
             <article class="buttons__sizes">
@@ -1183,17 +1180,6 @@
                 <div class="example">
                     <button class="button button--default button--pill" type="button">Pill</button>
                     <button class="button button--default button--circle" type="button">Circle</button>
-                </div>
-            </article>
-            <article class="buttons__accessibility">
-                <header>
-                    <h3 class="u-muted">Accessibility</h3>
-                    <p>Use the snippets below to make buttons more accessible. If there is no <code>&lt;a href=""&gt;</code> then simply add the <code>tabindex="0"</code> to the div or span to make it focusable.</p>
-                </header>
-                <div class="example">
-                    <a role="button" href="#" class="button button--default">Default Button</a>
-                    <a role="button" aria-label="submit form" href="#" class="button button--default">Submit</a>
-                    <div role="button" tabindex="0" class="button button--default">Default Button</div>
                 </div>
             </article>
         </section>
@@ -1224,6 +1210,41 @@
                             <label for="demo-textarea">Textarea</label>
                             <textarea id="demo-textarea" placeholder="Enter your message here..." rows="6"></textarea>
                         </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__sizes">
+                <header>
+                    <h3 class="u-muted">Input sizes &amp; variations</h3>
+                </header>
+                <div class="example">
+                    <form>
+                        <div class="form-item">
+                            <label for="small-input">Small Input</label>
+                            <input class="input--small" type="text" id="small-input" placeholder="Type something...">
+                        </div>
+                        <div class="form-item">
+                            <label for="large-input">Large Input</label>
+                            <input class="input--large input--reset" type="text" id="large-input" placeholder="Type something...">
+                        </div>
+                        <div class="form-item">
+                            <label for="huge-input">Huge Input</label>
+                            <input class="input--huge" type="text" id="huge-input" placeholder="Type something...">
+                        </div>
+                        <div class="form-item">
+                            <label for="pill-input">Pill Input</label>
+                            <input class="input--pill" type="text" id="pill-input" placeholder="Type something...">
+                        </div>
+                        <div class="form-item">
+                            <label for="borderless-input">Borderless Input</label>
+                            <input class="input--borderless" type="text" id="borderless-input" placeholder="Type something...">
+                        </div>
+                        <div class="form-item">
+                            <label for="unstyled-input">Unstyled Input</label>
+                            <input class="input--unstyled" type="text" id="unstyled-input" placeholder="Type something...">
+                        </div>
+
+
                     </form>
                 </div>
             </article>
@@ -1643,7 +1664,7 @@
                             <tr>
                                 <td><code>.u-text-truncate</code>
                                 </td>
-                                <td >
+                                <td>
                                     <div class="u-text-truncate">Truncate too long texts with three dots..</div>
                                 </td>
                             </tr>
@@ -1652,7 +1673,7 @@
                                 </td>
                                 <td>
                                     <div class="u-text-nowrap">Text will never wrap to the next line.
-</div>
+                                    </div>
                                 </td>
                             </tr>
 
@@ -1868,7 +1889,6 @@
                             <a href="#" class="tooltip tooltip--left" aria-label="Left tooltip">&nbsp</a>
                             <div>Tooltip left</div>
                         </div>
-
                     </div>
                 </div>
                 <div class="well u-clearfix u-text-center example">
@@ -1889,8 +1909,26 @@
                             <a href="#" class="tooltip tooltip--left tooltip--multiline" aria-label="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline left</div>
                         </div>
-
                     </div>
+                </div>
+                <div class="well u-clearfix u-text-center example">
+                    <div class="row">
+                        <div class="column u-width-md-3of12">
+                            <a href="#" class="tooltip tooltip--top is-active" aria-label="Active tooltip">&nbsp</a>
+                            <div>Active tooltip with <code>.is-active</code> class.</div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="addons__spinner">
+                <header>
+                    <h3 class="u-muted">Spinner</h3>
+                    <p>You can easily create a loading spinner by adding the <code>.spinner</code> class to an empty element.
+                    </p>
+                </header>
+                <div class="well u-text-center example">
+                    <div class="spinner"></div>
                 </div>
             </article>
             <article class="addons__animations">
@@ -2241,18 +2279,6 @@
                                     <span class="dot">&nbsp;</span>
                                 </div>
                                 <code>.roll-out</code>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
-                            <div class="animation animation-reset">
-                                <div class="spin-around animated animated--loop">
-                                    <span class="dot">&nbsp;</span>
-                                </div>
-                                <code>.spin-around</code>
                             </div>
                         </div>
                     </div>

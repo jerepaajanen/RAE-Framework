@@ -1,13 +1,16 @@
-@keyframes slide-out-left {
-    0% {
-        transform: translateX(0);
+.slide-out-left(@boolean) when (@boolean =true) {
+    @keyframes slide-out-left {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            visibility: hidden;
+            transform: translateX(-100%);
+        }
     }
-    100% {
-        visibility: hidden;
-        transform: translateX(-100%);
+    .slide-out-left {
+        animation-name: slide-out-left;
     }
 }
 
-.slide-out-left {
-    animation-name: slide-out-left;
-}
+.slide-out-left(@use-slide-out-left);

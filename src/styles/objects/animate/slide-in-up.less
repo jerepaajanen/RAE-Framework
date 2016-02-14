@@ -1,13 +1,16 @@
-@keyframes slide-in-up {
-    0% {
-        transform: translateY(100%);
-        visibility: visible;
+.slide-in-up(@boolean) when (@boolean =true) {
+    @keyframes slide-in-up {
+        0% {
+            transform: translateY(100%);
+            visibility: visible;
+        }
+        100% {
+            transform: translateY(0);
+        }
     }
-    100% {
-        transform: translateY(0);
+    .slide-in-up {
+        animation-name: slide-in-up;
     }
 }
 
-.slide-in-up {
-    animation-name: slide-in-up;
-}
+.slide-in-up(@use-slide-in-up);

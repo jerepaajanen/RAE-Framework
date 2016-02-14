@@ -1,14 +1,17 @@
-@keyframes roll-in {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%) rotate(-120deg);
+.roll-in(@boolean) when (@boolean =true) {
+    @keyframes roll-in {
+        0% {
+            opacity: 0;
+            transform: translateX(-100%) rotate(-120deg);
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0px) rotate(0deg);
+        }
     }
-    100% {
-        opacity: 1;
-        transform: translateX(0px) rotate(0deg);
+    .roll-in {
+        animation-name: roll-in;
     }
 }
 
-.roll-in {
-    animation-name: roll-in;
-}
+.roll-in(@use-roll-in);

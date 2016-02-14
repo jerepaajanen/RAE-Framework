@@ -1,20 +1,23 @@
-@keyframes bounce-in {
-    0% {
-        opacity: 0;
-        transform: scale(.3);
+.bounce-in(@boolean) when (@boolean =true) {
+    @keyframes bounce-in {
+        0% {
+            opacity: 0;
+            transform: scale(.3);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        70% {
+            transform: scale(.9);
+        }
+        100% {
+            transform: scale(1);
+        }
     }
-    50% {
-        opacity: 1;
-        transform: scale(1.05);
-    }
-    70% {
-        transform: scale(.9);
-    }
-    100% {
-        transform: scale(1);
+    .bounce-in {
+        animation-name: bounce-in;
     }
 }
 
-.bounce-in {
-    animation-name: bounce-in;
-}
+.bounce-in(@use-bounce-in);

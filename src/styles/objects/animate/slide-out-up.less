@@ -1,13 +1,16 @@
-@keyframes slide-out-up {
-    0% {
-        transform: translateY(0);
+.slide-out-up(@boolean) when (@boolean =true) {
+    @keyframes slide-out-up {
+        0% {
+            transform: translateY(0);
+        }
+        100% {
+            visibility: hidden;
+            transform: translateY(-100%);
+        }
     }
-    100% {
-        visibility: hidden;
-        transform: translateY(-100%);
+    .slide-out-up {
+        animation-name: slide-out-up;
     }
 }
 
-.slide-out-up {
-    animation-name: slide-out-up;
-}
+.slide-out-up(@use-slide-out-up);

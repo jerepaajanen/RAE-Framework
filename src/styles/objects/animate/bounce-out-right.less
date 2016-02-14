@@ -1,17 +1,20 @@
-@keyframes bounce-out-right {
-    0% {
-        transform: translateX(0);
+.bounce-out-right(@boolean) when (@boolean =true) {
+    @keyframes bounce-out-right {
+        0% {
+            transform: translateX(0);
+        }
+        20% {
+            opacity: 1;
+            transform: translateX(-@spacing-base);
+        }
+        100% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
     }
-    20% {
-        opacity: 1;
-        transform: translateX(-@spacing-base);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(100%);
+    .bounce-out-right {
+        animation-name: bounce-out-right;
     }
 }
 
-.bounce-out-right {
-    animation-name: bounce-out-right;
-}
+.bounce-out-right(@use-bounce-out-right);

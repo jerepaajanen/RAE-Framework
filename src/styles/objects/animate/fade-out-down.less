@@ -1,14 +1,17 @@
-@keyframes fade-out-down {
-    0% {
-        opacity: 1;
-        transform: translateY(0);
+.fade-out-down(@boolean) when (@boolean =true) {
+    @keyframes fade-out-down {
+        0% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
     }
-    100% {
-        opacity: 0;
-        transform: translateY(@spacing-base);
+    .fade-out-down {
+        animation-name: fade-out-down;
     }
 }
 
-.fade-out-down {
-    animation-name: fade-out-down;
-}
+.fade-out-down(@use-fade-out-down);

@@ -1,19 +1,22 @@
-@keyframes bounce {
-    0%,
-    20%,
-    50%,
-    80%,
-    100% {
-        transform: translateY(0);
+.bounce(@boolean) when (@boolean =true) {
+    @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-100%);
+        }
+        60% {
+            transform: translateY(-50%);
+        }
     }
-    40% {
-        transform: translateY(-100%);
-    }
-    60% {
-        transform: translateY(-50%);
+    .bounce {
+        animation-name: bounce;
     }
 }
 
-.bounce {
-    animation-name: bounce;
-}
+.bounce(@use-bounce);

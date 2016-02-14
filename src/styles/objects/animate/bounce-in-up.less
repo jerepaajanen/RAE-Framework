@@ -1,20 +1,23 @@
-@keyframes bounce-in-up {
-    0% {
-        opacity: 0;
-        transform: translateY(100%);
+.bounce-in-up(@boolean) when (@boolean =true) {
+    @keyframes bounce-in-up {
+        0% {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        60% {
+            opacity: 1;
+            transform: translateY(-@spacing-base);
+        }
+        80% {
+            transform: translateY(@spacing-half);
+        }
+        100% {
+            transform: translateY(0);
+        }
     }
-    60% {
-        opacity: 1;
-        transform: translateY(-@spacing-base);
-    }
-    80% {
-        transform: translateY(@spacing-half);
-    }
-    100% {
-        transform: translateY(0);
+    .bounce-in-up {
+        animation-name: bounce-in-up;
     }
 }
 
-.bounce-in-up {
-    animation-name: bounce-in-up;
-}
+.bounce-in-up(@use-bounce-in-up);

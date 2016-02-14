@@ -1,23 +1,26 @@
-@keyframes shake {
-    0%,
-    100% {
-        transform: translateX(0);
+.shake(@boolean) when (@boolean =true) {
+    @keyframes shake {
+        0%,
+        100% {
+            transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+            transform: translateX(-@spacing-half);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+            transform: translateX(@spacing-half);
+        }
     }
-    10%,
-    30%,
-    50%,
-    70%,
-    90% {
-        transform: translateX(-@spacing-half);
-    }
-    20%,
-    40%,
-    60%,
-    80% {
-        transform: translateX(@spacing-half);
+    .shake {
+        animation-name: shake;
     }
 }
 
-.shake {
-    animation-name: shake;
-}
+.shake(@use-shake);

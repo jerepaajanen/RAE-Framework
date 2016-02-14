@@ -1,20 +1,23 @@
-@keyframes bounce-in-right {
-    0% {
-        opacity: 0;
-        transform: translateX(100%);
+.bounce-in-right(@boolean) when (@boolean =true) {
+    @keyframes bounce-in-right {
+        0% {
+            opacity: 0;
+            transform: translateX(100%);
+        }
+        60% {
+            opacity: 1;
+            transform: translateX(-@spacing-base);
+        }
+        80% {
+            transform: translateX(@spacing-half);
+        }
+        100% {
+            transform: translateX(0);
+        }
     }
-    60% {
-        opacity: 1;
-        transform: translateX(-@spacing-base);
-    }
-    80% {
-        transform: translateX(@spacing-half);
-    }
-    100% {
-        transform: translateX(0);
+    .bounce-in-right {
+        animation-name: bounce-in-right;
     }
 }
 
-.bounce-in-right {
-    animation-name: bounce-in-right;
-}
+.bounce-in-right(@use-bounce-in-right);

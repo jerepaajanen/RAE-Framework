@@ -1,12 +1,15 @@
-@keyframes fade-out {
-    0% {
-        opacity: 1;
+.fade-out(@boolean) when (@boolean =true) {
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
     }
-    100% {
-        opacity: 0;
+    .fade-out {
+        animation-name: fade-out;
     }
 }
 
-.fade-out {
-    animation-name: fade-out;
-}
+.fade-out(@use-fade-out);

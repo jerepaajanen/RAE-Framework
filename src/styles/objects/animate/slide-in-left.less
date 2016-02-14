@@ -1,13 +1,16 @@
-@keyframes slide-in-left {
-    0% {
-        transform: translateX(-100%);
-        visibility: visible;
+.slide-in-left(@boolean) when (@boolean =true) {
+    @keyframes slide-in-left {
+        0% {
+            transform: translateX(-100%);
+            visibility: visible;
+        }
+        100% {
+            transform: translateX(0);
+        }
     }
-    100% {
-        transform: translateX(0);
+    .slide-in-left {
+        animation-name: slide-in-left;
     }
 }
 
-.slide-in-left {
-    animation-name: slide-in-left;
-}
+.slide-in-left(@use-slide-in-left);

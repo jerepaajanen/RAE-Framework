@@ -1,13 +1,16 @@
-@keyframes slide-in-down {
-    0% {
-        transform: translateY(-100%);
-        visibility: visible;
+.slide-in-down(@boolean) when (@boolean =true) {
+    @keyframes slide-in-down {
+        0% {
+            transform: translateY(-100%);
+            visibility: visible;
+        }
+        100% {
+            transform: translateY(0);
+        }
     }
-    100% {
-        transform: translateY(0);
+    .slide-in-down {
+        animation-name: slide-in-down;
     }
 }
 
-.slide-in-down {
-    animation-name: slide-in-down;
-}
+.slide-in-down(@use-slide-in-down);
