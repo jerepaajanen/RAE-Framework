@@ -4,8 +4,9 @@
 .animations(@boolean) when (@boolean =true) {
 
     .animated {
-        animation-duration: 500ms;
+        animation-duration: 1000ms;
         animation-fill-mode: both;
+        transform: translateZ(0); // Improve performance on mobile/tablet devices
     }
 
     .animated--loop {
@@ -71,8 +72,6 @@
     @import 'animate/roll-in.less';
     @import 'animate/roll-out.less';
 
-    // Spin-around for ie. loader
-    @import 'animate/spin-around.less';
 }
 
 .animations(@use-animations);

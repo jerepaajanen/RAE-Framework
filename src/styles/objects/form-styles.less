@@ -4,7 +4,6 @@
 .use-form-styles(@boolean) when (@boolean =true) {
 
     // Fieldset with borders
-
     fieldset.fieldset--bordered {
         border: @fieldset-border-width @fieldset-border-style @fieldset-border-color;
         padding: @spacing-half @spacing-base @spacing-base @spacing-base;
@@ -15,7 +14,6 @@
     }
 
     // Basic styles for form elements
-
     input[type="date"],
     input[type="datetime"],
     input[type="datetime-local"],
@@ -52,15 +50,95 @@
         }
         &:focus {
             border-color: @input-border-color-focus;
-            box-shadow: @input-focus-box-shadow;
         }
     }
-
     textarea,
     select[multiple] {
         height: auto;
     }
 
+    // Range input
+    input[type=range] {
+        -webkit-appearance: none;
+        margin: (@range-thumb-height / 2) 0;
+        .track() {
+            height: @range-track-height;
+            cursor: pointer;
+            transition: background @transition-duration-default;
+        }
+        .thumb() {
+            height: @range-thumb-height;
+            width: @range-thumb-width;
+            border-radius: @range-thumb-border-radius;
+            background-color: @range-thumb-color;
+            border-width: @range-thumb-border-width;
+            border-color: @range-thumb-border-color;
+            box-shadow: @range-thumb-box-shadow;
+            cursor: pointer;
+        }
+        &:focus {
+            outline: none;
+        }
+        &::-webkit-slider-runnable-track {
+            .track();
+            box-shadow: @range-track-box-shadow;
+            background-color: @range-track-color;
+            border-radius: @range-track-border-radius;
+            border-width: @range-track-border-width;
+            border-color: @range-track-border-color;
+        }
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            .thumb();
+            margin-top: ((-@range-track-border-width * 2 + @range-track-height) / 2) - (@range-thumb-height / 2);
+        }
+        &:focus::-webkit-slider-runnable-track {
+            background-color: darken(@range-track-color, 5%);
+        }
+        &::-moz-range-track {
+            .track();
+            box-shadow: @range-track-box-shadow;
+            background: @range-track-color;
+            border-radius: @range-track-border-radius;
+            border-width: @range-track-border-width;
+            border-color: @range-track-border-color;
+        }
+        &::-moz-range-thumb {
+            .thumb();
+        }
+        &::-ms-track {
+            .track();
+            background-color: transparent;
+            border-color: transparent;
+            border-width: @range-thumb-width 0;
+            color: transparent;
+        }
+        &::-ms-fill-lower {
+            background-color: darken(@range-track-color, 5%);
+            border-width: @range-track-border-width;
+            border-color: @range-track-border-color;
+            border-radius: @range-track-border-radius*2;
+            box-shadow: @range-track-box-shadow;
+        }
+        &::-ms-fill-upper {
+            background-color: @range-track-color;
+            border-width: @range-track-border-width;
+            border-color: @range-track-border-color;
+            border-radius: @range-track-border-radius*2;
+            box-shadow: @range-track-box-shadow
+        }
+        &::-ms-thumb {
+            .thumb();
+        }
+        &:focus::-ms-fill-lower {
+            background-color: @range-track-color;
+        }
+        &:focus::-ms-fill-upper {
+            background-color: darken(@range-track-color, 5%);
+        }
+    }
+
+    // Select
     select:not([multiple]) {
         cursor: pointer;
         position: relative;
@@ -78,7 +156,6 @@
     }
 
     // Radios and checkboxes
-
     .radio,
     .checkbox {
         margin-bottom: @input-checkbox-radio-margin; // add some spacing between checkboxes/radios
@@ -86,6 +163,7 @@
         &:last-child {
             margin-bottom: 0;
         }
+
         // Inline styles
         &.checkbox--inline,
         &.radio--inline {
@@ -95,6 +173,7 @@
                 margin-right: @spacing-base; // space out consecutive inline controls
             }
         }
+
         // Hide inputs
         [type="checkbox"],
         [type="radio"] {
@@ -107,6 +186,7 @@
             padding: 0;
             border: 0;
         }
+
         // Control inputs with label
         label {
             position: relative;
@@ -121,7 +201,6 @@
                 width: @input-box-size;
                 height: @input-box-size;
                 line-height: @input-box-size;
-
             }
             &:before {
                 background-color: @input-background;
@@ -130,13 +209,6 @@
                 transition: border-color @transition-duration-default @transition-easing-default;
             }
             &:after {
-                // Background-image method
-                //background-size: (@input-box-size - ceil(@input-box-size / 6)); // make background-size consistent in ie9 and modern browsers.
-                //background-repeat: no-repeat;
-                //background-position: center center;
-                //background-origin: border-box; // fix IE9 background positioning
-                //transform: scale(0);
-                // CSS-only method
                 font-size: @input-box-size; // set font-size for em-scaling
                 transform: scale(0) rotate(45deg);
                 transition: transform 100ms @transition-easing-default;
@@ -148,27 +220,18 @@
         [type="checkbox"]:checked,
         [type="radio"]:checked {
             + label:after {
-                //transform: scale(1);
-                //CSS Only method
                 transform: scale(1) rotate(45deg);
-            }
-            + label:before {
-                //border-color: transparent;
             }
         }
     }
 
     // Checkbox styles
-
     .checkbox {
         label {
             &:before {
                 border-radius: @input-checkbox-border-radius;
             }
             &:after {
-                // Background-image method
-                //background-image: url(../images/form/icon-checkbox.svg);
-                // CSS-only method
                 border: solid @input-checkbox-checked-color;
                 border-width: 0 (1em / 6) (1em / 6) 0;
                 height: (1em / 1.5);
@@ -181,16 +244,12 @@
     }
 
     // Radio styles
-
     .radio {
         label {
             &:before {
                 border-radius: 100%;
             }
             &:after {
-                // Background-image method
-                //background-image: url(../images/form/icon-radio.svg);
-                // CSS-only method
                 background-color: @input-radio-checked-color;
                 background-clip: padding-box;
                 border: @input-radio-checked-margin solid transparent;
@@ -199,8 +258,55 @@
         }
     }
 
-    // Block-level form items
+    // Modifiers
 
+    // Input without borders
+    input.input--borderless {
+        border: 0;
+    }
+    input.input--pill {
+        border-radius: 999em;
+        padding-left: (@input-horizontal-padding * 2);
+        padding-right: (@input-horizontal-padding * 2);
+    }
+
+    // Input Small
+    input.input--small {
+        height: ceil(@input-height * .75);
+        .modular-scale(-1);
+    }
+
+    // Input Large
+    input.input--large {
+        height: ceil(@input-height * 1.25);
+        .modular-scale(1);
+    }
+
+    input.input--huge {
+        height: ceil(@input-height * 1.5);
+        .modular-scale(2);
+    }
+
+    // Input Unstyled (reset styles)
+    input.input--unstyled,
+    textarea.textarea--unstyled {
+        border: 0;
+        padding: 0;
+        outline: 0;
+        height: auto;
+        background: transparent;
+        box-shadow: none;
+        &:focus,
+        &:hover {
+            outline: none;
+            box-shadow: none;
+        }
+    }
+    textarea.textarea--unstyled {
+        resize: none;
+    }
+
+    // Block-level form items
     .form-item {
         display: block;
         margin-bottom: @form-item-spacing;

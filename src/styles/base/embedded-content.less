@@ -1,10 +1,9 @@
 //
 // Embedded content
 // -------------------------------------------------------
-.embed-content(@boolean) when (@boolean = true) {
+.embed-content(@boolean) when (@boolean =true) {
 
     // Fluid-width <audio> & <video> elements
-
     audio,
     video,
     canvas {
@@ -15,7 +14,6 @@
     }
 
     // Fluid-width media that maintain their aspect ratios
-
     embed,
     img,
     object,
@@ -30,16 +28,14 @@
     }
 
     // Set <img> elements as block-level inside <figure> elements.
-
     figure > img {
         display: block;
     }
 
     // Inherit svg fill color from parent element that doesn't inherit by default.
-
     svg {
         fill: currentColor;
     }
-
 }
+
 .embed-content(@use-embed-content);
