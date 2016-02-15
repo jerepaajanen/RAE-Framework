@@ -209,7 +209,7 @@
 @range-thumb-border-radius:     50%;
 @range-thumb-height:            @base-font-size * 2;
 @range-thumb-width:             @base-font-size * 2;
-@range-thumb-box-shadow:        @box-shadow-default;
+@range-thumb-box-shadow:        @box-shadow-small;
 @range-thumb-border-width:      0;
 @range-thumb-border-color:      transparent;
 
@@ -278,7 +278,7 @@
 // -------------------------------------------------------
 
 // Navigation responsive
-@nav-responsive-breakpoint:     768px;
+@nav-responsive-breakpoint:     @breakpoint-md;
 
 // Iconography
 @icon-font-size:                @base-font-size;
@@ -289,9 +289,9 @@
 @border-radius-large:           8px;
 
 // Box-shadow
-@box-shadow-small:              0 2px 4px rgba(0, 0, 0, 0.1);
-@box-shadow-default:            0 4px 8px rgba(0, 0, 0, 0.1);
-@box-shadow-large:              0 8px 16px rgba(0, 0, 0, 0.1);
+@box-shadow-small:              0 2px 4px rgba(0,0,0,.05);
+@box-shadow-default:            0 2px 4px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.05);
+@box-shadow-large:              0 2px 4px rgba(0,0,0,0.05),0 3px 12px rgba(0,0,0,0.15);
 
 // Transition
 @transition-duration-default:   200ms;
