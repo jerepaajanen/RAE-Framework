@@ -175,16 +175,9 @@
         }
 
         // Hide inputs
-        [type="checkbox"],
-        [type="radio"] {
-            position: absolute;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            height: 1px;
-            width: 1px;
-            margin: -1px;
-            padding: 0;
-            border: 0;
+        input[type="checkbox"],
+        input[type="radio"] {
+            display: none;
         }
 
         // Control inputs with label
@@ -307,7 +300,8 @@
     }
 
     // Block-level form items
-    .form-item {
+    .form-item,
+    .field {
         display: block;
         margin-bottom: @form-item-spacing;
         // Margin for labels immediately after .form-item
@@ -315,6 +309,20 @@
             margin-bottom: @label-margin;
         }
     }
+
+    .fields {
+        display: flex;
+        flex-direction: row;
+        .field {
+            flex: 0 1 auto;
+            padding-left: .5em;
+            padding-right: .5em;
+            &:first-child {
+                padding-left: 0;
+            }
+        }
+    }
+
 }
 
 .use-form-styles(@use-form-styles);
