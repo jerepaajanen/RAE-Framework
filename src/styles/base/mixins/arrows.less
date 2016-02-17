@@ -2,39 +2,24 @@
 // Arrows
 // -------------------------------------------------------
 
-// Usage
+// Usage Arrow
 // .selector {
 //    position: relative/absolute/fixed;
 //    .arrow(side, size, align, color,border-width*, border-color*);
 // }
 // * optional
 
-// Caret
+// Usage Caret
 // .caret {
 //    .caret(size, color);
 // }
 
-
- .caret {
+.caret {
     padding-left: 4px;
     .caret(5px, @grey-800);
- }
-
-.test {
-    position: relative;
-    left: 50%;
-    height: 120px;
-    width: 240px;
-    background: white;
-    border-radius: 6px;
-    color: blueviolet;
-    .rgba(@grey-200, 1);
-    border: 1px solid @rgba;
-    .arrow(top, 8px, 50%, @white, 1px);
-    box-shadow: @box-shadow-default;
 }
 
-.caret(@size, @color){
+.caret(@size, @color) {
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -51,11 +36,8 @@
 
 // Box-arrow
 .arrow(@side, @size, @align: 50%, @color, @border-width: 0, @border-color: inherit) {
-
     // Variables
     @margin-offset: @size + @border-width;
-
-
     //position: relative;
     & when (@border-width > 0) {
         &:before,
@@ -67,8 +49,7 @@
             border-color: transparent;
         }
     }
-
-    & when (@border-width = 0) {
+    & when (@border-width =0) {
         &:after {
             content: "";
             position: absolute;
@@ -79,60 +60,55 @@
             visibility: visible;
         }
     }
-
-
     // Arrow top
-    & when (@side = top) {
+    & when (@side =top) {
         &:after {
             margin-left: -@size;
             border-width: 0 @size @size @size;
             border-bottom-color: @color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 bottom: 100%;
                 left: @align;
             }
         }
-        &:before  when (@border-width > 0) {
+        &:before when (@border-width > 0) {
             margin-left: -@margin-offset;
             border-width: 0 @margin-offset @margin-offset @margin-offset;
             border-bottom-color: @border-color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 bottom: 100%;
                 left: @align;
             }
         }
     }
-
     // Arrow Bottom
-    & when (@side = bottom) {
+    & when (@side =bottom) {
         &:after {
             margin-left: -@size;
             border-width: @size @size 0 @size;
             border-top-color: @color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 top: 100%;
                 left: @align;
             }
         }
-
         &:before when (@border-width > 0) {
             margin-left: -@margin-offset;
             border-width: @margin-offset @margin-offset 0 @margin-offset;
             border-top-color: @border-color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 top: 100%;
                 left: @align;
             }
         }
     }
-
     // Arrow Left
-    & when (@side = left) {
+    & when (@side =left) {
         &:after {
             margin-top: -@size;
             border-width: @size @size @size 0;
             border-right-color: @color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 right: 100%;
                 top: @align;
             }
@@ -143,20 +119,19 @@
             margin-top: -@margin-offset;
             border-width: @margin-offset @margin-offset @margin-offset 0;
             border-right-color: @border-color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 right: 100%;
                 top: @align;
             }
         }
     }
-
     // Arrow Right
-    & when (@side = right) {
+    & when (@side =right) {
         &:after {
             margin-top: -@size;
             border-width: @size 0 @size @size;
             border-left-color: @color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 left: 100%;
                 top: @align;
             }
@@ -167,7 +142,7 @@
             margin-top: -@margin-offset;
             border-width: @margin-offset 0 @margin-offset @margin-offset;
             border-left-color: @border-color;
-            & when not(@align = none) {
+            & when not(@align =none) {
                 left: 100%;
                 top: @align;
             }
