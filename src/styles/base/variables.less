@@ -186,7 +186,7 @@
 @input-placeholder-color:       @grey-400;
 @input-placeholder-hover-color: @grey-600;
 @input-background:              transparent;
-@input-border-color:            @grey-200;
+@input-border-color:            @grey-400;
 @input-border-color-hover:      @grey-600;
 @input-border-color-focus:      @grey-600;
 @input-border-width:            1px;
@@ -197,18 +197,24 @@
 @input-box-shadow:              none;
 
 // Checkbox & radio buttons
-@input-box-size:                @spacing-base;
-@input-checkbox-radio-margin:   @spacing-half;
-@input-checkbox-checked-color:  currentColor;
-@input-checkbox-border-radius:  0;
-@input-radio-checked-color:     currentColor;
-@input-radio-checked-margin:    .2em;
+@checkbox-radio-background:     @input-background;
+@checkbox-radio-size:           @spacing-base;
+@checkbox-radio-margin:         @spacing-half;
+@checkbox-checked-color:        currentColor;
+@checkbox-checked-background:   transparent;
+@checkbox-checked-size:         19px;
+@checkbox-checked-width:        3px;
+@checkbox-checked-y:            5px;
+@checkbox-checked-x:            9px;
+@checkbox-border-radius:        0;
+@radio-checked-color:           currentColor;
+@radio-checked-size:            @checkbox-radio-size - 4;
 
 // Range
 @range-thumb-color:             @color-primary;
 @range-thumb-border-radius:     50%;
-@range-thumb-height:            @base-font-size * 2;
-@range-thumb-width:             @base-font-size * 2;
+@range-thumb-height:            32px;
+@range-thumb-width:             32px;
 @range-thumb-box-shadow:        @box-shadow-small;
 @range-thumb-border-width:      0;
 @range-thumb-border-color:      transparent;
