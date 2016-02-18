@@ -174,12 +174,18 @@
         input {
             display: none;
         }
+        // Overwrite unstyled radios and checkboxes
+        input + label {
+            display: block;
+        }
 
         // Control inputs with label
         label {
             position: relative;
-            padding-left: (@checkbox-radio-size + @spacing-fourth);
+            padding-left: (@checkbox-radio-size);
+            text-indent: @spacing-fourth;
             line-height: @checkbox-radio-size;
+            height: @checkbox-radio-size; // makes empty label possible
             &:before,
             &:after {
                 content: '';

@@ -40,12 +40,10 @@
         width: 100%; // Let's make 'em responsive!
     }
 
-    input {
-        &[type="checkbox"],
-        &[type="radio"] {
-            + label {
-                display: inline-block; // labels goes to same line
-            }
+    input[type="checkbox"],
+    input[type="radio"] {
+        + label {
+            display: inline-block; // labels goes to same line
         }
     }
 
