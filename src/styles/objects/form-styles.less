@@ -29,11 +29,9 @@
     input[type="week"],
     textarea,
     select {
-        // Reset iOS box-shadow
+        // Removes awkward default styles on some inputs for iOS
         // Get rid of <select> arrow in FF, idea for this hack:
         // https://gist.github.com/joaocunha/6273016
-        -moz-appearance: none;
-        -webkit-appearance: none;
         appearance: none;
         background-color: @input-background;
         background-image: none;
@@ -141,16 +139,15 @@
     // Select
     select:not([multiple]) {
         cursor: pointer;
-        position: relative;
-        background-image: data-uri('../images/form/select.svg');
-        background-repeat: no-repeat;
-        background-position: right 1em center;
-        background-size: (@input-height / 3) auto;
+        background: data-uri('../images/form/select.svg') center right no-repeat;
+        background-size: contain;
         &:focus:-moz-focusring {
+            // Remove ugly focus in FF
             color: transparent;
-            text-shadow: 0 0 0 #000;
+            text-shadow: 0 0 0 @input-color;
         }
-        &:hover {
+        &:hover,
+        &:focus {
             background-image: data-uri('../images/form/select_hover.svg');
         }
     }

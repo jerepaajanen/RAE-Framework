@@ -28,13 +28,6 @@
         // Table outerborder only
         &--border {
             border: @table-border-width solid @table-border-color;
-            // Remove border on 1st-row cells to avoid a double border.
-            &.table--border-cells thead:first-child tr:first-child th,
-            &.table--border-cells thead:first-child tr:first-child td,
-            &.table--border-rows thead:first-child tr:first-child th,
-            &.table--border-rows thead:first-child tr:first-child td {
-                border-top: 0;
-            }
         }
 
         // Borders for inner table cells
@@ -60,10 +53,6 @@
         &--border-rows {
             th,
             td {
-                border-top: @table-border-width solid @table-border-color;
-            }
-            // Add bottom border to last row in the table
-            tr:last-child td {
                 border-bottom: @table-border-width solid @table-border-color;
             }
         }
