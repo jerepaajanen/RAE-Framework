@@ -1,11 +1,11 @@
 .slide-in-up(@boolean) when (@boolean =true) {
     @keyframes slide-in-up {
         0% {
-            transform: translateY(100%);
+            transform: translate3d(0, 100%, 0);
             visibility: visible;
         }
         100% {
-            transform: translateY(0);
+            transform: none;
         }
     }
     .slide-in-up {

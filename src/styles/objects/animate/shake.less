@@ -2,20 +2,20 @@
     @keyframes shake {
         0%,
         100% {
-            transform: translateX(0);
+            transform: none;
         }
         10%,
         30%,
         50%,
         70%,
         90% {
-            transform: translateX(-@spacing-half);
+            transform: translate3d(-10px, 0, 0);
         }
         20%,
         40%,
         60%,
         80% {
-            transform: translateX(@spacing-half);
+            transform: translate3d(10px, 0, 0);
         }
     }
     .shake {

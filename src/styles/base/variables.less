@@ -262,8 +262,8 @@
 @tooltip-multiline-width:       160px;
 @tooltip-box-shadow:            @box-shadow-default;
 @tooltip-offset:                2px;
-@tooltip-anim-duration:         100ms;
-@tooltip-anim-delay:            100ms;
+@tooltip-anim-duration:         @transition-duration-default;
+@tooltip-anim-delay:            @transition-duration-default;
 @tooltip-font-size:             11px;
 @tooltip-font-weight:           400;
 @tooltip-line-height:           @line-height-tighter;
@@ -393,18 +393,6 @@
 @use-swing:                     true;
 @use-tada:                      true;
 @use-wobble:                    true;
-// Bouncing Enterances
-@use-bounce-in:                 true;
-@use-bounce-in-down:            true;
-@use-bounce-in-left:            true;
-@use-bounce-in-right:           true;
-@use-bounce-in-up:              true;
-// Bouncing Exits
-@use-bounce-out:                true;
-@use-bounce-out-down:           true;
-@use-bounce-out-left:           true;
-@use-bounce-out-right:          true;
-@use-bounce-out-up:             true;
 // Fading Enterances
 @use-fade-in:                   true;
 @use-fade-in-down:              true;
@@ -420,6 +408,9 @@
 // Zooms
 @use-zoom-in:                   true;
 @use-zoom-out:                  true;
-// Specials
+// Bounces
+@use-bounce-in:                 true;
+@use-bounce-out:                true;
+// Rolls
 @use-roll-in:                   true;
 @use-roll-out:                  true;
