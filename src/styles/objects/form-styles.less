@@ -310,26 +310,12 @@
     }
 
     // Block-level form items
-    .form-item,
-    .field {
+    .form-item {
         display: block;
         margin-bottom: @form-item-spacing;
         // Margin for labels immediately after .form-item
         > label {
             margin-bottom: @label-margin;
-        }
-    }
-
-    .fields {
-        display: flex;
-        flex-direction: row;
-        .field {
-            flex: 0 1 auto;
-            padding-left: .5em;
-            padding-right: .5em;
-            &:first-child {
-                padding-left: 0;
-            }
         }
     }
 
