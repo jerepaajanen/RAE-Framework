@@ -68,13 +68,13 @@
         padding: 0 !important;
         width: @button-height;
         &.button--small {
-            width: (@button-height * .75);
+            width: ceil(@button-height * .75);
         }
         &.button--large {
-            width: (@button-height * 1.5);
+            width: ceil(@button-height * 1.5);
         }
         &.button--huge {
-            width: (@button-height * 2);
+            width: ceil(@button-height * 2);
         }
     }
 
