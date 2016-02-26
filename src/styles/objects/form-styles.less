@@ -35,14 +35,16 @@
         appearance: none;
         background-color: @input-background;
         background-image: none;
-        border: @input-border-width solid @input-border-color;
+        border-style: solid;
+        border-color: @input-border-color;
+        border-width: @input-border-width;
         border-radius: @input-border-radius;
         box-shadow: @input-box-shadow;
         color: @input-color;
         font-size: @input-font-size;
         height: @input-height;
         padding: ((@input-height - (@input-font-size * @line-height-ratio)) / 2) @input-horizontal-padding;
-        transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
+        transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
         &:hover {
             border-color: @input-border-color-hover;
         }
@@ -159,7 +161,6 @@
         & + & {
             margin-top: @checkbox-radio-margin; // add some spacing between checkboxes/radios
         }
-
         // Inline styles
         &.checkbox--inline,
         &.radio--inline {
@@ -169,7 +170,6 @@
                 margin-right: @spacing-half; // space out consecutive inline controls
             }
         }
-
         // Hide inputs
         input {
             display: none;
@@ -178,7 +178,6 @@
         input + label {
             display: block;
         }
-
         // Control inputs with label
         label {
             position: relative;
@@ -198,7 +197,7 @@
             }
             &:before {
                 background: @checkbox-radio-background;
-                border: @input-border-width solid @input-border-color;
+                border: @checkbox-radio-border-width solid @input-border-color;
                 box-shadow: @input-box-shadow;
                 transition: border-color @transition-duration-default @transition-easing-default;
             }
@@ -224,11 +223,11 @@
                 border-radius: @checkbox-border-radius;
             }
             // Checked tick
-            &:after {
+            &:after {
                 border: solid @checkbox-checked-color;
                 border-width: 0 @checkbox-checked-width @checkbox-checked-width 0;
-                height: round((@checkbox-checked-size / 1.5),0);
-                width: round((@checkbox-checked-size / 2.75),0);
+                height: round((@checkbox-checked-size / 1.5), 0);
+                width: round((@checkbox-checked-size / 2.75), 0);
                 position: absolute;
                 left: @checkbox-checked-x;
                 top: @checkbox-checked-y;
@@ -236,7 +235,7 @@
         }
         input:checked {
             + label:before {
-                & when not(@checkbox-checked-background = transparent) {
+                & when not(@checkbox-checked-background =transparent) {
                     background: @checkbox-checked-background;
                     border-color: @checkbox-checked-background;
                     transition: all 100ms @transition-easing-default;
@@ -261,64 +260,143 @@
         }
     }
 
-    // Modifiers
+    // Input modifiers
+    .use-input-modifiers(@boolean) when (@boolean =true) {
 
-    // Input without borders
-    input.input--borderless {
-        border: 0;
-    }
-    input.input--pill {
-        border-radius: 999em;
-        padding-left: (@input-horizontal-padding * 2);
-        padding-right: (@input-horizontal-padding * 2);
-    }
-
-    // Input Small
-    input.input--small {
-        height: ceil(@input-height * .75);
-        .modular-scale(-1);
-    }
-
-    // Input Large
-    input.input--large {
-        height: ceil(@input-height * 1.25);
-        .modular-scale(1);
-    }
-
-    input.input--huge {
-        height: ceil(@input-height * 1.5);
-        .modular-scale(2);
-    }
-
-    // Input Unstyled (reset styles)
-    input.input--unstyled,
-    textarea.textarea--unstyled {
-        border: 0;
-        padding: 0;
-        outline: 0;
-        height: auto;
-        background: transparent;
-        box-shadow: none;
-        &:focus,
-        &:hover {
-            outline: none;
+        // Input sizes
+        input.input--small {
+            height: ceil(@input-height * .75);
+            .modular-scale(-1);
+        }
+        input.input--large {
+            height: ceil(@input-height * 1.25);
+            .modular-scale(1);
+        }
+        input.input--huge {
+            height: ceil(@input-height * 1.5);
+            .modular-scale(2);
+        }
+        // Input variations
+        input.input--underlined,
+        textarea.textarea--underlined {
+            border: 0;
+            border-bottom: @input-border-width solid @input-border-color;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        input.input--pill {
+            border-radius: 999em;
+            padding-left: (@input-horizontal-padding * 2);
+            padding-right: (@input-horizontal-padding * 2);
+        }
+        input.input--unstyled,
+        textarea.textarea--unstyled {
+            border: 0;
+            padding: 0;
+            outline: 0;
+            height: auto;
+            background: transparent;
             box-shadow: none;
+            &:focus,
+            &:hover {
+                outline: none;
+                box-shadow: none;
+            }
+        }
+        textarea.textarea--unstyled {
+            resize: none;
         }
     }
-    textarea.textarea--unstyled {
-        resize: none;
-    }
+    .use-input-modifiers(@use-input-modifiers);
 
-    // Block-level form items
-    .form-item {
-        display: block;
-        margin-bottom: @form-item-spacing;
-        // Margin for labels immediately after .form-item
-        > label {
-            margin-bottom: @label-margin;
+    // Fields
+    .use-form-fields(@boolean) when (@boolean =true) {
+
+        // Field
+        .field {
+            display: block;
+            clear: both;
+            margin: 0 0 @form-field-margin 0;
+            &:last-child {
+                margin-bottom: 0;
+            }
+            > label {
+            margin: 0 0 @label-vertical-margin 0;
+            }
+        }
+        .field-group {
+            .field:last-child {
+                margin: 0 0 @form-field-margin 0;
+            }
+            &:last-child .field:last-child,
+            &:last-child .button:last-child{
+                margin-bottom: 0;
+            }
+        }
+
+
+        // Field-groups, only for larger screens
+        @media @md-up {
+            .field-group {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                > .field {
+                    padding-left: (@grid-gutter-width / 2);
+                    padding-right: (@grid-gutter-width / 2);
+                    &:first-child {
+                        padding-left: 0;
+                    }
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+                &:last-child {
+                    .field {
+                        margin-bottom: 0;
+                    }
+                }
+                &--half {
+                    .field {
+                        padding-left: (@grid-gutter-width / 4);
+                        padding-right: (@grid-gutter-width / 4);
+                    }
+                }
+                &--narrow {
+                    .field {
+                        padding-left: 1px;
+                        padding-right: 1px;
+                    }
+                }
+            }
+        }
+
+        .field-group--inline {
+            > .field {
+                display: flex;
+                align-items: center;
+                label {
+                    display: inline-block;
+                    margin: 0 @label-horizontal-margin 0 0;
+                }
+                input,
+                select {
+                    width: auto;
+                }
+            }
+        }
+        .field-group--equal-width {
+            > .field {
+                flex: 1 1 auto;
+                input,
+                select {
+                    width: 100%;
+                    flex: 1; // prevent line-breaks with label
+                }
+            }
         }
     }
-
+    .use-form-fields(@use-form-fields);
 }
 
 .use-form-styles(@use-form-styles);

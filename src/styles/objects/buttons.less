@@ -10,11 +10,13 @@
         cursor: pointer;
         display: inline-block;
         font-weight: @button-font-weight;
+        letter-spacing: @button-letter-spacing;
         outline: 0;
         position: relative;
         text-align: center;
         text-decoration: none;
-        transition: background-color 200ms linear, color 200ms linear, opacity 200ms linear, border-color 200ms linear;
+        text-transform: @button-text-transform;
+        transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
         user-drag: none;
         user-select: none;
         vertical-align: middle;
@@ -38,7 +40,10 @@
         }
     }
 
-    //Buttons sizes
+    //
+    // Button modifiers
+
+    // Buttons sizes
     .button--small {
         .button-size(.75);
     }
@@ -58,7 +63,7 @@
         white-space: normal !important; // line-break for mobile
     }
 
-    //Button variations
+    // Button variations
     .button--pill {
         border-radius: 999em;
     }

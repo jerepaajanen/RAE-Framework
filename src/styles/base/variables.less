@@ -168,7 +168,7 @@
 // FORMS, INPUTS & BUTTONS
 // -------------------------------------------------------
 
-@form-item-spacing:             @spacing-base;
+@form-field-margin:             @spacing-base;
 
 // Fieldset with border
 @fieldset-border-width:         1px;
@@ -176,7 +176,8 @@
 @fieldset-border-color:         @grey-100;
 
 // Label & legend
-@label-margin:                  @spacing-sixth;
+@label-vertical-margin:         @spacing-sixth;
+@label-horizontal-margin:       @spacing-half;
 @label-font-size:               inherit;
 @label-color:                   @base-color;
 @legend-font-weight:            700;
@@ -184,11 +185,12 @@
 // Inputs, textarea, select
 @input-color:                   @grey-800;
 @input-placeholder-color:       @grey-400;
-@input-placeholder-hover-color: @grey-600;
+@input-placeholder-hover-color: @grey-500;
+@input-placeholder-focus-color: @grey-800;
 @input-background:              transparent;
 @input-border-color:            @grey-400;
-@input-border-color-hover:      @grey-600;
-@input-border-color-focus:      @grey-600;
+@input-border-color-hover:      @grey-500;
+@input-border-color-focus:      @grey-800;
 @input-border-width:            1px;
 @input-border-radius:           0;
 @input-font-size:               @base-font-size;
@@ -199,6 +201,7 @@
 // Checkbox & radio buttons
 @checkbox-radio-background:     @input-background;
 @checkbox-radio-size:           @spacing-base;
+@checkbox-radio-border-width:   1px;
 @checkbox-radio-margin:         @spacing-half;
 @checkbox-checked-color:        currentColor;
 @checkbox-checked-background:   transparent;
@@ -213,8 +216,8 @@
 // Range
 @range-thumb-color:             @color-primary;
 @range-thumb-border-radius:     50%;
-@range-thumb-height:            32px;
-@range-thumb-width:             32px;
+@range-thumb-height:            @spacing-base;
+@range-thumb-width:             @spacing-base;
 @range-thumb-box-shadow:        @box-shadow-small;
 @range-thumb-border-width:      0;
 @range-thumb-border-color:      transparent;
@@ -229,6 +232,8 @@
 // Buttons
 @button-font-size:              16px;
 @button-font-weight:            400;
+@button-letter-spacing:         @letter-spacing-normal;
+@button-text-transform:         none;
 @button-height:                 40px;
 @button-horizontal-padding:     16px;
 @button-border-width:           1px;
@@ -350,11 +355,13 @@
 @use-icons:                     true;
 @use-buttons:                   true;
 @use-form-styles:               true;
+    @use-input-modifiers:       true;
+    @use-form-fields:           true;
 @use-grid-classes:              true;
     @use-container:             true;
     @use-row:                   true;
     @use-column:                true;
-    @use-row-variations:        true;
+    @use-row-modifiers:         true;
 @use-table-styles:              true;
 @use-tooltips:                  true;
 @use-embed-wrap:                true;
