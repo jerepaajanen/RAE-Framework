@@ -1,4 +1,4 @@
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")"
 if [ ! -d node_modules ];then
     sudo npm install && bower install
 fi

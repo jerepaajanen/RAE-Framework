@@ -141,8 +141,10 @@
     // Select
     select:not([multiple]) {
         cursor: pointer;
-        background: data-uri('../images/form/select.svg') center right no-repeat;
-        background-size: contain;
+        background-image: data-uri('../images/form/select.svg');
+        background-position: center right;
+        background-repeat: no-repeat;
+        background-size: @input-height @input-height;
         &:focus:-moz-focusring {
             // Remove ugly focus in FF
             color: transparent;

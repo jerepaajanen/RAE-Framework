@@ -294,7 +294,7 @@ gulp.task('fonts:icons', function () {
         .pipe($.changed(paths.images.dest + 'icons/**/*.svg'))
         .pipe($.iconfont({
             fontName: config.iconfont.fontName,
-            appendUnicode: false,
+            prependUnicode: false,
             autohint: config.iconfont.autohint,
             formats: ['ttf'],
             normalize: true,
