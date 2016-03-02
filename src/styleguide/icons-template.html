@@ -233,8 +233,7 @@
         }
 
         .docs-content .glyph-name {
-            padding-left: 6px;
-            display: block;
+            padding-left: 4px;
         }
 
         .docs-content .glyph-class {
@@ -1166,7 +1165,7 @@
             </article>
             <article class="buttons__sizes">
                 <header>
-                    <h3 class="u-muted">Button sizes &amp; variations</h3>
+                    <h3 class="u-muted">Button modifiers</h3>
                 </header>
                 <div class="example">
                     <button class="button button--default button--small" type="button">Small</button>
@@ -1186,76 +1185,41 @@
         <hr />
         <section class="forms container">
             <header>
-                <h2 class="u-text-normal">Forms</h2>
+                <h2 class="u-text-normal">Form</h2>
             </header>
-            <article class="forms__text-fields">
+            <article class="forms__inputs">
                 <header>
-                    <h3 class="u-muted">Text fields</h3>
+                    <h3 class="u-muted">Basic inputs</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
-                        <div class="form-item">
-                            <label for="demo-input">Text Input</label>
+                        <div class="field">
+                            <label for="demo-input">Input</label>
                             <input type="text" id="demo-input" placeholder="Type something...">
                         </div>
-                        <div class="form-item">
+                        <div class="field">
                             <label for="demo-input-disabled">Disabled Input</label>
                             <input type="text" disabled id="demo-input-disabled" placeholder="I'm Disabled">
                         </div>
-                        <div class="form-item">
+                        <div class="field">
                             <label for="demo-input-password">Password</label>
                             <input type="password" id="demo-input-password" placeholder="Type your password">
                         </div>
-                        <div class="form-item">
+                        <div class="field">
                             <label for="demo-textarea">Textarea</label>
                             <textarea id="demo-textarea" placeholder="Enter your message here..." rows="6"></textarea>
                         </div>
                     </form>
                 </div>
             </article>
-            <article class="forms__sizes">
-                <header>
-                    <h3 class="u-muted">Input sizes &amp; variations</h3>
-                </header>
-                <div class="example">
-                    <form>
-                        <div class="form-item">
-                            <label for="small-input">Small Input</label>
-                            <input class="input--small" type="text" id="small-input" placeholder="Type something...">
-                        </div>
-                        <div class="form-item">
-                            <label for="large-input">Large Input</label>
-                            <input class="input--large input--reset" type="text" id="large-input" placeholder="Type something...">
-                        </div>
-                        <div class="form-item">
-                            <label for="huge-input">Huge Input</label>
-                            <input class="input--huge" type="text" id="huge-input" placeholder="Type something...">
-                        </div>
-                        <div class="form-item">
-                            <label for="pill-input">Pill Input</label>
-                            <input class="input--pill" type="text" id="pill-input" placeholder="Type something...">
-                        </div>
-                        <div class="form-item">
-                            <label for="borderless-input">Borderless Input</label>
-                            <input class="input--borderless" type="text" id="borderless-input" placeholder="Type something...">
-                        </div>
-                        <div class="form-item">
-                            <label for="unstyled-input">Unstyled Input</label>
-                            <input class="input--unstyled" type="text" id="unstyled-input" placeholder="Type something...">
-                        </div>
-
-
-                    </form>
-                </div>
-            </article>
             <article class="forms__selects">
                 <header>
-                    <h3 class="u-muted">Select menus</h3>
+                    <h3 class="u-muted">Select</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
-                        <div class="form-item">
-                            <label for="demo-select">Select List</label>
+                        <div class="field">
+                            <label for="demo-select">Select</label>
                             <select id="demo-select">
                                 <option value="" disabled selected>Select your option</option>
                                 <option value="Option 1">
@@ -1274,8 +1238,8 @@
                                 </optgroup>
                             </select>
                         </div>
-                        <div class="form-item">
-                            <label for="demo-multi-select">Multiple Select List</label>
+                        <div class="field">
+                            <label for="demo-multi-select">Multiple select</label>
                             <select id="demo-multi-select" multiple="multiple">
                                 <option value="Option 1">
                                     Option 1
@@ -1294,13 +1258,88 @@
                     </form>
                 </div>
             </article>
+            <article class="forms__html5inputs">
+                <header>
+                    <h3 class="u-muted">Html5 inputs</h3>
+                </header>
+                <div class="example">
+                    <form role="form" class="form" action="" onsubmit="return false" oninput="outputName.value = rangeName.valueAsNumber">
+                        <div class="field">
+                            <label for="demo-input-telephone">Telephone</label>
+                            <input type="tel" id="demo-input-telephone" placeholder="(123) 555-5555">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-url">Web address</label>
+                            <input type="url" id="demo-input-url" placeholder="http://www.rae.fi">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-email">Email address</label>
+                            <input type="email" id="demo-input-email" placeholder="hello@rae.fi">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-search">Search input</label>
+                            <input type="search" id="demo-input-search" placeholder="(123) 555-5555">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-number">Number input</label>
+                            <input type="number" id="demo-input-number" placeholder="Enter a number">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-date">Date input</label>
+                            <input type="date" id="demo-input-date" value="1987-08-29">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-color">Color input</label>
+                            <input type="color" id="demo-input-color" value="#ae956d">
+                        </div>
+                        <div class="field">
+                            <label for="demo-input-range">Range input</label>
+                            <input name="rangeName" id="demo-input-range" type="range" value="10" min="10" max="1000" step="5">
+                            <output for="demo-input-range" name="outputName">10</output>
+                        </div>
+                    </form>
+                </div>
+            </article>
+            <article class="forms__modifiers">
+                <header>
+                    <h3 class="u-muted">Input modifiers</h3>
+                </header>
+                <div class="example">
+                    <form>
+                        <div class="field">
+                            <label for="small-input">Small Input</label>
+                            <input class="input--small" type="text" id="small-input" placeholder="Type something...">
+                        </div>
+                        <div class="field">
+                            <label for="large-input">Large Input</label>
+                            <input class="input--large input--reset" type="text" id="large-input" placeholder="Type something...">
+                        </div>
+                        <div class="field">
+                            <label for="huge-input">Huge Input</label>
+                            <input class="input--huge" type="text" id="huge-input" placeholder="Type something...">
+                        </div>
+                        <div class="field">
+                            <label for="pill-input">Pill Input</label>
+                            <input class="input--pill" type="text" id="pill-input" placeholder="Type something...">
+                        </div>
+                        <div class="field">
+                            <label for="underlined-input">Underlined Input</label>
+                            <input class="input--underlined" type="text" id="underlined-input" placeholder="Type something...">
+                        </div>
+                        <div class="field">
+                            <label for="unstyled-input">Unstyled Input</label>
+                            <input class="input--unstyled" type="text" id="unstyled-input" placeholder="Type something...">
+                        </div>
+                    </form>
+                </div>
+            </article>
             <article class="forms__checkboxes">
                 <header>
                     <h3 class="u-muted">Checkboxes</h3>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
-                        <div class="form-item">
+                        <div class="field">
                             <label>Normal checkboxes</label>
                             <div class="checkbox">
                                 <input id="demo-checkbox1" type="checkbox" name="optionsCheckboxes" value="1" checked>
@@ -1315,7 +1354,7 @@
                                 <label for="demo-checkbox3">Option three is disabled</label>
                             </div>
                         </div>
-                        <div class="form-item">
+                        <div class="field">
                             <label>Inline checkboxes</label>
                             <div class="checkbox checkbox--inline">
                                 <input id="demo-checkbox--inline1" type="checkbox" name="optionsCheckboxesInline" value="1" checked>
@@ -1339,7 +1378,7 @@
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
-                        <div class="form-item">
+                        <div class="field">
                             <label>Normal radios</label>
                             <div class="radio">
                                 <input id="demo-radio1" type="radio" name="optionsRadios" value="1" checked>
@@ -1354,7 +1393,7 @@
                                 <label for="demo-radio3">Option three is disabled</label>
                             </div>
                         </div>
-                        <div class="form-item">
+                        <div class="field">
                             <label>Inline radios</label>
                             <div class="radio radio--inline">
                                 <input id="demo-radio--inline1" type="radio" name="optionsRadiosInline" value="1" checked>
@@ -1372,47 +1411,6 @@
                     </form>
                 </div>
             </article>
-            <article class="forms__html5inputs">
-                <header>
-                    <h3 class="u-muted">Html5 inputs</h3>
-                </header>
-                <div class="example">
-                    <form role="form" class="form" action="">
-                        <div class="form-item">
-                            <label for="demo-input-telephone">Telephone</label>
-                            <input type="tel" id="demo-input-telephone" placeholder="(123) 555-5555">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-url">Web address</label>
-                            <input type="url" id="demo-input-url" placeholder="http://www.rae.fi">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-email">Email address</label>
-                            <input type="email" id="demo-input-email" placeholder="hello@rae.fi">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-search">Search input</label>
-                            <input type="search" id="demo-input-search" placeholder="(123) 555-5555">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-number">Number input</label>
-                            <input type="number" id="demo-input-number" placeholder="Enter a number">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-date">Date input</label>
-                            <input type="date" id="demo-input-date" value="1987-08-29">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-color">Color input</label>
-                            <input type="color" id="demo-input-color" value="#ae956d">
-                        </div>
-                        <div class="form-item">
-                            <label for="demo-input-range">Range input</label>
-                            <input type="range" id="demo-input-range" value="10">
-                        </div>
-                    </form>
-                </div>
-            </article>
             <article class="forms__fieldset">
                 <header>
                     <h3 class="u-muted">Fieldsets</h3>
@@ -1421,7 +1419,7 @@
                     <form role="form" class="form" action="">
                         <fieldset>
                             <legend>Fieldset legend</legend>
-                            <div class="form-item">
+                            <div class="field">
                                 <label for="demo-input-fieldset1">Input</label>
                                 <input type="text" id="demo-input-fieldset1" placeholder="This is input">
                             </div>
@@ -1429,7 +1427,7 @@
                         </fieldset>
                         <fieldset class="fieldset--bordered">
                             <legend>Fieldset with borders</legend>
-                            <div class="form-item">
+                            <div class="field">
                                 <label for="demo-input__fieldset3">Input</label>
                                 <input type="text" id="demo-input__fieldset3" placeholder="This is input">
                             </div>
@@ -1438,37 +1436,118 @@
                     </form>
                 </div>
             </article>
-            <article class="forms__grid">
+            <article class="forms__fields">
                 <header>
-                    <h3 class="u-muted">Form with grid</h3>
+                    <h3 class="u-muted">Fields</h3>
+                    <p>A field is a form element containing a label and an input . A <code>.field</code> receives bottom margin. A set of fields can appear grouped together with <code>.field-group</code> -class. Field groups automatically receive responsive styling, swapping to one field per row on mobile devices.</p>
                 </header>
                 <div class="example">
                     <form role="form" class="form" action="">
-                        <div class="form-item">
-                            <div class="row">
-                                <div class="column u-width-md-2of12">
-                                    <label for="demo-input__grid">Input</label>
+                        <fieldset>
+                            <div class="field-group">
+                                <div class="field">
+                                    <label for="demo-input-field1">Input</label>
+                                    <input type="text" id="demo-input-field1" placeholder="Type something...">
                                 </div>
-                                <div class="column u-width-md-10of12">
-                                    <input type="text" id="demo-input__grid" placeholder="This is input">
+                                <div class="field">
+                                    <label for="demo-input-field2">Input</label>
+                                    <input type="text" id="demo-input-field2" placeholder="Type something...">
                                 </div>
-                            </div>
-                        </div>
-                        <div class="form-item">
-                            <div class="row">
-                                <div class="column u-width-md-2of12">
-                                    <label for="demo-textarea__grid">Textarea</label>
-                                </div>
-                                <div class="column u-width-md-10of12">
-                                    <textarea id="demo-textarea__grid" placeholder="This is textarea" rows="6"></textarea>
+                                <div class="field">
+                                    <label for="demo-input-field3">Input</label>
+                                    <input type="text" id="demo-input-field3" placeholder="Type something...">
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="column u-width-md-10of12">
-                                <button class="button button--default" type="submit">Submit</button>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Equal width</legend>
+                            <div class="field-group field-group--equal-width">
+                                <div class="field">
+                                    <label for="demo-input-equal1">Input</label>
+                                    <input type="text" id="demo-input-equal1" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-equal2">Input</label>
+                                    <input type="text" id="demo-input-equal2" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-equal3">Input</label>
+                                    <input type="text" id="demo-input-equal3" placeholder="Type something...">
+                                </div>
                             </div>
-                        </div>
+                            <div class="field-group field-group--equal-width field-group--half">
+                                <div class="field">
+                                    <label for="demo-input-field1">Input</label>
+                                    <input type="text" id="demo-input-field1" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-field2">Input</label>
+                                    <input type="text" id="demo-input-field2" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-field3">Input</label>
+                                    <input type="text" id="demo-input-field3" placeholder="Type something...">
+                                </div>
+                            </div>
+                            <div class="field-group field-group--equal-width field-group--narrow">
+                                <div class="field">
+                                    <label for="demo-input-field1">Input</label>
+                                    <input type="text" id="demo-input-field1" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-field2">Input</label>
+                                    <input type="text" id="demo-input-field2" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-field3">Input</label>
+                                    <input type="text" id="demo-input-field3" placeholder="Type something...">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Inline</legend>
+                            <div class="field-group field-group--inline">
+                                <div class="field">
+                                    <label for="demo-input-inline1">Input lorem</label>
+                                    <input type="text" id="demo-input-inline1" placeholder="Type something...">
+                                </div>
+                                <div class="field">
+                                    <label for="demo-input-inline2">Input</label>
+                                    <input type="text" id="demo-input-inline2" placeholder="Type something...">
+                                </div>
+                                <button role="button" class="button button--primary">Button</button>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <legend>Fields with widths</legend>
+                            <div class="field-group">
+                                <div class="field u-width-md-5of12">
+                                    <label>First name</label>
+                                    <input type="text" placeholder="First Name">
+                                </div>
+                                <div class="field u-width-md-2of12">
+                                    <label>Middle</label>
+                                    <input type="text" placeholder="Middle Name">
+                                </div>
+                                <div class="field u-width-md-5of12">
+                                    <label>Last name</label>
+                                    <input type="text" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="field-group field-group--equal-width">
+                                <div class="field u-width-md-8of12">
+                                    <input type="text" id="demo-input-widths" placeholder="Type something...">
+
+                                </div>
+                                <div class="field">
+                                    <div class="checkbox checkbox--inline">
+                                        <input id="demo-checkbox-widths" type="checkbox" name="optionsCheckboxes" value="1">
+                                        <label for="demo-checkbox-widths">Yes sir!</label>
+                                    </div>
+                                </div>
+                                <button role="button" class="button button--primary">Button</button>
+                            </div>
+                        </fieldset>
                     </form>
                 </div>
             </article>
@@ -1553,7 +1632,6 @@
                         <td class="bg0">@white</td>
                     </tr>
                 </table>
-
             </article>
             <article class="helpers__classes">
                 <header>
