@@ -50,3 +50,9 @@ You can use also shorthand for enviroment modifiers
 `--production`  `--p`
 
 `--deploy`  `--d`
+
+#### Help
+This command will give you a list of all tasks available and their description.
+```bash
+gulp --tasks
+```
