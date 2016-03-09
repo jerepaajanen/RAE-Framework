@@ -1,26 +1,52 @@
-RAE Framework
+##RAE Framework
 
 
-## Environment setup
+### Environment setup
 
 - install npm (http://nodejs.org/)
-- install gulp client: $ npm install -g gulp
-- install bower: $ npm install -g bower
+- install gulp client: `npm install -g gulp`
+- install bower: `npm install -g bower`
 
-## Install dependencies
+### Install dependencies
 
-- $ npm install && bower install
-- ...or just use shortcut Terminal .commands like gulp serve in ./gulp -forlder
-
-
-## Gulp tasks
-
-
-- $ gulp / Launch gulp in development-mode
-- $ gulp --serve / Launch gulp + serve you development files
-- $ gulp --production / Build project, optimize all files
-- $ gulp --deploy / Deploy project with ftp. Copy & rename config-ftp-sample.json to config-ftp.json, then edit the file and add your server auth information.
+```bash
+npm install && bower install
+```
+...or just open gulp-init.command
 
 
-- $ gulp fonts:icons / build iconfonts from .svg-files in src/images/icons.
-    (You may want to autohint your fonts; set "autohint": "true" in config.json, and install autohint on your system with Homebrew "brew install ttfautohint --with-qt")
+### Gulp tasks
+
+####Launch
+```bash
+gulp
+```
+
+####Using enviroment modifiers
+
+#####Serving files
+– Default is to watch and serve development-files 
+– Use with `--production` to serve production-files after build
+– Use with `--deploy`to upload changed files to remote server
+```bash
+gulp --serve
+```
+
+#####Production
+– Build and optimize all files
+– Use with `--deploy`to build and then upload files to remote serve
+```bash
+gulp --production
+```
+
+#####Deploying
+Deploying needs `config-ftp.json` -file to work. Copy & rename `config-ftp-sample.json` to `config-ftp.json`, then edit the file and add your server auth information.
+
+#####Enviroment shorthands
+You can use also shorthand for enviroment modifiers
+
+`--serve`  `--s`
+
+`--production`  `--p`
+
+`--deploy`  `--d`
