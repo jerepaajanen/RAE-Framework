@@ -107,7 +107,7 @@ gulp.task('default:development', function () {
 });
 
 gulp.task('default:production', function () {
-    sequence(['clean'], ['images', 'fonts'], ['markup', 'styles', 'scripts', 'copy'], function () {
+    sequence(['clean'], ['images'], ['markup', 'styles', 'scripts', 'fonts', 'copy'], function () {
         console.log($.util.colors.green('✔ Build done!'));
         if (isServe) {
             gulp.start(['serve']);
