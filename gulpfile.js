@@ -126,7 +126,7 @@ var markupProcess = function (isNotPartial) {
     gulp.src(paths.src + '**/*.html', {
         base: paths.src
     })
-        .pipe(isNotPartial || isProduction ? $.changed(paths.dest) : $.util.noop())
+        .pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
         .pipe($.preprocess({
             context: {
                 ENV: isProduction ? 'production' : 'development',
@@ -277,7 +277,7 @@ gulp.task('fonts', function () {
 
 gulp.task('fonts:convert', function () {
     return gulp.src(paths.fonts.src + '**/*.ttf')
-        .pipe($.changed(paths.fonts.dest))
+        .pipe($.newer(paths.fonts.dest))
         .pipe($.ttf2woff({
             clone: true
         }))
@@ -291,7 +291,7 @@ gulp.task('fonts:convert', function () {
 // Fonts : Icons
 gulp.task('fonts:icons', function () {
     return gulp.src(paths.images.src + 'icons/**/*.svg')
-        .pipe($.changed(paths.images.dest + 'icons/**/*.svg'))
+        .pipe($.newer(paths.images.dest + 'icons/**/*.svg'))
         .pipe($.iconfont({
             fontName: config.iconfont.fontName,
             prependUnicode: false,
@@ -339,15 +339,15 @@ gulp.task('images', ['images:optimize', 'images:favicons']);
 // Images : Optimize
 gulp.task('images:optimize', function () {
     return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
-        .pipe($.changed(paths.images.dest))
-        .pipe($.cache($.imagemin({
+        .pipe($.if(!isProduction,$.newer(paths.images.dest)))
+        .pipe($.if(isProduction,($.imagemin({
             optimizationLevel: 7,
             progressive: true,
             interlaced: true,
             svgoPlugins: [{
                 removeViewBox: false
             }]
-        })))
+        }))))
         .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
@@ -413,16 +413,11 @@ gulp.task('copy:assets', function () {
 // CLEAN
 // -------------------------------------------------------
 
-gulp.task('clean', ['clean:files', 'clean:cache']);
+gulp.task('clean', ['clean:files']);
 
 // Clean : Files
 gulp.task('clean:files', function () {
     del([paths.dest + '**/*']);
-});
-
-// Clean : Cache (image)
-gulp.task('clean:cache', function () {
-    return $.cache.clearAll();
 });
 
 
@@ -435,8 +430,8 @@ gulp.task('watch', function () {
 
 
     // Watch Html-files
-    gulp.watch(paths.src + '*.html', ['markup']);
-    gulp.watch(paths.src + 'styleguide/*.html', ['markup']);
+    gulp.watch([paths.src + '**/*.html',
+        '!' + paths.src + 'partials/**/*'],['markup']);
     gulp.watch(paths.src + 'partials/**/*', ['markup:partials']);
 
     // Watch Styles
