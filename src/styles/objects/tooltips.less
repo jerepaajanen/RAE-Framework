@@ -51,7 +51,7 @@
             padding: @tooltip-vertical-padding @tooltip-horizontal-padding;
             font-weight: @tooltip-font-weight;
             word-wrap: break-word;
-            white-space: pre;
+            white-space: nowrap;
         }
         &:hover,
         &:focus &:active,
@@ -79,7 +79,7 @@
         &.is-active {
             &:after,
             &:before {
-                transform: translate3d(-50%, -@tooltip-position, 0);
+                transform: translate(-50%, -@tooltip-position);
             }
         }
     }
@@ -97,7 +97,7 @@
         &.is-active {
             &:after,
             &:before {
-                transform: translate3d(-50%, @tooltip-position, 0);
+                transform: translate(-50%, @tooltip-position);
             }
         }
     }
@@ -106,7 +106,7 @@
         &:after,
         &:before {
             left: 50%;
-            transform: translate3d(-50%, 0, 0);
+            transform: translate(-50%, 0);
         }
     }
     // Left & right tooltips
@@ -124,7 +124,7 @@
         &.is-active {
             &:after,
             &:before {
-                transform: translate3d(-@tooltip-position, -50%, 0);
+                transform: translate(-@tooltip-position, -50%);
             }
         }
     }
@@ -142,7 +142,7 @@
         &.is-active {
             &:after,
             &:before {
-                transform: translate3d(@tooltip-position, -50%, 0);
+                transform: translate(@tooltip-position, -50%);
             }
         }
     }
@@ -151,7 +151,7 @@
         &:after,
         &:before {
             top: 50%;
-            transform: translate3d(0, -50%, 0);
+            transform: translate(0, -50%);
         }
     }
     // Multiline tooltip

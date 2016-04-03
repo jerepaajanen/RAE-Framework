@@ -76,20 +76,20 @@
 
 // Offset mixin
 .offset(@offset: 1) {
-    & when (@column >=1) {
+    & when (@offset >=1) {
         margin-left: percentage((@offset / @grid-columns));
     }
-    & when (@column < 1) {
+    & when (@offset < 1) {
         margin-left: percentage((@offset));
     }
 }
 
 // Push mixin
 .push(@push: 1) {
-    & when (@column >=1) {
+    & when (@push >=1) {
         left: percentage((@push / @grid-columns));
     }
-    & when (@column < 1) {
+    & when (@push < 1) {
         left: percentage((@push));
     }
     right: auto;
@@ -98,10 +98,10 @@
 // Pull mixin
 .pull(@pull: 1) {
     left: auto;
-    & when (@column >=1) {
-        right: percentage((@push / @grid-columns));
+    & when (@pull >=1) {
+        right: percentage((@pull / @grid-columns));
     }
-    & when (@column < 1) {
-        right: percentage((@push));
+    & when (@pull < 1) {
+        right: percentage((@pull));
     }
 }

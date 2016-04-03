@@ -107,14 +107,14 @@
 
 // Custom brand colors
 @color-primary:                 #ae956d;
-@color-primary-light:           lighten(@color-primary, 10%);
-@color-primary-dark:            darken(@color-primary, 10%);
-@color-primary-accent:          overlay(@color-primary, lighten(@black, 20%));
+@color-primary-light:           tint(@color-primary, 10%);
+@color-primary-dark:            shade(@color-primary, 10%);
+@color-primary-accent:          overlay(@color-primary, fade(@black, 50%));
 
 @color-secondary:               #3F51B5;
-@color-secondary-light:         lighten(@color-secondary, 10%);
-@color-secondary-dark:          darken(@color-secondary, 10%);
-@color-secondary-accent:        overlay(@color-primary, lighten(@black, 20%));
+@color-secondary-light:         tint(@color-secondary, 10%);
+@color-secondary-dark:          shade(@color-secondary, 10%);
+@color-secondary-accent:        overlay(@color-secondary, fade(@black, 50%));
 
 // UI colors
 @color-success:                 #5cb85c;
@@ -201,7 +201,7 @@
 // Checkbox & radio buttons
 @checkbox-radio-background:     @input-background;
 @checkbox-radio-size:           @spacing-base;
-@checkbox-radio-border-width:   1px;
+@checkbox-radio-border-width:   @input-border-width;
 @checkbox-radio-margin:         @spacing-half;
 @checkbox-checked-color:        currentColor;
 @checkbox-checked-background:   transparent;
@@ -306,7 +306,7 @@
 
 // Transition
 @transition-duration-default:   200ms;
-@transition-easing-default:     ease-in-out;
+@transition-easing-default:     cubic-bezier(.64, .05, .35, 1);
 
 
 // Z-INDEX SCALE

@@ -94,7 +94,7 @@ gulp.task('default', function () {
 });
 
 gulp.task('default:development', function () {
-    sequence(['markup', 'fonts', 'styles', 'scripts', 'images'], function () {
+    sequence(['markup:all', 'fonts', 'styles', 'scripts', 'images'], function () {
         if (isServe && isDeploy) {
             gulp.start(['serve', 'watch', 'deploy:watch']);
         } else if (isDeploy) {
@@ -126,7 +126,8 @@ var markupProcess = function (isNotPartial) {
     gulp.src(paths.src + '**/*.html', {
         base: paths.src
     })
-        .pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
+        //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
+        .pipe(isNotPartial ? $.newer(paths.dest) : $.util.noop())
         .pipe($.preprocess({
             context: {
                 ENV: isProduction ? 'production' : 'development',
@@ -148,14 +149,14 @@ var markupProcess = function (isNotPartial) {
         }));
 };
 
-// Markup : Main
+// Markup : Main (process only main files)
 gulp.task('markup', function () {
     return markupProcess(true);
 });
 
 
-// Markup : Partials
-gulp.task('markup:partials', function () {
+// Markup : All (process all files)
+gulp.task('markup:all', function () {
     return markupProcess();
 });
 
@@ -432,7 +433,7 @@ gulp.task('watch', function () {
     // Watch Html-files
     gulp.watch([paths.src + '**/*.html',
         '!' + paths.src + 'partials/**/*'],['markup']);
-    gulp.watch(paths.src + 'partials/**/*', ['markup:partials']);
+    gulp.watch(paths.src + 'partials/**/*', ['markup:all']);
 
     // Watch Styles
     gulp.watch(paths.styles.src + '**/*.less', ['styles']);
