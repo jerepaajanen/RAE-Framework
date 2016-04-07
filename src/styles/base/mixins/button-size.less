@@ -12,10 +12,10 @@
     // Font-size minimum is 12px
     @fs-return: ceil(@fs * @multiple);
 
-    & when(@fs-return < 12px) {
+    & when(@fs-return =< 12px) {
         font-size: 12px;
     }
-    & when(@fs-return > 12px) {
+    & when(@fs-return >= 12px) {
         font-size: @fs-return;
     }
 
