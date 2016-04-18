@@ -1,29 +1,30 @@
 (function () {
     'use strict';
 
-    // Simple responsive navigation with subnav
-    $('.js-responsive-nav').each(function () {
+    // Simple responsive navigation with subnav toggle
+    $('.js-nav').each(function () {
 
         var nav = $(this),
             navMenuClass = 'nav__list',
             navItemClass = 'nav__item',
-            dropdownClass = 'dropdown',
-            navToggleClass = 'nav-toggle',
-            dropdownToggleClass = 'dropdown-toggle',
+            dropdownModifier = 'dropdown',
+            dropdownClass = navMenuClass + '--' + dropdownModifier,
+            navToggleClass = 'nav__toggler',
+            dropdownToggleClass = 'nav__dropdown-toggler',
             menu = nav.children('.' + navMenuClass),
             dropdown = menu.find('li .' + dropdownClass);
 
         // Build 'nav--responsive' elements
         nav.prepend('<div role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span></span><span></span><span></span><div class="u-visually-hidden">Menu</div></div>');
-        menu.addClass('is-collapsible');
-        dropdown.addClass('is-collapsible');
-        dropdown.parent('li').addClass(navItemClass + '--with-' + dropdownClass).prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');
+        //menu.addClass('is-collapsible');
+        //dropdown.addClass('is-collapsible');
+        dropdown.parent('li').addClass(navItemClass + '--with-' + dropdownModifier).prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');
 
         // Toggle responsive navigation
         $('.' + navToggleClass).click(function () {
             if ($(':visible', menu).length < 1) {
                 $('.' + navToggleClass).toggleClass('is-inactive is-active');
-                $(menu).hide().toggleClass('is-open').slideDown(300, function () {
+                $(menu).hide().toggleClass('is-open').slideDown(200, function () {
                     $(this).removeAttr('style');
                 });
             } else {

@@ -8,35 +8,37 @@
         overflow-x: visible;
         .clearfix();
         -webkit-overflow-scrolling: touch;
-        .is-collapsible {
-            display: none;
-            visibility: hidden;
-            &.is-open {
-                display: block;
-                visibility: visible;
-                overflow-y: auto;
+        // Prevent nav__list flashing when javascript isn't loaded
+        @media (max-width: (@nav-responsive-breakpoint)) {
+            .nav__list {
+                display: none;
+                visibility: hidden;
+                &.is-open {
+                    display: block;
+                    visibility: visible;
+                    overflow-y: auto;
+                }
             }
         }
         @media (min-width: (@nav-responsive-breakpoint)) {
             width: auto;
-            .is-collapsible {
-                display: block!important;
-                height: auto!important;
-                overflow: visible!important;
-                visibility: visible!important;
+            .nav__list {
+                display: block;
+                height: auto;
+                overflow: visible;
+                visibility: visible;
             }
             // Hide toggle-buttons
-            .nav-toggle,
-            .dropdown-toggle {
+            .nav__toggler,
+            .nav__dropdown-toggler {
                 display: none;
             }
         }
     }
 
     // Nav-toggle
-
-    .nav-toggle {
-        .hamburger();
+    .nav__toggler {
+        .hamburger(); // Add hamburger-menu for nav-toggle
     }
 }
 
