@@ -7,19 +7,17 @@
 //    .button-size(2);
 // }
 
-.button-size(@multiple: 1, @h: @button-height, @ph: @button-horizontal-padding, @fs: @button-font-size, @bw: @button-border-width) {
+.button-size(
+    @font-size: @button-font-size,
+    @height: @button-height,
+    @padding-horizontal: @button-horizontal-padding,
+    @border-width: @button-border-width) {
 
-    // Font-size minimum is 12px
-    @fs-return: ceil(@fs * @multiple);
+    // Pre-calculated multiplier for padding
+    @multiplier-return: @height / @button-height;
 
-    & when(@fs-return =< 12px) {
-        font-size: 12px;
-    }
-    & when(@fs-return >= 12px) {
-        font-size: @fs-return;
-    }
-
-    height: ceil(@h * @multiple);
-    line-height: ceil((@h * @multiple) - (@bw * 2));
-    padding: 0 floor(@ph * @multiple);
+    font-size: @font-size;
+    height: @height;
+    line-height: ceil(@height - (@border-width * 2));
+    padding: 0 floor(@padding-horizontal * @multiplier-return);
 }

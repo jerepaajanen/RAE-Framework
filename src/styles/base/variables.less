@@ -36,7 +36,7 @@
 @base-line-height:              24px;
 
 // Line-height (unitless)
-@line-height-tightest:          1;
+@line-height-tightest:          1.1;
 @line-height-tighter:           1.25;
 @line-height-tight:             1.375;
 @line-height-ratio:             (unit(@base-line-height / @base-font-size));
@@ -83,7 +83,11 @@
 // Heading styles
 @heading-font-weight:           700;
 @heading-letter-spacing:        @letter-spacing-tight;
-@heading-line-height:           @line-height-tighter;
+@heading-line-height:           @line-height-tightest;
+
+// Lead paragraph styles
+@lead-font-size:                21px;
+@lead-font-weight:              400;
 
 
 // COLORS
@@ -162,7 +166,8 @@
 @pre-background:                @grey-25;
 
 // Hr
-@hr-color:                      @grey-100;
+@hr-border-color:               @grey-100;
+@hr-boder-width:                1px;
 
 
 // FORMS, INPUTS & BUTTONS
@@ -193,8 +198,9 @@
 @input-border-color-focus:      @grey-800;
 @input-border-width:            1px;
 @input-border-radius:           0;
+@input-font-family:             @base-font-family;
 @input-font-size:               @base-font-size;
-@input-height:                  @spacing-double;
+@input-height:                  40px;
 @input-horizontal-padding:      .5em;
 @input-box-shadow:              none;
 
@@ -230,14 +236,33 @@
 @range-track-border-radius:     @border-radius-default;
 
 // Buttons
-@button-font-size:              16px;
+@button-font-family:            @base-font-family;
+@button-font-size:              @base-font-size;
 @button-font-weight:            400;
 @button-letter-spacing:         @letter-spacing-normal;
 @button-text-transform:         none;
-@button-height:                 40px;
+@button-height:                 @input-height;
 @button-horizontal-padding:     16px;
 @button-border-width:           1px;
 @button-border-radius:          0;
+
+@button-small-height:           32px;
+@button-small-font-size:        12px;
+@button-large-height:           @button-height * 1.5;
+@button-large-font-size:        @button-font-size * 1.5;
+@button-huge-height:            @button-height * 2;
+@button-huge-font-size:         @button-font-size * 2;
+
+@button-primary-color:          @white;
+@button-primary-background:     @color-primary;
+@button-primary-border:         @button-primary-background;
+@button-primary--color:         @white;
+@button-primary--background:    @color-primary;
+@button-primary--border:        @button-primary-background;
+
+@button-secondary-color:        @color-secondary;
+@button-secondary-background:   @white;
+@button-secondary-border:       @button-secondary-color;
 
 
 // TABLES
@@ -262,14 +287,14 @@
 @tooltip-background:            @grey-800;
 @tooltip-color:                 @grey-50;
 @tooltip-border-radius:         @border-radius-default;
-@tooltip-vertical-padding:      @spacing-half;
+@tooltip-vertical-padding:      @spacing-third;
 @tooltip-horizontal-padding:    @spacing-half;
 @tooltip-multiline-width:       160px;
 @tooltip-box-shadow:            @box-shadow-default;
 @tooltip-offset:                2px;
 @tooltip-anim-duration:         @transition-duration-default;
-@tooltip-anim-delay:            @transition-duration-default;
-@tooltip-font-size:             11px;
+@tooltip-anim-delay:            50ms;
+@tooltip-font-size:             12px;
 @tooltip-font-weight:           400;
 @tooltip-line-height:           @line-height-tighter;
 @tooltip-letter-spacing:        @letter-spacing-loose;
@@ -278,11 +303,11 @@
 
 // SPINNER
 // -------------------------------------------------------
-@spinner-color:                 @color-primary;
-@spinner-size:                  @spacing-base;
-@spinner-speed:                 800ms;
-@spinner-thickness:             4px;
-@spinner-opacity:               .5;
+@loader-color:                  @color-primary;
+@loader-size:                   @base-font-size;
+@loader-speed:                  500ms;
+@loader-thickness:              2px;
+@loader-opacity:                .8;
 
 
 // MISC
@@ -306,7 +331,7 @@
 
 // Transition
 @transition-duration-default:   200ms;
-@transition-easing-default:     cubic-bezier(.64, .05, .35, 1);
+@transition-easing-default:     ease-in-out;
 
 
 // Z-INDEX SCALE
@@ -354,6 +379,7 @@
 @use-animations:                true;
 @use-icons:                     true;
 @use-buttons:                   true;
+    @use-button-group:          true;
 @use-form-styles:               true;
     @use-input-modifiers:       true;
     @use-form-fields:           true;
@@ -365,7 +391,7 @@
 @use-table-styles:              true;
 @use-tooltips:                  true;
 @use-embed-wrap:                true;
-@use-spinner:                   true;
+@use-loader:                    true;
 @use-responsive-navigation:     true;
 
 // Utilities
