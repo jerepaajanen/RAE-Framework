@@ -15,7 +15,7 @@
 // }
 
 // Caret
-.caret(@size, @color) {
+.caret(@size, @color: currentColor) {
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -31,7 +31,7 @@
 }
 
 // Arrow on box
-.arrow(@side, @size, @align: 50%, @color, @border-width: 0, @border-color: inherit) {
+.arrow(@side, @size, @align: 50%, @color: currentColor, @border-width: 0, @border-color: inherit) {
     // Variables
     @margin-offset: @size + @border-width;
     //position: relative;
