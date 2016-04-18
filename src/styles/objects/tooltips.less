@@ -4,7 +4,7 @@
 .tooltips(@boolean) when (@boolean =true) {
 
     // Usage
-    // <element class="tooltip tooltip--*" aria-label="..."/>
+    // <element class="tooltip tooltip--*" data-tooltip="..."/>
     // Make tooltip multi-line with class "tooltip--multiline"
 
     // Variables
@@ -42,7 +42,7 @@
             border-radius: @tooltip-border-radius;
             box-shadow: @tooltip-box-shadow;
             color: @tooltip-color;
-            content: attr(aria-label);
+            content: attr(data-tooltip);
             font-size: @tooltip-font-size;
             line-height: @tooltip-line-height !important;
             letter-spacing: @tooltip-letter-spacing;
