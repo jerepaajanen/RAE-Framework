@@ -102,54 +102,56 @@
             border-width: 0;
         }
         &:hover,
-        &:focus {
+        &:focus,
+        &:active,
+        &.is-active {
             color: @base-link-color;
         }
     }
 
     .button--default {
-        background-color: transparent;
-        border-color: @grey-800;
-        color: @grey-800;
+        background-color: @button-default-bg;
+        border-color: @button-default-border;
+        color: @button-default-color;
         &:hover,
         &:focus,
         &:active,
         &.is-active {
-            background-color: @grey-800;
-            border-color: @grey-800;
-            color: contrast(@grey-800, @base-color);
+            background-color: @button-default-active-bg;
+            border-color: @button-default-active-border;
+            color: @button-default-active-color;
         }
     }
 
     .button--primary {
         // styles here
-        background-color: @color-primary;
-        border-color: @color-primary;
-        color: @white;
+        background-color: @button-primary-bg;
+        border-color: @button-primary-border;
+        color: @button-primary-color;
         &:hover,
         &:focus,
         &:active,
         &.is-active {
             // styles here
-            background-color: @color-primary-accent;
-            border-color: @color-primary-accent;
-            color: contrast(@color-primary, @base-color);
+            background-color: @button-primary-active-bg;
+            border-color: @button-primary-active-border;
+            color: @button-primary-active-color;
         }
     }
 
     .button--secondary {
         // styles here
-        //background-color: @black;
-        //border-color: @black;
-        //color: @white;
+        background-color: @button-secondary-bg;
+        border-color: @button-secondary-border;
+        color: @button-secondary-color;
         &:hover,
         &:focus,
         &:active,
         &.is-active {
             // styles here
-            //background-color: @black;
-            //border-color: @black;
-            //color: @white;
+            background-color: @button-secondary-active-bg;
+            border-color: @button-secondary-active-border;
+            color: @button-secondary-active-color;
         }
     }
 

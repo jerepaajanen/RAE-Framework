@@ -123,7 +123,7 @@
 // UI colors
 @color-success:                 #5cb85c;
 @color-warning:                 #ed9c28;
-@color-error:                   #d9534f;
+@color-danger:                  #d9534f;
 @color-info:                    #5bc0de;
 
 // Social Media colors
@@ -160,9 +160,9 @@
 @selection-background:          rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .6);
 
 // Code
-@code-color:                    @color-error;
+@code-color:                    @color-danger;
 @code-background:               @grey-25;
-@pre-color:                     @color-error;
+@pre-color:                     @color-danger;
 @pre-background:                @grey-25;
 
 // Hr
@@ -253,16 +253,26 @@
 @button-huge-height:            @button-height * 2;
 @button-huge-font-size:         @button-font-size * 2;
 
-@button-primary-color:          @white;
-@button-primary-background:     @color-primary;
-@button-primary-border:         @button-primary-background;
-@button-primary--color:         @white;
-@button-primary--background:    @color-primary;
-@button-primary--border:        @button-primary-background;
+@button-default-color:          @base-color;
+@button-default-bg:             transparent;
+@button-default-border:         @button-default-color;
+@button-default-active-color:   @white;
+@button-default-active-bg:      @button-default-color;
+@button-default-active-border:  @button-default-color;
 
-@button-secondary-color:        @color-secondary;
-@button-secondary-background:   @white;
-@button-secondary-border:       @button-secondary-color;
+@button-primary-color:          @white;
+@button-primary-bg:             @color-primary;
+@button-primary-border:         @button-primary-bg;
+@button-primary-active-color:   @white;
+@button-primary-active-bg:      @color-primary-accent;
+@button-primary-active-border:  @button-primary-bg;
+
+@button-secondary-color:        @white;
+@button-secondary-bg:           @color-secondary;
+@button-secondary-border:       @button-secondary-bg;
+@button-secondary-active-color: @white;
+@button-secondary-active-bg:    @color-secondary-accent;
+@button-secondary-active-border:@button-secondary-bg;
 
 
 // TABLES
