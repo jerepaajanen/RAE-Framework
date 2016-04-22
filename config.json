@@ -16,6 +16,8 @@
     "analyticsUA": "UA-XXXXX-X",
     "shareImageURL": "http://www.rae.fi/images/favicons/open-graph.png",
     "twitterHandle": "@domain",
+    "faviconsPath": "images/favicons",
+
 
     "iconfont": {
         "fontName": "icons",

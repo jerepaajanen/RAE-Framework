@@ -83,7 +83,7 @@ function handleErrors(error) {
 // DEFAULT TASKS
 // -------------------------------------------------------
 
-gulp.task('default', function () {
+gulp.task('default', ['clean'], function () {
 
     if (isProduction) {
         gulp.start('default:production');
@@ -107,7 +107,7 @@ gulp.task('default:development', function () {
 });
 
 gulp.task('default:production', function () {
-    sequence(['clean'], ['images'], ['markup', 'styles', 'scripts', 'fonts', 'copy'], function () {
+    sequence(['images'], ['markup', 'styles', 'scripts', 'fonts', 'copy'], function () {
         console.log($.util.colors.green('✔ Build done!'));
         if (isServe) {
             gulp.start(['serve']);
@@ -369,7 +369,7 @@ gulp.task('images:favicons', function () {
             developerName: pkg.author,
             developerURL: pkg.homepage,
             background: 'transparent',
-            path: 'images/favicons',
+            path: config.faviconsPath,
             display: 'standalone',
             orientation: 'portrait',
             version: 1.0,
