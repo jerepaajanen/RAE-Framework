@@ -11,6 +11,7 @@
             margin: 0 0 0 (@spacing-half * -1);
         }
     }
+
     // Basic styles for form elements
     input[type="date"],
     input[type="datetime"],
@@ -31,6 +32,7 @@
         // Get rid of <select> arrow in FF, idea for this hack:
         // https://gist.github.com/joaocunha/6273016
         appearance: none;
+        position: relative;
         background-color: @input-background;
         background-image: none;
         border-style: solid;
@@ -137,13 +139,15 @@
             background-color: darken(@range-track-color, 5%);
         }
     }
+
     // Select
     select:not([multiple]) {
         cursor: pointer;
         background-image: data-uri('../images/form/select.svg');
         background-position: center right;
         background-repeat: no-repeat;
-        background-size: @input-height @input-height;
+        background-size: contain;
+        padding-right: 2.4em;
         &:focus:-moz-focusring {
             // Remove ugly focus in FF
             color: transparent;
@@ -336,6 +340,7 @@
             input,
             select {
                 width: auto;
+                vertical-align: middle;
                 //width: 100%; //
             }
         }
@@ -344,7 +349,7 @@
 
         .field-group {
             margin-bottom: @spacing-base;
-            @media @md-up {
+            //@media @md-up {//
                 display: flex;
                 align-items: center;
                 flex-direction: row;
@@ -361,24 +366,24 @@
                 .field {
                     margin-bottom: 0 !important; // reset margins
                 }
-
-                &--half {
-                    .field {
-                        padding-left: (@grid-gutter-width / 4);
-                        padding-right: (@grid-gutter-width / 4);
-                    }
-                }
-                &--narrow {
-                    .field {
-                        padding-left: 1px;
-                        padding-right: 1px;
-                    }
-                }
-            }
+            //}//
 
             &:last-child,
             &:last-child .field:last-child {
                 margin-bottom: 0;
+            }
+        }
+
+        .field-group--half {
+            .field {
+                padding-left: (@grid-gutter-width / 4);
+                padding-right: (@grid-gutter-width / 4);
+            }
+        }
+        .field-group--tight {
+            .field {
+                padding-left: 1px;
+                padding-right: 1px;
             }
         }
 

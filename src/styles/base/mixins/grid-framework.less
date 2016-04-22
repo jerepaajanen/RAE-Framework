@@ -25,18 +25,14 @@
         padding-left: (@gutter / 2);
         padding-right: (@gutter / 2);
     }
-    & when (@use-flex-grid =false) {
-        .clearfix();
-    }
     margin-left: auto;
     margin-right: auto;
+    .clearfix();
 }
 
-// Row mixin
-.make-row(@gutter: @grid-gutter-width) {
-    & when (@use-flex-grid =false) {
-        .clearfix();
-    }
+// Grid mixin
+.make-grid(@gutter: @grid-gutter-width) {
+
     & when (@use-flex-grid =true) {
         display: flex;
         clear: both;
@@ -46,13 +42,12 @@
         margin-left: ceil(@gutter / -2);
         margin-right: floor(@gutter / -2);
     }
-
     list-style: none; // Row can be used with list items
-
+    .clearfix();
 }
 
-// Column mixin
-.make-column(@gutter: @grid-gutter-width) {
+// Grid-column mixin
+.make-grid-column(@gutter: @grid-gutter-width) {
     position: relative;
     min-height: 1px;
     & when (@gutter > 0) {

@@ -5,8 +5,8 @@
 
     // Usage
     // <element class="container">
-    //    <element class="row">
-    //        <element class="column u-width-sm-*">
+    //    <element class="grid">
+    //        <element class="grid__column u-width-sm-*">
     //        </element>
     //    </element>
     // </element>
@@ -19,7 +19,25 @@
             .make-container();
         }
 
-        // Container widths
+        // Fluid containers
+
+        .container-fluid {
+            width: @container-fluid;
+            max-width: @container-fluid-max;
+        }
+
+        .container-fluid--full {
+            width: @container-fluid-full;
+            max-width: @container-fluid-full-max;
+        }
+
+        .container-fluid--inner {
+            width: @container-fluid-inner;
+            max-width: @container-fluid-inner-max;
+        }
+
+
+        // Fixed containers
 
         // Container Small (Default)
 
@@ -65,54 +83,72 @@
     }
     .use-container(@use-container);
 
-    // Row
+    // Grid
 
-    .use-row(@boolean) when (@boolean =true) {
-        .row {
-            .make-row();
+    .use-grid(@boolean) when (@boolean =true) {
+        .grid {
+            .make-grid();
         }
     }
-    .use-row(@use-row);
+    .use-grid(@use-grid);
 
-    // Column
+    // Grid-column
 
-    .use-column(@boolean) when (@boolean =true) {
-        .column {
-            .make-column(@grid-gutter-width);
+    .use-grid-column(@boolean) when (@boolean =true) {
+        .grid__column {
+            .make-grid-column(@grid-gutter-width);
             width: 100%; // Default width for mobile column
         }
-    }
-    .use-column(@use-column);
 
-    // Row modifiers
+        // Collapse column gutters
+        .grid__column--collapse {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    .use-grid-column(@use-grid-column);
+
+    // Grid modifiers
 
     .use-row-modifiers(@boolean) when (@boolean =true) {
 
-        // Row with half gutters
-        .row--half {
+        // Grid with half gutters
+        .grid--half {
             margin-left: ceil(@grid-gutter-width / -4);
             margin-right: floor(@grid-gutter-width / -4);
-            > .column {
+            > .grid__column {
                 padding-left: (@grid-gutter-width / 4);
                 padding-right: (@grid-gutter-width / 4);
             }
         }
 
-        // Row with narrow 2px gutters
-
-        .row--narrow {
+        // Grid with tight gutters
+        .grid--tight {
             margin-left: -1px;
             margin-right: -1px;
-            > .column {
+            > .grid__column {
                 padding-left: 1px;
                 padding-right: 1px;
             }
         }
-        // Flush row gutters
-        .row--collapse {
+
+        // Collapse row gutters
+        .grid--collapse {
             margin-left: 0;
             margin-right: 0;
-            > .column {
+            > .grid__column{
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        .grid--collapse-deep {
+            &,
+            & .grid {
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .grid__column {
                 padding-left: 0;
                 padding-right: 0;
             }
@@ -120,20 +156,21 @@
 
         // Flex-grid only features
 
-        // Row with centered columns
-
-        .row--centered {
+        // Grid with centered columns
+        .grid--centered {
             & when (@use-flex-grid =true) {
                 justify-content: center;
             }
         }
 
-        // Row with equal height columns
-
-        .row--equal-height {
+        // Grid with equal height columns
+        .grid--equal-height {
             & when (@use-flex-grid =true) {
-                > .column {
+                > .grid__column {
                     display: flex;
+                }
+                .grid {
+                    flex: 1;
                 }
             }
         }

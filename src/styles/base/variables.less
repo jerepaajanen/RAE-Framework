@@ -23,10 +23,17 @@
 @breakpoint-lg:                 992px; //62em;
 @breakpoint-xl:                 1280px; //80em;
 
-@container-sm:                  100%;
+@container-sm:                  95vw;
 @container-md:                  (@breakpoint-md - @grid-gutter-width);
 @container-lg:                  (@breakpoint-lg - @grid-gutter-width);
 @container-xl:                  (@breakpoint-xl - @grid-gutter-width);
+
+@container-fluid:               95vw;
+@container-fluid-max:           1600px;
+@container-fluid-inner:         82vw;
+@container-fluid-inner-max:     1280px;
+@container-fluid-full:          100%;
+@container-fluid-full-max:      100%;
 
 
 // TYPOGRAPHY & BASELINE PROPORTIONS
@@ -167,7 +174,7 @@
 
 // Hr
 @hr-border-color:               @grey-100;
-@hr-boder-width:                1px;
+@hr-border-width:               1px;
 
 
 // FORMS, INPUTS & BUTTONS
@@ -311,7 +318,7 @@
 @tooltip-arrow-size:            6px;
 
 
-// SPINNER
+// LOADER
 // -------------------------------------------------------
 @loader-color:                  @color-primary;
 @loader-size:                   @base-font-size;
@@ -395,8 +402,8 @@
     @use-form-fields:           true;
 @use-grid-classes:              true;
     @use-container:             true;
-    @use-row:                   true;
-    @use-column:                true;
+    @use-grid:                  true;
+    @use-grid-column:           true;
     @use-row-modifiers:         true;
 @use-table-styles:              true;
 @use-tooltips:                  true;
