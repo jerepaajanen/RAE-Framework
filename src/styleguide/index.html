@@ -101,6 +101,10 @@
             margin-bottom: 1.5rem;
         }
 
+        .docs-content .well--borderless {
+            border: 0;
+        }
+
         .docs-footer .svg-heart {
             width: 1rem;
             height: 1rem;
@@ -112,7 +116,8 @@
             fill: #d9534f;
         }
 
-        .docs-content .grid__columns .column__inner {
+        .docs-content .grid__columns .column__inner,
+        .docs-content .grid__containers .column__inner {
             background: #f2f2f2;
             margin-top: .5em;
             margin-bottom: .5em;
@@ -523,130 +528,154 @@
             </article>
         </section>
         <hr />
-        <section class="layout container">
-            <header>
+        <section class="layout">
+            <header class="container">
                 <h2 class="u-text-normal">Layout</h2>
             </header>
-            <article class="grid__breakpoints">
-                <header>
+            <article class="grid__containers">
+                <header class="container">
                     <h3 class="u-muted">Containers</h3>
                     <p>Use <code>.container</code> for a responsive fixed width container and <code>.container-fluid</code> for a full width container, spanning the entire width of your viewport.</p>
                 </header>
-                <div class="example u-hide">
-                    <div class="container"></div>
-                    <div class="container-fluid"></div>
+                <div class="example">
+                    <div class="container">
+                        <div class="grid">
+                            <div class="grid__column u-width-sm-12of12"><span class="column__inner"><code>.container</code></span></div>
+                        </div>
+                    </div>
+                    <div class="container-fluid container-fluid--full">
+                        <div class="grid">
+                            <div class="grid__column u-width-sm-12of12"><span class="column__inner"><code>.container-fluid .container-fluid--full</code></span></div>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="grid">
+                            <div class="grid__column u-width-sm-12of12"><span class="column__inner"><code>.container-fluid</code></span></div>
+                        </div>
+                    </div>
+                    <div class="container-fluid container-fluid--inner">
+                        <div class="grid">
+                            <div class="grid__column u-width-sm-12of12"><span class="column__inner"><code>.container-fluid .container-fluid--inner</code></span></div>
+                        </div>
+                    </div>
+
                 </div>
             </article>
-            <article class="grid__columns">
-                <header>
-                    <h3 class="u-muted">Row &amp; columns</h3>
-                    <h4>Basic columns layout</h4>
-                </header>
-                <div class="example">
-                    <div class="row">
-                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-md-4of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-md-8of12"><span class="column__inner"></span></div>
+            <div class="container">
+                <article class="grid__columns">
+                    <header>
+                        <h3 class="u-muted">Grid &amp; grid-columns</h3>
+                        <h4>Basic columns layout</h4>
+                    </header>
+                    <div class="example">
+                        <div class="grid">
+                            <div class="grid__column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-md-4of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-md-8of12"><span class="column__inner"></span></div>
+                        </div>
+                        <div class="grid">
+                            <div class="grid__column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-md-4of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-md-8of12"><span class="column__inner"></span></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-md-4of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-md-8of12"><span class="column__inner"></span></div>
+
+                    <h4>Column nesting with grid-classes</h4>
+                    <div class="example">
+                        <div class="grid grid--equal-height">
+                            <div class="grid__column u-width-sm-6of12"><span class="column__inner">
+                            <div class="grid">
+                            <div class="grid__column u-width-sm-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-sm-6of12"><span class="column__inner"></span></div>
+
+                            <div class="grid__column u-width-sm-6of12"><span class="column__inner"></span></div>
+                            <div class="grid__column u-width-sm-6of12"><span class="column__inner"></span></div>
+                        </div>
+                        </span>
                     </div>
+                    <div class="grid__column u-width-sm-6of12"><span class="column__inner">
+                            <div class="grid">
+                                <div class="grid__column u-width-sm-4of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-8of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-4of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-8of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-4of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-8of12"><span class="column__inner"></span></div>
+            </div>
+            </span>
+            </div>
+            </div>
+            </div>
+            <h4>Column gutters</h4>
+
+            <div class="example">
+                <h5>Half</h5>
+                <div class="grid grid--half">
+                    <div class="grid__column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
                 </div>
+            </div>
+            <div class="example">
+                <h5>Tight</h5>
 
-                <h4>Column nesting with row-classes</h4>
-                <div class="example">
-                    <div class="row row--equal-height">
-                        <div class="column u-width-sm-6of12"><span class="column__inner">
-                            <div class="row">
-                            <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
-
-                        <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-6of12"><span class="column__inner"></span></div>
-
-
-                    </div>
-
-                    </span>
-
+                <div class="grid grid--tight">
+                    <div class="grid__column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
 
                 </div>
-                <div class="column u-width-sm-6of12"><span class="column__inner">
-                            <div class="row">
-                                <div class="column u-width-sm-4of12"><span class="column__inner"></span></div>
-                <div class="column u-width-sm-8of12"><span class="column__inner"></span></div>
-                <div class="column u-width-sm-4of12"><span class="column__inner"></span></div>
-                <div class="column u-width-sm-8of12"><span class="column__inner"></span></div>
-                <div class="column u-width-sm-4of12"><span class="column__inner"></span></div>
-                <div class="column u-width-sm-8of12"><span class="column__inner"></span></div>
+            </div>
+            <div class="example">
+                <h5>Collpase</h5>
+
+                <div class="grid grid--collapse">
+                    <div class="grid__column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
+                </div>
+            </div>
+            <h4>Centered columns</h4>
+
+            <div class="example">
+                <div class="grid grid--centered">
+                    <div class="grid__column u-width-sm-3of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-3of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-2of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-2of12"><span class="column__inner"></span></div>
+                </div>
+            </div>
+            <h4>Equal height columns</h4>
+
+            <div class="example">
+                <div class="grid grid--equal-height">
+                    <div class="grid__column u-width-sm-3of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-3of12"><span class="column__inner"><div class="well well--borderless">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero porro ullam iusto totam maxime doloribus qui est quaerat quae quia sint tempore amet, excepturi quisquam, odit ipsa facilis enim accusamus vel itaque nobis architecto, iste sit.</div></span></div>
+                    <div class="grid__column u-width-sm-2of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-2of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-2of12"><span class="column__inner">
+                        <div class="grid">
+                                <div class="grid__column u-width-sm-12of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-12of12"><span class="column__inner"></span></div>
+                </div>
+                <div class="grid">
+                    <div class="grid__column u-width-sm-12of12"><span class="column__inner"></span></div>
+                    <div class="grid__column u-width-sm-12of12"><span class="column__inner"></span></div>
                 </div>
                 </span>
-                </div>
-                </div>
-                </div>
-                <h4>Column gutters</h4>
-
-                <div class="example">
-                    <h5>Half</h5>
-                    <div class="row row--half">
-                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                    </div>
-                </div>
-                <div class="example">
-                    <h5>Narrow</h5>
-
-                    <div class="row row--narrow">
-                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
-
-                    </div>
-                </div>
-                <div class="example">
-                    <h5>Collpase</h5>
-
-                    <div class="row row--collapse">
-                        <div class="column u-width-xl-4of12 u-width-lg-5of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-xl-8of12 u-width-lg-7of12 u-width-sm-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-7of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-lg-5of12 u-width-md-6of12"><span class="column__inner"></span></div>
-                    </div>
-                </div>
-                <h4>Centered columns</h4>
-
-                <div class="example">
-                    <div class="row row--centered">
-                        <div class="column u-width-sm-3of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-3of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
-                    </div>
-                </div>
-                <h4>Equal height columns</h4>
-
-                <div class="example">
-                    <div class="row row--equal-height">
-                        <div class="column u-width-sm-3of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-3of12"><span class="column__inner">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero porro ullam iusto totam maxime doloribus qui est quaerat quae quia sint tempore amet, excepturi quisquam, odit ipsa facilis enim accusamus vel itaque nobis architecto, iste sit.</span></div>
-                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
-                        <div class="column u-width-sm-2of12"><span class="column__inner"></span></div>
-                    </div>
-                </div>
+            </div>
+            </div>
+            </div>
             </article>
-
             <article class="grid__conditionals">
                 <header>
                     <h3 class="u-muted">Conditional styles</h3>
@@ -839,6 +868,7 @@
                     </table>
                 </div>
             </article>
+            </div>
         </section>
         <hr />
         <section class="tables container">
@@ -1205,7 +1235,6 @@
                     </div>
                 </div>
                 <div class="example">
-
                     <div class="button-group button-group--block">
                         <button class="button button--default" type="button">Button 1</button>
                         <button class="button button--default" type="button">Button 2</button>
@@ -1535,7 +1564,7 @@
                                     <input type="text" id="demo-input-field3" placeholder="Type something...">
                                 </div>
                             </div>
-                            <div class="field-group field-group--equal-width field-group--narrow">
+                            <div class="field-group field-group--equal-width field-group--tight">
                                 <div class="field">
                                     <label for="demo-input-field1">Input</label>
                                     <input type="text" id="demo-input-field1" placeholder="Type something...">
@@ -2008,48 +2037,48 @@
                     </p>
                 </header>
                 <div class="well u-clearfix u-text-center example">
-                    <div class="row">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--top" data-tooltip="Top tooltip">&nbsp</a>
                             <div>Tooltip top</div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--right" data-tooltip="Right tooltip">&nbsp</a>
                             <div>Tooltip right</div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--bottom" data-tooltip="Bottom tooltip">&nbsp</a>
                             <div>Tooltip bottom</div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--left" data-tooltip="Left tooltip">&nbsp</a>
                             <div>Tooltip left</div>
                         </div>
                     </div>
                 </div>
                 <div class="well u-clearfix u-text-center example">
-                    <div class="row">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid">
+                        <div class="grid__column u-width-md-3of12">
                             <a class="tooltip tooltip--top tooltip--multiline" data-tooltip="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline top</div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--right tooltip--multiline" data-tooltip="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline right</div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--bottom tooltip--multiline" data-tooltip="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline bottom</div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--left tooltip--multiline" data-tooltip="This is a multiline tooltip that fits longer sentences.">&nbsp</a>
                             <div>Multiline left</div>
                         </div>
                     </div>
                 </div>
                 <div class="well u-clearfix u-text-center example">
-                    <div class="row">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid">
+                        <div class="grid__column u-width-md-3of12">
                             <a href="#" class="tooltip tooltip--top is-active" data-tooltip="Active tooltip">&nbsp</a>
                             <div>Active tooltip with <code>.is-active</code> class.</div>
                         </div>
@@ -2072,8 +2101,8 @@
                     <h3 class="u-muted">Animations</h3>
                 </header>
                 <div class="well">
-                    <div class="row">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-in-left animated">
                                     <span class="dot">&nbsp</span>
@@ -2081,7 +2110,7 @@
                                 <code>.slide-in-left</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-in-up animated">
                                     <span class="dot">&nbsp</span>
@@ -2089,7 +2118,7 @@
                                 <code>.slide-in-up</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-in-down animated">
                                     <span class="dot">&nbsp</span>
@@ -2097,7 +2126,7 @@
                                 <code>.slide-in-down</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-in-right animated">
                                     <span class="dot">&nbsp</span>
@@ -2108,8 +2137,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-out-left animated">
                                     <span class="dot">&nbsp;</span>
@@ -2117,7 +2146,7 @@
                                 <code>.slide-out-left</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-out-up animated">
                                     <span class="dot">&nbsp;</span>
@@ -2125,7 +2154,7 @@
                                 <code>.slide-out-up</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-out-down animated">
                                     <span class="dot">&nbsp;</span>
@@ -2133,7 +2162,7 @@
                                 <code>.slide-out-down</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="slide-out-right animated">
                                     <span class="dot">&nbsp;</span>
@@ -2144,8 +2173,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="bounce animated">
                                     <span class="dot">&nbsp;</span>
@@ -2153,7 +2182,7 @@
                                 <code>.bounce</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="flash animated">
                                     <span class="dot">&nbsp;</span>
@@ -2161,7 +2190,7 @@
                                 <code>.flash</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="pulse animated">
                                     <span class="dot">&nbsp;</span>
@@ -2169,7 +2198,7 @@
                                 <code>.pulse</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="shake animated">
                                     <span class="dot">&nbsp;</span>
@@ -2177,7 +2206,7 @@
                                 <code>.shake</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="swing animated">
                                     <span class="dot">&nbsp;</span>
@@ -2185,7 +2214,7 @@
                                 <code>.swing</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="tada animated">
                                     <span class="dot">&nbsp;</span>
@@ -2193,7 +2222,7 @@
                                 <code>.tada</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="wobble animated">
                                     <span class="dot">&nbsp;</span>
@@ -2204,8 +2233,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-in animated">
                                     <span class="dot">&nbsp;</span>
@@ -2213,7 +2242,7 @@
                                 <code>.fade-in</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-in-left animated">
                                     <span class="dot">&nbsp;</span>
@@ -2221,7 +2250,7 @@
                                 <code>.fade-in-left</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-in-up animated">
                                     <span class="dot">&nbsp;</span>
@@ -2229,7 +2258,7 @@
                                 <code>.fade-in-up</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-in-down animated">
                                     <span class="dot">&nbsp;</span>
@@ -2237,7 +2266,7 @@
                                 <code>.fade-in-down</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-in-right animated">
                                     <span class="dot">&nbsp;</span>
@@ -2248,8 +2277,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-out animated">
                                     <span class="dot">&nbsp;</span>
@@ -2257,7 +2286,7 @@
                                 <code>.fade-out</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-out-left animated">
                                     <span class="dot">&nbsp;</span>
@@ -2265,7 +2294,7 @@
                                 <code>.fade-out-left</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-out-up animated">
                                     <span class="dot">&nbsp;</span>
@@ -2273,7 +2302,7 @@
                                 <code>.fade-out-up</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-out-down animated">
                                     <span class="dot">&nbsp;</span>
@@ -2281,7 +2310,7 @@
                                 <code>.fade-out-down</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="fade-out-right animated">
                                     <span class="dot">&nbsp;</span>
@@ -2292,8 +2321,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="zoom-in animated">
                                     <span class="dot">&nbsp;</span>
@@ -2301,7 +2330,7 @@
                                 <code>.zoom-in</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="zoom-out animated">
                                     <span class="dot">&nbsp;</span>
@@ -2312,8 +2341,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="bounce-in animated">
                                     <span class="dot">&nbsp;</span>
@@ -2321,7 +2350,7 @@
                                 <code>.bounce-in</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="bounce-out animated">
                                     <span class="dot">&nbsp;</span>
@@ -2332,8 +2361,8 @@
                     </div>
                 </div>
                 <div class="well">
-                    <div class="row ">
-                        <div class="column u-width-md-3of12">
+                    <div class="grid ">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="roll-in animated">
                                     <span class="dot">&nbsp;</span>
@@ -2341,7 +2370,7 @@
                                 <code>.roll-in</code>
                             </div>
                         </div>
-                        <div class="column u-width-md-3of12">
+                        <div class="grid__column u-width-md-3of12">
                             <div class="animation animation-reset">
                                 <div class="roll-out animated">
                                     <span class="dot">&nbsp;</span>
