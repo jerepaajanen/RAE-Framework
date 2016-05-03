@@ -211,6 +211,13 @@
 @input-horizontal-padding:      .5em;
 @input-box-shadow:              none;
 
+@input-small-height:            32px;
+@input-small-font-size:         12px;
+@input-large-height:            @input-height * 1.5;
+@input-large-font-size:         @input-font-size * 1.5;
+@input-huge-height:             @input-height * 2;
+@input-huge-font-size:          @input-font-size * 2;
+
 // Checkbox & radio buttons
 @checkbox-radio-background:     @input-background;
 @checkbox-radio-size:           @spacing-base;
@@ -404,7 +411,7 @@
     @use-container:             true;
     @use-grid:                  true;
     @use-grid-column:           true;
-    @use-row-modifiers:         true;
+    @use-grid-modifiers:        true;
 @use-table-styles:              true;
 @use-tooltips:                  true;
 @use-embed-wrap:                true;

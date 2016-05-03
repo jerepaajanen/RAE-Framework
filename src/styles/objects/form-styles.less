@@ -266,18 +266,18 @@
         // Input sizes
         input.input--small,
         select.select--small {
-            height: ceil(@input-height * .8);
-            .modular-scale(-1);
+            height: @input-small-height;
+            font-size: @input-small-font-size;
         }
         input.input--large,
         select.select--large {
-            height: ceil(@input-height * 1.25);
-            .modular-scale(1);
+            height: @input-large-height;
+            font-size: @input-large-font-size;
         }
         input.input--huge,
         select.select--huge {
-            height: ceil(@input-height * 1.5);
-            .modular-scale(2);
+            height: @input-huge-height;
+            font-size: @input-huge-font-size;
         }
         // Input variations
         input.input--underlined,
@@ -299,9 +299,11 @@
         select.select--unstyled,
         textarea.textarea--unstyled {
             border: 0;
+            border-radius: 0;
             padding: 0;
             outline: 0;
             height: auto;
+            font-size: inherit;
             background-color: transparent;
             box-shadow: none;
             &:focus,

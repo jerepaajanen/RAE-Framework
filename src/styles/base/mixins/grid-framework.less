@@ -43,7 +43,9 @@
         margin-right: floor(@gutter / -2);
     }
     list-style: none; // Row can be used with list items
-    .clearfix();
+    & when (@use-flex-grid =false) {
+        .clearfix();
+    }
 }
 
 // Grid-column mixin
