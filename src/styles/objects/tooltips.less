@@ -21,8 +21,8 @@
         position: relative;
         &:after,
         &:before {
+            display: block;
             opacity: 0;
-            visibility: hidden;
             pointer-events: none;
             position: absolute;
             z-index: @z-index-8;
@@ -44,14 +44,15 @@
             color: @tooltip-color;
             content: attr(data-tooltip);
             font-size: @tooltip-font-size;
+            font-weight: @tooltip-font-weight;
             line-height: @tooltip-line-height !important;
             letter-spacing: @tooltip-letter-spacing;
             text-align: center;
             text-transform: none;
+            text-overflow: ellipsis;
             padding: @tooltip-vertical-padding @tooltip-horizontal-padding;
-            font-weight: @tooltip-font-weight;
-            word-wrap: break-word;
-            white-space: nowrap;
+            //word-wrap: break-word;
+            //white-space: nowrap;
         }
         &:hover,
         &:focus &:active,
@@ -59,7 +60,6 @@
             &:after,
             &:before {
                 opacity: 1;
-                visibility: visible;
             }
         }
     }
