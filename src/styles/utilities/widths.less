@@ -3,13 +3,26 @@
 // -------------------------------------------------------
 .use-widths(@boolean) when (@boolean =true) {
 
+    // Small Grid for Mobile devices
+    .use-screen-xs(@boolean) when (@boolean =true) {
+        .make-grid(@grid-columns, width, -xs);
+        .u-width-xs-auto {
+            & when (@use-flex-grid =true) {
+                flex: 1;
+            }
+        }
+    }
+    .use-screen-xs(@use-screen-xs);
+
 
     // Small Grid for Mobile devices
     .use-screen-sm(@boolean) when (@boolean =true) {
-        .make-grid(@grid-columns, width, -sm);
-        .u-width-sm-auto {
-            & when (@use-flex-grid =true) {
-                flex: 1;
+        @media @sm-up {
+            .make-grid(@grid-columns, width, -sm);
+            .u-width-sm-auto {
+                & when (@use-flex-grid =true) {
+                    flex: 1;
+                }
             }
         }
     }
