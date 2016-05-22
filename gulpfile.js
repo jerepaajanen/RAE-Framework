@@ -73,10 +73,37 @@ var
 // HANDLE ERRORS
 // -------------------------------------------------------
 
+// Catch errors
+
 function handleErrors(error) {
     console.log($.util.colors.red(error.toString()));
     $.util.beep();
     this.emit('end');
+}
+
+// Check if config-ftp.json exists
+
+try {
+    var configFtp = require('./config-ftp.json');
+} catch (error) {
+
+    console.log($.util.colors.red('"config-ftp.json" file needed!'));
+}
+
+if (configFtp) {
+    //console.log(configFtp);
+
+    console.log($.util.colors.grey('Using "config-ftp.json".'));
+
+    var conn = ftp.create({
+        host:     configFtp.server.host,
+        port: configFtp.server.port,
+        user:     configFtp.server.user,
+        password: configFtp.server.password,
+        parallel: 5,
+        reload: true,
+        log:      null //$.util.log
+    });
 }
 
 
@@ -418,8 +445,19 @@ gulp.task('clean', ['clean:files']);
 
 // Clean : Files
 gulp.task('clean:files', function () {
-    del([paths.dest + '**/*']);
+    console.log($.util.colors.cyan('Cleaning ' + paths.dest + ' -folder'));
+
+    del.sync([paths.dest + '**']);
 });
+
+// Clean : Remote
+gulp.task('clean:remote', function (err) {
+    console.log($.util.colors.cyan('Cleaning ' + configFtp.server.remotePath + ' -folder on remote server...'));
+
+    conn.rmdir(configFtp.server.remotePath, err);
+});
+
+
 
 
 // WATCH
@@ -472,26 +510,6 @@ gulp.task('serve', function () {
 // DEPLOY
 // -------------------------------------------------------
 
-try {
-    var configFtp = require('./config-ftp.json');
-} catch (error) {
-
-    console.log($.util.colors.red('Config-ftp.json file needed for deploy!'));
-
-}
-
-if (configFtp) {
-    //console.log(configFtp);
-    console.log($.util.colors.grey('Config-ftp.json found.'));
-    var conn = ftp.create({
-        host:     configFtp.server.host,
-        user:     configFtp.server.user,
-        password: configFtp.server.password,
-        parallel: 10,
-        log:      null //$.util.log
-    });
-}
-
 gulp.task('deploy', function () {
 
     return gulp.src(paths.dest + '**', {
@@ -500,7 +518,6 @@ gulp.task('deploy', function () {
     })
         .pipe(conn.newer(configFtp.server.remotePath))
         .pipe(conn.dest(configFtp.server.remotePath));
-        //.pipe($.if(isServe, gulp.start(['deploy:watch'])));
 
 });
 
@@ -511,7 +528,7 @@ gulp.task('deploy:watch', ['deploy'], function () {
     gulp.watch(paths.dest + '**')
         .on('change', function (event) {
 
-            console.log($.util.colors.cyan('Updating remote...'));
+            console.log($.util.colors.cyan('Uploading file "' + event.path + '", ' + event.type));
 
             return gulp.src([event.path], {
                 base: './' + paths.dest,
