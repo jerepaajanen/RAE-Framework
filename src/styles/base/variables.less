@@ -36,6 +36,75 @@
 @container-fluid-full-max:      100%;
 
 
+// COLORS
+// -------------------------------------------------------
+
+// Greyscale
+@grey-25:                       lighten(@black, 97,5%);
+@grey-50:                       lighten(@black, 95%);
+@grey-100:                      lighten(@black, 90%);
+@grey-200:                      lighten(@black, 80%);
+@grey-300:                      lighten(@black, 70%);
+@grey-400:                      lighten(@black, 60%);
+@grey-500:                      lighten(@black, 50%);
+@grey-600:                      lighten(@black, 40%);
+@grey-700:                      lighten(@black, 30%);
+@grey-800:                      lighten(@black, 20%);
+@grey-900:                      lighten(@black, 10%);
+
+@black:                         #000000;
+@white:                         #ffffff;
+
+// Custom brand colors
+@color-primary:                 #ae956d;
+@color-primary-light:           tint(@color-primary, 40%);
+@color-primary-dark:            shade(@color-primary, 20%);
+@color-primary-accent:          overlay(@color-primary, fade(@black, 50%));
+
+@color-secondary:               #3F51B5;
+@color-secondary-light:         tint(@color-secondary, 40%);
+@color-secondary-dark:          shade(@color-secondary, 20%);
+@color-secondary-accent:        overlay(@color-secondary, fade(@black, 50%));
+
+// UI colors
+@color-success:                 #5cb85c;
+@color-warning:                 #ed9c28;
+@color-danger:                  #d9534f;
+@color-info:                    #5bc0de;
+
+// Social Media colors
+@color-behance:                 #1769ff;
+@color-dribbble:                #ea4c89;
+@color-dropbox:                 #007ee5;
+@color-facebook:                #3b5998;
+@color-flickr:                  #0063dc;
+@color-foursquare:              #f94877;
+@color-github:                  #181717;
+@color-google:                  #4285f4;
+@color-heimo:                   #ffb549;
+@color-instagram:               #125688;
+@color-linkedin:                #0077b5;
+@color-medium:                  #00ab6b;
+@color-mixcloud:                #314359;
+@color-pinterest:               #bd081c;
+@color-rss:                     #ffa500;
+@color-skype:                   #00aff0;
+@color-souncloud:               #ff3300;
+@color-spotify:                 #84bd00;
+@color-tumblr:                  #36465d;
+@color-twitter:                 #55acee;
+@color-vimeo:                   #1ab7ea;
+@color-wordpress:               #21759b;
+@color-youtube:                 #cd201f;
+
+// Basic colors for body
+@base-color:                    @grey-800;
+@base-background:               @white;
+
+// Selections
+@selection-background:          rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .6);
+
+
 // TYPOGRAPHY & BASELINE PROPORTIONS
 // -------------------------------------------------------
 
@@ -87,84 +156,32 @@
 @heading-font-family:           @base-font-family;
 @blockquote-font-family:        @base-font-family;
 
+// Links
+@link-color:                    @color-secondary;
+@link-decoration:               none;
+@link-hover-color:              @color-secondary-dark;
+@link-hover-decoration:         underline;
+
 // Heading styles
 @heading-font-weight:           700;
 @heading-letter-spacing:        @letter-spacing-tight;
 @heading-line-height:           @line-height-tightest;
+@heading-color:                 inherit;
+
+//Display font-sizes
+@display1-font-size:            40px;
+@display2-font-size:            32px;
+@display3-font-size:            24px;
+@display4-font-size:            21px;
+
+@display1-font-weight:          400;
+@display2-font-weight:          400;
+@display3-font-weight:          600;
+@display4-font-weight:          600;
 
 // Lead paragraph styles
 @lead-font-size:                21px;
 @lead-font-weight:              400;
-
-
-// COLORS
-// -------------------------------------------------------
-
-// Greyscale
-@grey-25:                       lighten(@black, 97,5%);
-@grey-50:                       lighten(@black, 95%);
-@grey-100:                      lighten(@black, 90%);
-@grey-200:                      lighten(@black, 80%);
-@grey-300:                      lighten(@black, 70%);
-@grey-400:                      lighten(@black, 60%);
-@grey-500:                      lighten(@black, 50%);
-@grey-600:                      lighten(@black, 40%);
-@grey-700:                      lighten(@black, 30%);
-@grey-800:                      lighten(@black, 20%);
-@grey-900:                      lighten(@black, 10%);
-
-@black:                         #000000;
-@white:                         #ffffff;
-
-// Custom brand colors
-@color-primary:                 #ae956d;
-@color-primary-light:           tint(@color-primary, 10%);
-@color-primary-dark:            shade(@color-primary, 10%);
-@color-primary-accent:          overlay(@color-primary, fade(@black, 50%));
-
-@color-secondary:               #3F51B5;
-@color-secondary-light:         tint(@color-secondary, 10%);
-@color-secondary-dark:          shade(@color-secondary, 10%);
-@color-secondary-accent:        overlay(@color-secondary, fade(@black, 50%));
-
-// UI colors
-@color-success:                 #5cb85c;
-@color-warning:                 #ed9c28;
-@color-danger:                  #d9534f;
-@color-info:                    #5bc0de;
-
-// Social Media colors
-@color-behance:                 #1769ff;
-@color-dribbble:                #ea4c89;
-@color-dropbox:                 #007ee5;
-@color-facebook:                #3b5998;
-@color-flickr:                  #0063dc;
-@color-foursquare:              #f94877;
-@color-github:                  #181717;
-@color-google:                  #4285f4;
-@color-heimo:                   #ffb549;
-@color-instagram:               #125688;
-@color-linkedin:                #0077b5;
-@color-medium:                  #00ab6b;
-@color-mixcloud:                #314359;
-@color-pinterest:               #bd081c;
-@color-rss:                     #ffa500;
-@color-skype:                   #00aff0;
-@color-souncloud:               #ff3300;
-@color-spotify:                 #84bd00;
-@color-tumblr:                  #36465d;
-@color-twitter:                 #55acee;
-@color-vimeo:                   #1ab7ea;
-@color-wordpress:               #21759b;
-@color-youtube:                 #cd201f;
-
-// Basic colors for body
-@base-color:                    @grey-800;
-@base-background:               @white;
-@base-link-color:               @color-primary;
-
-// Selections
-@selection-background:          rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .6);
 
 // Code
 @code-color:                    @color-danger;
@@ -266,6 +283,10 @@
 @button-large-font-size:        @button-font-size * 1.5;
 @button-huge-height:            @button-height * 2;
 @button-huge-font-size:         @button-font-size * 2;
+
+@button-link-color:            @link-color;
+@button-link-active-color:     @link-hover-color;
+@button-link-font-weight:      @button-font-weight;
 
 @button-default-color:          @base-color;
 @button-default-bg:             transparent;

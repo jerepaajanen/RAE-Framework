@@ -86,10 +86,10 @@
     }
 
     .button--link {
-        background-color: transparent;
         border-radius: 0;
         box-shadow: none;
-        color: @base-color;
+        color: @button-link-color;
+        font-weight: @button-link-font-weight;
         height: auto;
         line-height: inherit;
         vertical-align: baseline;
@@ -99,13 +99,14 @@
         &:focus,
         &:active,
         &.is-active {
-            border-width: 0;
+            background-color: transparent;
+            border-color: transparent;
         }
         &:hover,
         &:focus,
         &:active,
         &.is-active {
-            color: @base-link-color;
+            color: @button-link-active-color;
         }
     }
 

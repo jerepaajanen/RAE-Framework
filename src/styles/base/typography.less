@@ -6,12 +6,14 @@
     // Links
 
     a {
-        color: inherit;
+        color: @link-color;
+        text-decoration: @link-decoration;
         cursor: pointer;
         transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
         &:hover,
         &:focus {
-            color: @base-link-color;
+            color: @link-hover-color;
+            text-decoration: @link-hover-decoration;
         }
     }
 
@@ -33,6 +35,7 @@
         font-weight: @heading-font-weight;
         line-height: @heading-line-height;
         letter-spacing: @heading-letter-spacing;
+        color: @heading-color;
         a {
             color: inherit;
         }
@@ -95,6 +98,28 @@
         .h6 {
             .modular-scale(-1);
         }
+    }
+
+    // Display headings
+
+    .display-1 {
+        font-size: @display1-font-size;
+        font-weight: @display1-font-weight;
+    }
+
+    .display-2 {
+        font-size: @display2-font-size;
+        font-weight: @display2-font-weight;
+    }
+
+    .display-3 {
+        font-size: @display3-font-size;
+        font-weight: @display3-font-weight;
+    }
+
+    .display-4 {
+        font-size: @display4-font-size;
+        font-weight: @display4-font-weight;
     }
 
     // Lead
