@@ -5,7 +5,7 @@
 
     // Small Grid for Mobile devices
     .use-screen-xs(@boolean) when (@boolean =true) {
-        .make-grid(@grid-columns, width, -xs);
+        .loop-grid(@grid-columns, width, -xs);
         .u-width-xs-auto {
             & when (@use-flex-grid =true) {
                 flex: 1;
@@ -18,7 +18,7 @@
     // Small Grid for Mobile devices
     .use-screen-sm(@boolean) when (@boolean =true) {
         @media @sm-up {
-            .make-grid(@grid-columns, width, -sm);
+            .loop-grid(@grid-columns, width, -sm);
             .u-width-sm-auto {
                 & when (@use-flex-grid =true) {
                     flex: 1;
@@ -32,7 +32,7 @@
     // Medium Grid for Tablet devices
     .use-screen-md(@boolean) when (@boolean =true) {
         @media @md-up {
-            .make-grid(@grid-columns, width, -md);
+            .loop-grid(@grid-columns, width, -md);
             .u-width-md-auto {
                 & when (@use-flex-grid =true) {
                     flex: 1;
@@ -46,7 +46,7 @@
     // Large Grid, optimal for laptop & desktop devices
     .use-screen-lg(@boolean) when (@boolean =true) {
         @media @lg-up {
-            .make-grid(@grid-columns, width, -lg);
+            .loop-grid(@grid-columns, width, -lg);
             .u-width-lg-auto {
                 & when (@use-flex-grid =true) {
                     flex: 1;
@@ -60,7 +60,7 @@
     // Extra Large Grid for Large desktop devices
     .use-screen-xl(@boolean) when (@boolean =true) {
         @media @xl-up {
-            .make-grid(@grid-columns, width, -xl);
+            .loop-grid(@grid-columns, width, -xl);
             .u-width-xl-auto {
                 & when (@use-flex-grid =true) {
                     flex: 1;

@@ -10,10 +10,10 @@
 }
 
 // Loop grid variables
-.make-grid(@index, @type, @class) when (@index >= 0) {
+.loop-grid(@index, @type, @class) when (@index >= 0) {
     .calc-grid(@index, @type, @class);
     // next iteration
-    .make-grid(@index - 1, @type, @class);
+    .loop-grid(@index - 1, @type, @class);
 }
 
 //
