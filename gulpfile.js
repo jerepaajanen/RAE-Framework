@@ -160,7 +160,7 @@ var markupProcess = function (isNotPartial) {
                 ENV: isProduction ? 'production' : 'development',
                 UA: config.analyticsUA,
                 META: {
-                    author: pkg.author,
+                    author: config.siteAuthor,
                     title: config.siteTitle,
                     description: config.siteDescription,
                     url: config.siteURL,
@@ -448,16 +448,21 @@ gulp.task('clean:files', function () {
     console.log($.util.colors.cyan('Cleaning ' + paths.dest + ' -folder'));
 
     del.sync([paths.dest + '**']);
+
+    console.log($.util.colors.green('Clean Done'));
 });
 
 // Clean : Remote
-gulp.task('clean:remote', function (err) {
+gulp.task('clean:remote', function (done) {
+
     console.log($.util.colors.cyan('Cleaning ' + configFtp.server.remotePath + ' -folder on remote server...'));
 
-    conn.rmdir(configFtp.server.remotePath, err);
+    conn.rmdir(configFtp.server.remotePath, function (err) {
+        done();
+        if (err) return handleErrors;
+        console.log($.util.colors.green('Clean Done'));
+    })
 });
-
-
 
 
 // WATCH
@@ -510,14 +515,17 @@ gulp.task('serve', function () {
 // DEPLOY
 // -------------------------------------------------------
 
-gulp.task('deploy', function () {
+gulp.task('deploy', ['clean:remote'], function () {
 
-    return gulp.src(paths.dest + '**', {
+    return gulp.src(paths.dest + '**/*', {
         base: './' + paths.dest,
         buffer: false
     })
-        .pipe(conn.newer(configFtp.server.remotePath))
+        //.pipe(conn.newer(configFtp.server.remotePath))
+        //.on('error', handleErrors)
         .pipe(conn.dest(configFtp.server.remotePath));
+        //.on('error', handleErrors);
+
 
 });
 
@@ -525,7 +533,7 @@ gulp.task('deploy:watch', ['deploy'], function () {
 
     console.log($.util.colors.grey('Watching changes...'));
 
-    gulp.watch(paths.dest + '**')
+    gulp.watch(paths.dest + '**/*')
         .on('change', function (event) {
 
             console.log($.util.colors.cyan('Uploading file "' + event.path + '", ' + event.type));
