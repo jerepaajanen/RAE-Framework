@@ -69,10 +69,6 @@
         display: inline-block; // Internet Explorer 11+, Windows Phone 8.1+
     }
 
-    small {
-        font-size: 75%; // All browsers
-    }
-
     svg:not(:root) {
         overflow: hidden; // Internet Explorer 11-
     }
@@ -165,20 +161,6 @@
         font-weight: inherit;
     }
 
-    // Specify the font family of code elements and address odd `em`-unit font size rendering in all browsers.
-    code,
-    kbd,
-    pre,
-    samp {
-        font-family: monospace, serif;
-    }
-
-    // Specify the list style of nav lists
-    nav ol,
-    nav ul {
-        list-style: none;
-    }
-
     // Style select like a standard input
     select {
         -moz-appearance: none; // Firefox 36+
@@ -191,23 +173,11 @@
         }
     }
 
-    // Specify the border styles of tables
-    table {
-        border-collapse: collapse;
-        border-spacing: 0;
-    }
-
-    // Specify textarea resizability
-    textarea {
-        resize: vertical;
-    }
-
     // Specify text selection background color and omit drop shadow
     ::selection {
         background-color: @selection-background; // required when declaring ::selection
         text-shadow: none;
     }
-
 
     // Specify the progress cursor of updating elements
     [aria-busy="true"] {
