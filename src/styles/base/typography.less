@@ -57,7 +57,9 @@
     }
 
     h4,
-    .h4,
+    .h4 {
+        .modular-scale(.5);
+    }
     h5,
     .h5 {
         .modular-scale(0);
@@ -91,12 +93,12 @@
 
         h5,
         .h5 {
-            .modular-scale(0);
+            .modular-scale(0.5);
         }
 
         h6,
         .h6 {
-            .modular-scale(-1);
+            .modular-scale(0);
         }
     }
 
@@ -123,35 +125,55 @@
     }
 
     // Lead
+
     .lead {
         font-size: @lead-font-size;
         font-weight: @lead-font-weight;
+    }
+
+    // Emphasis
+
+    small,
+    .small {
+        font-size: @small-font-size;
+    }
+
+    mark,
+    .mark {
+        background-color: @mark-background-color;
+        padding: @mark-padding;
     }
 
     // Blockquotes
 
     blockquote {
         font-family: @blockquote-font-family;
+        font-size: @blockquote-font-size;
         font-style: italic;
+        padding: @blockquote-padding;
+        border-left: @blockquote-border-width solid @blockquote-border-color;
         p {
-            margin: 0;
-            + p {
-                margin-top: @spacing-half;
-            }
+            margin: 0 0 @spacing-half 0;
         }
         cite {
+            color: @blockquote-cite-color;
             font-family: @base-font-family;
-            color: lighten(@base-color, 20%);
-            .modular-scale(-1);
+            font-size: @blockquote-cite-font-size;
             font-style: normal;
-            // ´–´ line before cite
             &:before {
-                content:"\2014 \0020";
+                content:"\2014 \0020"; // add – line before cite
             }
         }
     }
 
     // Code and pre elements
+
+    code,
+    kbd,
+    pre,
+    samp {
+        font-family: monospace, serif;
+    }
 
     code,
     pre {
@@ -164,9 +186,9 @@
     code {
         background: @code-background;
         color: @code-color;
-        font-size: 12px;
+        font-size: @code-font-size;
         font-weight: normal;
-        padding: 1px 2px 2px;
+        padding: @code-padding;
     }
 
     pre {

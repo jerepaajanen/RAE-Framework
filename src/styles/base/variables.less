@@ -28,7 +28,7 @@
 @container-lg:                  (@breakpoint-lg - @grid-gutter-width);
 @container-xl:                  (@breakpoint-xl - @grid-gutter-width);
 
-@container-fluid:               95vw;
+@container-fluid:               96vw;
 @container-fluid-max:           1600px;
 @container-fluid-inner:         82vw;
 @container-fluid-inner-max:     1280px;
@@ -108,6 +108,12 @@
 // TYPOGRAPHY & BASELINE PROPORTIONS
 // -------------------------------------------------------
 
+// @Font-Face (uncomment to use)
+// Options: 'font-family', 'font-file-name', font-weight, font-style
+//@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
+//@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
+
+@base-font-family:              sans-serif;
 @base-font-size:                16px;
 @base-line-height:              24px;
 
@@ -147,14 +153,6 @@
 @modular-scale-ratio:           @perfect-fourth;
 @modular-scale-px-output:       true;
 
-// @Font-Face (uncomment to use)
-// Options: 'font-family', 'font-file-name', font-weight, font-style
-//@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
-//@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
-
-@base-font-family:              sans-serif;
-@heading-font-family:           @base-font-family;
-@blockquote-font-family:        @base-font-family;
 
 // Links
 @link-color:                    @color-secondary;
@@ -162,32 +160,56 @@
 @link-hover-color:              @color-secondary-dark;
 @link-hover-decoration:         underline;
 
-// Heading styles
+// Headings
+@heading-font-family:           @base-font-family;
 @heading-font-weight:           700;
 @heading-letter-spacing:        @letter-spacing-tight;
 @heading-line-height:           @line-height-tightest;
 @heading-color:                 inherit;
 
-//Display font-sizes
+@h1-font-size:                  @modular-scale-4;
+@h2-font-size:                  @modular-scale-3;
+@h3-font-size:                  @modular-scale-2;
+@h4-font-size:                  @modular-scale-1;
+@h5-font-size:                  @modular-scale-half;
+@h6-font-size:                  @base-font-size;
+
+//Display headings
 @display1-font-size:            40px;
-@display2-font-size:            32px;
+@display2-font-size:            @modular-scale-2;
 @display3-font-size:            24px;
-@display4-font-size:            21px;
+@display4-font-size:            @modular-scale-1;
 
 @display1-font-weight:          400;
 @display2-font-weight:          400;
-@display3-font-weight:          600;
-@display4-font-weight:          600;
+@display3-font-weight:          400;
+@display4-font-weight:          400;
 
 // Lead paragraph styles
 @lead-font-size:                21px;
 @lead-font-weight:              400;
 
+// Emphasis
+@small-font-size:               75%;
+@mark-background-color:         @grey-50;
+@mark-padding:                  .2em;
+
 // Code
+@code-font-size:                12px;
 @code-color:                    @color-danger;
 @code-background:               @grey-25;
+@code-padding:                  1px 2px 2px;
 @pre-color:                     @color-danger;
 @pre-background:                @grey-25;
+
+// Blockquote
+@blockquote-padding:           @spacing-third @spacing-two-thirds;
+@blockquote-border-color:      @color-primary-light;
+@blockquote-border-width:      @spacing-sixth;
+@blockquote-font-family:        @base-font-family;
+@blockquote-font-size:         18px;
+@blockquote-cite-font-size:    14px;
+@blockquote-cite-color:        @grey-400;
 
 // Hr
 @hr-border-color:               @grey-100;
@@ -360,6 +382,9 @@
 
 // Navigation responsive
 @nav-responsive-breakpoint:     @breakpoint-md;
+
+// Field-group collapse
+@field-group-breakpoint:        @breakpoint-md;
 
 // Iconography
 @icon-font-size:                @base-font-size;

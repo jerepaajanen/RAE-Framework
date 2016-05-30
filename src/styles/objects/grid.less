@@ -155,17 +155,15 @@
         }
 
         // Flex-grid only features
+        & when (@use-flex-grid =true) {
 
-        // Grid with centered columns
-        .grid--centered {
-            & when (@use-flex-grid =true) {
+            // Grid with centered columns
+            .grid--centered {
                 justify-content: center;
             }
-        }
 
-        // Grid with equal height columns
-        .grid--equal-height {
-            & when (@use-flex-grid =true) {
+            // Grid with equal height columns
+            .grid--equal-height {
                 > .grid__column {
                     display: flex;
                 }
