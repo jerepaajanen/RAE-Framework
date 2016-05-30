@@ -144,7 +144,7 @@
     select:not([multiple]) {
         cursor: pointer;
         background-image: data-uri('../images/form/select.svg');
-        background-position: center right;
+        background-position: right center;
         background-repeat: no-repeat;
         background-size: contain;
         padding-right: 2.4em;
@@ -333,31 +333,31 @@
         }
 
         .field--inline {
-            //display: flex; //
-            //align-items: center; //
+            display: flex;
+            align-items: center;
             label {
-                display: inline-block;
                 margin: 0 @label-horizontal-margin 0 0;
             }
             input,
             select {
-                width: auto;
-                vertical-align: middle;
-                //width: 100%; //
+                flex-shrink: 1;
             }
         }
+
         // Field-groups, only for larger screens
-
-
         .field-group {
             margin-bottom: @spacing-base;
-            @media @sm-up {
+            &:last-child,
+            &:last-child .field:last-child {
+                margin-bottom: 0;
+            }
+            @media (min-width: (@field-group-breakpoint)) {
                 display: flex;
                 align-items: center;
-                flex-direction: row;
                 > .field {
                     padding-left: (@grid-gutter-width / 2);
                     padding-right: (@grid-gutter-width / 2);
+                    flex: 1 1 auto; // claim available space
                     &:first-child {
                         padding-left: 0;
                     }
@@ -366,50 +366,42 @@
                     }
                 }
                 .field {
-                    margin-bottom: 0 !important; // reset margins
+                    margin-bottom: 0; // reset margins
                 }
-            }
-
-            &:last-child,
-            &:last-child .field:last-child {
-                margin-bottom: 0;
             }
         }
 
         .field-group--half {
-            .field {
-                padding-left: (@grid-gutter-width / 4);
-                padding-right: (@grid-gutter-width / 4);
+            @media (min-width: (@field-group-breakpoint)) {
+                .field {
+                    padding-left: (@grid-gutter-width / 4);
+                    padding-right: (@grid-gutter-width / 4);
+                }
             }
         }
         .field-group--tight {
-            .field {
-                padding-left: 1px;
-                padding-right: 1px;
+            @media (min-width: (@field-group-breakpoint)) {
+                .field {
+                    padding-left: 1px;
+                    padding-right: 1px;
+                }
             }
         }
-
         .field-group--inline {
-            > .field {
-                display: flex;
-                align-items: center;
-                label {
-                    display: inline-block;
-                    margin: 0 @label-horizontal-margin 0 0;
-                }
-                input,
-                select {
-                    width: auto; // fix IE10
-                }
-            }
-        }
-        .field-group--equal-width {
-            > .field {
-                flex: 1 1 auto;
-                input,
-                select {
-                    width: 100%;
-                    flex: 1; // prevent line-breaks with label
+            @media (min-width: (@field-group-breakpoint)) {
+                > .field {
+                    display: flex;
+                    align-items: center;
+
+                    label {
+                        margin: 0 @label-horizontal-margin 0 0;
+                        flex-shrink: 0; // fix for iOS
+
+                    }
+                    input,
+                    select {
+                        flex-shrink: 1; // fix for IE10
+                    }
                 }
             }
         }
