@@ -95,15 +95,24 @@ if (configFtp) {
 
     console.log($.util.colors.grey('Using "config-ftp.json".'));
 
-    var conn = ftp.create({
-        host:     configFtp.server.host,
-        port: configFtp.server.port,
-        user:     configFtp.server.user,
-        password: configFtp.server.password,
-        parallel: 5,
-        reload: true,
-        log:      null //$.util.log
-    });
+    var remoteDev = ftp.create({
+            host:     configFtp.development.host,
+            port:     configFtp.development.port,
+            user:     configFtp.development.user,
+            password: configFtp.development.password,
+            parallel: 5,
+            reload:   true,
+            log:      null //$.util.log
+        }),
+        remoteProd = ftp.create({
+            host:     configFtp.production.host,
+            port:     configFtp.production.port,
+            user:     configFtp.production.user,
+            password: configFtp.production.password,
+            parallel: 5,
+            reload:   true,
+            log:      null //$.util.log
+        });
 }
 
 
@@ -121,7 +130,7 @@ gulp.task('default', ['clean'], function () {
 });
 
 gulp.task('default:development', function () {
-    sequence(['markup:all', 'fonts', 'styles', 'scripts', 'images'], function () {
+    sequence(['markup:all', 'fonts', 'styles', 'scripts', 'images', 'copy'], function () {
         if (isServe && isDeploy) {
             gulp.start(['serve', 'watch', 'deploy:watch']);
         } else if (isDeploy) {
@@ -209,7 +218,9 @@ gulp.task('styles', function () {
             autoprefixer({
                 browsers: config.browserSupport
             }),
-            mqpacker,
+            mqpacker({
+                sort: true
+            }),
             cssnano({
                 preserveHacks: true,
                 removeAllComments: true
@@ -367,8 +378,8 @@ gulp.task('images', ['images:optimize', 'images:favicons']);
 // Images : Optimize
 gulp.task('images:optimize', function () {
     return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
-        .pipe($.if(!isProduction,$.newer(paths.images.dest)))
-        .pipe($.if(isProduction,($.imagemin({
+        .pipe($.if(!isProduction, $.newer(paths.images.dest)))
+        .pipe($.if(isProduction, ($.imagemin({
             optimizationLevel: 7,
             progressive: true,
             interlaced: true,
@@ -427,7 +438,7 @@ gulp.task('copy:root', function () {
         '!' + paths.fonts.src + '**/*',
         '!' + paths.assets.src + '**/*'], {
         dot: true
-        })
+    })
         .pipe(gulp.dest(paths.dest));
 });
 
@@ -455,13 +466,29 @@ gulp.task('clean:files', function () {
 // Clean : Remote
 gulp.task('clean:remote', function (done) {
 
-    console.log($.util.colors.cyan('Cleaning ' + configFtp.server.remotePath + ' -folder on remote server...'));
+    if (isProduction) {
+        console.log($.util.colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...'));
 
-    conn.rmdir(configFtp.server.remotePath, function (err) {
-        done();
-        if (err) return handleErrors;
-        console.log($.util.colors.green('Clean Done'));
-    })
+        remoteProd.rmdir(configFtp.production.remotePath, function (err) {
+            done();
+            if (err) {
+                return handleErrors;
+                console.log($.util.colors.green('Clean Done'));
+            }
+        });
+
+    } else {
+        console.log($.util.colors.cyan('Cleaning ' + configFtp.development.remotePath + ' -folder on remote server...'));
+
+        remoteDev.rmdir(configFtp.development.remotePath, function (err) {
+            done();
+            if (err) {
+                return handleErrors;
+                console.log($.util.colors.green('Clean Done'));
+            }
+        });
+    }
+
 });
 
 
@@ -475,7 +502,7 @@ gulp.task('watch', function () {
 
     // Watch Html-files
     gulp.watch([paths.src + '**/*.html',
-        '!' + paths.src + 'partials/**/*'],['markup']);
+        '!' + paths.src + 'partials/**/*'], ['markup']);
     gulp.watch(paths.src + 'partials/**/*', ['markup:all']);
 
     // Watch Styles
@@ -521,11 +548,10 @@ gulp.task('deploy', ['clean:remote'], function () {
         base: './' + paths.dest,
         buffer: false
     })
-        //.pipe(conn.newer(configFtp.server.remotePath))
-        //.on('error', handleErrors)
-        .pipe(conn.dest(configFtp.server.remotePath));
-        //.on('error', handleErrors);
 
+        .pipe($.if(isProduction, (remoteProd.dest(configFtp.production.remotePath))))
+
+        .pipe($.if(!isProduction, (remoteDev.dest(configFtp.development.remotePath))));
 
 });
 
@@ -542,7 +568,7 @@ gulp.task('deploy:watch', ['deploy'], function () {
                 base: './' + paths.dest,
                 buffer: false
             })
-                .pipe(conn.newer(configFtp.server.remotePath))
-                .pipe(conn.dest(configFtp.server.remotePath));
+                .pipe(remoteDev.newer(configFtp.development.remotePath))
+                .pipe(remoteDev.dest(configFtp.development.remotePath));
         });
 });

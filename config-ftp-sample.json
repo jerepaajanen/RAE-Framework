@@ -1,5 +1,12 @@
 {
-    "server": {
+    "development": {
+        "host": "ftp.myserver.com",
+        "user": "username",
+        "password": "password",
+        "port": "21",
+        "remotePath": ""
+    },
+    "production": {
         "host": "ftp.myserver.com",
         "user": "username",
         "password": "password",
