@@ -1,48 +1,53 @@
 //
 // Modular Scale (font-size)
 // -------------------------------------------------------
-
 // Produce font-size in default modular-scale steps.
 // You can output modular-scale font-size from different base,
 // by changing second value of mixin.
-
 // Usage
 // .selector {
 //    .modular-scale(4);
 //    .modular-scale(3, 24);
 // }
-
 // Modular-scale ratios
-@golden:                        1.618;
-@minor-second:                  1.067;
-@major-second:                  1.125;
-@minor-third:                   1.2;
-@major-third:                   1.25;
-@perfect-fourth:                1.333;
-@augmented-fourth:              1.414;
-@perfect-fifth:                 1.5;
-@minor-sixth:                   1.6;
-@major-sixth:                   1.667;
-@minor-seventh:                 1.778;
-@major-seventh:                 1.875;
-@octave:                        2;
-@major-tenth:                   2.5;
-@major-eleventh:                2.667;
-@major-twelfth:                 3;
-@double-octave:                 4;
-
+@golden: 1.618;
+@minor-second: 1.067;
+@major-second: 1.125;
+@minor-third: 1.2;
+@major-third: 1.25;
+@perfect-fourth: 1.333;
+@augmented-fourth: 1.414;
+@perfect-fifth: 1.5;
+@minor-sixth: 1.6;
+@major-sixth: 1.667;
+@minor-seventh: 1.778;
+@major-seventh: 1.875;
+@octave: 2;
+@major-tenth: 2.5;
+@major-eleventh: 2.667;
+@major-twelfth: 3;
+@double-octave: 4;
 .modular-scale ( @ms-step, @ms-base: @modular-scale-base, @ms-ratio: @modular-scale-ratio, @ms-px-output: @modular-scale-px-output) {
-
     // Calculate modular-scale value, and round it
     @modular-scale-return: round((pow(@ms-ratio, @ms-step) * unit(@ms-base)), 0);
-
     // Convert to px-value
     & when (@ms-px-output =true) {
         font-size: unit(@modular-scale-return, px);
     }
-
     // Convert to rem-value
     & when (@ms-px-output =false) {
         font-size: round(unit(@modular-scale-return / @base-font-size, rem), 4);
     }
 }
+
+@modular-scale-half: unit(round((pow(@modular-scale-ratio, .5) * unit(@modular-scale-base)), 0), px);
+@modular-scale-1: unit(round((pow(@modular-scale-ratio, 1) * unit(@modular-scale-base)), 0), px);
+@modular-scale-2: unit(round((pow(@modular-scale-ratio, 2) * unit(@modular-scale-base)), 0), px);
+@modular-scale-3: unit(round((pow(@modular-scale-ratio, 3) * unit(@modular-scale-base)), 0), px);
+@modular-scale-4: unit(round((pow(@modular-scale-ratio, 4) * unit(@modular-scale-base)), 0), px);
+@modular-scale-5: unit(round((pow(@modular-scale-ratio, 5) * unit(@modular-scale-base)), 0), px);
+@modular-scale-6: unit(round((pow(@modular-scale-ratio, 6) * unit(@modular-scale-base)), 0), px);
+@modular-scale-7: unit(round((pow(@modular-scale-ratio, 7) * unit(@modular-scale-base)), 0), px);
+@modular-scale-8: unit(round((pow(@modular-scale-ratio, 8) * unit(@modular-scale-base)), 0), px);
+@modular-scale-9: unit(round((pow(@modular-scale-ratio, 9) * unit(@modular-scale-base)), 0), px);
+
