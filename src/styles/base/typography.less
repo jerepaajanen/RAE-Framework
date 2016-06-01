@@ -170,36 +170,39 @@
 
     code,
     kbd,
-    pre,
-    samp {
+    pre {
         font-family: monospace, serif;
+        font-size: @code-font-size;
+        border-radius: @code-border-radius;
     }
 
     code,
     pre {
+        line-height: 1.25;
         white-space: pre;
         word-wrap: normal;
         word-break: normal;
-        line-height: 1.25;
     }
 
     code {
         background: @code-background;
+        border: 1px solid @code-border-color;
         color: @code-color;
-        font-size: @code-font-size;
         font-weight: normal;
         padding: @code-padding;
+        vertical-align: middle;
     }
 
     pre {
         background: @pre-background;
         color: @pre-color;
+        overflow-x: auto;
+        padding: @pre-padding;
         code {
-            background: @pre-background;
-            color: @pre-color;
-            display: block;
-            overflow-x: auto;
-            padding: @spacing-two-thirds @spacing-base;
+            background: transparent;
+            border: none;
+            color: inherit;
+            padding: 0;
         }
     }
 
