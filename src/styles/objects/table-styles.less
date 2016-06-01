@@ -2,65 +2,64 @@
 // Table styles
 // -------------------------------------------------------
 .table-styles(@boolean) when (@boolean =true) {
-
     // Basic table styling
     .table {
         font-size: @table-font-size;
         background-color: @table-background;
-        max-width: 100%;
         caption {
-            padding-bottom: @table-caption-padding-bottom;
+            padding: @table-caption-padding;
         }
-        thead,
-        tfoot {
-            font-weight: @table-headfoot-font-weight;
-            color: @table-headfoot-color;
-            th,
-            td {
-                background-color: @table-headfoot-background;
+        > thead {
+            > tr {
+                > th {
+                    color: @table-headfoot-color;
+                    padding: @table-cell-padding;
+                    vertical-align: top;
+                    font-weight: @table-headfoot-font-weight;
+                    border-bottom: @table-border-width solid @table-border-color;
+                }
             }
         }
-        th,
-        td {
-            padding: @table-cell-padding;
-        }
-
-        // Table outerborder only
-        &--border {
-            border: @table-border-width solid @table-border-color;
-        }
-
-        // Borders for inner table cells
-        &--border-cells {
-            th,
-            td {
-                border-top: @table-border-width solid @table-border-color;
-                border-left: @table-border-width solid @table-border-color;
-            }
-            // Remove border on 1st cells in every row to create a grid effect.
-            tr th:first-child,
-            tr td:first-child {
-                border-left: 0;
-            }
-            // Remove border on 1st-row cells to create a grid effect.
-            tr:first-child th,
-            thead:first-child tr:first-child th {
-                border-top: 0;
+        > tbody {
+            > tr {
+                > td,
+                th {
+                    padding: @table-cell-padding;
+                    vertical-align: top;
+                    border-bottom: @table-border-width solid @table-border-color;
+                    &:not(td) {
+                        font-weight: @table-headfoot-font-weight;
+                    }
+                }
             }
         }
-
-        // Border for rows only
-        &--border-rows {
-            th,
-            td {
-                border-bottom: @table-border-width solid @table-border-color;
+        > tfoot {
+            > tr {
+                > td {
+                    color: @table-headfoot-color;
+                    font-weight: @table-headfoot-font-weight;
+                    padding: @table-cell-padding;
+                    vertical-align: top;
+                    border-bottom: none;
+                }
             }
         }
 
-        // Table stripes
-        &--stripes {
-            tbody > tr:nth-child(odd) > td {
-                background-color: @table-stripe-background;
+        &.table--striped {
+            tbody {
+                tr:nth-of-type(odd) {
+                    background: @table-stripe-background;
+                }
+            }
+        }
+
+        &.table--highlight {
+            tbody {
+                tr {
+                    &:hover {
+                        background: @table-higlight-background;
+                    }
+                }
             }
         }
     }
@@ -68,7 +67,6 @@
     // Rensponsive table
     // Add horizontal scrolling if the table
     // contents overflow its parent element.
-
     // Usage
     // <element class="table-responsive">
     //    <table>...</table>
