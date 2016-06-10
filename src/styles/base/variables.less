@@ -139,13 +139,13 @@
 // The base spacing unit is set equal to the "line-height" by default.
 // This helps create a consistent vertical rhythm throughout the framework.
 @spacing-base:                  @base-line-height;
-@spacing-half:                  round(@base-line-height / 2);
-@spacing-two-thirds:            round(@spacing-third * 2);
-@spacing-third:                 round(@base-line-height / 3);
-@spacing-fourth:                round(@base-line-height / 4);
-@spacing-fifth:                 round(@base-line-height / 5);
-@spacing-sixth:                 round(@base-line-height / 6);
-@spacing-double:                round(@base-line-height * 2);
+@spacing-half:                  round(@spacing-base / 2);
+@spacing-two-thirds:            round(@spacing-base / 3 * 2);
+@spacing-third:                 round(@spacing-base / 3);
+@spacing-fourth:                round(@spacing-base / 4);
+@spacing-fifth:                 round(@spacing-base / 5);
+@spacing-sixth:                 round(@spacing-base / 6);
+@spacing-double:                round(@spacing-base * 2);
 
 // Modular Scale
 // Produce font-size in default modular-scale steps. Used in headings etc.
