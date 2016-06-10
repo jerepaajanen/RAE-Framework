@@ -163,12 +163,11 @@
             animation: animation-reset;
         }
 
-        .docs-content .dot,
-        .docs-content .tooltips .example a {
-            display: inline-block;
+        .docs-content .dot {
+            display: block;
             width: 1rem;
             height: 1rem;
-            margin: 8px;
+            margin: 8px auto 1rem auto;
             border-radius: 100%;
             background: #333333;
             text-decoration: none;
@@ -178,55 +177,19 @@
             overflow: hidden;
         }
 
-        .docs-content .icons ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .docs-content .icons ul li {
+        .docs-content .example-icons li {
             margin-bottom: 1.5rem;
             position: relative;
         }
-
-        .docs-content .icons ul li:hover .magnify {
-            display: block;
+        .docs-content .example-icon {
+            margin-bottom: 1rem;
         }
 
-        .docs-content .icons ul li .magnify {
-            display: none;
-            position: absolute;
-            background-color: #fff;
-            z-index: 999;
-            width: 180px;
-            padding-top: .5rem;
-            padding-bottom: .5rem;
-        }
 
-        .docs-content .icons ul li .magnify:hover {
-            background-color: #000;
-            color: #fff;
-        }
-
-        .docs-content .icons .magnify ul {
-            width: 100%;
-            margin-bottom: .5rem;
-        }
-
-        .docs-content .icons .magnify ul li {
-            display: table-cell;
-            width: 1%;
-            text-align: center;
-        }
-
-        .docs-content .glyph-name {
+        .docs-content .example-icons .icon-name {
             padding-left: 4px;
         }
 
-        .docs-content .glyph-class {
-            font-size: .75em;
-            color: #999;
-        }
 
         .docs-content.glyph-codepoint {
             font-size: .75em;
@@ -1911,23 +1874,20 @@
 &lt;div class=&quot;loader loader--large&quot;&gt;...&lt;/div&gt;</code></pre></div>
             </article>
         </section>
+        <!-- @if ENV='icons' -->
         <section>
             <header class="container">
                 <h2 class="display-2">Icons</h2>
             </header>
-            <article class="icons__list">
-                <header>
-                    <h3 class="display-3">List of <%= fontName %></h3>
-                </header>
+            <article class="container">
                 <ul class="grid example-icons">
                     <% _.each(glyphs, function(glyph) { %>
-                        <li class="column u-width-xs-6of12 u-width-sm-4of12 u-width-md-3of12 u-width-lg-2of12">
+                        <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-3of12 u-width-xl-2of12 u-text-center">
                             <div class="example-icon">
-                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="glyph-name"><%= glyph.name %></span>
+                            <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="icon-name"><%= glyph.name %></span>
                             </div>
-                            <br />
                             <code>.<%= className %>-<%= glyph.name %></code>
-                            <div class="example-well magnify">
+                            <div class="example-well u-hide magnify">
                                 <ul class="glyph-magnify">
                                     <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--large"></i></li>
                                     <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
@@ -1943,6 +1903,7 @@
                 </ul>
             </article>
         </section>
+        <!-- @endif -->
 
         <section class="animations">
             <header class="container">
