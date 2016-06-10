@@ -1874,7 +1874,6 @@
 &lt;div class=&quot;loader loader--large&quot;&gt;...&lt;/div&gt;</code></pre></div>
             </article>
         </section>
-        <!-- @if ENV='icons' -->
         <section>
             <header class="container">
                 <h2 class="display-2">Icons</h2>
@@ -1887,24 +1886,11 @@
                             <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="icon-name"><%= glyph.name %></span>
                             </div>
                             <code>.<%= className %>-<%= glyph.name %></code>
-                            <div class="example-well u-hide magnify">
-                                <ul class="glyph-magnify">
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--large"></i></li>
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--2x"></i></li>
-                                    <li><i class="<%= className %> <%= className %>-<%= glyph.name %> <%= className %>--3x"></i></li>
-
-                                </ul>
-                                <div>
-                                    <code class="glyph-codepoint">Unicode: <%= glyph.unicode[0].charCodeAt(0).toString(16).toUpperCase() %></code>
-                                </div>
-                            </div>
                         </li>
                         <% }); %>
                 </ul>
             </article>
         </section>
-        <!-- @endif -->
-
         <section class="animations">
             <header class="container">
                 <h2 class="display-2">Animations</h2>

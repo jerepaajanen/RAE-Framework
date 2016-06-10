@@ -70,10 +70,10 @@ var
                   ''].join('\n');
 
 
-// HANDLE ERRORS
+// HELPERS
 // -------------------------------------------------------
 
-// Catch errors
+// Handle errors
 
 function handleErrors(error) {
     console.log($.util.colors.red(error.toString()));
@@ -115,6 +115,9 @@ if (configFtp) {
         });
 }
 
+// Timestamp
+
+var runTimestamp = Math.round(Date.now()/1000);
 
 // DEFAULT TASKS
 // -------------------------------------------------------
@@ -335,6 +338,7 @@ gulp.task('fonts:icons', function () {
             fontName: config.iconfont.fontName,
             prependUnicode: false,
             autohint: config.iconfont.autohint,
+            timestamp: runTimestamp,
             formats: ['ttf'],
             normalize: true,
             fontHeight: (config.iconfont.gridSize * config.iconfont.gridSize * 2),
@@ -357,15 +361,17 @@ gulp.task('fonts:icons', function () {
                 }))
                 .pipe(gulp.dest(paths.styles.src + 'objects'));
 
+
             // Build html-file for documentation
-            gulp.src(paths.src + 'styleguide/icons-template.html')
+            gulp.src(paths.src + 'styleguide/index.html')
+
                 .pipe($.consolidate('lodash', options))
-                .pipe($.rename({
-                    basename: 'index'
-                }))
-                .pipe(gulp.dest(paths.src + 'styleguide/'));
+                .pipe(gulp.dest(paths.dest + 'styleguide/'));
         })
-        .pipe(gulp.dest(paths.fonts.src));
+        .pipe(gulp.dest(paths.fonts.src))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 
@@ -429,7 +435,7 @@ gulp.task('copy', ['copy:root', 'copy:assets']);
 // Copy : Root
 gulp.task('copy:root', function () {
     return gulp.src([
-        paths.src + '*',
+        paths.src + '**/*',
         'node_modules/apache-server-configs/dist/.htaccess',
         '!' + paths.src + '**/*.html',
         '!' + paths.images.src + '**/*',
@@ -513,7 +519,9 @@ gulp.task('watch', function () {
     gulp.watch('bower.json', ['scripts:vendor']);
 
     // Watch Images
-    gulp.watch(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}', ['images:optimize']);
+    gulp.watch([
+        paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
+        '!' + paths.images.src + 'icons/**/*'], ['images:optimize']);
 
     // Watch Fonts
     gulp.watch(paths.fonts.src + '**/*', ['fonts:convert']);
