@@ -1,4 +1,5 @@
 (function () {
+
     'use strict';
 
     // Simple responsive navigation with subnav toggle
