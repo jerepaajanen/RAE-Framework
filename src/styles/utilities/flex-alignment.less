@@ -3,7 +3,26 @@
 // -------------------------------------------------------
 .use-flex-alignment(@boolean) when (@boolean =true) {
 
+    // Horizontal aligment
+
     .u-flex-center {
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+    .u-flex-left {
+        display: flex !important;
+        justify-content: flex-start!important;
+    }
+
+    .u-flex-right {
+        display: flex !important;
+        justify-content: flex-end!important;
+    }
+
+    // Vertical aligment
+
+    .u-flex-middle {
         display: flex !important;
         align-items: center !important;
     }

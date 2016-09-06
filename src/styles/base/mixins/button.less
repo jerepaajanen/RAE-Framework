@@ -1,0 +1,59 @@
+//
+// Button
+// -------------------------------------------------------
+
+.button() {
+    appearance: none;
+    display: inline-block;
+    font-family: @button-font-family;
+    font-weight: @button-font-weight;
+    letter-spacing: @button-letter-spacing;
+    text-transform: @button-text-transform;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    border-width: @button-border-width;
+    border-style: solid;
+    border-radius: @button-border-radius;
+    vertical-align: middle;
+    user-drag: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
+    &:not(:disabled):hover,
+    &:not(:disabled):focus, {
+        text-decoration: none; // strip styling from <a>.
+    }
+    &:active,
+    &.is-active {
+        outline: 0;
+    }
+}
+
+// Button Styles
+.button-styles(@color, @background, @border-color) {
+    color: @color;
+    background-color: @background;
+    border-color: @border-color;
+}
+
+// Button Theme
+.button-theme(@color: @button-default-color, @background: @button-default-bg, @border-color: @button-default-border, @active-color: @button-default-active-color, @active-background: @button-default-active-bg, @active-border-color: @button-default-active-border) {
+    .button-styles(@color, @background, @border-color);
+    &:not(:disabled):hover,
+    &:not(:disabled):focus,
+    &:active,
+    &.is-active {
+        .button-styles(@active-color, @active-background, @active-border-color);
+    }
+}
+
+// Button Size
+.button-size( @font-size: @button-font-size, @height: @button-height, @padding-horizontal: @button-horizontal-padding, @border-width: @button-border-width) {
+    // Pre-calculated multiplier for padding
+    @multiplier-return: @height / @button-height;
+    font-size: @font-size;
+    height: @height;
+    line-height: ceil(@height - (@border-width * 2));
+    padding: 0 floor(@padding-horizontal * @multiplier-return);
+}

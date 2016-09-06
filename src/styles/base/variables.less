@@ -113,15 +113,18 @@
 //@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
 //@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
 
+@root-font-size:                16px;
+@base-line:                     24px;
+
 @base-font-family:              sans-serif;
-@base-font-size:                16px;
-@base-line-height:              24px;
+@base-font-size:                @root-font-size;
+@base-letter-spacing:           @letter-spacing-base;
 
 // Line-height (unitless)
 @line-height-tightest:          1.1;
 @line-height-tighter:           1.25;
 @line-height-tight:             1.375;
-@line-height-ratio:             (unit(@base-line-height / @base-font-size));
+@line-height-base:              (unit(@base-line / @root-font-size));
 @line-height-loose:             1.625;
 @line-height-looser:            1.75;
 @line-height-loosest:           2;
@@ -130,7 +133,7 @@
 @letter-spacing-tightest:       -0.05em;
 @letter-spacing-tighter:        -0.025em;
 @letter-spacing-tight:          -0.01em;
-@letter-spacing-normal:         0;
+@letter-spacing-base:           0;
 @letter-spacing-loose:          0.01em;
 @letter-spacing-looser:         0.025em;
 @letter-spacing-loosest:        0.05em;
@@ -138,7 +141,7 @@
 // Spacing
 // The base spacing unit is set equal to the "line-height" by default.
 // This helps create a consistent vertical rhythm throughout the framework.
-@spacing-base:                  @base-line-height;
+@spacing-base:                  @base-line;
 @spacing-half:                  round(@spacing-base / 2);
 @spacing-two-thirds:            round(@spacing-base / 3 * 2);
 @spacing-third:                 round(@spacing-base / 3);
@@ -149,7 +152,7 @@
 
 // Modular Scale
 // Produce font-size in default modular-scale steps. Used in headings etc.
-@modular-scale-base:            @base-font-size;
+@modular-scale-base:            unit(@base-font-size), unit(@base-line);
 @modular-scale-ratio:           @perfect-fourth;
 @modular-scale-px-output:       true;
 
@@ -166,11 +169,31 @@
 @heading-line-height:           @line-height-tightest;
 @heading-color:                 inherit;
 
+// Headings sizes
+@heading1-font-size:            32px;
+@heading2-font-size:            28px;
+@heading3-font-size:            24px;
+@heading4-font-size:            21px;
+@heading5-font-size:            18px;
+@heading6-font-size:            16px;
+
+@heading1-font-size-small:      28px;
+@heading2-font-size-small:      24px;
+@heading3-font-size-small:      21px;
+@heading4-font-size-small:      18px;
+@heading5-font-size-small:      16px;
+@heading6-font-size-small:      16px;
+
 //Display headings
-@display1-font-size:            40px;
-@display2-font-size:            @modular-scale-2;
+@display1-font-size:            42px;
+@display2-font-size:            32px;
 @display3-font-size:            24px;
-@display4-font-size:            @modular-scale-1;
+@display4-font-size:            21px;
+
+@display1-font-size-small:      32px;
+@display2-font-size-small:      24px;
+@display3-font-size-small:      21px;
+@display4-font-size-small:      18px;
 
 @display1-font-weight:          400;
 @display2-font-weight:          400;
@@ -179,11 +202,13 @@
 
 // Lead paragraph styles
 @lead-font-size:                21px;
-@lead-font-weight:              400;
+@lead-font-weight:              300;
+@lead-line-height:              @line-height-tight;
+@lead-color:                    @grey-600;
 
 // Emphasis
 @small-font-size:               75%;
-@mark-background-color:         @grey-50;
+@mark-background-color:         ##ffff00;
 @mark-padding:                  .2em;
 
 // Code
@@ -201,7 +226,8 @@
 @blockquote-padding:           @spacing-third @spacing-two-thirds;
 @blockquote-border-color:      @color-primary-light;
 @blockquote-border-width:      @spacing-sixth;
-@blockquote-font-family:        @base-font-family;
+@blockquote-font-family:       @base-font-family;
+@blockquote-font-style:        normal;
 @blockquote-font-size:         18px;
 @blockquote-cite-font-size:    14px;
 @blockquote-cite-color:        @grey-400;
@@ -209,6 +235,7 @@
 // Hr
 @hr-border-color:               @grey-100;
 @hr-border-width:               1px;
+@hr-margin:                     @spacing-base;
 
 
 // FORMS, INPUTS & BUTTONS
@@ -230,10 +257,11 @@
 
 // Inputs, textarea, select
 @input-color:                   @grey-800;
+@input-background:              @white;
+@input-hover-background:        @grey-25;
 @input-placeholder-color:       @grey-400;
 @input-placeholder-hover-color: @grey-500;
 @input-placeholder-focus-color: @grey-800;
-@input-background:              transparent;
 @input-border-color:            @grey-400;
 @input-border-color-hover:      @grey-500;
 @input-border-color-focus:      @grey-800;
@@ -287,12 +315,14 @@
 @button-font-family:            @base-font-family;
 @button-font-size:              @base-font-size;
 @button-font-weight:            400;
-@button-letter-spacing:         @letter-spacing-normal;
+@button-letter-spacing:         @letter-spacing-base;
 @button-text-transform:         none;
 @button-height:                 @input-height;
 @button-horizontal-padding:     16px;
 @button-border-width:           1px;
 @button-border-radius:          0;
+
+@button-disabled-opacity:       .5;
 
 @button-small-height:           32px;
 @button-small-font-size:        12px;
@@ -382,7 +412,7 @@
 @field-group-breakpoint:        @breakpoint-md;
 
 // Iconography
-@icon-font-size:                @base-font-size;
+@icon-font-size:                24px;
 
 // Border-radius
 @border-radius-small:           3px;
@@ -425,7 +455,6 @@
 
 // Base
 @use-main:                      true;
-@use-vertical-rhytmn:           true;
 @use-typography:                true;
 @use-horizontal-rule:           true;
 @use-lists:                     true;
@@ -445,7 +474,7 @@
 @use-animations:                true;
 @use-icons:                     true;
 @use-buttons:                   true;
-    @use-button-group:          true;
+@use-button-group:              true;
 @use-form-styles:               true;
     @use-input-modifiers:       true;
     @use-form-fields:           true;
@@ -456,7 +485,7 @@
     @use-grid-modifiers:        true;
 @use-table-styles:              true;
 @use-tooltips:                  true;
-@use-embed-wrap:                true;
+@use-media:                     true;
 @use-loader:                    true;
 @use-responsive-navigation:     true;
 
@@ -468,7 +497,7 @@
 @use-text-alignment:            true;
 @use-text-color:                true;
 @use-text-weight:               true;
-@use-tools:                     true;
+@use-utility-classes:           true;
 @use-visibility:                true;
 @use-vertical-align:            true;
 @use-widths:                    true;

@@ -27,15 +27,15 @@
         height: 100%;
     }
 
+    figure {
+        margin: 0 0 @spacing-base 0;
+    }
+
     // Set <img> elements as block-level inside <figure> elements.
     figure > img {
         display: block;
     }
 
-    // Inherit svg fill color from parent element that doesn't inherit by default.
-    svg {
-        fill: currentColor;
-    }
 }
 
 .embed-content(@use-embed-content);

@@ -3,14 +3,14 @@
 // -------------------------------------------------------
 .animations(@boolean) when (@boolean =true) {
 
-    .animated {
+    .is-animated {
         animation-duration: 1000ms;
         animation-fill-mode: both;
         transform: translateZ(0); // Improve performance on mobile/tablet devices
         will-change: transform, opacity;
     }
 
-    .animated--loop {
+    .is-animated--infinite {
         animation-iteration-count: infinite;
     }
 

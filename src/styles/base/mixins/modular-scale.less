@@ -7,9 +7,10 @@
 // Usage
 // .selector {
 //    .modular-scale(4);
-//    .modular-scale(3, 24);
+//    .modular-scale(3, 16, 24, @golden);
 // }
-// Modular-scale ratios
+
+// Ratio list
 @golden: 1.618;
 @minor-second: 1.067;
 @major-second: 1.125;
@@ -27,27 +28,63 @@
 @major-eleventh: 2.667;
 @major-twelfth: 3;
 @double-octave: 4;
-.modular-scale ( @ms-step, @ms-base: @modular-scale-base, @ms-ratio: @modular-scale-ratio, @ms-px-output: @modular-scale-px-output) {
-    // Calculate modular-scale value, and round it
-    @modular-scale-return: round((pow(@ms-ratio, @ms-step) * unit(@ms-base)), 0);
+
+
+.modular-scale(@pos: 0, @sizes: @modular-scale-base, @ratio: @modular-scale-ratio, @px-output: @modular-scale-px-output) {
+
+  @modular-scale-return: round(`
+    (function ms(numbers, pos, ratio) {
+      var v1 = +numbers[0] || +numbers;
+      var v2 = +numbers[1] || v1;
+      var value = v1;
+      var i;
+      var doubleStranded;
+
+      if (pos === 0) return value;
+
+      while (v2 > v1) v2 /= ratio;
+      while (v2 < v1) v2 *= ratio;
+
+      doubleStranded = v2 > v1;
+
+      if (pos > 0) {
+        i = 1;
+        while (i <= pos) {
+          if (doubleStranded && (v1 * ratio > v2)) {
+            value = v2;
+            v2 *= ratio;
+          } else {
+            v1 *= ratio;
+            value = v1;
+          }
+          i++;
+        }
+      } else {
+        i = -1;
+        v2 = v2 / ratio;
+        while (i >= pos) {
+          if (doubleStranded && (v1 / ratio < v2)) {
+            value = v2;
+            v2 /= ratio;
+          } else {
+            v1 /= ratio;
+            value = v1;
+          }
+          i--;
+        }
+      }
+
+      return value;
+    })(@{sizes}, @{pos}, @{ratio})
+  `, 0);
+
     // Convert to px-value
-    & when (@ms-px-output =true) {
+    & when (@px-output =true) {
         font-size: unit(@modular-scale-return, px);
     }
     // Convert to rem-value
-    & when (@ms-px-output =false) {
-        font-size: round(unit(@modular-scale-return / @base-font-size, rem), 4);
+    & when (@px-output =false) {
+        font-size: round(unit(@modular-scale-return / @root-font-size, rem), 4);
     }
+
 }
-
-@modular-scale-half: unit(round((pow(@modular-scale-ratio, .5) * unit(@modular-scale-base)), 0), px);
-@modular-scale-1: unit(round((pow(@modular-scale-ratio, 1) * unit(@modular-scale-base)), 0), px);
-@modular-scale-2: unit(round((pow(@modular-scale-ratio, 2) * unit(@modular-scale-base)), 0), px);
-@modular-scale-3: unit(round((pow(@modular-scale-ratio, 3) * unit(@modular-scale-base)), 0), px);
-@modular-scale-4: unit(round((pow(@modular-scale-ratio, 4) * unit(@modular-scale-base)), 0), px);
-@modular-scale-5: unit(round((pow(@modular-scale-ratio, 5) * unit(@modular-scale-base)), 0), px);
-@modular-scale-6: unit(round((pow(@modular-scale-ratio, 6) * unit(@modular-scale-base)), 0), px);
-@modular-scale-7: unit(round((pow(@modular-scale-ratio, 7) * unit(@modular-scale-base)), 0), px);
-@modular-scale-8: unit(round((pow(@modular-scale-ratio, 8) * unit(@modular-scale-base)), 0), px);
-@modular-scale-9: unit(round((pow(@modular-scale-ratio, 9) * unit(@modular-scale-base)), 0), px);
-

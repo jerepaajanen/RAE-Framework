@@ -6,15 +6,24 @@
 
 // Usage
 // .selector {
-//    .aspect-ratio(16, 9); // 16:9
+//    .aspect-ratio(16, 9); // Width : Height
 // }
 
-// Add ´position: absolute; top: 0; left: 0; width:100%;´
-// to child-element
+// Add '.aspect-ratio-container();' to parent element
+// Add '.aspect-ratio-child();' to child element
 
 .aspect-ratio(@width, @height) {
+    padding-top: (@height / @width * 100%);
+}
+
+// Aspect ratio Helper mixins
+
+.aspect-ratio-container() {
     position: relative;
     height: 0;
-    padding-bottom: (@height / @width * 100%);
     overflow: hidden;
+}
+
+.aspect-ratio-child() {
+    .cover();
 }

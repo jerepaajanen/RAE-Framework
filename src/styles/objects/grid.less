@@ -123,12 +123,12 @@
         }
 
         // Grid with tight gutters
-        .grid--tight {
-            margin-left: -1px;
-            margin-right: -1px;
+        .grid--quarter {
+            margin-left: (@grid-gutter-width / -8);
+            margin-right: (@grid-gutter-width / -8);
             > .grid__column {
-                padding-left: 1px;
-                padding-right: 1px;
+                padding-left: (@grid-gutter-width / 8);
+                padding-right: (@grid-gutter-width / 8);
             }
         }
 

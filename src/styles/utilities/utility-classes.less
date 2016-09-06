@@ -1,0 +1,47 @@
+//
+// Utilities – Utility Classes
+// -------------------------------------------------------
+.use-utility-classes(@boolean) when (@boolean =true) {
+
+    .u-center {
+        .center();
+    }
+    
+    .u-center-block {
+        .center-block();
+    }
+    
+    .u-cover {
+        .cover();
+    }
+
+    .u-full-height {
+        height: 100%;
+    }
+
+    .u-no-margin {
+        margin: 0 !important;
+    }
+
+    .u-no-padding {
+        padding: 0 !important;
+    }
+    
+    .u-disable-pointer-events {
+        pointer-events: none !important
+    }
+
+    .u-no-user-select {
+        user-select: none !important;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important
+    }
+
+    .u-prevent-scroll {
+        overflow: hidden !important;
+        height: 100% !important
+    }
+
+
+}
+
+.use-utility-classes(@use-utility-classes);

@@ -3,20 +3,35 @@
 // -------------------------------------------------------
 .lists(@boolean) when (@boolean = true) {
 
-    ul, ol {
-        margin-left: @spacing-base;
+    ul,
+    ol,
+    dl {
+        margin-bottom: @spacing-base;
+    }
+
+    ul,
+    ol {
         & & {
             margin-bottom: 0;
         }
-        nav & {
-            margin: 0;
-            list-style: none;
+        li {
+            margin-left: @spacing-base;
+        }
+    }
+
+    nav ul {
+        margin: 0;
+        li {
+            margin-left: 0;
         }
     }
 
     dl {
         dt {
             font-weight: bold;
+        }
+        dd {
+            margin: 0;
         }
     }
 

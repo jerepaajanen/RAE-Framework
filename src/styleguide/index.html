@@ -9,7 +9,9 @@
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
 
 
     <!-- Page styles -->
@@ -184,15 +186,6 @@
 
         .docs-content .example-icon {
             margin-bottom: 1rem;
-        }
-
-        .docs-content .example-icons .icon-name {
-            padding-left: 4px;
-        }
-
-        .docs-content.glyph-codepoint {
-            font-size: .75em;
-            color: #999;
         }
     </style>
 </head>
@@ -409,7 +402,7 @@
                             <div class="grid__column u-width-xs-auto"><span class="example-column"></span></div>
                             <div class="grid__column u-width-xs-auto"><span class="example-column"></span></div>
                         </div>
-                        <div class="grid grid--tight">
+                        <div class="grid grid--quarter">
                             <div class="grid__column u-width-xs-auto"><span class="example-column"></span></div>
                             <div class="grid__column u-width-xs-auto"><span class="example-column"></span></div>
                         </div>
@@ -421,7 +414,7 @@
                 </div>
                 <div class="example container"><pre><code>&lt;div class=&quot;grid grid--half&quot;&gt;...&lt;/div&gt;
 
-&lt;div class=&quot;grid grid--tight&quot;&gt;...&lt;/div&gt;
+&lt;div class=&quot;grid grid--quarter&quot;&gt;...&lt;/div&gt;
 
 &lt;div class=&quot;grid grid--collapse&quot;&gt;...&lt;/div&gt;</code></pre></div>
 
@@ -866,17 +859,15 @@
             </article>
             <article>
                 <header class="container">
-                    <h3 class="display-3">Responsive video</h3>
+                    <h3 class="display-3">Media</h3>
+                    <p>The media frame is for content loaded after the document is ready. It stops layouts from jumping when media is being loaded. Combine with <code>.is-loading</code>.</p>
                 </header>
                 <div class="example container">
-                    <!-- Default aspect-ratio is 16:9 -->
-                    <div class="embed-wrap">
-                        <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" allowfullscreen></iframe>
+                    <div class="media media--16-9 is-loading">
+                        <iframe src="xhttp://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;!-- Default aspect-ratio is 16:9 --&gt;
-
-&lt;div class=&quot;embed-wrap&quot;&gt;
+                <div class="example container"><pre><code>&lt;div class=&quot;media media--16-9&quot;&gt;
     &lt;iframe src=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;/div&gt;</code></pre></div>
             </article>
@@ -1192,14 +1183,14 @@
                     <h3 class="display-3">Button styles</h3>
                 </header>
                 <div class="example container">
-                    <button class="button button--default" type="button">Default Button</button>
+                    <button class="button" type="button">Default Button</button>
                     <button class="button button--primary" type="button">Primary button</button>
                     <button class="button button--secondary" type="button">Secondary button</button>
                     <button class="button button--link" type="button">Link button</button>
-                    <button class="button button--default is-loading" type="button">Loading button</button>
+                    <button class="button is-loading" type="button">Loading button</button>
                 </div>
                 <div class="example container">
-                    <pre><code>&lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Default button&lt;/button&gt;
+                    <pre><code>&lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Default button&lt;/button&gt;
 
 &lt;button class=&quot;button button--primary&quot; type=&quot;button &quot;&gt;Primary button&lt;/button&gt;
 
@@ -1207,40 +1198,40 @@
 
 &lt;button class=&quot;button button--link&quot; type=&quot;button &quot;&gt;Link button&lt;/button&gt;
 
-&lt;button class=&quot;button button--default is-loading&quot; type=&quot;button &quot;&gt;Loading button&lt;/button&gt;</code></pre></div>
+&lt;button class=&quot;button is-loading&quot; type=&quot;button &quot;&gt;Loading button&lt;/button&gt;</code></pre></div>
             </article>
             <article>
                 <header class="container">
                     <h3 class="display-3">Button states</h3>
                 </header>
                 <div class="example container">
-                    <button class="button button--default" type="button" disabled>Disabled</button>
+                    <button class="button" type="button" disabled>Disabled</button>
                     <button class="button button--primary" type="button" disabled>Disabled</button>
                     <button class="button button--secondary" type="button" disabled>Disabled</button>
                     <button class="button button--link" type="button" disabled>Link button</button>
                 </div>
                 <div class="example container">
-                    <pre><code>&lt;button class=&quot;button button--default&quot; type=&quot;button&quot; disabled&gt;Default button&lt;/button&gt;
+                    <pre><code>&lt;button class=&quot;button&quot; type=&quot;button&quot; disabled&gt;Default button&lt;/button&gt;
 
 &lt;button class=&quot;button button--primary is-disabled&quot; type=&quot;button &quot;&gt;Primary button&lt;/button&gt;</code></pre></div>
                 <div class="example container">
-                    <button class="button button--default is-active" type="button">Active</button>
+                    <button class="button is-active" type="button">Active</button>
                     <button class="button button--primary is-active" type="button">Active</button>
                     <button class="button button--secondary is-active" type="button">Active</button>
                     <button class="button button--link is-active" type="button">Link button</button>
                 </div>
                 <div class="example container">
-                    <pre><code>&lt;button class=&quot;button button--default is-active&quot; type=&quot;button&quot;&gt;Default button&lt;/button&gt;</code></pre></div>
+                    <pre><code>&lt;button class=&quot;button is-active&quot; type=&quot;button&quot;&gt;Default button&lt;/button&gt;</code></pre></div>
             </article>
             <article>
                 <header class="container">
                     <h3 class="display-3">Button options</h3>
                 </header>
                 <div class="example container">
-                    <button class="button button--default button--small" type="button">Small</button>
-                    <button class="button button--default" type="button">Normal</button>
-                    <button class="button button--default button--large" type="button">Large</button>
-                    <button class="button button--default button--huge" type="button">Huge</button>
+                    <button class="button button--small" type="button">Small</button>
+                    <button class="button" type="button">Normal</button>
+                    <button class="button button--large" type="button">Large</button>
+                    <button class="button button--huge" type="button">Huge</button>
                 </div>
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button button--small&quot; type=&quot;button&quot;&gt;Small&lt;/button&gt;
@@ -1251,13 +1242,13 @@
 
 &lt;button class=&quot;button button--huge&quot; type=&quot;button&quot;&gt;Huge&lt;/button&gt;</code></pre></div>
                 <div class="example container">
-                    <button class="button button--default button--block" type="button">Block</button>
+                    <button class="button button--block" type="button">Block</button>
                 </div>
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button button--block&quot; type=&quot;button&quot;&gt;Block&lt;/button&gt;</code></pre></div>
                 <div class="example container">
-                    <button class="button button--default button--pill" type="button">Pill</button>
-                    <button class="button button--default button--circle" type="button">Circle</button>
+                    <button class="button button--pill" type="button">Pill</button>
+                    <button class="button button--circle" type="button">Circle</button>
                 </div>
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button button--pill&quot; type=&quot;button&quot;&gt;Pill&lt;/button&gt;
@@ -1270,29 +1261,29 @@
                 </header>
                 <div class="example container">
                     <div class="button-group">
-                        <button class="button button--default" type="button">Button 1</button>
-                        <button class="button button--default" type="button">Button 2</button>
-                        <button class="button button--default" type="button">Button 3</button>
+                        <button class="button" type="button">Button 1</button>
+                        <button class="button" type="button">Button 2</button>
+                        <button class="button" type="button">Button 3</button>
                     </div>
                 </div>
                 <div class="example container">
                     <div class="button-group button-group--block">
-                        <button class="button button--default" type="button">Button 1</button>
-                        <button class="button button--default" type="button">Button 2</button>
-                        <button class="button button--default" type="button">Button 3</button>
+                        <button class="button" type="button">Button 1</button>
+                        <button class="button" type="button">Button 2</button>
+                        <button class="button" type="button">Button 3</button>
                     </div>
                 </div>
                 <div class="example container">
                     <pre><code>&lt;div class=&quot;button-group&quot;&gt;
-    &lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Button 1&lt;/button&gt;
-    &lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Button 2&lt;/button&gt;
-    &lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Button 3&lt;/button&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 1&lt;/button&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 2&lt;/button&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 3&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;button-group button-group--block&quot;&gt;
-    &lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Button 1&lt;/button&gt;
-    &lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Button 2&lt;/button&gt;
-    &lt;button class=&quot;button button--default&quot; type=&quot;button&quot;&gt;Button 3&lt;/button&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 1&lt;/button&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 2&lt;/button&gt;
+    &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 3&lt;/button&gt;
 &lt;/div&gt;</code></pre></div>
             </article>
         </section>
@@ -1535,30 +1526,30 @@
                         <div class="field">
                             <label>Normal checkboxes</label>
                             <div class="checkbox">
-                                <input id="checkbox1" type="checkbox" value="1" checked>
+                                <input id="checkbox1" type="checkbox" name="checkboxes" value="1" checked>
                                 <label for="checkbox1">Option one</label>
                             </div>
                             <div class="checkbox">
-                                <input id="checkbox2" type="checkbox" value="2">
+                                <input id="checkbox2" type="checkbox" name="checkboxes" value="2">
                                 <label for="checkbox2">Option two</label>
                             </div>
                             <div class="checkbox">
-                                <input id="checkbox3" type="checkbox" value="3" disabled>
+                                <input id="checkbox3" type="checkbox" name="checkboxes" value="3" disabled>
                                 <label for="checkbox3">Option three is disabled</label>
                             </div>
                         </div>
                         <div class="field">
                             <label>Inline checkboxes</label>
                             <div class="checkbox checkbox--inline">
-                                <input id="checkbox-inline1" type="checkbox" value="1" checked>
+                                <input id="checkbox-inline1" type="checkbox" name="checkboxes-inline" value="1" checked>
                                 <label for="checkbox-inline1">Option one</label>
                             </div>
                             <div class="checkbox checkbox--inline">
-                                <input id="checkbox-inline2" type="checkbox" value="2">
+                                <input id="checkbox-inline2" type="checkbox" name="checkboxes-inline" value="2">
                                 <label for="checkbox-inline2">Option two is a much longer option</label>
                             </div>
                             <div class="checkbox checkbox--inline">
-                                <input id="checkbox-inline3" type="checkbox" value="3" disabled>
+                                <input id="checkbox-inline3" type="checkbox" name="checkboxes-inline" value="3" disabled>
                                 <label for="checkbox-inline3">Option three is disabled</label>
                             </div>
                         </div>
@@ -1566,30 +1557,30 @@
                 </div>
                 <div class="example container"><pre><code>&lt;label&gt;Normal checkboxes&lt;/label&gt;
 &lt;div class=&quot;checkbox&quot;&gt;
-    &lt;input id=&quot;checkbox1&quot; type=&quot;checkbox&quot; value=&quot;1&quot; checked&gt;
+    &lt;input id=&quot;checkbox1&quot; type=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;1&quot; checked&gt;
     &lt;label for=&quot;checkbox1&quot;&gt;Option one&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;checkbox&quot;&gt;
-    &lt;input id=&quot;checkbox2&quot; type=&quot;checkbox&quot; value=&quot;2&quot;&gt;
+    &lt;input id=&quot;checkbox2&quot; type=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;2&quot;&gt;
     &lt;label for=&quot;checkbox2&quot;&gt;Option two&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;checkbox&quot;&gt;
-    &lt;input id=&quot;checkbox3&quot; type=&quot;checkbox&quot; value=&quot;3&quot; disabled&gt;
+    &lt;input id=&quot;checkbox3&quot; type=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;3&quot; disabled&gt;
     &lt;label for=&quot;checkbox3&quot;&gt;Option three is disabled&lt;/label&gt;
 &lt;/div&gt;
 
 
 &lt;label&gt;Inline checkboxes&lt;/label&gt;
 &lt;div class=&quot;checkbox checkbox--inline&quot;&gt;
-    &lt;input id=&quot;checkbox-inline1&quot; type=&quot;checkbox&quot; value=&quot;1&quot; checked&gt;
+    &lt;input id=&quot;checkbox-inline1&quot; type=&quot;checkbox&quot; name=&quot;checkboxes-inline&quot; value=&quot;1&quot; checked&gt;
     &lt;label for=&quot;checkbox-inline1&quot;&gt;Option one&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;checkbox checkbox--inline&quot;&gt;
-    &lt;input id=&quot;checkbox-inline2&quot; type=&quot;checkbox&quot; value=&quot;2&quot;&gt;
+    &lt;input id=&quot;checkbox-inline2&quot; type=&quot;checkbox&quot; name=&quot;checkboxes-inline&quot; value=&quot;2&quot;&gt;
     &lt;label for=&quot;checkbox-inline2&quot;&gt;Option two is a much longer option&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;checkbox checkbox--inline&quot;&gt;
-    &lt;input id=&quot;checkbox-inline3&quot; type=&quot;checkbox&quot; value=&quot;3&quot; disabled&gt;
+    &lt;input id=&quot;checkbox-inline3&quot; type=&quot;checkbox&quot; name=&quot;checkboxes-inline&quot; value=&quot;3&quot; disabled&gt;
     &lt;label for=&quot;checkbox-inline3&quot;&gt;Option three is disabled&lt;/label&gt;
 &lt;/div&gt;
 </code></pre></div>
@@ -1603,30 +1594,30 @@
                         <div class="field">
                             <label>Normal radios</label>
                             <div class="radio">
-                                <input id="radio1" type="radio" value="1" checked>
-                                <label for="demo-radio1">Option one</label>
+                                <input id="radio1" type="radio" name="radios" value="1" checked>
+                                <label for="radio1">Option one</label>
                             </div>
                             <div class="radio">
-                                <input id="radio2" type="radio" value="2">
+                                <input id="radio2" type="radio" name="radios" value="2">
                                 <label for="radio2">Option two is a much longer option</label>
                             </div>
                             <div class="radio">
-                                <input id="radio3" type="radio" value="3" disabled>
+                                <input id="radio3" type="radio" name="radios" value="3" disabled>
                                 <label for="radio3">Option three is disabled</label>
                             </div>
                         </div>
                         <div class="field">
                             <label>Inline radios</label>
                             <div class="radio radio--inline">
-                                <input id="radio-inline1" type="radio" value="1" checked>
+                                <input id="radio-inline1" type="radio" name="radios-inline" value="1" checked>
                                 <label for="radio-inline1">Option one</label>
                             </div>
                             <div class="radio radio--inline">
-                                <input id="radio-inline2" type="radio" value="2">
+                                <input id="radio-inline2" type="radio" name="radios-inline" value="2">
                                 <label for="radio-inline2">Option two is a much longer option</label>
                             </div>
                             <div class="radio radio--inline">
-                                <input id="radio-inline3" type="radio" value="3" disabled>
+                                <input id="radio-inline3" type="radio" name="radios-inline" value="3" disabled>
                                 <label for="radio-inline3">Option three is disabled</label>
                             </div>
                         </div>
@@ -1634,29 +1625,29 @@
                 </div>
                 <div class="example container"><pre><code>&lt;label&gt;Normal radios&lt;/label&gt;
 &lt;div class=&quot;radio&quot;&gt;
-    &lt;input id=&quot;radio1&quot; type=&quot;radio&quot; value=&quot;1&quot; checked&gt;
-    &lt;label for=&quot;demo-radio1&quot;&gt;Option one&lt;/label&gt;
+    &lt;input id=&quot;radio1&quot; type=&quot;radio&quot; name=&quot;radios&quot; value=&quot;1&quot; checked&gt;
+    &lt;label for=&quot;radio1&quot;&gt;Option one&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;radio&quot;&gt;
-    &lt;input id=&quot;radio2&quot; type=&quot;radio&quot; value=&quot;2&quot;&gt;
+    &lt;input id=&quot;radio2&quot; type=&quot;radio&quot; name=&quot;radios&quot; value=&quot;2&quot;&gt;
     &lt;label for=&quot;radio2&quot;&gt;Option two is a much longer option&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;radio&quot;&gt;
-    &lt;input id=&quot;radio3&quot; type=&quot;radio&quot; value=&quot;3&quot; disabled&gt;
+    &lt;input id=&quot;radio3&quot; type=&quot;radio&quot; name=&quot;radios&quot; value=&quot;3&quot; disabled&gt;
     &lt;label for=&quot;radio3&quot;&gt;Option three is disabled&lt;/label&gt;
 &lt;/div&gt;
 
 &lt;label&gt;Inline radios&lt;/label&gt;
 &lt;div class=&quot;radio radio--inline&quot;&gt;
-    &lt;input id=&quot;radio-inline1&quot; type=&quot;radio&quot; value=&quot;1&quot; checked&gt;
+    &lt;input id=&quot;radio-inline1&quot; type=&quot;radio&quot; name=&quot;radios-inline&quot; value=&quot;1&quot; checked&gt;
     &lt;label for=&quot;radio-inline1&quot;&gt;Option one&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;radio radio--inline&quot;&gt;
-    &lt;input id=&quot;radio-inline2&quot; type=&quot;radio&quot; value=&quot;2&quot;&gt;
+    &lt;input id=&quot;radio-inline2&quot; type=&quot;radio&quot; name=&quot;radios-inline&quot; value=&quot;2&quot;&gt;
     &lt;label for=&quot;radio-inline2&quot;&gt;Option two is a much longer option&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;radio radio--inline&quot;&gt;
-    &lt;input id=&quot;radio-inline3&quot; type=&quot;radio&quot; value=&quot;3&quot; disabled&gt;
+    &lt;input id=&quot;radio-inline3&quot; type=&quot;radio&quot; name=&quot;radios-inline&quot; value=&quot;3&quot; disabled&gt;
     &lt;label for=&quot;radio-inline3&quot;&gt;Option three is disabled&lt;/label&gt;
 &lt;/div&gt;</code></pre></div>
             </article>
@@ -1672,7 +1663,7 @@
                                 <label for="input-fieldset">Input</label>
                                 <input type="text" id="input-fieldset" placeholder="This is input">
                             </div>
-                            <button class="button button--default" type="submit">Submit</button>
+                            <button class="button" type="submit">Submit</button>
                         </fieldset>
                         <fieldset class="fieldset--bordered">
                             <legend>Fieldset with borders</legend>
@@ -1680,7 +1671,7 @@
                                 <label for="input-fieldset-bordered">Input</label>
                                 <input type="text" id="input-fieldset-bordered" placeholder="This is input">
                             </div>
-                            <button class="button button--default" type="submit">Submit</button>
+                            <button class="button" type="submit">Submit</button>
                         </fieldset>
                     </form>
                 </div>
@@ -1727,9 +1718,7 @@
                     <h4 class="display-4">Field-group</h4></header>
 
                 <div class="example container">
-
                     <form role="form" action="">
-
                         <div class="field-group">
                             <div class="field">
                                 <label for="input-fieldgroup1">Input</label>
@@ -1764,18 +1753,18 @@
                                 <input type="text" id="input-fieldgroup-half3" placeholder="Type something...">
                             </div>
                         </div>
-                        <div class="field-group field-group--tight">
+                        <div class="field-group field-group--quarter">
                             <div class="field">
-                                <label for="input-fieldgroup-tight1">Input</label>
-                                <input type="text" id="input-fieldgroup-tight1" placeholder="Type something...">
+                                <label for="input-fieldgroup-quarter1">Input</label>
+                                <input type="text" id="input-fieldgroup-quarter1" placeholder="Type something...">
                             </div>
                             <div class="field">
-                                <label for="input-fieldgroup-tight2">Input</label>
-                                <input type="text" id="input-fieldgroup-tight2" placeholder="Type something...">
+                                <label for="input-fieldgroup-quarter2">Input</label>
+                                <input type="text" id="input-fieldgroup-quarter2" placeholder="Type something...">
                             </div>
                             <div class="field">
-                                <label for="input-fieldgroup-tight3">Input</label>
-                                <input type="text" id="input-fieldgroup-tight3" placeholder="Type something...">
+                                <label for="input-fieldgroup-quarter3">Input</label>
+                                <input type="text" id="input-fieldgroup-quarter3" placeholder="Type something...">
                             </div>
                         </div>
                     </form>
@@ -1792,7 +1781,7 @@
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;field-group field-group--tight&quot;&gt;
+&lt;div class=&quot;field-group field-group--quarter&quot;&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
@@ -1920,17 +1909,70 @@
                 <h2 class="display-2">Icons</h2>
             </header>
             <article class="container">
-                <ul class="grid example-icons">
-                    <% _.each(glyphs, function(glyph) { %>
-                        <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-3of12 u-width-xl-2of12 u-text-center">
-                            <div class="example-icon">
-                                <i class="<%= className %> <%= className %>-<%= glyph.name %>"></i><span class="icon-name"><%= glyph.name %></span>
-                            </div>
-                            <code>.<%= className %>-<%= glyph.name %></code>
-                        </li>
-                        <% }); %>
+
+                <ul class="grid example-icons u-flex-bottom">
+                    <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
+                        <div class="example-icon">
+                            <svg class="icon">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
+                            </svg>
+                        </div>
+                        <code>.icon</code>
+                    </li>
+                </ul>
+                <ul class="grid example-icons u-flex-bottom">
+                    <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
+                        <div class="example-icon">
+                            <svg class="icon icon--small">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
+                            </svg>
+                        </div>
+                        <code>.icon icon--small</code>
+                    </li>
+
+                    <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
+                        <div class="example-icon">
+                            <svg class="icon icon--medium">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
+                            </svg>
+                        </div>
+                        <code>.icon icon--medium</code>
+                    </li>
+
+                    <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
+                        <div class="example-icon">
+                            <svg class="icon icon--large">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
+                            </svg>
+                        </div>
+                        <code>.icon icon--large</code>
+                    </li>
+
+                    <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
+                        <div class="example-icon">
+                            <svg class="icon icon--huge">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
+                            </svg>
+                        </div>
+                        <code>.icon icon--huge</code>
+                    </li>
+                </ul>
+
+                <ul class="grid example-icons u-flex-bottom">
+                    <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
+                        <div class="example-icon">
+                            <svg class="icon icon--align-to-text">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
+                            </svg> Icon align to text
+                        </div>
+                        <code>.icon icon--align-to-text</code>
+                    </li>
                 </ul>
             </article>
+            <div class="example container"><pre><code>&lt;svg class="icon"&gt;
+    &lt;use xlink:href="../images/sprite.svg#mark"&gt;&lt;/use&gt;
+&lt;/svg&gt;</code></pre></div>
+
         </section>
         <section class="animations">
             <header class="container">
@@ -2277,6 +2319,12 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td><code>.u-flex</code>
+                                    </td>
+                                    <td>Sets element to flex
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td><code>.u-show</code>
                                     </td>
                                     <td>Show element.</td>
@@ -2342,7 +2390,21 @@
                                     <td><code>.u-flex-center</code>
                                     </td>
                                     <td>
-                                        Set element content vertically center using flex-box.
+                                        Set element content horizontally center using flex-box.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.u-flex-left</code>
+                                    </td>
+                                    <td>
+                                        Set element content to left using flex-box.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.u-flex-right</code>
+                                    </td>
+                                    <td>
+                                        Set element content to right using flex-box.
                                     </td>
                                 </tr>
                                 <tr>
@@ -2356,21 +2418,7 @@
                                     <td><code>.u-flex-bottom</code>
                                     </td>
                                     <td>
-                                        Set element vertically bottom using flex-box.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>.u-center</code>
-                                    </td>
-                                    <td>
-                                        Set element horizontally center, inside parent element.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>.u-center-all</code>
-                                    </td>
-                                    <td>
-                                        Set element with unknown height and/or width vertically and horizontally center, inside parent element.
+                                        Set element content vertically bottom using flex-box.
                                     </td>
                                 </tr>
                                 <tr>
@@ -2488,6 +2536,41 @@
                                         <div class="u-color-info">Set text color to "Info".</div>
                                     </td>
                                 </tr>
+                                 <tr>
+                                    <td><code>.u-center</code>
+                                    </td>
+                                    <td>
+                                        Makes element center using .center(); mixin
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.u-center-block</code>
+                                    </td>
+                                    <td>
+                                        Makes element center block using .center-block(); mixin
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.u-full-height</code>
+                                    </td>
+                                    <td>
+                                        Sets height to 100%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.u-no-margin</code>
+                                    </td>
+                                    <td>
+                                        Removes margin
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.u-no-padding</code>
+                                    </td>
+                                    <td>
+                                        Removes padding
+                                    </td>
+                                </tr>
                                 <tr>
                                     <td><code>.u-disable-pointer-events</code>
                                     </td>
@@ -2550,9 +2633,30 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td><code>.center-block();</code>
+                                    </td>
+                                    <td>Center an element with left/right margin: auto; and display: block;
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.center();</code>
+                                    </td>
+                                    <td>Absolutely center an element from the top and left by 50% using translate(-50%, -50%); to center based on element size.
+
+
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td><code>.aspect-ratio(<strong>width,height</strong>);</code>
                                     </td>
-                                    <td>Maintain aspect ratio of an fluid element. Specify .aspect-ratio() to parent div. Add following parameters for child element: <code>position: absolute; top: 0; left: 0; width:100%;</code>
+                                    <td>Maintain aspect ratio of an fluid element. Use helper mixins to parent and child element: <code>.aspect-ratio-container();</code> <code>.aspect-ratio-child();</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code>.cover();</code>
+                                    </td>
+                                    <td>Absolutely cover parent element
                                     </td>
                                 </tr>
                                 <tr>

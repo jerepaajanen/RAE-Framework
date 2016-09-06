@@ -15,6 +15,7 @@ var
     sequence = require('run-sequence'),
     bowerFiles = require('main-bower-files'),
     browserSync = require('browser-sync'),
+    inject = require('gulp-inject-string'),
     ftp = require('vinyl-ftp'),
     pkg = require('./package.json'),
     config = require('./config.json'),
@@ -125,15 +126,21 @@ var runTimestamp = Math.round(Date.now()/1000);
 gulp.task('default', ['clean'], function () {
 
     if (isProduction) {
+
+        console.log($.util.colors.green('Production mode'));
+
         gulp.start('default:production');
     } else {
+
+        console.log($.util.colors.green('Development mode'));
+
         gulp.start('default:development');
     }
 
 });
 
 gulp.task('default:development', function () {
-    sequence(['markup:all', 'fonts', 'styles', 'scripts', 'images', 'copy'], function () {
+    sequence(['markup:all', 'styles', 'scripts', 'images', 'sprites', 'copy'], function () {
         if (isServe && isDeploy) {
             gulp.start(['serve', 'watch', 'deploy:watch']);
         } else if (isDeploy) {
@@ -146,7 +153,7 @@ gulp.task('default:development', function () {
 });
 
 gulp.task('default:production', function () {
-    sequence(['images'], ['markup', 'styles', 'scripts', 'fonts', 'copy'], function () {
+    sequence(['images'], ['markup', 'styles', 'scripts', 'sprites', 'copy'], function () {
         console.log($.util.colors.green('✔ Build done!'));
         if (isServe) {
             gulp.start(['serve']);
@@ -162,7 +169,7 @@ gulp.task('default:production', function () {
 // -------------------------------------------------------
 
 var markupProcess = function (isNotPartial) {
-    gulp.src(paths.src + '**/*.html', {
+    gulp.src(paths.src + '**/*.{html,php}', {
         base: paths.src
     })
         //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
@@ -175,11 +182,13 @@ var markupProcess = function (isNotPartial) {
                     author: config.siteAuthor,
                     title: config.siteTitle,
                     description: config.siteDescription,
+                    keywords: config.siteKeywords,
                     url: config.siteURL,
                     image: config.shareImageURL,
                     twitterHandle: config.twitterHandle
                 }
-            }
+            },
+            extension: 'html'
         }))
         .pipe($.if(isProduction, $.htmlclean()))
         .pipe(gulp.dest(paths.dest))
@@ -309,72 +318,6 @@ gulp.task('scripts:main', ['scripts:hint'], function () {
 });
 
 
-// FONTS
-// -------------------------------------------------------
-
-gulp.task('fonts', function () {
-    sequence(['fonts:icons'], ['fonts:convert']);
-});
-
-
-gulp.task('fonts:convert', function () {
-    return gulp.src(paths.fonts.src + '**/*.ttf')
-        .pipe($.newer(paths.fonts.dest))
-        .pipe($.ttf2woff({
-            clone: true
-        }))
-        .pipe($.ttf2woff2({
-            clone: true
-        }))
-        .pipe(gulp.dest(paths.fonts.dest));
-});
-
-
-// Fonts : Icons
-gulp.task('fonts:icons', function () {
-    return gulp.src(paths.images.src + 'icons/**/*.svg')
-        .pipe($.newer(paths.images.dest + 'icons/**/*.svg'))
-        .pipe($.iconfont({
-            fontName: config.iconfont.fontName,
-            prependUnicode: false,
-            autohint: config.iconfont.autohint,
-            timestamp: runTimestamp,
-            formats: ['ttf'],
-            normalize: true,
-            fontHeight: (config.iconfont.gridSize * config.iconfont.gridSize * 2),
-            centerHorizontally: false,
-            descent: ((config.iconfont.gridSize * config.iconfont.gridSize * 2) / config.iconfont.baselineShift)
-        }))
-        .on('glyphs', function (glyphs) {
-            var options = {
-                glyphs: glyphs,
-                fontName: config.iconfont.fontName,
-                fontPath: '../fonts/',
-                className: config.iconfont.className
-            };
-
-            // Build Less-files
-            gulp.src(paths.styles.src + 'objects/icons-template.less')
-                .pipe($.consolidate('lodash', options))
-                .pipe($.rename({
-                    basename: 'icons'
-                }))
-                .pipe(gulp.dest(paths.styles.src + 'objects'));
-
-
-            // Build html-file for documentation
-            gulp.src(paths.src + 'styleguide/index.html')
-
-                .pipe($.consolidate('lodash', options))
-                .pipe(gulp.dest(paths.dest + 'styleguide/'));
-        })
-        .pipe(gulp.dest(paths.fonts.src))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
-
-
 // IMAGES
 // -------------------------------------------------------
 
@@ -401,7 +344,16 @@ gulp.task('images:optimize', function () {
 
 
 // Images : Favicons
-gulp.task('images:favicons', function () {
+gulp.task('images:favicons', ['images:favicons-generate'], function () {
+
+    if (config.wordpressTheme) {
+        return gulp.src(paths.src + 'partials/favicons.html')
+            .pipe(inject.beforeEach(config.faviconsPath, '<?php echo get_template_directory_uri(); ?>/'))
+            .pipe(gulp.dest(paths.src + 'partials/'));
+    }
+});
+
+gulp.task('images:favicons-generate', function () {
 
     fs.writeFileSync(paths.src + 'partials/favicons.html', '');
 
@@ -424,20 +376,61 @@ gulp.task('images:favicons', function () {
 
         .pipe(gulp.dest(paths.images.dest + 'favicons'));
 
+    if (config.wordpressTheme) {
+        return gulp.src(paths.src + 'partials/favicons.html')
+            .pipe(inject.beforeEach(config.faviconsPath, '<?php echo get_template_directory_uri(); ?>/'))
+            .pipe(gulp.dest(paths.src + 'partials/'));
+    }
+
+
 });
+
+
+// SPRITES (svg-icons)
+// -------------------------------------------------------
+
+var spritesConfig = {
+    mode: {
+        symbol: {
+            dest: '.',
+            sprite: 'sprite.svg',
+            example: {
+                dest: '../styleguide/sprites.html'
+            }
+        }
+    },
+    shape: {
+        dest: 'icons/'
+    },
+    svg: {
+        xmlDeclaration: false,
+        doctypeDeclaration: false
+    }
+};
+
+
+gulp.task('sprites', function() {
+    return gulp.src(paths.images.src + 'icons/**/*.svg')
+        .pipe($.svgSprite(spritesConfig))
+        .pipe(gulp.dest(paths.images.dest))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
 
 
 // COPY
 // -------------------------------------------------------
 
-gulp.task('copy', ['copy:root', 'copy:assets']);
+gulp.task('copy', ['copy:root', 'copy:assets', 'copy:fonts']);
 
 // Copy : Root
 gulp.task('copy:root', function () {
     return gulp.src([
         paths.src + '**/*',
         'node_modules/apache-server-configs/dist/.htaccess',
-        '!' + paths.src + '**/*.html',
+        '!' + paths.src + '**/*.{html,php}',
         '!' + paths.images.src + '**/*',
         '!' + paths.styles.src + '**/*',
         '!' + paths.scripts.src + '**/*',
@@ -452,6 +445,12 @@ gulp.task('copy:root', function () {
 gulp.task('copy:assets', function () {
     return gulp.src(paths.assets.src + '**/*')
         .pipe(gulp.dest(paths.assets.dest));
+});
+
+// Copy : Fonts
+gulp.task('copy:fonts', function () {
+    return gulp.src(paths.fonts.src + '**/*.{ttf,woff,woff2}')
+        .pipe(gulp.dest(paths.fonts.dest));
 });
 
 
@@ -507,7 +506,7 @@ gulp.task('watch', function () {
 
 
     // Watch Html-files
-    gulp.watch([paths.src + '**/*.html',
+    gulp.watch([paths.src + '**/*.{html,php}',
         '!' + paths.src + 'partials/**/*'], ['markup']);
     gulp.watch(paths.src + 'partials/**/*', ['markup:all']);
 
@@ -523,9 +522,9 @@ gulp.task('watch', function () {
         paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
         '!' + paths.images.src + 'icons/**/*'], ['images:optimize']);
 
-    // Watch Fonts
-    gulp.watch(paths.fonts.src + '**/*', ['fonts:convert']);
-    gulp.watch(paths.images.src + 'icons/**/*.svg', ['fonts']);
+    // Watch Icons
+    gulp.watch(paths.images.src + 'icons/**/*.svg', ['sprites']);
+
 });
 
 
@@ -541,7 +540,8 @@ gulp.task('serve', function () {
             baseDir: paths.dest
         },
         logConnections: true,
-        logPrefix: 'RAE'
+        logPrefix: 'RAE',
+        notify: false
     });
 
 });

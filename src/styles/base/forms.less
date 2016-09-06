@@ -4,6 +4,7 @@
 .use-forms(@boolean) when (@boolean = true) {
 
     fieldset {
+        margin: 0 0 @spacing-base 0;
         &:last-child {
             margin-bottom: 0; // remove unnecessary margin from last fieldset
         }
@@ -40,10 +41,6 @@
         width: 100%; // Let's make 'em responsive!
     }
 
-    textarea {
-        resize: vertical;
-    }
-
     input[type="checkbox"],
     input[type="radio"] {
         + label {
@@ -71,10 +68,6 @@
             outline: 0;
         }
     }
-
-    // Input placeholder color
-
-    .input-placeholder();
 
 }
 .use-forms(@use-forms);

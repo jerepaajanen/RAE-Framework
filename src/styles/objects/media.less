@@ -1,0 +1,52 @@
+//
+// Media wrapper
+// -------------------------------------------------------
+.media(@boolean) when (@boolean =true) {
+
+    // Usage
+    // <element class="media media--16-9">
+    //    <embed>...</embed>
+    // </element>
+
+    .media {
+        background: @grey-25;
+        .aspect-ratio-container();
+        iframe,
+        object,
+        embed,
+        video {
+            display: block;
+            .cover();
+        }
+    }
+    // Media Ratios
+    .media-1-2 {
+        .aspect-ratio(1, 2);
+    }
+    .media--9-16 {
+        .aspect-ratio(9, 16);
+    }
+    .media--2-3 {
+        .aspect-ratio(2, 3);
+    }
+    .media--3-4 {
+        .aspect-ratio(3, 4);
+    }
+    .media--1 {
+        .aspect-ratio(1, 1);
+    }
+    .media--4-3 {
+        .aspect-ratio(4, 3);
+    }
+    .media--3-2 {
+        .aspect-ratio(3, 2);
+    }
+    .media--16-9 {
+        .aspect-ratio(16, 9);
+    }
+    .media--2-1 {
+        .aspect-ratio(2, 1);
+    }
+}
+
+.media(@use-media);

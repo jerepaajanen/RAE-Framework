@@ -28,11 +28,13 @@
                 $(menu).hide().toggleClass('is-open').slideDown(200, function () {
                     $(this).removeAttr('style');
                 });
+                $(':root').toggleClass('nav-open');
             } else {
                 $(menu).stop(true, true).slideUp(200, function () {
                     $('.' + navToggleClass).toggleClass('is-active is-inactive');
                     $(this).toggleClass('is-open').removeAttr('style');
                 });
+                $(':root').toggleClass('nav-open');
             }
             return false;
         });

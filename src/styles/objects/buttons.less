@@ -4,35 +4,13 @@
 .use-buttons(@boolean) when (@boolean =true) {
 
     .button {
+        .button();
         .button-size();
-        font-family: @button-font-family;
-        border: @button-border-width solid transparent;
-        border-radius: @button-border-radius;
-        cursor: pointer;
-        display: inline-block;
-        font-weight: @button-font-weight;
-        letter-spacing: @button-letter-spacing;
-        outline: 0;
-        position: relative;
-        text-align: center;
-        text-decoration: none;
-        text-transform: @button-text-transform;
-        transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
-        user-drag: none;
-        user-select: none;
-        vertical-align: middle;
-        white-space: nowrap; //prevent line-break
-        -webkit-touch-callout: none;
-        &:hover,
-        &:focus {
-            text-decoration: none; // strip styling from <a>.
-        }
-        &:active,
-        &.is-active {}
+        .button-theme();
         &[disabled],
         &:disabled,
         fieldset[disabled] .button {
-            opacity: .5;
+            opacity: @button-disabled-opacity;
             cursor: not-allowed;
             pointer-events: none;
             box-shadow: none;
@@ -43,28 +21,12 @@
     //
     // Button modifiers
 
-    // Buttons sizes
-
-    .button--small {
-        .button-size(@button-small-font-size, @button-small-height);
-    }
-
-    .button--large {
-        .button-size(@button-large-font-size, @button-large-height);
-    }
-
-    .button--huge {
-        .button-size(@button-huge-font-size, @button-huge-height);
-    }
-
     .button--block {
         width: 100%;
         padding-left: 0;
         padding-right: 0;
         white-space: normal !important; // line-break for mobile
     }
-
-    // Button variations
 
     .button--pill {
         border-radius: 999em;
@@ -95,163 +57,46 @@
         vertical-align: baseline;
         white-space: normal;
         &,
-        &:hover,
-        &:focus,
+        &:not(:disabled):hover,
+        &:not(:disabled):focus,
         &:active,
         &.is-active {
-            background-color: transparent;
+            background: transparent;
             border-color: transparent;
         }
-        &:hover,
-        &:focus,
+        &:not(:disabled):hover,
+        &:not(:disabled):focus,
         &:active,
         &.is-active {
             color: @button-link-active-color;
         }
     }
 
-    .button--default {
-        background-color: @button-default-bg;
-        border-color: @button-default-border;
-        color: @button-default-color;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            background-color: @button-default-active-bg;
-            border-color: @button-default-active-border;
-            color: @button-default-active-color;
-        }
+    // Buttons sizes
+
+    .button--small {
+        .button-size( @button-small-font-size, @button-small-height);
     }
 
+    .button--large {
+        .button-size( @button-large-font-size, @button-large-height);
+    }
+
+    .button--huge {
+        .button-size( @button-huge-font-size, @button-huge-height);
+    }
+
+    // Button styles
+
     .button--primary {
-        // styles here
-        background-color: @button-primary-bg;
-        border-color: @button-primary-border;
-        color: @button-primary-color;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            // styles here
-            background-color: @button-primary-active-bg;
-            border-color: @button-primary-active-border;
-            color: @button-primary-active-color;
-        }
+        .button-theme( @button-primary-color, @button-primary-bg, @button-primary-border, @button-primary-active-color, @button-primary-active-bg, @button-primary-active-border);
     }
 
     .button--secondary {
-        // styles here
-        background-color: @button-secondary-bg;
-        border-color: @button-secondary-border;
-        color: @button-secondary-color;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            // styles here
-            background-color: @button-secondary-active-bg;
-            border-color: @button-secondary-active-border;
-            color: @button-secondary-active-color;
-        }
+        .button-theme( @button-secondary-color, @button-secondary-bg, @button-secondary-border, @button-secondary-active-color, @button-secondary-active-bg, @button-secondary-active-border);
     }
 
-    .button--success {
-        // styles here
-        //background-color: @black;
-        //border-color: @black;
-        //color: @white;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            // styles here
-            //background-color: @black;
-            //border-color: @black;
-            //color: @white;
-        }
-    }
 
-    .button--warning {
-        // styles here
-        //background-color: @black;
-        //border-color: @black;
-        //color: @white;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            // styles here
-            //background-color: @black;
-            //border-color: @black;
-            //color: @white;
-        }
-    }
-
-    .button--danger {
-        // styles here
-        //background-color: @black;
-        //border-color: @black;
-        //color: @white;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            // styles here
-            //background-color: @black;
-            //border-color: @black;
-            //color: @white;
-        }
-    }
-
-    .button--info {
-        // styles here
-        //background-color: @black;
-        //border-color: @black;
-        //color: @white;
-        &:hover,
-        &:focus,
-        &:active,
-        &.is-active {
-            // styles here
-            //background-color: @black;
-            //border-color: @black;
-            //color: @white;
-        }
-    }
-
-    //
-    // Button-group
-    .use-button-group(@boolean) when (@boolean =true) {
-        .button-group {
-            display: inline-flex;
-            flex-wrap: wrap;
-            .button {
-                flex: 1 0 auto;
-                &:first-child:not(:last-child) {
-                    border-top-right-radius: 0;
-                    border-bottom-right-radius: 0;
-                }
-                &:not(:first-child):not(:last-child) {
-                    margin-left: -@button-border-width;
-                    border-radius: 0;
-                }
-                &:last-child:not(:first-child) {
-                    margin-left: -@button-border-width;
-                    border-top-left-radius: 0;
-                    border-bottom-left-radius: 0;
-                }
-                &:hover,
-                &:focus {
-                    z-index: 2; // rise hovered button above others
-                }
-            }
-            &.button-group--block {
-                display: flex;
-            }
-        }
-    }
-    .use-button-group(@use-button-group);
 }
 
 .use-buttons(@use-buttons);

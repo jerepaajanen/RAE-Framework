@@ -48,6 +48,7 @@
         transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
         &:hover {
             border-color: @input-border-color-hover;
+            background: @input-hover-background;
         }
         &:focus {
             border-color: @input-border-color-focus;
@@ -56,8 +57,8 @@
     textarea,
     select[multiple] {
         height: auto;
-        padding-top: ((@input-height - (@input-font-size * @line-height-ratio)) / 2);
-        padding-bottom: ((@input-height - (@input-font-size * @line-height-ratio)) / 2);
+        padding-top: ((@input-height - (@input-font-size * @line-height-base)) / 2);
+        padding-bottom: ((@input-height - (@input-font-size * @line-height-base)) / 2);
     }
     // Range input
     input[type=range] {
@@ -143,11 +144,19 @@
     // Select
     select:not([multiple]) {
         cursor: pointer;
-        background-image: data-uri('../images/form/select.svg');
+        background-image: url('../images/icons/select.svg');
         background-position: right center;
         background-repeat: no-repeat;
         background-size: contain;
         padding-right: 2.4em;
+        -moz-appearance: none; // Firefox 36+
+        -webkit-appearance: none; // Chrome 41+
+        &::-ms-expand {
+            display: none; // Internet Explorer 11+
+        }
+        &::-ms-value {
+            color: currentColor; // Internet Explorer 11+
+        }
         &:focus:-moz-focusring {
             // Remove ugly focus in FF
             color: transparent;
@@ -155,9 +164,10 @@
         }
         &:hover,
         &:focus {
-            background-image: data-uri('../images/form/select_hover.svg');
+            background-image: url('../images/icons/select_hover.svg');
         }
     }
+
     // Radios and checkboxes
     .radio,
     .checkbox {
@@ -283,9 +293,8 @@
         input.input--underlined,
         select.select--underlined,
         textarea.textarea--underlined {
-            border: 0;
+            border-width: 0 0 @input-border-width 0;
             border-radius: 0;
-            border-bottom: @input-border-width solid @input-border-color;
             padding-left: 0;
             padding-right: 0;
         }
@@ -317,96 +326,12 @@
         }
     }
     .use-input-modifiers(@use-input-modifiers);
-    // Fields
-    .use-form-fields(@boolean) when (@boolean =true) {
-        // Field
-        .field {
-            display: block;
-            clear: both;
-            margin: 0 0 @form-field-margin 0;
-            &:last-child {
-                margin-bottom: 0;
-            }
-            > label {
-                margin: 0 0 @label-vertical-margin 0;
-            }
-        }
 
-        .field--inline {
-            display: flex;
-            align-items: center;
-            label {
-                margin: 0 @label-horizontal-margin 0 0;
-            }
-            input,
-            select {
-                flex-shrink: 1;
-            }
-        }
+    // Input placeholder color
 
-        // Field-groups, only for larger screens
-        .field-group {
-            margin-bottom: @spacing-base;
-            &:last-child,
-            &:last-child .field:last-child {
-                margin-bottom: 0;
-            }
-            @media (min-width: (@field-group-breakpoint)) {
-                display: flex;
-                align-items: center;
-                > .field {
-                    padding-left: (@grid-gutter-width / 2);
-                    padding-right: (@grid-gutter-width / 2);
-                    flex: 1 1 auto; // claim available space
-                    &:first-child {
-                        padding-left: 0;
-                    }
-                    &:last-child {
-                        padding-right: 0;
-                    }
-                }
-                .field {
-                    margin-bottom: 0; // reset margins
-                }
-            }
-        }
+    .input-placeholder(@input-placeholder-color, @input-placeholder-hover-color, @input-placeholder-focus-color);
 
-        .field-group--half {
-            @media (min-width: (@field-group-breakpoint)) {
-                .field {
-                    padding-left: (@grid-gutter-width / 4);
-                    padding-right: (@grid-gutter-width / 4);
-                }
-            }
-        }
-        .field-group--tight {
-            @media (min-width: (@field-group-breakpoint)) {
-                .field {
-                    padding-left: 1px;
-                    padding-right: 1px;
-                }
-            }
-        }
-        .field-group--inline {
-            @media (min-width: (@field-group-breakpoint)) {
-                > .field {
-                    display: flex;
-                    align-items: center;
 
-                    label {
-                        margin: 0 @label-horizontal-margin 0 0;
-                        flex-shrink: 0; // fix for iOS
-
-                    }
-                    input,
-                    select {
-                        flex-shrink: 1; // fix for IE10
-                    }
-                }
-            }
-        }
-    }
-    .use-form-fields(@use-form-fields);
 }
 
 .use-form-styles(@use-form-styles);
