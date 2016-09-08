@@ -158,32 +158,50 @@
 
     blockquote,
     q {
-        font-style: @blockquote-font-style;
+        font-style: @blockquote-quote-font-style;
         quotes: "\201C" "\201D" "\2018" "\2019";
     }
 
     blockquote {
-        font-family: @blockquote-font-family;
-        font-size: @blockquote-font-size;
+        font-family: @blockquote-quote-font-family;
+        font-size: @blockquote-quote-font-size;
+        font-weight: @blockquote-quote-font-weight;
         padding: @blockquote-padding;
-        border-left: @blockquote-border-width solid @blockquote-border-color;
-            margin-bottom: @spacing-base;
+        margin-bottom: @spacing-base;
+        line-height: @blockquote-quote-line-height;
+
+        // Blockquote Quote
         p {
-            margin: 0 0 @spacing-half 0;
+            margin-bottom: 0;
+            &:not(:only-child) {
+                margin-bottom: @blockquote-quote-margin;
+            }
         }
+
+        // Blockquote Cite
         cite {
             color: @blockquote-cite-color;
             display: inline-block;
             font-family: @base-font-family;
             font-size: @blockquote-cite-font-size;
             font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+
             &:before {
                 content:"\2014 \0020"; // add – line before cite
             }
         }
     }
 
-    // Code and pre elements
+    // Pullquote
+
+    .pullquote {
+        padding: @pullquote-padding;
+        border-left: @pullquote-border-width solid @pullquote-border-color;
+    }
+
+    // Code and Pre Elements
 
     code,
     kbd,

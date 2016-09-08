@@ -223,14 +223,25 @@
 @pre-padding:                   @spacing-half @spacing-two-thirds;
 
 // Blockquote
-@blockquote-padding:           @spacing-third @spacing-two-thirds;
-@blockquote-border-color:      @color-primary-light;
-@blockquote-border-width:      @spacing-sixth;
-@blockquote-font-family:       @base-font-family;
-@blockquote-font-style:        normal;
-@blockquote-font-size:         18px;
-@blockquote-cite-font-size:    14px;
-@blockquote-cite-color:        @grey-400;
+@blockquote-padding:            @spacing-third 0;
+@blockquote-quote-font-family:  @base-font-family;
+@blockquote-quote-font-style:   normal;
+@blockquote-quote-font-size:    18px;
+@blockquote-quote-font-weight:  300;
+@blockquote-quote-line-height:  @line-height-base;
+@blockquote-quote-margin:       @spacing-half;
+@blockquote-cite-font-size:     14px;
+@blockquote-cite-color:         @grey-400;
+
+// Pullquote
+@pullquote-padding:              @spacing-third @spacing-two-thirds;
+@pullquote-border-color:         @color-secondary;
+@pullquote-border-width:         4px;
+@pullquote-font-family:          @base-font-family;
+@pullquote-font-style:           normal;
+@pullquote-font-size:            18px;
+@pullquote-cite-font-size:       14px;
+@pullquote-cite-color:           @grey-400;
 
 // Hr
 @hr-border-color:               @grey-100;
