@@ -1,0 +1,30 @@
+//
+// Form Messages
+// -------------------------------------------------------
+.use-form-messages(@boolean) when (@boolean =true) {
+
+    .form-message {
+        margin: @form-message-vertical-margin 0;
+        font-family: @form-message-font-family;
+        font-weight: @form-message-font-weight;
+        font-size: @form-message-font-size;
+        color: @form-message-color;
+        line-height: @form-message-line-height;
+
+        // Success
+        &--success {
+            color: @color-success;
+        }
+        // Error
+        &--error {
+            color: @color-error;
+        }
+
+        // Warning
+        &--warning {
+            color: @color-warning;
+        }
+    }
+}
+
+.use-form-messages(@use-form-messages);

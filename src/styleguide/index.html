@@ -1324,7 +1324,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><cod>&lt;form role=&quot;form&quot; action=&quot;&quot;&gt;
+                <div class="example container"><pre><code>&lt;form role=&quot;form&quot; action=&quot;&quot;&gt;
     &lt;div class=&quot;field&quot;&gt;
         &lt;label for=&quot;input&quot;&gt;Input&lt;/label&gt;
         &lt;input type=&quot;text&quot; id=&quot;input&quot; placeholder=&quot;Type something...&quot;&gt;
@@ -1341,7 +1341,7 @@
         &lt;label for=&quot;textarea&quot;&gt;Textarea&lt;/label&gt;
         &lt;textarea id=&quot;textarea&quot; placeholder=&quot;Enter your message here...&quot; rows=&quot;6&quot;&gt;&lt;/textarea&gt;
     &lt;/div&gt;
-&lt;/form&gt;</cod></pre></div>
+&lt;/form&gt;</code></pre></div>
             </article>
             <article>
                 <header class="container">
@@ -1820,6 +1820,46 @@
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;button&gt;...&lt;/button&gt;
 &lt;/div&gt;</code></pre></div>
+            </article>
+            <article>
+                <header class="container">
+                    <h3 class="display-3">Form messages</h3>
+                </header>
+                <div class="example container">
+                    <form role="form" action="">
+
+                        <div class="field">
+                            <label for="input-message">Input</label>
+                            <input type="text" id="input-message" placeholder="Type something...">
+                            <p class="form-message">Form message</p>
+                        </div>
+                        <div class="field">
+                            <label for="input-message-success">Input</label>
+                            <input type="text" id="input-message-success" placeholder="Type something...">
+                            <p class="form-message form-message--success">Form message success</p>
+                        </div>
+                        <div class="field">
+                            <label for="input-message-error">Input</label>
+                            <input type="text" id="input-message-error" placeholder="Type something...">
+                            <p class="form-message form-message--error">Form message error</p>
+                        </div>
+                        <div class="field">
+                            <label for="input-message-warning">Input</label>
+                            <input type="text" id="input-message-warning" placeholder="Type something...">
+                            <p class="form-message form-message--warning">Form message warning</p>
+                        </div>
+
+
+
+                    </form>
+                </div>
+                <div class="example container"><pre><code>&lt;p class=&quot;form-message&quot;&gt;...&lt;/p&gt;
+
+&lt;p class=&quot;form-message form-message--success&quot;&gt;...&lt;/p&gt;
+
+&lt;p class=&quot;form-message form-message--error&quot;&gt;...&lt;/p&gt;
+
+&lt;p class=&quot;form-message form-message--warning&quot;&gt;...&lt;/p&gt;</code></pre></div>
             </article>
         </section>
 
@@ -2531,17 +2571,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><code>.u-color-danger</code>
+                                    <td><code>.u-color-error</code>
                                     </td>
                                     <td>
-                                        <div class="u-color-danger">Set text color to "Danger".</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><code>.u-color-info</code>
-                                    </td>
-                                    <td>
-                                        <div class="u-color-info">Set text color to "Info".</div>
+                                        <div class="u-color-error">Set text color to "Error".</div>
                                     </td>
                                 </tr>
                                  <tr>

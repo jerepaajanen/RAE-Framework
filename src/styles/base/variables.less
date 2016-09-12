@@ -68,9 +68,8 @@
 
 // UI colors
 @color-success:                 #5cb85c;
+@color-error:                   #d9534f;
 @color-warning:                 #ed9c28;
-@color-danger:                  #d9534f;
-@color-info:                    #5bc0de;
 
 // Social Media colors
 @color-behance:                 #1769ff;
@@ -254,13 +253,21 @@
 
 @form-field-margin:             @spacing-base;
 
+// Form messages
+@form-message-vertical-margin:  @spacing-half;
+@form-message-font-family:      @base-font-family;
+@form-message-font-weight:      400;
+@form-message-font-size:        14px;
+@form-message-color:            @grey-600;
+@form-message-line-height:      1;
+
 // Fieldset with border
 @fieldset-border-width:         1px;
 @fieldset-border-style:         solid;
 @fieldset-border-color:         @grey-100;
 
 // Label & legend
-@label-vertical-margin:         @spacing-sixth;
+@label-vertical-margin:         @spacing-fourth;
 @label-horizontal-margin:       @spacing-half;
 @label-font-size:               inherit;
 @label-color:                   @base-color;
@@ -488,7 +495,8 @@
 @use-button-group:              true;
 @use-form-styles:               true;
     @use-input-modifiers:       true;
-    @use-form-fields:           true;
+@use-form-fields:               true;
+@use-form-messages:             true;
 @use-grid-classes:              true;
     @use-container:             true;
     @use-grid:                  true;
