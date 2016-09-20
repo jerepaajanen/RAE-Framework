@@ -11,19 +11,14 @@
 
     ul,
     ol {
+        margin-left: @spacing-base;
         & & {
             margin-bottom: 0;
-        }
-        li {
-            margin-left: @spacing-base;
         }
     }
 
     nav ul {
         margin: 0;
-        li {
-            margin-left: 0;
-        }
     }
 
     dl {
@@ -33,6 +28,13 @@
         dd {
             margin: 0;
         }
+    }
+
+    // List Unstyled
+
+    .list-unstyled {
+        list-style: none;
+        margin-left: 0;
     }
 
 }
