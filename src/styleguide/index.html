@@ -758,7 +758,7 @@
                 </header>
                 <div class="example container">
                     <div class="grid">
-                        <div class="grid__column u-width-md-auto">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
                             <h4 class="display-4">Unordered list</h4>
                             <ul>
                                 <li>Cras mattis consectetur purus sit amet fermentum.</li>
@@ -772,7 +772,7 @@
                                 <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
                             </ul>
                         </div>
-                        <div class="grid__column u-width-md-auto">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
                             <h4 class="display-4">Ordered list</h4>
                             <ol>
                                 <li>Cras mattis consectetur purus sit amet fermentum.</li>
@@ -786,7 +786,7 @@
                                 <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
                             </ol>
                         </div>
-                        <div class="grid__column u-width-md-auto">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
                             <h4 class="display-4">Description</h4>
                             <dl>
                                 <dt>Description lists</dt>
@@ -797,6 +797,20 @@
                                 <dt>Malesuada porta</dt>
                                 <dd>Ac tristique libero volutpat at Faucibus porta lacus fringilla vel Aenean sit amet erat nunc</dd>
                             </dl>
+                        </div>
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <h4 class="display-4">Unstyled list <code>.list-unstyled</code></h4>
+                            <ul class="list-unstyled">
+                                <li>Cras mattis consectetur purus sit amet fermentum.</li>
+                                <li>Donec ullamcorper nulla non metus auctor fringilla.
+                                    <ul class="list-unstyled">
+                                        <li>Aenean eu leo quam.</li>
+                                        <li>Pellentesque ornare sem lacinia quam venenatis vestibulum.</li>
+                                        <li>Nullam quis risus eget urna mollis ornare vel eu leo.</li>
+                                    </ul>
+                                </li>
+                                <li>Maecenas sed diam eget risus varius blandit sit amet non magna.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -816,7 +830,12 @@
 &lt;dl&gt;
     &lt;dt&gt;description list term&lt;/dt&gt;
     &lt;dd&gt;description list description&lt;/dd&gt;
-&lt;/dl&gt;</code></pre></div>
+&lt;/dl&gt;
+
+&lt;ul class="list-unstyled"&gt;
+    &lt;li&gt;list item 1&lt;/li&gt;
+    &lt;li&gt;list item 2
+&lt;ul&gt;</code></pre></div>
             </article>
             <article>
                 <header class="container">
