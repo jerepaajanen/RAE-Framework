@@ -11,31 +11,28 @@
         pointer-events: none;
     }
 
-    .icon--align-to-text {
+    .button .icon,
+    .icon--text-alignment {
         position: relative;
-        top: -0.125em;
+        top: -0.0625em;
     }
 
     // Icon sizes
 
     .icon--small {
-        height: @icon-font-size / 1.5;
-        width: @icon-font-size / 1.5;
+        .icon-size(@icon-small-size);
     }
 
     .icon--medium {
-        height: @icon-font-size * 1;
-        width: @icon-font-size * 1;
+        .icon-size(@icon-medium-size);
     }
 
     .icon--large {
-        height: @icon-font-size * 2;
-        width: @icon-font-size * 2;
+        .icon-size(@icon-large-size);
     }
 
     .icon--huge {
-        height: @icon-font-size * 3;
-        width: @icon-font-size * 3;
+        .icon-size(@icon-huge-size);
     }
 
 
