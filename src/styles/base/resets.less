@@ -226,7 +226,14 @@
 
     // Remove the outline when hovering in all browsers (opinionated).
     a:hover {
-        outline-width: 0;
+        outline: 0;
+    }
+
+    // Remove tap-highlight from iOS devices (opinionated).
+    a,
+    button,
+    input {
+        -webkit-tap-highlight-color: transparent;
     }
 
     //
@@ -289,9 +296,6 @@
     // Correct the border, margin, and padding in all browsers.
     fieldset {
         border: 0;
-        //border: 1px solid #c0c0c0;
-        //margin: 0 2px;
-        //padding: .35em .625em .75em;
     }
 
     // 1. Correct the text wrapping in Edge and IE.
@@ -361,6 +365,7 @@
     a,
     area,
     button,
+    [role="button"],
     input,
     label,
     select,
@@ -368,6 +373,11 @@
     [tabindex] {
         -ms-touch-action: manipulation; // 1
         touch-action: manipulation;
+    }
+
+    // iOS "clickable elements" fix for role="button"
+    [role="button"] {
+        cursor: pointer;
     }
 
     // Change the display on visually hidden accessible elements (opinionated).
