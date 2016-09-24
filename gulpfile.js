@@ -393,6 +393,17 @@ gulp.task('images:favicons-generate', function () {
 // -------------------------------------------------------
 
 var spritesConfig = {
+    "transform": [
+        {
+            "svgo": {
+                "plugins": [
+                    {
+                        "removeTitle": true
+                    }
+                ]
+            }
+        }
+    ],
     mode: {
         symbol: {
             dest: '.',
@@ -420,7 +431,6 @@ gulp.task('sprites', function() {
             stream: true
         }));
 });
-
 
 
 // COPY
