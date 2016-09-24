@@ -16,6 +16,8 @@
     border-style: solid;
     border-radius: @button-border-radius;
     vertical-align: middle;
+    text-align: center;
+    outline: 0;
     user-drag: none;
     user-select: none;
     -webkit-touch-callout: none;
@@ -23,10 +25,6 @@
     &:not(:disabled):hover,
     &:not(:disabled):focus, {
         text-decoration: none; // strip styling from <a>.
-    }
-    &:active,
-    &.is-active {
-        outline: 0;
     }
 }
 
