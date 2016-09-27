@@ -140,7 +140,7 @@ gulp.task('default', ['clean'], function () {
 });
 
 gulp.task('default:development', function () {
-    sequence(['markup:all', 'styles', 'scripts', 'images', 'sprites', 'copy'], function () {
+    sequence(['markup:all', 'styles', 'scripts', 'images', 'icons', 'copy'], function () {
         if (isServe && isDeploy) {
             gulp.start(['serve', 'watch', 'deploy:watch']);
         } else if (isDeploy) {
@@ -153,7 +153,7 @@ gulp.task('default:development', function () {
 });
 
 gulp.task('default:production', function () {
-    sequence(['images'], ['markup', 'styles', 'scripts', 'sprites', 'copy'], function () {
+    sequence(['images'], ['markup', 'styles', 'scripts', 'icons', 'copy'], function () {
         console.log($.util.colors.green('✔ Build done!'));
         if (isServe) {
             gulp.start(['serve']);
@@ -389,27 +389,35 @@ gulp.task('images:favicons-generate', function () {
 });
 
 
-// SPRITES (svg-icons)
+// ICONS (svg sprites)
 // -------------------------------------------------------
-
-var spritesConfig = {
-    "transform": [
-        {
-            "svgo": {
-                "plugins": [
-                    {
-                        "removeTitle": true
-                    }
-                ]
-            }
+var svgMinConfig = {
+            plugins: [{
+                removeDoctype: true
+            }, {
+                removeXMLProcInst: true
+            }, {
+                removeTitle: true
+            }, {
+                removeComments: true
+            }, {
+                removeStyleElement: true
+            }, {
+                sortAttrs: true
+            }, {
+                removeAttrs: {
+                    attrs: 'class'
+                }
+            }]
         }
-    ],
+var svgSpritesConfig = {
     mode: {
         symbol: {
             dest: '.',
-            sprite: 'sprite.svg',
+            inline: false,
+            sprite: 'icons.svg',
             example: {
-                dest: '../styleguide/sprites.html'
+                dest: '../styleguide/icons.html'
             }
         }
     },
@@ -418,14 +426,16 @@ var spritesConfig = {
     },
     svg: {
         xmlDeclaration: false,
-        doctypeDeclaration: false
+        doctypeDeclaration: false,
+        namespaceClassnames: false
     }
 };
 
-
-gulp.task('sprites', function() {
+gulp.task('icons', function() {
     return gulp.src(paths.images.src + 'icons/**/*.svg')
-        .pipe($.svgSprite(spritesConfig))
+
+        .pipe($.svgmin(svgMinConfig))
+        .pipe($.svgSprite(svgSpritesConfig))
         .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
@@ -536,7 +546,7 @@ gulp.task('watch', function () {
         '!' + paths.images.src + 'icons/**/*'], ['images:optimize']);
 
     // Watch Icons
-    gulp.watch(paths.images.src + 'icons/**/*.svg', ['sprites']);
+    gulp.watch(paths.images.src + 'icons/**/*.svg', ['icons']);
 
 });
 
