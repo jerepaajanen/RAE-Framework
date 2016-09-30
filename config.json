@@ -7,7 +7,9 @@
     "browserSupport": [
       "last 3 version",
       "> 1%",
-      "ie >= 9"
+      "ie >= 10",
+      "ios 6",
+      "android 4"
     ],
 
     "wordpressTheme": false,
