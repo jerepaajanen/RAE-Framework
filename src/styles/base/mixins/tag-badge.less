@@ -1,0 +1,52 @@
+//
+// Tags & Badges
+// -------------------------------------------------------
+
+// Tag Styles
+.tag-styles(@color, @background, @border-color) {
+    background-color: @background;
+    border-color: @border-color;
+    &,
+    a& {
+        color: @color;
+    }
+}
+
+// Tag Size
+.tag-size( @font-size: @tag-font-size, @height: @tag-height, @padding-horizontal: @tag-horizontal-padding, @border-width: @tag-border-width) {
+    // Pre-calculated multiplier for padding
+    @multiplier-return: @height / @tag-height;
+    font-size: @font-size;
+    height: @height;
+    line-height: ceil(@height - (@border-width * 2));
+    padding: 0 floor(@padding-horizontal * @multiplier-return);
+    // Use border-width only when it differs from default @tag-border-width
+    & when not (@border-width =@tag-border-width) {
+        border-width: @border-width;
+    }
+}
+
+// Badge Styles
+.badge-styles(@color, @background, @border-color) {
+    background-color: @background;
+    border-color: @border-color;
+    &,
+    &:hover {
+        color: @color;
+    }
+}
+
+// Badge Size
+.badge-size( @font-size: @badge-font-size, @height: @badge-height, @padding-horizontal: @badge-horizontal-padding, @border-width: @badge-border-width) {
+    // Pre-calculated multiplier for padding
+    @multiplier-return: @height / @badge-height;
+    font-size: @font-size;
+    height: @height;
+    min-width: @height;
+    line-height: ceil(@height - (@border-width * 2));
+    padding: 0 floor(@padding-horizontal * @multiplier-return);
+    // Use border-width only when it differs from default @badge-border-width
+    & when not (@border-width =@badge-border-width) {
+        border-width: @border-width;
+    }
+}

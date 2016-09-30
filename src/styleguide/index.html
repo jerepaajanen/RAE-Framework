@@ -1275,10 +1275,14 @@
                     <pre><code>&lt;button class=&quot;button button--block&quot; type=&quot;button&quot;&gt;Block&lt;/button&gt;</code></pre></div>
                 <div class="example container">
                     <button class="button button--pill" type="button">Pill</button>
+                    <button class="button button--borderless" type="button">Borderless</button>
+
                     <button class="button button--circle" type="button">Circle</button>
                 </div>
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button button--pill&quot; type=&quot;button&quot;&gt;Pill&lt;/button&gt;
+
+&lt;button class=&quot;button button--borderless&quot; type=&quot;button&quot;&gt;Borderless&lt;/button&gt;
 
 &lt;button class=&quot;button button--circle&quot; type=&quot;button&quot;&gt;Circle&lt;/button&gt;</code></pre></div>
             </article>
@@ -1879,6 +1883,66 @@
 &lt;p class=&quot;form-message form-message--error&quot;&gt;...&lt;/p&gt;
 
 &lt;p class=&quot;form-message form-message--warning&quot;&gt;...&lt;/p&gt;</code></pre></div>
+            </article>
+        </section>
+
+        <section>
+            <header class="container">
+                <h2 class="display-2">Tags &amp; badges</h2>
+                <p>Tags are formatted text for highlighted, informative information. Badges are often used as unread number indicators.
+                </p>
+            </header>
+            <article>
+                <div class="example container">
+                    <div class="grid">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <h4 class="display-4">Tags <code>.tag</code></h4>
+                            <div class="example">
+                                <span class="tag">Default Tag</span> <a class="tag tag--primary">Primary Tag</a>
+                            </div>
+                        </div>
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <h4 class="display-4">Badges <code>.badge</code></h4>
+                            <div class="example">
+                                <span class="badge">23</span> <a class="badge badge--primary">22</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="example container">
+                    <h4 class="display-4">Within content</h4>
+                    <div class="grid">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <div class="example">
+                                <button role="button" class="button">Button <span class="tag">Tag</span></button>
+                                <br/>
+                                <br/>
+                                <a href="#">Inside anchor <span class="tag">Tag</span></a>
+                                <br/>
+                                <br/>
+                                <h1 class="u-remove-margin">Header <span class="tag">Tag</span></h1>
+                            </div>
+                        </div>
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <div class="example">
+                                <button role="button" class="button">Button <span class="badge">21</span></button>
+                                <br/>
+                                <br/>
+                                <a href="#">Inside anchor <span class="badge">21</span></a>
+                                <br/>
+                                <br/>
+                                <h1 class="u-remove-margin">Header <span class="badge">21</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur <span class="tag tag--primary u-inline">Success</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad <span class="badge u-inline">2</span> minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="example container"><pre><code>&lt;span class=&quot;tag&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;badge&quot;&gt;...&lt;/span&gt;</code></pre></div>
             </article>
         </section>
 
@@ -2596,7 +2660,7 @@
                                         <div class="u-color-error">Set text color to "Error".</div>
                                     </td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td><code>.u-center</code>
                                     </td>
                                     <td>
@@ -2618,14 +2682,14 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><code>.u-no-margin</code>
+                                    <td><code>.u-remove-margin</code>
                                     </td>
                                     <td>
                                         Removes margin
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td><code>.u-no-padding</code>
+                                    <td><code>.u-remove-padding</code>
                                     </td>
                                     <td>
                                         Removes padding

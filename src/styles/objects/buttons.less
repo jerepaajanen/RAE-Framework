@@ -16,87 +16,88 @@
             box-shadow: none;
             text-shadow: none;
         }
+
+        //
+        // Buttons sizes
+        &--small {
+            .button-size( @button-small-font-size, @button-small-height);
+        }
+        &--large {
+            .button-size( @button-large-font-size, @button-large-height);
+        }
+        &--huge {
+            .button-size( @button-huge-font-size, @button-huge-height);
+        }
+
+        //
+        // Button modifiers
+        &--block {
+            width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            white-space: normal !important; // line-break for mobile
+        }
+
+        &--pill {
+            border-radius: 999em;
+        }
+
+        &--borderless {
+            border: none;
+        }
+
+        &--circle {
+            border-radius: 100%;
+            padding: 0 !important;
+            width: @button-height;
+            &.button--small {
+                width: @button-small-height;
+            }
+            &.button--large {
+                width: @button-large-height;
+            }
+            &.button--huge {
+                width: @button-huge-height;
+            }
+        }
+
+        &--link {
+            border-radius: 0;
+            border-width: 0;
+            box-shadow: none;
+            color: @button-link-color;
+            font-weight: @button-link-font-weight;
+            height: auto;
+            line-height: inherit;
+            vertical-align: baseline;
+            white-space: normal;
+            text-decoration: @button-link-decoration;
+            &,
+            &:not(:disabled):hover,
+            &:not(:disabled):focus,
+            &:active,
+            &.is-active {
+                background: transparent !important;
+            }
+            &:not(:disabled):hover,
+            &:not(:disabled):focus,
+            &:active,
+            &.is-active {
+                color: @button-link-hover-color;
+                text-decoration: @button-link-hover-decoration;
+            }
+        }
     }
 
     //
-    // Button modifiers
-
-    .button--block {
-        width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-        white-space: normal !important; // line-break for mobile
-    }
-
-    .button--pill {
-        border-radius: 999em;
-    }
-
-    .button--circle {
-        border-radius: 100%;
-        padding: 0 !important;
-        width: @button-height;
-        &.button--small {
-            width: @button-small-height;
-        }
-        &.button--large {
-            width: @button-large-height;
-        }
-        &.button--huge {
-            width: @button-huge-height;
-        }
-    }
-
-    .button--link {
-        border-radius: 0;
-        box-shadow: none;
-        color: @button-link-color;
-        font-weight: @button-link-font-weight;
-        height: auto;
-        line-height: inherit;
-        vertical-align: baseline;
-        white-space: normal;
-        &,
-        &:not(:disabled):hover,
-        &:not(:disabled):focus,
-        &:active,
-        &.is-active {
-            background: transparent;
-            border-color: transparent;
-        }
-        &:not(:disabled):hover,
-        &:not(:disabled):focus,
-        &:active,
-        &.is-active {
-            color: @button-link-active-color;
-        }
-    }
-
-    // Buttons sizes
-
-    .button--small {
-        .button-size( @button-small-font-size, @button-small-height);
-    }
-
-    .button--large {
-        .button-size( @button-large-font-size, @button-large-height);
-    }
-
-    .button--huge {
-        .button-size( @button-huge-font-size, @button-huge-height);
-    }
-
     // Button styles
-
     .button--primary {
-        .button-theme( @button-primary-color, @button-primary-bg, @button-primary-border, @button-primary-active-color, @button-primary-active-bg, @button-primary-active-border);
+        .button-theme( @button-primary-color, @button-primary-bg, @button-primary-border, @button-primary-hover-color, @button-primary-hover-bg, @button-primary-hover-border);
     }
 
     .button--secondary {
-        .button-theme( @button-secondary-color, @button-secondary-bg, @button-secondary-border, @button-secondary-active-color, @button-secondary-active-bg, @button-secondary-active-border);
+        .button-theme( @button-secondary-color, @button-secondary-bg, @button-secondary-border, @button-secondary-hover-color, @button-secondary-hover-bg, @button-secondary-hover-border);
     }
-
-
 }
 
 .use-buttons(@use-buttons);

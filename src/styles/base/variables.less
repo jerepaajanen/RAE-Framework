@@ -350,30 +350,32 @@
 @button-huge-height:            @button-height * 2;
 @button-huge-font-size:         @button-font-size * 2;
 
-@button-link-color:            @link-color;
-@button-link-active-color:     @link-hover-color;
-@button-link-font-weight:      @button-font-weight;
+@button-link-font-weight:       @button-font-weight;
+@button-link-color:             @button-default-color;
+@button-link-decoration:        none;
+@button-link-hover-color:       @button-default-hover-color;
+@button-link-hover-decoration:  underline;
 
 @button-default-color:          @base-color;
 @button-default-bg:             transparent;
 @button-default-border:         @button-default-color;
-@button-default-active-color:   @white;
-@button-default-active-bg:      @button-default-color;
-@button-default-active-border:  @button-default-color;
+@button-default-hover-color:    @white;
+@button-default-hover-bg:       @button-default-color;
+@button-default-hover-border:   @button-default-color;
 
 @button-primary-color:          @white;
 @button-primary-bg:             @color-primary;
 @button-primary-border:         @button-primary-bg;
-@button-primary-active-color:   @white;
-@button-primary-active-bg:      @color-primary-accent;
-@button-primary-active-border:  @button-primary-bg;
+@button-primary-hover-color:    @white;
+@button-primary-hover-bg:       @color-primary-accent;
+@button-primary-hover-border:   @button-primary-bg;
 
 @button-secondary-color:        @white;
 @button-secondary-bg:           @color-secondary;
 @button-secondary-border:       @button-secondary-bg;
-@button-secondary-active-color: @white;
-@button-secondary-active-bg:    @color-secondary-accent;
-@button-secondary-active-border:@button-secondary-bg;
+@button-secondary-hover-color:  @white;
+@button-secondary-hover-bg:     @color-secondary-accent;
+@button-secondary-hover-border: @button-secondary-bg;
 
 
 // TABLES
@@ -392,6 +394,40 @@
 @table-stripe-background:       @grey-25;
 @table-higlight-background:     @grey-50;
 @table-higlight-color:          inherit;
+
+
+// TAGS & BADGES
+// -------------------------------------------------------
+@tag-font-family:               @base-font-family;
+@tag-font-size:                 13px;
+@tag-font-weight:               400;
+@tag-background:                @grey-25;
+@tag-border-radius:             @border-radius-small;
+@tag-border-width:              1px;
+@tag-text-transform:            normal;
+@tag-letter-spacing:            @letter-spacing-loose;
+@tag-height:                    28px;
+@tag-horizontal-padding:        6px;
+@tag-color:                     @grey-700;
+@tag-border-color:              @grey-100;
+@tag-primary-color:             @white;
+@tag-primary-background:        @color-primary;
+@tag-primary-border-color:      @color-primary;
+
+@badge-font-family:             @base-font-family;
+@badge-font-size:               11px;
+@badge-font-weight:             400;
+@badge-background:              @grey-25;
+@badge-border-radius:           999em;
+@badge-border-width:            2px;
+@badge-letter-spacing:          @letter-spacing-base;
+@badge-height:                  21px;
+@badge-horizontal-padding:      2px;
+@badge-color:                   @grey-700;
+@badge-border-color:            @grey-100;
+@badge-primary-color:           @white;
+@badge-primary-background:      @color-primary;
+@badge-primary-border-color:    @color-primary;
 
 
 // TOOLTIPS
@@ -508,6 +544,7 @@
     @use-grid-column:           true;
     @use-grid-modifiers:        true;
 @use-table-styles:              true;
+@use-tags-badges:               true;
 @use-tooltips:                  true;
 @use-media:                     true;
 @use-loader:                    true;

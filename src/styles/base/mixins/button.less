@@ -3,8 +3,8 @@
 // -------------------------------------------------------
 
 .button() {
-    appearance: none;
     display: inline-block;
+    position: relative;
     font-family: @button-font-family;
     font-weight: @button-font-weight;
     letter-spacing: @button-letter-spacing;
@@ -18,9 +18,7 @@
     vertical-align: middle;
     text-align: center;
     outline: 0;
-    user-drag: none;
     user-select: none;
-    -webkit-touch-callout: none;
     transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
     &:not(:disabled):hover,
     &:not(:disabled):focus, {
@@ -36,7 +34,7 @@
 }
 
 // Button Theme
-.button-theme(@color: @button-default-color, @background: @button-default-bg, @border-color: @button-default-border, @active-color: @button-default-active-color, @active-background: @button-default-active-bg, @active-border-color: @button-default-active-border) {
+.button-theme(@color: @button-default-color, @background: @button-default-bg, @border-color: @button-default-border, @active-color: @button-default-hover-color, @active-background: @button-default-hover-bg, @active-border-color: @button-default-hover-border) {
     .button-styles(@color, @background, @border-color);
     &:not(:disabled):hover,
     &:not(:disabled):focus,
@@ -54,4 +52,10 @@
     height: @height;
     line-height: ceil(@height - (@border-width * 2));
     padding: 0 floor(@padding-horizontal * @multiplier-return);
+
+    // Use border-width only when it differs from default @button-border-width
+    & when not (@border-width = @button-border-width) {
+        border-width: @border-width;
+    }
+
 }
