@@ -160,7 +160,7 @@
             display: none;
         }
 
-        .docs-content .animation-reset .animated {
+        .docs-content .animation-reset .animate {
             -webkit-animation: animation-reset;
             animation: animation-reset;
         }
@@ -1275,14 +1275,10 @@
                     <pre><code>&lt;button class=&quot;button button--block&quot; type=&quot;button&quot;&gt;Block&lt;/button&gt;</code></pre></div>
                 <div class="example container">
                     <button class="button button--pill" type="button">Pill</button>
-                    <button class="button button--borderless" type="button">Borderless</button>
-
                     <button class="button button--circle" type="button">Circle</button>
                 </div>
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button button--pill&quot; type=&quot;button&quot;&gt;Pill&lt;/button&gt;
-
-&lt;button class=&quot;button button--borderless&quot; type=&quot;button&quot;&gt;Borderless&lt;/button&gt;
 
 &lt;button class=&quot;button button--circle&quot; type=&quot;button&quot;&gt;Circle&lt;/button&gt;</code></pre></div>
             </article>
@@ -1465,10 +1461,10 @@
 &lt;input type=&quot;url&quot; id=&quot;input-url&quot; placeholder=&quot;http://www.rae.fi&quot;&gt;</code></pre></div>
                         <div class="field">
                             <label for="input-email">Email address</label>
-                            <input type="email" id="input-email" placeholder="hello@rae.fi">
+                            <input type="email" id="input-email" placeholder="jere@rae.fi">
                         </div>
                         <div class="example"><pre><code>&lt;label for=&quot;input-email&quot;&gt;Email address&lt;/label&gt;
-&lt;input type=&quot;email&quot; id=&quot;input-email&quot; placeholder=&quot;hello@rae.fi&quot;&gt;</code></pre></div>
+&lt;input type=&quot;email&quot; id=&quot;input-email&quot; placeholder=&quot;jere@rae.fi&quot;&gt;</code></pre></div>
                         <div class="field">
                             <label for="input-search">Search input</label>
                             <input type="search" id="input-search" placeholder="Search for something...">
@@ -1888,66 +1884,6 @@
 
         <section>
             <header class="container">
-                <h2 class="display-2">Tags &amp; badges</h2>
-                <p>Tags are formatted text for highlighted, informative information. Badges are often used as unread number indicators.
-                </p>
-            </header>
-            <article>
-                <div class="example container">
-                    <div class="grid">
-                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
-                            <h4 class="display-4">Tags <code>.tag</code></h4>
-                            <div class="example">
-                                <span class="tag">Default Tag</span> <a class="tag tag--primary">Primary Tag</a>
-                            </div>
-                        </div>
-                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
-                            <h4 class="display-4">Badges <code>.badge</code></h4>
-                            <div class="example">
-                                <span class="badge">23</span> <a class="badge badge--primary">22</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="example container">
-                    <h4 class="display-4">Within content</h4>
-                    <div class="grid">
-                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
-                            <div class="example">
-                                <button role="button" class="button">Button <span class="tag">Tag</span></button>
-                                <br/>
-                                <br/>
-                                <a href="#">Inside anchor <span class="tag">Tag</span></a>
-                                <br/>
-                                <br/>
-                                <h1 class="u-remove-margin">Header <span class="tag">Tag</span></h1>
-                            </div>
-                        </div>
-                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
-                            <div class="example">
-                                <button role="button" class="button">Button <span class="badge">21</span></button>
-                                <br/>
-                                <br/>
-                                <a href="#">Inside anchor <span class="badge">21</span></a>
-                                <br/>
-                                <br/>
-                                <h1 class="u-remove-margin">Header <span class="badge">21</span></h1>
-                            </div>
-                        </div>
-                    </div>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur <span class="tag tag--primary u-inline">Success</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad <span class="badge u-inline">2</span> minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                </div>
-                <div class="example container"><pre><code>&lt;span class=&quot;tag&quot;&gt;...&lt;/span&gt;
-
-&lt;span class=&quot;badge&quot;&gt;...&lt;/span&gt;</code></pre></div>
-            </article>
-        </section>
-
-        <section>
-            <header class="container">
                 <h2 class="display-2">Tooltips <code>.tooltip</code></h2>
                 <p>Add tooltips built entirely in CSS to nearly any element. Use accessible <code>data-tooltip="<em>Tooltip content</em>"</code> attribute for tooltip content and <code>class="tooltip tooltip--top"</code> attributes. You can make tooltips multiline with additional <code>tooltip--multiline</code> class.
                 </p>
@@ -2045,7 +1981,7 @@
                     <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
                         <div class="example-icon">
                             <svg class="icon">
-                                <use xlink:href="../images/icons.svg#mark"></use>
+                                <use xlink:href="../images/sprite.svg#mark"></use>
                             </svg>
                         </div>
                         <code>.icon</code>
@@ -2055,7 +1991,7 @@
                     <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
                         <div class="example-icon">
                             <svg class="icon icon--small">
-                                <use xlink:href="../images/icons.svg#mark"></use>
+                                <use xlink:href="../images/sprite.svg#mark"></use>
                             </svg>
                         </div>
                         <code>.icon icon--small</code>
@@ -2064,7 +2000,7 @@
                     <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
                         <div class="example-icon">
                             <svg class="icon icon--medium">
-                                <use xlink:href="../images/icons.svg#mark"></use>
+                                <use xlink:href="../images/sprite.svg#mark"></use>
                             </svg>
                         </div>
                         <code>.icon icon--medium</code>
@@ -2073,7 +2009,7 @@
                     <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
                         <div class="example-icon">
                             <svg class="icon icon--large">
-                                <use xlink:href="../images/icons.svg#mark"></use>
+                                <use xlink:href="../images/sprite.svg#mark"></use>
                             </svg>
                         </div>
                         <code>.icon icon--large</code>
@@ -2082,7 +2018,7 @@
                     <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
                         <div class="example-icon">
                             <svg class="icon icon--huge">
-                                <use xlink:href="../images/icons.svg#mark"></use>
+                                <use xlink:href="../images/sprite.svg#mark"></use>
                             </svg>
                         </div>
                         <code>.icon icon--huge</code>
@@ -2092,22 +2028,22 @@
                 <ul class="grid example-icons u-flex-bottom">
                     <li class="grid__column u-width-xs-6of12 u-width-sm-4of12 u-width-md-auto u-text-center">
                         <div class="example-icon">
-                            <svg class="icon icon--text-alignment">
-                                <use xlink:href="../images/icons.svg#mark"></use>
+                            <svg class="icon icon--align-to-text">
+                                <use xlink:href="../images/sprite.svg#mark"></use>
                             </svg> Icon align to text
                         </div>
-                        <code>.icon icon--text-alignment</code>
+                        <code>.icon icon--align-to-text</code>
                     </li>
                 </ul>
             </article>
             <div class="example container"><pre><code>&lt;svg class="icon"&gt;
-    &lt;use xlink:href="../images/icons.svg#mark"&gt;&lt;/use&gt;
+    &lt;use xlink:href="../images/sprite.svg#mark"&gt;&lt;/use&gt;
 &lt;/svg&gt;</code></pre></div>
 
         </section>
         <section class="animations">
             <header class="container">
-                <h2 class="display-2">Animations</h2>
+                <h2 class="display-2">Animations <code>.animate</code></h2>
             </header>
             <article class="container">
                 <div class="example">
@@ -2115,34 +2051,34 @@
                         <div class="grid">
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-in-left animated">
+                                    <div class="animate--slide-in-left animate">
                                         <span class="dot">&nbsp</span>
                                     </div>
-                                    <code>.slide-in-left</code>
+                                    <code>.animate--slide-in-left</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-in-up animated">
+                                    <div class="animate--slide-in-up animate">
                                         <span class="dot">&nbsp</span>
                                     </div>
-                                    <code>.slide-in-up</code>
+                                    <code>.animate--slide-in-up</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-in-down animated">
+                                    <div class="animate--slide-in-down animate">
                                         <span class="dot">&nbsp</span>
                                     </div>
-                                    <code>.slide-in-down</code>
+                                    <code>.animate--slide-in-down</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-in-right animated">
+                                    <div class="animate--slide-in-right animate">
                                         <span class="dot">&nbsp</span>
                                     </div>
-                                    <code>.slide-in-right</code>
+                                    <code>.animate--slide-in-right</code>
                                 </div>
                             </div>
                         </div>
@@ -2153,96 +2089,34 @@
                         <div class="grid">
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-out-left animated">
+                                    <div class="animate--slide-out-left animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.slide-out-left</code>
+                                    <code>.animate--slide-out-left</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-out-up animated">
+                                    <div class="animate--slide-out-up animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.slide-out-up</code>
+                                    <code>.animate--slide-out-up</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-out-down animated">
+                                    <div class="animate--slide-out-down animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.slide-out-down</code>
+                                    <code>.animate--slide-out-down</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="slide-out-right animated">
+                                    <div class="animate--slide-out-right animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.slide-out-right</code>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="example">
-                    <div class="example-well">
-                        <div class="grid ">
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="bounce animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.bounce</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="flash animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.flash</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="pulse animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.pulse</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="shake animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.shake</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="swing animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.swing</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="tada animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.tada</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="wobble animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.wobble</code>
+                                    <code>.animate--slide-out-right</code>
                                 </div>
                             </div>
                         </div>
@@ -2253,88 +2127,58 @@
                         <div class="grid ">
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-in animated">
+                                    <div class="animate--bounce animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-in</code>
+                                    <code>.animate--bounce</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-in-left animated">
+                                    <div class="animate--flash animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-in-left</code>
+                                    <code>.animate--flash</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-in-up animated">
+                                    <div class="animate--pulse animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-in-up</code>
+                                    <code>.animate--pulse</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-in-down animated">
+                                    <div class="animate--shake animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-in-down</code>
+                                    <code>.animate--shake</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-in-right animated">
+                                    <div class="animate--swing animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-in-right</code>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="example">
-                    <div class="example-well">
-                        <div class="grid ">
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="fade-out animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.fade-out</code>
+                                    <code>.animate--swing</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-out-left animated">
+                                    <div class="animate--tada animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-out-left</code>
+                                    <code>.animate--tada</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="fade-out-up animated">
+                                    <div class="animate--wobble animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.fade-out-up</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="fade-out-down animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.fade-out-down</code>
-                                </div>
-                            </div>
-                            <div class="grid__column u-width-md-3of12">
-                                <div class="animation animation-reset">
-                                    <div class="fade-out-right animated">
-                                        <span class="dot">&nbsp;</span>
-                                    </div>
-                                    <code>.fade-out-right</code>
+                                    <code>.animate--wobble</code>
                                 </div>
                             </div>
                         </div>
@@ -2345,18 +2189,42 @@
                         <div class="grid ">
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="zoom-in animated">
+                                    <div class="animate--fade-in animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.zoom-in</code>
+                                    <code>.animate--fade-in</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="zoom-out animated">
+                                    <div class="animate--fade-in-left animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.zoom-out</code>
+                                    <code>.animate--fade-in-left</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--fade-in-up animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--fade-in-up</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--fade-in-down animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--fade-in-down</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--fade-in-right animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--fade-in-right</code>
                                 </div>
                             </div>
                         </div>
@@ -2367,18 +2235,42 @@
                         <div class="grid ">
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="bounce-in animated">
+                                    <div class="animate--fade-out animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.bounce-in</code>
+                                    <code>.animate--fade-out</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="bounce-out animated">
+                                    <div class="animate--fade-out-left animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.bounce-out</code>
+                                    <code>.animate--fade-out-left</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--fade-out-up animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--fade-out-up</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--fade-out-down animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--fade-out-down</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--fade-out-right animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--fade-out-right</code>
                                 </div>
                             </div>
                         </div>
@@ -2389,18 +2281,62 @@
                         <div class="grid ">
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="roll-in animated">
+                                    <div class="animate--zoom-in animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.roll-in</code>
+                                    <code>.animate--zoom-in</code>
                                 </div>
                             </div>
                             <div class="grid__column u-width-md-3of12">
                                 <div class="animation animation-reset">
-                                    <div class="roll-out animated">
+                                    <div class="animate--zoom-out animate">
                                         <span class="dot">&nbsp;</span>
                                     </div>
-                                    <code>.roll-out</code>
+                                    <code>.animate--zoom-out</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="example">
+                    <div class="example-well">
+                        <div class="grid ">
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--bounce-in animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--bounce-in</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--bounce-out animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--bounce-out</code>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="example">
+                    <div class="example-well">
+                        <div class="grid ">
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--roll-in animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--roll-in</code>
+                                </div>
+                            </div>
+                            <div class="grid__column u-width-md-3of12">
+                                <div class="animation animation-reset">
+                                    <div class="animate--roll-out animate">
+                                        <span class="dot">&nbsp;</span>
+                                    </div>
+                                    <code>.animate--roll-out</code>
                                 </div>
                             </div>
                         </div>
@@ -2660,7 +2596,7 @@
                                         <div class="u-color-error">Set text color to "Error".</div>
                                     </td>
                                 </tr>
-                                <tr>
+                                 <tr>
                                     <td><code>.u-center</code>
                                     </td>
                                     <td>
