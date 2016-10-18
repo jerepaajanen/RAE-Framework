@@ -328,14 +328,12 @@ gulp.task('images', ['images:optimize', 'images:favicons']);
 gulp.task('images:optimize', function () {
     return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
         .pipe($.if(!isProduction, $.newer(paths.images.dest)))
-        .pipe($.if(isProduction, ($.imagemin({
-            optimizationLevel: 7,
-            progressive: true,
-            interlaced: true,
-            svgoPlugins: [{
-                removeViewBox: false
-            }]
-        }))))
+        .pipe($.if(isProduction, ($.imagemin([
+                $.imagemin.gifsicle({interlaced: true}),
+                $.imagemin.jpegtran({progressive: true}),
+                $.imagemin.optipng({optimizationLevel: 7}),
+                $.imagemin.svgo({plugins: [{removeViewBox: false}]})
+            ]))))
         .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
@@ -374,7 +372,7 @@ gulp.task('images:favicons-generate', function () {
                 online: false,
                 html: paths.src + 'partials/favicons.html'
             }))
-
+            .pipe($.imagemin())
             .pipe(gulp.dest(paths.images.dest + 'favicons'));
 
         if (config.wordpressTheme) {
@@ -575,7 +573,12 @@ gulp.task('serve', function () {
 
 gulp.task('deploy', ['clean:remote'], function () {
 
-    return gulp.src(paths.dest + '**/*', {
+    var globs = [
+        paths.dest + '**',
+        paths.dest + '.htaccess'
+    ];
+
+    return gulp.src(globs, {
         base: './' + paths.dest,
         buffer: false
     })
@@ -590,7 +593,7 @@ gulp.task('deploy:watch', ['deploy'], function () {
 
     console.log($.util.colors.grey('Watching changes...'));
 
-    gulp.watch(paths.dest + '**/*')
+    gulp.watch(paths.dest + '**')
         .on('change', function (event) {
 
             console.log($.util.colors.cyan('Uploading file "' + event.path + '", ' + event.type));
