@@ -375,11 +375,6 @@ gulp.task('images:favicons-generate', function () {
             .pipe($.imagemin())
             .pipe(gulp.dest(paths.images.dest + 'favicons'));
 
-        if (config.wordpressTheme) {
-            return gulp.src(paths.src + 'partials/favicons.html')
-                .pipe(inject.beforeEach(config.faviconsPath, '<?php echo get_template_directory_uri(); ?>/'))
-                .pipe(gulp.dest(paths.src + 'partials/'));
-        }
     }
 
 
