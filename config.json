@@ -22,5 +22,6 @@
     "analyticsUA": "UA-XXXXX-X",
     "shareImageURL": "http://www.rae.fi/images/favicons/open-graph.png",
     "twitterHandle": "@domain",
-    "faviconsPath": "images/favicons"
+    "faviconsPath": "images/favicons",
+    "faviconsBackground": "#ffffff"
 }

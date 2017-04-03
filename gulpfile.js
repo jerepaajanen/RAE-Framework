@@ -363,7 +363,7 @@ gulp.task('images:favicons-generate', function () {
                 url: config.siteURL,
                 developerName: pkg.author,
                 developerURL: pkg.homepage,
-                background: 'transparent',
+                background: config.faviconsBackground,
                 path: config.faviconsPath,
                 display: 'standalone',
                 orientation: 'portrait',
