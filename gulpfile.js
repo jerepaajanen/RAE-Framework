@@ -169,9 +169,7 @@ gulp.task('default:production', function () {
 // -------------------------------------------------------
 
 var markupProcess = function (isNotPartial) {
-    gulp.src(paths.src + '**/*.{html,php}', {
-        base: paths.src
-    })
+        return gulp.src(paths.src + '**/*.{php,html}')
         //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
         .pipe(isNotPartial ? $.newer(paths.dest) : $.util.noop())
         .pipe($.preprocess({
@@ -446,7 +444,7 @@ gulp.task('copy:root', function () {
     return gulp.src([
         paths.src + '**/*',
         'node_modules/apache-server-configs/dist/.htaccess',
-        '!' + paths.src + '**/*.{html,php}',
+        '!' + paths.src + '**/*.{php,html}',
         '!' + paths.images.src + '**/*',
         '!' + paths.styles.src + '**/*',
         '!' + paths.scripts.src + '**/*',
@@ -522,7 +520,7 @@ gulp.task('watch', function () {
 
 
     // Watch Html-files
-    gulp.watch([paths.src + '**/*.{html,php}',
+    gulp.watch([paths.src + '**/*.{php,html}',
         '!' + paths.src + 'partials/**/*'], ['markup']);
     gulp.watch(paths.src + 'partials/**/*', ['markup:all']);
 
