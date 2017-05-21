@@ -4,7 +4,8 @@
 .animations(@boolean) when (@boolean =true) {
 
     .animate {
-        animation-duration: 1000ms;
+        animation-duration: @transition-duration-default;
+        animation-timing-function: @transition-easing-default;
         animation-fill-mode: both;
         transform: translateZ(0); // Improve performance on mobile/tablet devices
         will-change: transform, opacity;
@@ -13,6 +14,38 @@
     .animate--infinite {
         animation-iteration-count: infinite;
     }
+
+
+    .animate--fast {
+        animation-duration: @transition-duration-fast !important;
+    }
+    .animate--faster {
+        animation-duration: @transition-duration-faster !important;
+    }
+    .animate--fastest {
+        animation-duration: @transition-duration-fastest !important;
+    }
+    .animate--slow {
+        animation-duration: @transition-duration-slow !important;
+    }
+    .animate--slower {
+        animation-duration: @transition-duration-slower !important;
+    }
+    .animate--slowest {
+        animation-duration: @transition-duration-slowest !important;
+    }
+
+
+    .animate--delay {
+        animation-delay: @transition-duration-default !important;
+    }
+    .animate--delay-short {
+        animation-delay: @transition-duration-default / 2 !important;
+    }
+    .animate--delay-long {
+        animation-delay: @transition-duration-default * 2 !important;
+    }
+
 
     // Enable/disable only animations you need.
 

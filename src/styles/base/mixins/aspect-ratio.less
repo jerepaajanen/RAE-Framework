@@ -5,25 +5,25 @@
 // Maintain Aaspect ratio of unknown height/width element.
 
 // Usage
-// .selector {
+// .selector-parent {
+//    .aspect-ratio-container();
 //    .aspect-ratio(16, 9); // Width : Height
 // }
 
-// Add '.aspect-ratio-container();' to parent element
-// Add '.aspect-ratio-child();' to child element
 
 .aspect-ratio(@width, @height) {
-    padding-bottom: (@height / @width * 100%);
+    &:before {
+        display: block;
+        content: "";
+        padding-bottom: (@height / @width * 100%);
+    }
 }
 
 // Aspect ratio Helper mixins
 
 .aspect-ratio-container() {
     position: relative;
-    height: 0;
-    overflow: hidden;
-}
-
-.aspect-ratio-child() {
-    .cover();
+    > *:first-child {
+        .cover();
+    }
 }

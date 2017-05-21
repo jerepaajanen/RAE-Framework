@@ -484,9 +484,15 @@
 @box-shadow-default:            0 2px 4px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.05);
 @box-shadow-large:              0 2px 4px rgba(0,0,0,0.05),0 3px 12px rgba(0,0,0,0.15);
 
-// Transition
-@transition-duration-default:   200ms;
-@transition-easing-default:     ease-in-out;
+// Transition & Animation
+@transition-duration-fastest:   @transition-duration-default / 4;
+@transition-duration-faster:    @transition-duration-default / 2;
+@transition-duration-fast:      @transition-duration-default / 1.5;
+@transition-duration-default:   250ms;
+@transition-duration-slow:      @transition-duration-default * 1.5;
+@transition-duration-slower:    @transition-duration-default * 2;
+@transition-duration-slowest:   @transition-duration-default * 4;
+@transition-easing-default:     cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 
 // Z-INDEX SCALE
