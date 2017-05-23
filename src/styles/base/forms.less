@@ -3,6 +3,8 @@
 // -------------------------------------------------------
 .use-forms(@boolean) when (@boolean = true) {
 
+    @label-vertical-margin:         @spacing-fourth;
+
     fieldset {
         margin: 0 0 @spacing-base 0;
         &:last-child {
@@ -11,6 +13,9 @@
     }
 
     legend {
+        color: @legend-color;
+        font-family: @legend-font-family;
+        font-size: @legend-font-size;
         font-weight: @legend-font-weight;
         margin-bottom: @spacing-half;
     }
@@ -19,6 +24,7 @@
         display: block; // labels goes for their own lines
         cursor: pointer;
         color: @label-color;
+        font-family: @label-font-family;
         font-size: @label-font-size;
     }
 
