@@ -1,11 +1,11 @@
 {
-  "name": "RAE-Framework",
+  "name": "rae-framework",
   "version": "2.4.0",
   "dependencies": {
     "jquery": "^3.2.1"
   },
   "overrides": {
-    "EXAMPLE-PACKAGE-NAME": {
+    "example-package-name": {
       "main": [
         "**/*.js",
         "filename.js"
