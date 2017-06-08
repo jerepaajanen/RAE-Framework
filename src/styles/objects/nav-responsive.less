@@ -9,7 +9,7 @@
         .clearfix();
         -webkit-overflow-scrolling: touch;
         // Prevent nav__list flashing when javascript isn't loaded
-        @media (max-width: (@nav-responsive-breakpoint - 1px)) {
+        @media @nav-responsive-down {
             .nav__list {
                 display: none;
                 visibility: hidden;
@@ -20,7 +20,9 @@
                 }
             }
         }
-        @media (min-width: (@nav-responsive-breakpoint)) {
+
+
+        @media @nav-responsive-up {
             width: auto;
             .nav__list {
                 display: block;

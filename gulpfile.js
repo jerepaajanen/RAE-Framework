@@ -214,6 +214,7 @@ gulp.task('styles', function () {
 
     return gulp.src(paths.styles.src + 'style.less')
         .pipe($.less({
+            relativeUrls: true,
             compress: false
         }))
         .on('error', handleErrors)

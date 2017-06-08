@@ -18,6 +18,10 @@
 @breakpoint-md-max: (@breakpoint-lg-min - 1);
 @breakpoint-lg-max: (@breakpoint-xl-min - 1);
 
+@nav-responsive-breakpoint-min: @nav-responsive-breakpoint;
+@nav-responsive-breakpoint-max: (@nav-responsive-breakpoint-min - 1);
+
+
 
 // Landscape
 
@@ -26,6 +30,13 @@
 // Potrait
 
 @potrait: ~"(orientation:portrait)";
+
+
+// Nav Responsive
+
+@nav-responsive-down: ~"(max-width: @{nav-responsive-breakpoint-max})";
+@nav-responsive-up: ~"(min-width: @{nav-responsive-breakpoint-min})";
+
 
 // Extra-extra-small
 

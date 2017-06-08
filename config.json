@@ -5,11 +5,8 @@
     },
 
     "browserSupport": [
-      "last 3 version",
-      "> 1%",
-      "ie >= 10",
-      "ios 6",
-      "android 4"
+      "last 2 version",
+      "ie >= 10"
     ],
 
     "wordpressTheme": false,
