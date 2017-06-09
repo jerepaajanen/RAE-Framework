@@ -59,22 +59,22 @@
             margin-top: 6rem;
         }
 
-        .docs-content > section {
+        .docs-content>section {
             padding-bottom: 3rem;
             margin-bottom: 3rem;
             border-bottom: 1px solid #e6e6e6;
         }
 
-        .docs-content > section > article {
+        .docs-content>section>article {
             margin-bottom: 2rem;
         }
 
-        .docs-content > section:last-child {
+        .docs-content>section:last-child {
             border-bottom: 0;
             margin-bottom: 0;
         }
 
-        .docs-content > section > article:last-child {
+        .docs-content>section>article:last-child {
             margin-bottom: 0;
             padding-bottom: 0;
         }
@@ -148,7 +148,7 @@
             width: 100%;
         }
 
-        .docs-content .animation > div {
+        .docs-content .animation>div {
             text-align: center;
             display: block;
             height: 1rem;
@@ -187,6 +187,7 @@
         .docs-content .example-icon {
             margin-bottom: 1rem;
         }
+
     </style>
 </head>
 
@@ -218,7 +219,8 @@
                     </div>
                 </div>
                 <div class="example container">
-                    <pre><code>&lt;div class=&quot;container&quot;&gt;...&lt;/div&gt;</code></pre></div>
+                    <pre><code>&lt;div class=&quot;container&quot;&gt;...&lt;/div&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -241,7 +243,8 @@
 
 &lt;div class=&quot;container-fluid&quot;&gt;...&lt;/div&gt;
 
-&lt;div class=&quot;container-fluid container-fluid--inner&quot;&gt;...&lt;/div&gt;</code></pre></div>
+&lt;div class=&quot;container-fluid container-fluid--inner&quot;&gt;...&lt;/div&gt;</code></pre>
+                </div>
 
             </article>
             <article>
@@ -393,9 +396,11 @@
         &lt;/div&gt;
     &lt;/div&gt;
     &lt;div class=&quot;grid__column u-width-xs--auto&quot;&gt;&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
                 <header class="container">
-                    <h4 class="display-4">Different gutter widths</h4></header>
+                    <h4 class="display-4">Different gutter widths</h4>
+                </header>
                 <div class="example">
                     <div class="container">
                         <div class="grid grid--half">
@@ -412,11 +417,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;grid grid--half&quot;&gt;...&lt;/div&gt;
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;grid grid--half&quot;&gt;...&lt;/div&gt;
 
 &lt;div class=&quot;grid grid--quarter&quot;&gt;...&lt;/div&gt;
 
-&lt;div class=&quot;grid grid--collapse&quot;&gt;...&lt;/div&gt;</code></pre></div>
+&lt;div class=&quot;grid grid--collapse&quot;&gt;...&lt;/div&gt;</code></pre>
+                </div>
 
                 <header class="container">
                     <h4 class="display-4">Centered grid <code>.grid--centered</code></h4>
@@ -431,7 +438,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;grid grid--centered&quot;&gt;...&lt;/div&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;grid grid--centered&quot;&gt;...&lt;/div&gt;</code></pre>
+                </div>
                 <header class="container">
                     <h4 class="display-4">Equal height <code>.grid--equal-height</code></h4>
                 </header>
@@ -470,7 +479,9 @@
                 </div>
                 </div>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;grid grid--equal-height&quot;&gt;...&lt;/div&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;grid grid--equal-height&quot;&gt;...&lt;/div&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -685,7 +696,8 @@
                     <h5>h5 – Heading</h5>
                     <h6>h6 – Heading</h6>
                 </div>
-                <div class="example container"><pre><code>&lt;h1&gt;h1 Heading&lt;/h1&gt;
+                <div class="example container">
+                    <pre><code>&lt;h1&gt;h1 Heading&lt;/h1&gt;
 &lt;h2&gt;h2 Heading&lt;/h2&gt;
 &lt;h3&gt;h3 Heading&lt;/h3&gt;
 &lt;h4&gt;h4 Heading&lt;/h4&gt;
@@ -697,7 +709,8 @@
 &lt;span class=&quot;h3&quot;&gt;Heading wannabe&lt;/span&gt;
 &lt;span class=&quot;h4&quot;&gt;Heading wannabe&lt;/span&gt;
 &lt;span class=&quot;h5&quot;&gt;Heading wannabe&lt;/span&gt;
-&lt;span class=&quot;h6&quot;&gt;Heading wannabe&lt;/span&gt;</code></pre></div>
+&lt;span class=&quot;h6&quot;&gt;Heading wannabe&lt;/span&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -710,10 +723,12 @@
                     <h3 class="display-3">Display 3</h3>
                     <h4 class="display-4">Display 4</h4>
                 </div>
-                <div class="example container"><pre><code>&lt;h1 class=&quot;display-1&quot;&gt;Display 1&lt;/h1&gt;
+                <div class="example container">
+                    <pre><code>&lt;h1 class=&quot;display-1&quot;&gt;Display 1&lt;/h1&gt;
 &lt;h2 class=&quot;display-2&quot;&gt;Display 2&lt;/h2&gt;
 &lt;h3 class=&quot;display-3&quot;&gt;Display 3&lt;/h3&gt;
-&lt;h4 class=&quot;display-4&quot;&gt;Display 4&lt;/h4&gt;</code></pre></div>
+&lt;h4 class=&quot;display-4&quot;&gt;Display 4&lt;/h4&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -725,8 +740,10 @@
                     <p>His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. <em>“What’s happened to me?”</em> he thought.
                         <mark>It wasn’t a dream.</mark> His room, a proper human room although <small>a little too small</small>, lay peacefully between its four familiar walls.</p>
                 </div>
-                <div class="example container"><pre><code>&lt;p class=&quot;lead&quot;&gt;Lead paragraph&lt;/p&gt;
-&lt;p&gt;Paragraph&lt;/p&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;p class=&quot;lead&quot;&gt;Lead paragraph&lt;/p&gt;
+&lt;p&gt;Paragraph&lt;/p&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -750,7 +767,8 @@
 
 &lt;blockquote class="pullquote"&gt;
     &lt;p&gt;...&lt;/p&gt;
-&lt;/blockquote&gt;</code></pre></div>
+&lt;/blockquote&gt;</code></pre>
+                </div>
             </article>
             <article class="typography__lists">
                 <header class="container">
@@ -835,7 +853,8 @@
 &lt;ul class="list-unstyled"&gt;
     &lt;li&gt;list item 1&lt;/li&gt;
     &lt;li&gt;list item 2
-&lt;ul&gt;</code></pre></div>
+&lt;ul&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -848,7 +867,8 @@
                 </div>
                 <div class="example container">
                     <pre><code>&lt;hr /&gt;
-&lt;div class="hr"&gt;&lt;/div&gt;</code></pre></div>
+&lt;div class="hr"&gt;&lt;/div&gt;</code></pre>
+                </div>
             </article>
         </section>
 
@@ -863,8 +883,10 @@
                 <div class="example container">
                     <img src="http://placehold.it/1600x900" alt="placeholder">
                 </div>
-                <div class="example container"><pre><code> &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;
-</code></pre></div>
+                <div class="example container">
+                    <pre><code> &lt;img src=&quot;&quot; alt=&quot;&quot;&gt;
+</code></pre>
+                </div>
             </article>
             <article class="embedded__audio">
                 <header class="container">
@@ -873,7 +895,9 @@
                 <div class="example container">
                     <audio src="" controls=""></audio>
                 </div>
-                <div class="example container"><pre><code>&lt;audio src=&quot;&quot; controls=&quot;&quot;&gt;&lt;/audio&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;audio src=&quot;&quot; controls=&quot;&quot;&gt;&lt;/audio&gt;</code></pre>
+                </div>
             </article>
             <article class="embedded__video">
                 <header class="container">
@@ -882,7 +906,9 @@
                 <div class="example container">
                     <video src="" controls=""></video>
                 </div>
-                <div class="example container"><pre><code>&lt;video src=&quot;&quot; controls=&quot;&quot;&gt;&lt;/video&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;video src=&quot;&quot; controls=&quot;&quot;&gt;&lt;/video&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -894,9 +920,11 @@
                         <iframe src="http://player.vimeo.com/video/54690885?title=0&amp;byline=0&amp;portrait=0&amp;color=ff0179" allowfullscreen></iframe>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;media media--16-9&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;media media--16-9&quot;&gt;
     &lt;iframe src=&quot;&quot;&gt;&lt;/iframe&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
             </article>
         </section>
 
@@ -941,7 +969,8 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="example container"><pre><code>&lt;table&gt;
+                <div class="example container">
+                    <pre><code>&lt;table&gt;
     &lt;caption&gt;
         Optional table caption
     &lt;/caption&gt;
@@ -971,7 +1000,8 @@
             &lt;td&gt;Table Column 3&lt;/td&gt;
         &lt;/tr&gt;
     &lt;/tbody&gt;
-&lt;/table&gt;</code></pre></div>
+&lt;/table&gt;</code></pre>
+                </div>
                 <header class="container">
                     <h3 class="display-3">Styled table <code>.table</code></h3>
                 </header>
@@ -1013,7 +1043,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="example container"><pre><code>&lt;table class=&quot;table&quot;&gt;...&lt;/table&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;table class=&quot;table&quot;&gt;...&lt;/table&gt;</code></pre>
+                </div>
                 <header class="container">
                     <h3 class="display-3">Striped table <code>.table--striped</code></h3>
                 </header>
@@ -1055,7 +1087,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="example container"><pre><code>&lt;table class=&quot;table table--striped&quot;&gt;...&lt;/table&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;table class=&quot;table table--striped&quot;&gt;...&lt;/table&gt;</code></pre>
+                </div>
                 <header class="container">
                     <h3 class="display-3">Bordered table <code>.table--bordered</code></h3>
                 </header>
@@ -1097,7 +1131,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="example container"><pre><code>&lt;table class=&quot;table table--bordered&quot;&gt;...&lt;/table&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;table class=&quot;table table--bordered&quot;&gt;...&lt;/table&gt;</code></pre>
+                </div>
                 <header class="container">
                     <h3 class="display-3">Highligted table <code>.table--highlight</code></h3>
                 </header>
@@ -1139,7 +1175,9 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="example container"><pre><code>&lt;table class=&quot;table table--highlight&quot;&gt;...&lt;/table&gt;</code></pre></div>
+                <div class="example container">
+                    <pre><code>&lt;table class=&quot;table table--highlight&quot;&gt;...&lt;/table&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1193,9 +1231,11 @@
                         </table>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;table class=&quot;table-responsive&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;table class=&quot;table-responsive&quot;&gt;
     &lt;table class=&quot;table&quot;&gt;...&lt;/table&gt;
-&lt;/table&gt;</code></pre></div>
+&lt;/table&gt;</code></pre>
+                </div>
             </article>
         </section>
 
@@ -1225,7 +1265,8 @@
 
 &lt;button class=&quot;button button--link&quot; type=&quot;button &quot;&gt;Link button&lt;/button&gt;
 
-&lt;button class=&quot;button is-loading&quot; type=&quot;button &quot;&gt;Loading button&lt;/button&gt;</code></pre></div>
+&lt;button class=&quot;button is-loading&quot; type=&quot;button &quot;&gt;Loading button&lt;/button&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1240,7 +1281,8 @@
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button&quot; type=&quot;button&quot; disabled&gt;Default button&lt;/button&gt;
 
-&lt;button class=&quot;button button--primary is-disabled&quot; type=&quot;button &quot;&gt;Primary button&lt;/button&gt;</code></pre></div>
+&lt;button class=&quot;button button--primary is-disabled&quot; type=&quot;button &quot;&gt;Primary button&lt;/button&gt;</code></pre>
+                </div>
                 <div class="example container">
                     <button class="button is-active" type="button">Active</button>
                     <button class="button button--primary is-active" type="button">Active</button>
@@ -1248,7 +1290,8 @@
                     <button class="button button--link is-active" type="button">Link button</button>
                 </div>
                 <div class="example container">
-                    <pre><code>&lt;button class=&quot;button is-active&quot; type=&quot;button&quot;&gt;Default button&lt;/button&gt;</code></pre></div>
+                    <pre><code>&lt;button class=&quot;button is-active&quot; type=&quot;button&quot;&gt;Default button&lt;/button&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1267,12 +1310,14 @@
 
 &lt;button class=&quot;button button--large&quot; type=&quot;button&quot;&gt;Large&lt;/button&gt;
 
-&lt;button class=&quot;button button--huge&quot; type=&quot;button&quot;&gt;Huge&lt;/button&gt;</code></pre></div>
+&lt;button class=&quot;button button--huge&quot; type=&quot;button&quot;&gt;Huge&lt;/button&gt;</code></pre>
+                </div>
                 <div class="example container">
                     <button class="button button--block" type="button">Block</button>
                 </div>
                 <div class="example container">
-                    <pre><code>&lt;button class=&quot;button button--block&quot; type=&quot;button&quot;&gt;Block&lt;/button&gt;</code></pre></div>
+                    <pre><code>&lt;button class=&quot;button button--block&quot; type=&quot;button&quot;&gt;Block&lt;/button&gt;</code></pre>
+                </div>
                 <div class="example container">
                     <button class="button button--pill" type="button">Pill</button>
                     <button class="button button--circle" type="button">Circle</button>
@@ -1280,7 +1325,8 @@
                 <div class="example container">
                     <pre><code>&lt;button class=&quot;button button--pill&quot; type=&quot;button&quot;&gt;Pill&lt;/button&gt;
 
-&lt;button class=&quot;button button--circle&quot; type=&quot;button&quot;&gt;Circle&lt;/button&gt;</code></pre></div>
+&lt;button class=&quot;button button--circle&quot; type=&quot;button&quot;&gt;Circle&lt;/button&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1311,7 +1357,8 @@
     &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 1&lt;/button&gt;
     &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 2&lt;/button&gt;
     &lt;button class=&quot;button&quot; type=&quot;button&quot;&gt;Button 3&lt;/button&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
             </article>
         </section>
 
@@ -1343,7 +1390,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;form role=&quot;form&quot; action=&quot;&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;form role=&quot;form&quot; action=&quot;&quot;&gt;
     &lt;div class=&quot;field&quot;&gt;
         &lt;label for=&quot;input&quot;&gt;Input&lt;/label&gt;
         &lt;input type=&quot;text&quot; id=&quot;input&quot; placeholder=&quot;Type something...&quot;&gt;
@@ -1360,7 +1408,8 @@
         &lt;label for=&quot;textarea&quot;&gt;Textarea&lt;/label&gt;
         &lt;textarea id=&quot;textarea&quot; placeholder=&quot;Enter your message here...&quot; rows=&quot;6&quot;&gt;&lt;/textarea&gt;
     &lt;/div&gt;
-&lt;/form&gt;</code></pre></div>
+&lt;/form&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1407,7 +1456,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;select id=&quot;select&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;select id=&quot;select&quot;&gt;
     &lt;option value=&quot;&quot; disabled selected&gt;Select your option&lt;/option&gt;
     &lt;option value=&quot;Option 1&quot;&gt;
         Option 1
@@ -1439,7 +1489,8 @@
     &lt;option value=&quot;Option 4&quot;&gt;
         Option 4
     &lt;/option&gt;
-&lt;/select&gt;</code></pre></div>
+&lt;/select&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1451,52 +1502,68 @@
                             <label for="input-telephone">Telephone</label>
                             <input type="tel" id="input-telephone" placeholder="(123) 555-5555">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-telephone&quot;&gt;Telephone&lt;/label&gt;
-&lt;input type=&quot;tel&quot; id=&quot;input-telephone&quot; placeholder=&quot;(123) 555-5555&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-telephone&quot;&gt;Telephone&lt;/label&gt;
+&lt;input type=&quot;tel&quot; id=&quot;input-telephone&quot; placeholder=&quot;(123) 555-5555&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-url">URL</label>
                             <input type="url" id="input-url" placeholder="http://www.rae.fi">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-url&quot;&gt;Web address&lt;/label&gt;
-&lt;input type=&quot;url&quot; id=&quot;input-url&quot; placeholder=&quot;http://www.rae.fi&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-url&quot;&gt;Web address&lt;/label&gt;
+&lt;input type=&quot;url&quot; id=&quot;input-url&quot; placeholder=&quot;http://www.rae.fi&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-email">Email address</label>
                             <input type="email" id="input-email" placeholder="jere@rae.fi">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-email&quot;&gt;Email address&lt;/label&gt;
-&lt;input type=&quot;email&quot; id=&quot;input-email&quot; placeholder=&quot;jere@rae.fi&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-email&quot;&gt;Email address&lt;/label&gt;
+&lt;input type=&quot;email&quot; id=&quot;input-email&quot; placeholder=&quot;jere@rae.fi&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-search">Search input</label>
                             <input type="search" id="input-search" placeholder="Search for something...">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-search&quot;&gt;Search input&lt;/label&gt;
-&lt;input type=&quot;search&quot; id=&quot;input-search&quot; placeholder=&quot;Search for something...&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-search&quot;&gt;Search input&lt;/label&gt;
+&lt;input type=&quot;search&quot; id=&quot;input-search&quot; placeholder=&quot;Search for something...&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-number">Number input</label>
                             <input type="number" id="input-number" placeholder="Enter a number">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-number&quot;&gt;Number input&lt;/label&gt;
-&lt;input type=&quot;number&quot; id=&quot;input-number&quot; placeholder=&quot;Enter a number&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-number&quot;&gt;Number input&lt;/label&gt;
+&lt;input type=&quot;number&quot; id=&quot;input-number&quot; placeholder=&quot;Enter a number&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-date">Date input</label>
                             <input type="date" id="input-date" value="1987-08-29">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-date&quot;&gt;Date input&lt;/label&gt;
-&lt;input type=&quot;date&quot; id=&quot;input-date&quot; value=&quot;1987-08-29&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-date&quot;&gt;Date input&lt;/label&gt;
+&lt;input type=&quot;date&quot; id=&quot;input-date&quot; value=&quot;1987-08-29&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-color">Color input</label>
                             <input type="color" id="input-color" value="#ae956d">
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-color&quot;&gt;Color input&lt;/label&gt;
-&lt;input type=&quot;color&quot; id=&quot;input-color&quot; value=&quot;#ae956d&quot;&gt;</code></pre></div>
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-color&quot;&gt;Color input&lt;/label&gt;
+&lt;input type=&quot;color&quot; id=&quot;input-color&quot; value=&quot;#ae956d&quot;&gt;</code></pre>
+                        </div>
                         <div class="field">
                             <label for="input-range">Range input</label>
                             <input name="rangeName" id="input-range" type="range" value="10" min="10" max="1000" step="5">
                             <output for="demo-input-range" name="outputName">10</output>
                         </div>
-                        <div class="example"><pre><code>&lt;label for=&quot;input-range&quot;&gt;Range input&lt;/label&gt;
+                        <div class="example">
+                            <pre><code>&lt;label for=&quot;input-range&quot;&gt;Range input&lt;/label&gt;
 &lt;input name=&quot;rangeName&quot; id=&quot;input-range&quot; type=&quot;range&quot; value=&quot;10&quot; min=&quot;10&quot; max=&quot;1000&quot; step=&quot;5&quot;&gt;
-&lt;output for=&quot;demo-input-range&quot; name=&quot;outputName&quot;&gt;10&lt;/output&gt;</code></pre></div>
+&lt;output for=&quot;demo-input-range&quot; name=&quot;outputName&quot;&gt;10&lt;/output&gt;</code></pre>
+                        </div>
                     </form>
                 </div>
             </article>
@@ -1532,7 +1599,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;input class=&quot;input--small&quot; type=&quot;text&quot; id=&quot;small-input&quot; placeholder=&quot;&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;input class=&quot;input--small&quot; type=&quot;text&quot; id=&quot;small-input&quot; placeholder=&quot;&quot;&gt;
 
 &lt;input class=&quot;input--large&quot; type=&quot;text&quot; id=&quot;large-input&quot; placeholder=&quot;&quot;&gt;
 
@@ -1542,7 +1610,8 @@
 
 &lt;input class=&quot;input--underlined&quot; type=&quot;text&quot; id=&quot;underlined-input&quot; placeholder=&quot;&quot;&gt;
 
-&lt;input class=&quot;input--unstyled&quot; type=&quot;text&quot; id=&quot;unstyled-input&quot; placeholder=&quot;&quot;&gt;</code></pre></div>
+&lt;input class=&quot;input--unstyled&quot; type=&quot;text&quot; id=&quot;unstyled-input&quot; placeholder=&quot;&quot;&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1582,7 +1651,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;label&gt;Normal checkboxes&lt;/label&gt;
+                <div class="example container">
+                    <pre><code>&lt;label&gt;Normal checkboxes&lt;/label&gt;
 &lt;div class=&quot;checkbox&quot;&gt;
     &lt;input id=&quot;checkbox1&quot; type=&quot;checkbox&quot; name=&quot;checkboxes&quot; value=&quot;1&quot; checked&gt;
     &lt;label for=&quot;checkbox1&quot;&gt;Option one&lt;/label&gt;
@@ -1610,7 +1680,8 @@
     &lt;input id=&quot;checkbox-inline3&quot; type=&quot;checkbox&quot; name=&quot;checkboxes-inline&quot; value=&quot;3&quot; disabled&gt;
     &lt;label for=&quot;checkbox-inline3&quot;&gt;Option three is disabled&lt;/label&gt;
 &lt;/div&gt;
-</code></pre></div>
+</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1650,7 +1721,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;label&gt;Normal radios&lt;/label&gt;
+                <div class="example container">
+                    <pre><code>&lt;label&gt;Normal radios&lt;/label&gt;
 &lt;div class=&quot;radio&quot;&gt;
     &lt;input id=&quot;radio1&quot; type=&quot;radio&quot; name=&quot;radios&quot; value=&quot;1&quot; checked&gt;
     &lt;label for=&quot;radio1&quot;&gt;Option one&lt;/label&gt;
@@ -1676,7 +1748,8 @@
 &lt;div class=&quot;radio radio--inline&quot;&gt;
     &lt;input id=&quot;radio-inline3&quot; type=&quot;radio&quot; name=&quot;radios-inline&quot; value=&quot;3&quot; disabled&gt;
     &lt;label for=&quot;radio-inline3&quot;&gt;Option three is disabled&lt;/label&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1702,7 +1775,8 @@
                         </fieldset>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;fieldset&gt;
+                <div class="example container">
+                    <pre><code>&lt;fieldset&gt;
 &lt;legend&gt;Fieldset legend&lt;/legend&gt;
 ...
 &lt;/fieldset&gt;
@@ -1710,7 +1784,8 @@
 &lt;fieldset class=&quot;fieldset--bordered&quot;&gt;
 &lt;legend&gt;Fieldset with borders&lt;/legend&gt;
 ...
-&lt;/fieldset&gt;</code></pre></div>
+&lt;/fieldset&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1730,7 +1805,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;field&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;field&quot;&gt;
     &lt;label for=&quot;input-field&quot;&gt;Input&lt;/label&gt;
     &lt;input type=&quot;text&quot; id=&quot;input-field&quot; placeholder=&quot;&quot;&gt;
 &lt;/div&gt;
@@ -1738,11 +1814,13 @@
 &lt;div class=&quot;field field--inline&quot;&gt;
     &lt;label for=&quot;input-field-inline&quot;&gt;Input&lt;/label&gt;
     &lt;input type=&quot;text&quot; id=&quot;input-field-inline&quot; placeholder=&quot;&quot;&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
 
 
                 <header class="container">
-                    <h4 class="display-4">Field-group</h4></header>
+                    <h4 class="display-4">Field-group</h4>
+                </header>
 
                 <div class="example container">
                     <form role="form" action="">
@@ -1796,7 +1874,8 @@
                         </div>
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;field-group&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;field-group&quot;&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
@@ -1812,11 +1891,13 @@
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
 
 
                 <header class="container">
-                    <h4 class="display-4">Inline field-group</h4></header>
+                    <h4 class="display-4">Inline field-group</h4>
+                </header>
                 <div class="example container">
 
                     <form role="form" action="">
@@ -1834,11 +1915,13 @@
                     </form>
                 </div>
 
-                <div class="example container"><pre><code>&lt;div class=&quot;field-group field-group--inline&quot;&gt;
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;field-group field-group--inline&quot;&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;div class=&quot;field&quot;&gt;...&lt;/div&gt;
     &lt;button&gt;...&lt;/button&gt;
-&lt;/div&gt;</code></pre></div>
+&lt;/div&gt;</code></pre>
+                </div>
             </article>
             <article>
                 <header class="container">
@@ -1872,16 +1955,78 @@
 
                     </form>
                 </div>
-                <div class="example container"><pre><code>&lt;p class=&quot;form-message&quot;&gt;...&lt;/p&gt;
+                <div class="example container">
+                    <pre><code>&lt;p class=&quot;form-message&quot;&gt;...&lt;/p&gt;
 
 &lt;p class=&quot;form-message form-message--success&quot;&gt;...&lt;/p&gt;
 
 &lt;p class=&quot;form-message form-message--error&quot;&gt;...&lt;/p&gt;
 
-&lt;p class=&quot;form-message form-message--warning&quot;&gt;...&lt;/p&gt;</code></pre></div>
+&lt;p class=&quot;form-message form-message--warning&quot;&gt;...&lt;/p&gt;</code></pre>
+                </div>
             </article>
         </section>
+        <section>
+            <header class="container">
+                <h2 class="display-2">Tags &amp; badges</h2>
+                <p>Tags are formatted text for highlighted, informative information. Badges are often used as unread number indicators.
+                </p>
+            </header>
+            <article>
+                <div class="example container">
+                    <div class="grid">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <h4 class="display-4">Tags <code>.tag</code></h4>
+                            <div class="example">
+                                <span class="tag">Default Tag</span> <a class="tag tag--primary">Primary Tag</a>
+                            </div>
+                        </div>
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <h4 class="display-4">Badges <code>.badge</code></h4>
+                            <div class="example">
+                                <span class="badge">23</span> <a class="badge badge--primary">22</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+
+                <div class="example container">
+                    <h4 class="display-4">Within content</h4>
+                    <div class="grid">
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <div class="example">
+                                <button role="button" class="button">Button <span class="tag">Tag</span></button>
+                                <br/>
+                                <br/>
+                                <a href="#">Inside anchor <span class="tag">Tag</span></a>
+                                <br/>
+                                <br/>
+                                <h1 class="u-remove-margin">Header <span class="tag">Tag</span></h1>
+                            </div>
+                        </div>
+                        <div class="grid__column u-width-md-6of12 u-width-xl-auto">
+                            <div class="example">
+                                <button role="button" class="button">Button <span class="badge">21</span></button>
+                                <br/>
+                                <br/>
+                                <a href="#">Inside anchor <span class="badge">21</span></a>
+                                <br/>
+                                <br/>
+                                <h1 class="u-remove-margin">Header <span class="badge">21</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur <span class="tag tag--primary u-inline">Success</span> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad <span class="badge u-inline">2</span> minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+                <div class="example container">
+                    <pre><code>&lt;span class=&quot;tag&quot;&gt;...&lt;/span&gt;
+
+&lt;span class=&quot;badge&quot;&gt;...&lt;/span&gt;</code></pre>
+                </div>
+            </article>
+        </section>
         <section>
             <header class="container">
                 <h2 class="display-2">Tooltips <code>.tooltip</code></h2>
@@ -1911,13 +2056,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--top&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;
+                <div class="example container">
+                    <pre><code>&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--top&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;
 
 &lt;a href=&quot;&quot; class=&quot;tooltip tooltip--right&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;
 
 &lt;a href=&quot;&quot; class=&quot;tooltip tooltip--bottom&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;
 
-&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--left&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;</code></pre></div>
+&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--left&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;</code></pre>
+                </div>
 
                 <div class="example container">
                     <div class="example-well u-text-center">
@@ -1933,9 +2080,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--top tooltip--multiline&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;
+                <div class="example container">
+                    <pre><code>&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--top tooltip--multiline&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;
 
-&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--top is-active&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;</code></pre></div>
+&lt;a href=&quot;&quot; class=&quot;tooltip tooltip--top is-active&quot; data-tooltip=&quot;&quot;&gt;...&lt;/a&gt;</code></pre>
+                </div>
             </article>
         </section>
 
@@ -1966,9 +2115,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="example container"><pre><code>&lt;div class=&quot;loader&quot;&gt;...&lt;/div&gt;
+                <div class="example container">
+                    <pre><code>&lt;div class=&quot;loader&quot;&gt;...&lt;/div&gt;
 
-&lt;div class=&quot;loader loader--large&quot;&gt;...&lt;/div&gt;</code></pre></div>
+&lt;div class=&quot;loader loader--large&quot;&gt;...&lt;/div&gt;</code></pre>
+                </div>
             </article>
         </section>
         <section>
@@ -2036,9 +2187,11 @@
                     </li>
                 </ul>
             </article>
-            <div class="example container"><pre><code>&lt;svg class="icon"&gt;
+            <div class="example container">
+                <pre><code>&lt;svg class="icon"&gt;
     &lt;use xlink:href="../images/icons.svg#mark"&gt;&lt;/use&gt;
-&lt;/svg&gt;</code></pre></div>
+&lt;/svg&gt;</code></pre>
+            </div>
 
         </section>
         <section class="animations">
@@ -2596,7 +2749,7 @@
                                         <div class="u-color-error">Set text color to "Error".</div>
                                     </td>
                                 </tr>
-                                 <tr>
+                                <tr>
                                     <td><code>.u-center</code>
                                     </td>
                                     <td>
@@ -2769,12 +2922,13 @@
 
     <!-- Styleguide JS -->
     <script>
-        [].forEach.call(document.getElementsByClassName("animation"), function (el) {
-            el.addEventListener("click", function () {
+        [].forEach.call(document.getElementsByClassName("animation"), function(el) {
+            el.addEventListener("click", function() {
                 el.preventDefault;
                 el.classList.toggle('animation-reset');
             });
         });
+
     </script>
 </body>
 
