@@ -1,0 +1,37 @@
+//
+// Fluid value
+// -------------------------------------------------------
+
+// Produces fluid value, for i.e. font-size that has min and max font-size.
+// You can also set value range that specifies the viewport widths
+// between which the value (i.e font-size) is fluid.
+
+// Usage
+// .selector {
+//    .fluid-value(16px, 24px, 480px, 1280px);
+// }
+
+
+.fluid-value (
+    @value-attribute: font-size,
+    @min-value: @root-font-size,
+    @max-value: @root-font-size * @line-height-base,
+    @min-value-range: @breakpoint-sm,
+    @max-value-range: @breakpoint-xl) {
+
+    // Pre-calculated mixin values
+    @value-return: unit(@max-value - @min-value);
+    @value-range-return: unit(@min-value-range - @max-value-range);
+
+    // Mixin
+        @{value-attribute}: ~"calc(@{min-value} - @{value-return} * ((100vw - @{min-value-range}) / @{value-range-return}))";
+
+    @media screen and (max-width: @min-value-range) {
+        @{value-attribute}: @min-value;
+    }
+
+    @media screen and (min-width: @max-value-range) {
+        @{value-attribute}: @max-value;
+    }
+
+};

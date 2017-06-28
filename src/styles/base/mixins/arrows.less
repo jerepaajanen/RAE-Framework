@@ -17,9 +17,10 @@
 // Caret
 .caret(@size, @color: currentColor) {
     position: relative;
-    display: inline-block;
-    vertical-align: middle;
     &:after {
+        position: absolute;
+        right: 0;
+        top: 50%;
         display: block;
         content: "";
         width: 0;
