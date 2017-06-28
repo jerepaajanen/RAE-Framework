@@ -10,6 +10,7 @@ var
     fs = require('fs'),
     del = require('del'),
     autoprefixer = require('autoprefixer'),
+    flexbugsFixes = require('postcss-flexbugs-fixes'),
     mqpacker = require('css-mqpacker'),
     cssnano = require('cssnano'),
     sequence = require('run-sequence'),
@@ -185,8 +186,7 @@ var markupProcess = function (isNotPartial) {
                     image: config.shareImageURL,
                     twitterHandle: config.twitterHandle
                 }
-            },
-            extension: 'html'
+            }
         }))
         .pipe($.if(isProduction, $.htmlclean()))
         .pipe(gulp.dest(paths.dest))
@@ -219,6 +219,7 @@ gulp.task('styles', function () {
         }))
         .on('error', handleErrors)
         .pipe($.postcss([
+            flexbugsFixes,
             autoprefixer({
                 browsers: config.browserSupport
             })
@@ -226,6 +227,7 @@ gulp.task('styles', function () {
         .pipe(gulp.dest(paths.styles.dest))
 
         .pipe($.if(isProduction, $.postcss([
+            flexbugsFixes,
             autoprefixer({
                 browsers: config.browserSupport
             }),
