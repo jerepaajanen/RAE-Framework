@@ -11,12 +11,13 @@
 
 // Usage Caret
 // .caret {
-//    .caret(size, color);
+//    .caret(size, offset, color);
 // }
 
 // Caret
-.caret(@size, @color: currentColor) {
+.caret(@size, @offset, @color: currentColor) {
     position: relative;
+    padding-right: (@size + @offset);
     &:after {
         position: absolute;
         right: 0;
