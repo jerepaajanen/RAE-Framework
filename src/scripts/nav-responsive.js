@@ -1,55 +1,152 @@
-(function () {
+(function ($) {
 
     'use strict';
 
-    // Simple responsive navigation with subnav toggle
-    $('.js-nav').each(function () {
+    $.fn.navResponsive = function (settings) {
 
-        var nav = $(this),
-            navMenuClass = 'nav__list',
-            navItemClass = 'nav__item',
-            dropdownModifier = 'dropdown',
-            dropdownClass = navMenuClass + '--' + dropdownModifier,
-            navToggleClass = 'nav__toggler',
-            dropdownToggleClass = 'nav__dropdown-toggler',
-            menu = nav.children('.' + navMenuClass),
-            dropdown = menu.find('li .' + dropdownClass);
+        // This is the easiest way to have default settings.
+        var options = $.extend({
+            // These are the defaults.
+            transition: 'slide', // String: Transition to apply. 'slide', 'fade', 'both' or 'none'
+            transitionSpeed: 250,
+            transitionEasing: 'swing', // String: 'linear', 'swing', 'default'.
 
-        // Build 'nav--responsive' elements
-        nav.prepend('<div role="button" class="' + navToggleClass + ' is-inactive" title="Toggle Menu"><span></span><span></span><span></span><div class="u-visually-hidden">Menu</div></div>');
-        //menu.addClass('is-collapsible');
-        //dropdown.addClass('is-collapsible');
-        dropdown.parent('li').addClass(navItemClass + '--with-' + dropdownModifier).prepend('<span role="button" class="' + dropdownToggleClass + '">+</span>');
+            content: 'ul', //CSS selector for the element acting as main content.
+            toggle: '.nav__toggle', // Selector class for the element acting as a button.
+            togglePosition: 'inside', // String: Position of toggle in navigation: 'inside', 'before', 'after' or 'none'.
+            toggleContent: 'Menu', // Html tags or text
 
-        // Toggle responsive navigation
-        $('.' + navToggleClass).click(function () {
-            if ($(':visible', menu).length < 1) {
-                $('.' + navToggleClass).toggleClass('is-inactive is-active');
-                $(menu).hide().toggleClass('is-open').slideDown(200, function () {
-                    $(this).removeAttr('style');
+            childContent: 'ul', //CSS selector for the element acting as child content.
+            childToggle: '.nav__handle', //CSS selector for the element acting as a button.
+            childTogglePosition: 'after', // String: Position of child toggle: 'before', 'after' or 'none'
+            childToggleContent: '+', // Html tags or text
+            overlay: '.nav-overlay' // Selector class for the element acting as overlay.
+        }, settings);
+
+
+        this.each(function () {
+
+            var wrapper = $(this),
+                content = wrapper.find(options.content).first(),
+                toggleSelector = options.toggle,
+                toggleButton = '<div role="button" class="' + options.toggle.split('.').join("") + ' is-inactive" data-toggle aria-label="Navigation menu">' + options.toggleContent + '</div>',
+                childContent = content.find(options.childContent),
+                childToggleSelector = 'ul li [data-handle]',
+                childToggleButton = '<span role="button" class="' + options.childToggle.split('.').join("") + '" data-handle>' + options.childToggleContent + '</span>',
+                overlaySelector = options.overlay;
+
+            function initPlugin() {
+
+                $(content).attr('data-content', '');
+                $(childContent).attr('data-content', '');
+
+                if (options.togglePosition === 'inside') {
+                    $(wrapper).prepend(toggleButton);
+                } else if (options.togglePosition === 'before') {
+                    $(wrapper).before(toggleButton);
+                } else if (options.togglePosition === 'after') {
+                    $(wrapper).after(toggleButton);
+                }
+
+                childContent.parent('li').each(function () {
+                    $(this).addClass('has-children');
+                    if (options.childTogglePosition === 'before') {
+                        $(this).children('a:first-child').before(childToggleButton);
+                    } else if (options.childTogglePosition === 'after') {
+                        $(this).children('a:first-child').after(childToggleButton);
+                    }
                 });
-                $(':root').toggleClass('nav-open');
-            } else {
-                $(menu).stop(true, true).slideUp(200, function () {
-                    $('.' + navToggleClass).toggleClass('is-active is-inactive');
-                    $(this).toggleClass('is-open').removeAttr('style');
-                });
-                $(':root').toggleClass('nav-open');
+
+                if (options.overlay) {
+                    $('body').append('<div class="' + options.overlay.split('.').join("") + '" data-overlay></div>');
+                }
             }
-            return false;
+            initPlugin();
+
+            $.fn.transitions = function (callback) {
+                var transition = {};
+                if (options.transition === 'fade') {
+                    transition['opacity'] = 'toggle';
+                }
+                if (options.transition === 'slide') {
+                    transition['height'] = 'toggle';
+                }
+                if (options.transition === 'both') {
+                    transition['opacity'] = 'toggle';
+                    transition['height'] = 'toggle';
+                }
+
+                return this.animate(transition, options.transitionSpeed, options.transitionEasing, callback);
+
+            };
+
+            function resetChilds(el) {
+                $(childContent).not(el).removeClass('is-open');
+                if (!$(childContent).hasClass('is-open')) {
+                    $(overlaySelector).removeClass('is-visible');
+                    $(':root').removeClass('subnav-open');
+                }
+            }
+
+            function closeOverlay() {
+                $(overlaySelector).click(function () {
+                    if ($(this).hasClass('is-visible')) {
+                        resetChilds();
+                    }
+                    return false;
+                });
+            }
+            closeOverlay();
+
+
+
+            // Toggle responsive navigation
+            $(toggleSelector).click(function () {
+                // Reset childContentd when open / close responsive navigation
+                resetChilds();
+
+                if ($(':visible', content).length < 1) {
+                    $(toggleSelector).toggleClass('is-inactive is-active');
+
+                    $(content).hide().toggleClass('is-open').transitions(function () {
+                        $(this).removeAttr('style');
+                    });
+                    $(':root').addClass('nav-open');
+
+                } else {
+
+                    $(content).stop(true, true).transitions(function () {
+                        $(toggleSelector).toggleClass('is-active is-inactive');
+                        $(this).toggleClass('is-open').removeAttr('style');
+                    });
+                    $(':root').removeClass('nav-open');
+                }
+
+                return false;
+            });
+
+            $(childToggleSelector).click(function () {
+
+                var currentTarget = $(this).parent().children('[data-content]'),
+                    currentParent = $(this).parents('[data-content]');
+
+                if ($(currentTarget).hasClass('is-open')) {
+                    // Open / close same childContent
+                    // and check if childContent parent is not open
+                    $(this).toggleClass('is-active');
+                    resetChilds(currentParent);
+
+                } else {
+                    // Open different childContent, close others except in same tree
+                    $(childContent).not(currentTarget && currentParent).removeClass('is-open');
+                    $(this).toggleClass('is-active');
+                    $(overlaySelector).addClass('is-visible');
+                    $(currentTarget).addClass('is-open');
+                    $(':root').addClass('subnav-open');
+                }
+                return false;
+            });
         });
+    };
 
-        // Toggle dropdowns
-        $('.' + dropdownToggleClass).click(function () {
-
-            var toggleLabel = $(this).parent().children('.' + dropdownClass).is(':visible') ? '+' : '-';
-
-            $(this).toggleClass('is-active');
-            $(this).parent().children('.' + dropdownClass).toggleClass('is-open');
-            $(this).text(toggleLabel);
-
-            return false;
-        });
-    });
-
-}());
+}(jQuery));

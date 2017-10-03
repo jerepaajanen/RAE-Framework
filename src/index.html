@@ -36,22 +36,30 @@
                 <span class="u-visually-hidden">RAE Framework</span>
             </a>
         </div>
-        <nav class="nav nav--primary nav--responsive js-nav" role="navigation">
-            <ul class="nav__list">
+
+        <nav class="nav nav--primary js-nav" data-navigation role="navigation">
+            <ul class="nav__list" data-content>
                 <li class="nav__item">
                     <a href="styleguide/index.html" class="nav__link">Visual Style Guide &amp; Documentation</a>
                 </li>
                 <li class="nav__item">
                     <a href="http://www.rae.fi" class="nav__link">RAE Framework</a>
-                    <ul class="nav__list nav__list--dropdown">
+                    <ul class="nav__list nav__list--subnav">
                         <li class="nav__item"><a href="http://www.rae.fi" class="nav__link">Just a subnav</a>
                         </li>
                         <li class="nav__item"><a href="http://www.rae.fi" class="nav__link">Just a subnav</a>
+                            <ul class="nav__list nav__list--subnav">
+                                <li class="nav__item"><a href="http://www.rae.fi" class="nav__link">Just a subnav</a>
+                                </li>
+                                <li class="nav__item"><a href="http://www.rae.fi" class="nav__link">Just a subnav</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
             </ul>
         </nav>
+
     </header>
 
     <main id="main" class="main" role="main">
@@ -71,6 +79,10 @@
     <script src="scripts/main.min.js"></script>
     <!-- @endif -->
 
+    <script>
+        $('.js-nav').navResponsive();
+
+    </script>
 
     <!-- @include partials/analytics.html -->
 </body>

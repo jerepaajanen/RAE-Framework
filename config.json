@@ -5,7 +5,7 @@
     },
 
     "browserSupport": [
-      "last 2 version",
+      "last 3 version",
       "ie >= 10"
     ],
 

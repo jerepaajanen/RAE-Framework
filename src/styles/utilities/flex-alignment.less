@@ -20,8 +20,6 @@
         justify-content: flex-end!important;
     }
 
-    // Vertical aligment
-
     .u-flex-middle {
         display: flex !important;
         align-items: center !important;
@@ -37,6 +35,25 @@
         align-items: flex-end !important;
     }
 
+    .u-flex-space-between {
+        justify-content: space-between!important
+    }
+
+    .u-flex-0 {
+        flex: 0 0 auto; //equal to flex: none;
+    }
+
+    .u-flex-1 {
+        flex: 1 1 auto;
+    }
+
+    .u-flex-shrink {
+        flex-shrink: 1;
+    }
+
+    .u-flex-wrap {
+        flex-wrap: wrap;
+    }
 }
 
 .use-flex-alignment(@use-flex-alignment);

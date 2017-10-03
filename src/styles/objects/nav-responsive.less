@@ -3,14 +3,11 @@
 // -------------------------------------------------------
 .responsive-navigation(@boolean) when (@boolean =true) {
 
-    // Responsive navigation
-    .nav--responsive {
+    [data-navigation] {
         overflow-x: visible;
-        .clearfix();
-        -webkit-overflow-scrolling: touch;
-        // Prevent nav__list flashing when javascript isn't loaded
+        -webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
         @media @nav-responsive-down {
-            .nav__list {
+            [data-content] {
                 display: none;
                 visibility: hidden;
                 &.is-open {
@@ -20,28 +17,48 @@
                 }
             }
         }
-
-
         @media @nav-responsive-up {
             width: auto;
-            .nav__list {
+            [data-content] {
                 display: block;
                 height: auto;
                 overflow: visible;
                 visibility: visible;
-            }
-            // Hide toggle-buttons
-            .nav__toggler,
-            .nav__dropdown-toggler {
+            } // Hide navigation toggle-buttons
+            [data-toggle] {
                 display: none;
             }
         }
     }
 
-    // Nav-toggle
-    .nav__toggler {
-        //.hamburger(); // Add hamburger-menu for nav-toggle
+    @media @nav-responsive-down {
+        .nav-open {
+            position: fixed;
+            overflow: hidden;
+        }
+    }
+    @media @nav-responsive-up {
+        .subnav-open {
+            position: fixed;
+            overflow: hidden;
+        }
+    }
+
+    @media @nav-responsive-up {
+        [data-overlay] {
+            position: fixed;
+            visibility: hidden;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            &.is-visible {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
     }
 }
-
 .responsive-navigation(@use-responsive-navigation);

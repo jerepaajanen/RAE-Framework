@@ -8,6 +8,7 @@
         flex-wrap: wrap;
         .button {
             flex: 1 0 auto;
+            z-index: 1;
             &:first-child:not(:last-child) {
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
@@ -23,7 +24,12 @@
             }
             &:hover,
             &:focus {
-                z-index: 2; // rise hovered button above others
+                z-index: 2; // rise hovered button above normal
+            }
+
+            &:active,
+            &.is-active {
+                z-index: 3; // keep active button above others
             }
         }
         &.button-group--block {

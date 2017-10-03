@@ -13,7 +13,7 @@
 // system to use. Default value is 12.
 // Gutter width between columns (use px|%|rem)
 @grid-columns:                  12;
-@grid-gutter-width:             24px;
+@grid-gutter-width:             48px;
 @use-flex-grid:                 true;
 
 // Breakpoints & container widths
@@ -23,15 +23,15 @@
 @breakpoint-lg:                 992px; //62em;
 @breakpoint-xl:                 1280px; //80em;
 
-@container-sm:                  95vw;
+@container-sm:                  100%;
 @container-md:                  (@breakpoint-md - @grid-gutter-width);
 @container-lg:                  (@breakpoint-lg - @grid-gutter-width);
 @container-xl:                  (@breakpoint-xl - @grid-gutter-width);
 
-@container-fluid:               95vw;
-@container-fluid-max:           1600px;
-@container-fluid-inner:         80vw;
-@container-fluid-inner-max:     1280px;
+@container-fluid:               100%;
+@container-fluid-max:           @container-xl;
+@container-fluid-inner:         100%;
+@container-fluid-inner-max:     @container-md;
 @container-fluid-full:          100%;
 @container-fluid-full-max:      100%;
 
@@ -230,6 +230,7 @@
 @blockquote-quote-font-size:    18px;
 @blockquote-quote-font-weight:  300;
 @blockquote-quote-line-height:  @line-height-base;
+@blockquote-quote-letter-spacing:inherit;
 @blockquote-quote-margin:       @spacing-half;
 @blockquote-cite-font-size:     14px;
 @blockquote-cite-color:         @grey-400;
@@ -448,6 +449,7 @@
 @tooltip-offset:                2px;
 @tooltip-anim-duration:         @transition-duration-default;
 @tooltip-anim-delay:            50ms;
+@tooltip-font-family:           @base-font-family;
 @tooltip-font-size:             12px;
 @tooltip-font-weight:           400;
 @tooltip-line-height:           @line-height-tighter;
@@ -489,6 +491,9 @@
 @box-shadow-small:              0 2px 4px rgba(0,0,0,.05);
 @box-shadow-default:            0 2px 4px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.05);
 @box-shadow-large:              0 2px 4px rgba(0,0,0,0.05),0 3px 12px rgba(0,0,0,0.15);
+
+// Media
+@media-background:              transparent;
 
 // Transition & Animation
 @transition-duration-fastest:   @transition-duration-default / 4;

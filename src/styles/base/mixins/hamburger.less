@@ -1,61 +1,90 @@
 //
 // Hamburger (Menu)
 // -------------------------------------------------------
-
 // Usage
 // .selector {
-//    .hamburger(height, width, stroke-width, stroke-radius, color, color-active, duration, close: true/false)
+//    .hamburger(height, width, stroke-width, stroke-radius, color, color-active, duration, close: true/false, cheese: true/false)
 // }
-
-.hamburger(@height: @spacing-base, @width: @spacing-base * 1.5, @stroke-width: @spacing-sixth, @stroke-radius: 0, @color: @base-color, @color-active: @base-color, @duration: @transition-duration-default, @close: true) {
+.hamburger( @height: @spacing-base,
+@width: @spacing-base * 1.5,
+@stroke-width: @spacing-sixth,
+@stroke-radius: 0,
+@color: @base-color,
+@color-active: @base-color,
+@duration: @transition-duration-default,
+@close: true,
+@cheese: true) {
     cursor: pointer;
     position: relative;
     height: @height;
     width: @width;
-    span {
-        background: @color;
-        border-radius: @stroke-radius;
-        display: block;
-        height: @stroke-width;
-        transition: opacity @duration linear @duration, margin @duration linear @duration, transform @duration linear 0s;
-        position: absolute;
-        width: 100%;
-        &:nth-child(2) {
-            top: ((@height / 2) - round(@stroke-width / 2));
+    .hamburger-icon {
+        & when (@cheese =true) {
+            &,
+            &:before,
+            &:after {
+                background: @color;
+            }
         }
-        &:nth-child(1) {
-            top: 0;
+        & when (@cheese =false) {
+            & {
+                color: transparent;
+            }
+            &:before,
+            &:after {
+                background: @color;
+            }
         }
-        &:nth-child(3) {
-            bottom: 0;
+        &:before,
+        &:after {
+            content: "";
+        }
+        &,
+        &:before,
+        &:after {
+            position: absolute;
+            width: 100%;
+            border-radius: @stroke-radius;
+            display: block;
+            height: @stroke-width;
+            transition: all @duration @transition-easing-default;
+        }
+        & {
+            top: 50%;
+            margin-top: round(-@stroke-width / 2);
+        }
+        &:before {
+            top: -@height / 2 + round(@stroke-width / 2);
+        }
+        &:after {
+            bottom: -@height / 2 + round(@stroke-width / 2);
         }
     }
     &.is-active,
     &:active {
-        span {
+        .hamburger-icon {
             background: @color-active;
-            transition: opacity @duration linear 0s, margin @duration linear 0s, transform @duration linear @duration;
-            & when (@close = true) {
-                &:nth-child(2) {
-                    opacity: 0;
+            & when (@close =true) {
+                & {
+                    background: transparent;
                 }
-                &:nth-child(1) {
+                &:before {
                     transform: rotate(45deg);
-                    margin-top: ((@height / 2) - (@stroke-width / 2));
+                    top: 0;
                 }
-                &:nth-child(3) {
+                &:after {
                     transform: rotate(-45deg);
-                    margin-bottom: ((@height / 2) - (@stroke-width / 2));
+                    bottom: 0;
                 }
             }
         }
     }
     &.is-inactive:hover {
-        span {
-            &:nth-child(1) {
+        .hamburger-icon {
+            &:before {
                 transform: translateY(-@stroke-width / 2);
             }
-            &:nth-child(3) {
+            &:after {
                 transform: translateY(@stroke-width / 2);
             }
         }

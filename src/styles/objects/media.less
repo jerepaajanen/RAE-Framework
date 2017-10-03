@@ -10,7 +10,7 @@
 
     .media {
         .aspect-ratio-container();
-        background: @grey-25;
+        background: @media-background;
         iframe,
         object,
         embed,
@@ -24,6 +24,9 @@
     }
     .media--9-16 {
         .aspect-ratio(9, 16);
+    }
+    .media--3-5 {
+        .aspect-ratio(3, 5);
     }
     .media--2-3 {
         .aspect-ratio(2, 3);
@@ -40,11 +43,26 @@
     .media--3-2 {
         .aspect-ratio(3, 2);
     }
+    .media--5-3 {
+        .aspect-ratio(5, 3);
+    }
     .media--16-9 {
         .aspect-ratio(16, 9);
     }
     .media--2-1 {
         .aspect-ratio(2, 1);
+    }
+    .media--fit {
+        > *:first-child {
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+    .media--contain {
+        > *:first-child {
+            object-fit: contain;
+            object-position: center;
+        }
     }
 }
 

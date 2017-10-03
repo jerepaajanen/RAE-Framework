@@ -170,7 +170,9 @@ gulp.task('default:production', function () {
 // -------------------------------------------------------
 
 var markupProcess = function (isNotPartial) {
-        return gulp.src(paths.src + '**/*.{php,html}')
+    return gulp.src(paths.src + '**/*.{html,php}', {
+        base: paths.src
+    })
         //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
         .pipe(isNotPartial ? $.newer(paths.dest) : $.util.noop())
         .pipe($.preprocess({
@@ -186,7 +188,8 @@ var markupProcess = function (isNotPartial) {
                     image: config.shareImageURL,
                     twitterHandle: config.twitterHandle
                 }
-            }
+            },
+            extension: 'html'
         }))
         .pipe($.if(isProduction, $.htmlclean()))
         .pipe(gulp.dest(paths.dest))
@@ -345,7 +348,7 @@ gulp.task('images:optimize', function () {
 // Images : Favicons
 gulp.task('images:favicons', ['images:favicons-generate'], function () {
 
-    if (config.wordpressTheme) {
+    if (config.wordpressTheme && isProduction) {
         return gulp.src(paths.src + 'partials/favicons.html')
             .pipe(inject.beforeEach(config.faviconsPath, '<?php echo get_template_directory_uri(); ?>/'))
             .pipe(gulp.dest(paths.src + 'partials/'));
@@ -440,13 +443,12 @@ gulp.task('icons', function() {
 // COPY
 // -------------------------------------------------------
 
-gulp.task('copy', ['copy:root', 'copy:assets', 'copy:fonts']);
+gulp.task('copy', ['copy:root', 'copy:htaccess', 'copy:assets', 'copy:fonts']);
 
 // Copy : Root
 gulp.task('copy:root', function () {
     return gulp.src([
         paths.src + '**/*',
-        'node_modules/apache-server-configs/dist/.htaccess',
         '!' + paths.src + '**/*.{php,html}',
         '!' + paths.images.src + '**/*',
         '!' + paths.styles.src + '**/*',
@@ -456,6 +458,15 @@ gulp.task('copy:root', function () {
         dot: true
     })
         .pipe(gulp.dest(paths.dest));
+});
+
+// Copy : Htaccess
+gulp.task('copy:htaccess', function () {
+    return gulp.src('node_modules/apache-server-configs/dist/.htaccess', {
+        dot: true
+    })
+    .pipe($.if(config.wordpressTheme, $.rename({extname: '.bak'})))
+    .pipe(gulp.dest(paths.dest));
 });
 
 // Copy : Assets
