@@ -10,17 +10,12 @@
     //        </element>
     //    </element>
     // </element>
-
     // Container
-
     .use-container(@boolean) when (@boolean =true) {
         .container,
         .container-fluid {
             .make-container();
-        }
-
-        // Fluid containers
-
+        } // Fluid containers
         .container-fluid {
             width: @container-fluid;
             max-width: @container-fluid-max;
@@ -34,22 +29,14 @@
         .container-fluid--inner {
             width: @container-fluid-inner;
             max-width: @container-fluid-inner-max;
-        }
-
-
-        // Fixed containers
-
+        } // Fixed containers
         // Container Small (Default)
-
         .use-screen-sm(@boolean) when (@boolean =true) {
             .container {
                 width: @container-sm;
             }
         }
-        .use-screen-sm(@use-screen-sm);
-
-        // Container Medium
-
+        .use-screen-sm(@use-screen-sm); // Container Medium
         .use-screen-md(@boolean) when (@boolean =true) {
             @media @md-up {
                 .container {
@@ -57,10 +44,7 @@
                 }
             }
         }
-        .use-screen-md(@use-screen-md);
-
-        // Container Large
-
+        .use-screen-md(@use-screen-md); // Container Large
         .use-screen-lg(@boolean) when (@boolean =true) {
             @media @lg-up {
                 .container {
@@ -68,10 +52,7 @@
                 }
             }
         }
-        .use-screen-lg(@use-screen-lg);
-
-        // Container Extra-Large
-
+        .use-screen-lg(@use-screen-lg); // Container Extra-Large
         .use-screen-xl(@boolean) when (@boolean =true) {
             @media @xl-up {
                 .container {
@@ -81,35 +62,24 @@
         }
         .use-screen-xl(@use-screen-xl);
     }
-    .use-container(@use-container);
-
-    // Grid
-
+    .use-container(@use-container); // Grid
     .use-grid(@boolean) when (@boolean =true) {
         .grid {
             .make-grid();
         }
     }
-    .use-grid(@use-grid);
-
-    // Grid-column
-
+    .use-grid(@use-grid); // Grid-column
     .use-grid-column(@boolean) when (@boolean =true) {
         .grid__column {
             .make-grid-column(@grid-gutter-width);
             width: 100%; // Default width for mobile column
-        }
-
-        // Collapse column gutters
-        .grid__column--collapse {
+        } // Collapse column gutters
+        .grid__column--flush {
             padding-left: 0;
             padding-right: 0;
         }
     }
-    .use-grid-column(@use-grid-column);
-
-    // Grid modifiers
-
+    .use-grid-column(@use-grid-column); // Grid modifiers
     .use-grid-modifiers(@boolean) when (@boolean =true) {
 
         // Grid with half gutters
@@ -120,9 +90,7 @@
                 padding-left: (@grid-gutter-width / 4);
                 padding-right: (@grid-gutter-width / 4);
             }
-        }
-
-        // Grid with tight gutters
+        } // Grid with tight gutters
         .grid--quarter {
             margin-left: (@grid-gutter-width / -8);
             margin-right: (@grid-gutter-width / -8);
@@ -130,46 +98,35 @@
                 padding-left: (@grid-gutter-width / 8);
                 padding-right: (@grid-gutter-width / 8);
             }
-        }
-
-        // Collapse row gutters
-        .grid--collapse {
+        } // Collapse row gutters
+        .grid--flush {
             margin-left: 0;
             margin-right: 0;
-            > .grid__column{
+            > .grid__column {
                 padding-left: 0;
                 padding-right: 0;
             }
         }
 
-        .grid--collapse-deep {
+        .grid--flush-deep {
             &,
             & .grid {
                 margin-left: 0;
                 margin-right: 0;
             }
-            .grid__column {
+            .grid__column {
                 padding-left: 0;
                 padding-right: 0;
             }
         }
 
-        // Flex-grid only features
-        & when (@use-flex-grid =true) {
-
-            // Grid with centered columns
-            .grid--centered {
-                justify-content: center;
+        // Grid with equal height columns
+        .grid--equal-height {
+            > .grid__column {
+                display: flex;
             }
-
-            // Grid with equal height columns
-            .grid--equal-height {
-                > .grid__column {
-                    display: flex;
-                }
-                .grid {
-                    flex: 1;
-                }
+            .grid {
+                flex: 1;
             }
         }
     }

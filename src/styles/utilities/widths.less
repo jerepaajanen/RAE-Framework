@@ -7,64 +7,42 @@
     .use-screen-xs(@boolean) when (@boolean =true) {
         .loop-grid(@grid-columns, width, -xs);
         .u-width-xs-auto {
-            & when (@use-flex-grid =true) {
-                flex: 1;
-            }
+            flex: 1;
         }
     }
-    .use-screen-xs(@use-screen-xs);
-
-
-    // Small Grid for Mobile devices
+    .use-screen-xs(@use-screen-xs); // Small Grid for Mobile devices
     .use-screen-sm(@boolean) when (@boolean =true) {
         @media @sm-up {
             .loop-grid(@grid-columns, width, -sm);
             .u-width-sm-auto {
-                & when (@use-flex-grid =true) {
-                    flex: 1;
-                }
+                flex: 1;
             }
         }
     }
-    .use-screen-sm(@use-screen-sm);
-
-
-    // Medium Grid for Tablet devices
+    .use-screen-sm(@use-screen-sm); // Medium Grid for Tablet devices
     .use-screen-md(@boolean) when (@boolean =true) {
         @media @md-up {
             .loop-grid(@grid-columns, width, -md);
             .u-width-md-auto {
-                & when (@use-flex-grid =true) {
-                    flex: 1;
-                }
+                flex: 1;
             }
         }
     }
-    .use-screen-md(@use-screen-md);
-
-
-    // Large Grid, optimal for laptop & desktop devices
+    .use-screen-md(@use-screen-md); // Large Grid, optimal for laptop & desktop devices
     .use-screen-lg(@boolean) when (@boolean =true) {
         @media @lg-up {
             .loop-grid(@grid-columns, width, -lg);
             .u-width-lg-auto {
-                & when (@use-flex-grid =true) {
-                    flex: 1;
-                }
+                flex: 1;
             }
         }
     }
-    .use-screen-lg(@use-screen-lg);
-
-
-    // Extra Large Grid for Large desktop devices
+    .use-screen-lg(@use-screen-lg); // Extra Large Grid for Large desktop devices
     .use-screen-xl(@boolean) when (@boolean =true) {
         @media @xl-up {
             .loop-grid(@grid-columns, width, -xl);
             .u-width-xl-auto {
-                & when (@use-flex-grid =true) {
-                    flex: 1;
-                }
+                flex: 1;
             }
         }
     }
