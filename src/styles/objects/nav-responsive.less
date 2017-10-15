@@ -33,14 +33,14 @@
 
     @media @nav-responsive-down {
         .nav-open {
-            position: fixed;
-            overflow: hidden;
+            overflow: hidden !important;
+            height: 100% !important
         }
     }
     @media @nav-responsive-up {
         .subnav-open {
-            position: fixed;
-            overflow: hidden;
+            overflow: hidden !important;
+            height: 100% !important
         }
     }
 
@@ -61,4 +61,5 @@
         }
     }
 }
+
 .responsive-navigation(@use-responsive-navigation);

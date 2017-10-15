@@ -58,7 +58,7 @@
                 });
 
                 if (options.overlay) {
-                    $('body').append('<div class="' + options.overlay.split('.').join("") + '" data-overlay></div>');
+                    $('body').append('<div role="button" class="' + options.overlay.split('.').join("") + '" data-overlay></div>');
                 }
             }
             initPlugin();
@@ -66,14 +66,14 @@
             $.fn.transitions = function (callback) {
                 var transition = {};
                 if (options.transition === 'fade') {
-                    transition['opacity'] = 'toggle';
+                    transition.opacity = 'toggle';
                 }
                 if (options.transition === 'slide') {
-                    transition['height'] = 'toggle';
+                    transition.height = 'toggle';
                 }
                 if (options.transition === 'both') {
-                    transition['opacity'] = 'toggle';
-                    transition['height'] = 'toggle';
+                    transition.opacity = 'toggle';
+                    transition.height = 'toggle';
                 }
 
                 return this.animate(transition, options.transitionSpeed, options.transitionEasing, callback);
@@ -84,7 +84,7 @@
                 $(childContent).not(el).removeClass('is-open');
                 if (!$(childContent).hasClass('is-open')) {
                     $(overlaySelector).removeClass('is-visible');
-                    $(':root').removeClass('subnav-open');
+                    $('body').removeClass('subnav-open');
                 }
             }
 
@@ -111,7 +111,7 @@
                     $(content).hide().toggleClass('is-open').transitions(function () {
                         $(this).removeAttr('style');
                     });
-                    $(':root').addClass('nav-open');
+                    $('body').addClass('nav-open');
 
                 } else {
 
@@ -119,7 +119,7 @@
                         $(toggleSelector).toggleClass('is-active is-inactive');
                         $(this).toggleClass('is-open').removeAttr('style');
                     });
-                    $(':root').removeClass('nav-open');
+                    $('body').removeClass('nav-open');
                 }
 
                 return false;
@@ -133,16 +133,19 @@
                 if ($(currentTarget).hasClass('is-open')) {
                     // Open / close same childContent
                     // and check if childContent parent is not open
-                    $(this).toggleClass('is-active');
+                    $(this).removeClass('is-active');
+
+
                     resetChilds(currentParent);
 
                 } else {
                     // Open different childContent, close others except in same tree
                     $(childContent).not(currentTarget && currentParent).removeClass('is-open');
-                    $(this).toggleClass('is-active');
+                    $(childToggleSelector).not(this).removeClass('is-active');
+                    $(this).addClass('is-active');
                     $(overlaySelector).addClass('is-visible');
                     $(currentTarget).addClass('is-open');
-                    $(':root').addClass('subnav-open');
+                    $('body').addClass('subnav-open');
                 }
                 return false;
             });
