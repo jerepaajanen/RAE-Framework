@@ -1,0 +1,34 @@
+//
+// Utility repeater
+// -------------------------------------------------------
+
+// Repeat utility classes
+
+.utility-repeater(@selector) {
+
+    .u-@{selector}-flush {}
+
+    .u-@{selector}-flush {
+        @{selector}: 0 !important;
+    }
+
+    .u-@{selector}-xs {
+        @{selector}: @spacing-third !important;
+    }
+
+    .u-@{selector}-sm {
+        @{selector}: @spacing-half !important;
+    }
+
+    .u-@{selector}-md {
+        @{selector}: @spacing-base !important;
+    }
+
+    .u-@{selector}-lg {
+        @{selector}: @spacing-double !important;
+    }
+
+    .u-@{selector}-xl {
+        @{selector}: @spacing-double * 2 !important;
+    }
+}
