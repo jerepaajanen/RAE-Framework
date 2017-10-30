@@ -55,12 +55,12 @@
 @white:                         #ffffff;
 
 // Custom brand colors
-@color-primary:                 #ae956d;
+@color-primary:                 #5d5fff;
 @color-primary-light:           tint(@color-primary, 40%);
 @color-primary-dark:            shade(@color-primary, 20%);
 @color-primary-accent:          overlay(@color-primary, fade(@black, 50%));
 
-@color-secondary:               #3F51B5;
+@color-secondary:               #ff6b61;
 @color-secondary-light:         tint(@color-secondary, 40%);
 @color-secondary-dark:          shade(@color-secondary, 20%);
 @color-secondary-accent:        overlay(@color-secondary, fade(@black, 50%));
@@ -210,7 +210,7 @@
 @lead-color:                    @grey-600;
 
 // Emphasis
-@small-font-size:               75%;
+@smallall-font-size:               75%;
 @mark-background-color:         ##ffff00;
 @mark-padding:                  .2em;
 
@@ -356,10 +356,10 @@
 @button-large-font-size:        @button-font-size * 1.5;
 
 @button-link-font-weight:       @button-font-weight;
-@button-link-color:             @button-default-color;
-@button-link-decoration:        none;
-@button-link-hover-color:       @button-default-hover-color;
-@button-link-hover-decoration:  underline;
+@button-link-color:             @link-color;
+@button-link-decoration:        @link-decoration;
+@button-link-hover-color:       @link-hover-color;
+@button-link-hover-decoration:  @link-hover-decoration;
 
 @button-default-color:          @base-color;
 @button-default-bg:             transparent;

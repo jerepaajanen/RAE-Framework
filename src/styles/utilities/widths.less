@@ -12,7 +12,7 @@
     }
     .use-screen-xs(@use-screen-xs); // Small Grid for Mobile devices
     .use-screen-sm(@boolean) when (@boolean =true) {
-        @media @sm-up {
+        @media @small-up {
             .loop-grid(@grid-columns, width, -sm);
             .u-width-sm-auto {
                 flex: 1;
@@ -21,7 +21,7 @@
     }
     .use-screen-sm(@use-screen-sm); // Medium Grid for Tablet devices
     .use-screen-md(@boolean) when (@boolean =true) {
-        @media @md-up {
+        @media @medium-down {
             .loop-grid(@grid-columns, width, -md);
             .u-width-md-auto {
                 flex: 1;
@@ -30,7 +30,7 @@
     }
     .use-screen-md(@use-screen-md); // Large Grid, optimal for laptop & desktop devices
     .use-screen-lg(@boolean) when (@boolean =true) {
-        @media @lg-up {
+        @media @large-up {
             .loop-grid(@grid-columns, width, -lg);
             .u-width-lg-auto {
                 flex: 1;
@@ -39,7 +39,7 @@
     }
     .use-screen-lg(@use-screen-lg); // Extra Large Grid for Large desktop devices
     .use-screen-xl(@boolean) when (@boolean =true) {
-        @media @xl-up {
+        @media @x-large-up {
             .loop-grid(@grid-columns, width, -xl);
             .u-width-xl-auto {
                 flex: 1;

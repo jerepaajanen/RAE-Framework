@@ -23,23 +23,23 @@
             border-radius: 0 0 3px 3px;
         }
         &:after {
-            right: 4px;
-            content: "@xs";
-            @media @sm-up {
-                content: "@sm";
+            right: 64px;
+            content: "@x-small";
+            @media @small-up {
+                content: "@small";
             }
-            @media @md-up {
-                content: "@md";
+            @media @medium-down {
+                content: "@medium";
             }
-            @media @lg-up {
-                content: "@lg";
+            @media @large-up {
+                content: "@large";
             }
-            @media @xl-up {
-                content: "@xl";
+            @media @x-large-up {
+                content: "@x-large";
             }
         }
         &:before {
-            right: 36px;
+            right: 0;
             @media @nav-responsive-down {
                 content: "@nav-hidden";
             }
