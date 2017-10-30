@@ -90,15 +90,9 @@
                 padding-left: (@grid-gutter-width / 4);
                 padding-right: (@grid-gutter-width / 4);
             }
-        } // Grid with tight gutters
-        .grid--quarter {
-            margin-left: (@grid-gutter-width / -8);
-            margin-right: (@grid-gutter-width / -8);
-            > .grid__column {
-                padding-left: (@grid-gutter-width / 8);
-                padding-right: (@grid-gutter-width / 8);
-            }
-        } // Collapse row gutters
+        }
+
+        // Collapse row gutters
         .grid--flush {
             margin-left: 0;
             margin-right: 0;
@@ -108,17 +102,6 @@
             }
         }
 
-        .grid--flush-deep {
-            &,
-            & .grid {
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .grid__column {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
 
         // Grid with equal height columns
         .grid--equal-height {
