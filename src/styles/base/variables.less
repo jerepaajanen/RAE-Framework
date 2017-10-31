@@ -3,7 +3,7 @@
 // Enabling current media query, displays currently used
 // media query.
 // DO NOT USE IN PRODUCTION!
-@use-current-media-query:       true;
+@use-current-media-query:               true;
 
 
 // GRID & BREAKPOINTS
@@ -12,96 +12,96 @@
 // Dictate how many columns you would like your grid
 // system to use. Default value is 12.
 // Gutter width between columns (use px|%|rem)
-@grid-columns:                  12;
-@grid-gutter-width:             40px;
+@grid-columns:                          12;
+@grid-gutter-width:                     40px;
 
 // Breakpoints & container widths
-@breakpoint-x-small:            0;
-@breakpoint-small:              544px; //34em;
-@breakpoint-medium:             768px; //48em;
-@breakpoint-large:              992px; //62em;
-@breakpoint-x-large:            1280px; //80em;
+@breakpoint-x-small:                    0;
+@breakpoint-small:                      544px; //34em;
+@breakpoint-medium:                     768px; //48em;
+@breakpoint-large:                      992px; //62em;
+@breakpoint-x-large:                    1280px; //80em;
 
-@container-small:               100%;
-@container-medium:              (@breakpoint-medium - @grid-gutter-width);
-@container-large:               (@breakpoint-large - @grid-gutter-width);
-@container-x-large:             (@breakpoint-x-large - @grid-gutter-width);
+@container-small:                       100%;
+@container-medium:                      (@breakpoint-medium - @grid-gutter-width);
+@container-large:                       (@breakpoint-large - @grid-gutter-width);
+@container-x-large:                     (@breakpoint-x-large - @grid-gutter-width);
 
-@container-fluid:               100%;
-@container-fluid-max:           @container-x-large;
-@container-fluid-inner:         100%;
-@container-fluid-inner-max:     @container-medium;
-@container-fluid-full:          100%;
-@container-fluid-full-max:      100%;
+@container-fluid:                       100%;
+@container-fluid-max:                   @container-x-large;
+@container-fluid-inner:                 100%;
+@container-fluid-inner-max:             @container-medium;
+@container-fluid-full:                  100%;
+@container-fluid-full-max:              100%;
 
 
 // COLORS
 // -------------------------------------------------------
 
 // Greyscale
-@grey-25:                       lighten(@black, 97,5%);
-@grey-50:                       lighten(@black, 95%);
-@grey-100:                      lighten(@black, 90%);
-@grey-200:                      lighten(@black, 80%);
-@grey-300:                      lighten(@black, 70%);
-@grey-400:                      lighten(@black, 60%);
-@grey-500:                      lighten(@black, 50%);
-@grey-600:                      lighten(@black, 40%);
-@grey-700:                      lighten(@black, 30%);
-@grey-800:                      lighten(@black, 20%);
-@grey-900:                      lighten(@black, 10%);
+@grey-25:                               lighten(@black, 97,5%);
+@grey-50:                               lighten(@black, 95%);
+@grey-100:                              lighten(@black, 90%);
+@grey-200:                              lighten(@black, 80%);
+@grey-300:                              lighten(@black, 70%);
+@grey-400:                              lighten(@black, 60%);
+@grey-500:                              lighten(@black, 50%);
+@grey-600:                              lighten(@black, 40%);
+@grey-700:                              lighten(@black, 30%);
+@grey-800:                              lighten(@black, 20%);
+@grey-900:                              lighten(@black, 10%);
 
-@black:                         #000000;
-@white:                         #ffffff;
+@black:                                 #000000;
+@white:                                 #ffffff;
 
 // Custom brand colors
-@color-primary:                 #5d5fff;
-@color-primary-light:           tint(@color-primary, 40%);
-@color-primary-dark:            shade(@color-primary, 20%);
-@color-primary-accent:          overlay(@color-primary, fade(@black, 50%));
+@color-primary:                         #5d5fff;
+@color-primary-light:                   tint(@color-primary, 40%);
+@color-primary-dark:                    shade(@color-primary, 20%);
+@color-primary-accent:                  overlay(@color-primary, fade(@black, 50%));
 
-@color-secondary:               #ff6b61;
-@color-secondary-light:         tint(@color-secondary, 40%);
-@color-secondary-dark:          shade(@color-secondary, 20%);
-@color-secondary-accent:        overlay(@color-secondary, fade(@black, 50%));
+@color-secondary:                       #ff6b61;
+@color-secondary-light:                 tint(@color-secondary, 40%);
+@color-secondary-dark:                  shade(@color-secondary, 20%);
+@color-secondary-accent:                overlay(@color-secondary, fade(@black, 50%));
 
 // UI colors
-@color-success:                 #5cb85c;
-@color-error:                   #d9534f;
-@color-warning:                 #ed9c28;
+@color-success:                         #5cb85c;
+@color-error:                           #d9534f;
+@color-warning:                         #ed9c28;
 
 // Social Media colors
-@color-behance:                 #1769ff;
-@color-dribbble:                #ea4c89;
-@color-dropbox:                 #007ee5;
-@color-facebook:                #3b5998;
-@color-flickr:                  #0063dc;
-@color-foursquare:              #f94877;
-@color-github:                  #181717;
-@color-google:                  #4285f4;
-@color-heimo:                   #ffb549;
-@color-instagram:               #125688;
-@color-linkedin:                #0077b5;
-@color-medium:                  #00ab6b;
-@color-mixcloud:                #314359;
-@color-pinterest:               #bd081c;
-@color-rss:                     #ffa500;
-@color-skype:                   #00aff0;
-@color-souncloud:               #ff3300;
-@color-spotify:                 #84bd00;
-@color-tumblr:                  #36465d;
-@color-twitter:                 #55acee;
-@color-vimeo:                   #1ab7ea;
-@color-whatsapp:                #25D366;
-@color-wordpress:               #21759b;
-@color-youtube:                 #cd201f;
+@color-behance:                         #1769ff;
+@color-dribbble:                        #ea4c89;
+@color-dropbox:                         #007ee5;
+@color-facebook:                        #3b5998;
+@color-flickr:                          #0063dc;
+@color-foursquare:                      #f94877;
+@color-github:                          #181717;
+@color-google:                          #4285f4;
+@color-heimo:                           #ffb549;
+@color-instagram:                       #125688;
+@color-linkedin:                        #0077b5;
+@color-medium:                          #00ab6b;
+@color-mixcloud:                        #314359;
+@color-pinterest:                       #bd081c;
+@color-rss:                             #ffa500;
+@color-skype:                           #00aff0;
+@color-souncloud:                       #ff3300;
+@color-spotify:                         #84bd00;
+@color-tumblr:                          #36465d;
+@color-twitter:                         #55acee;
+@color-vimeo:                           #1ab7ea;
+@color-whatsapp:                        #25D366;
+@color-wordpress:                       #21759b;
+@color-youtube:                         #cd201f;
 
 // Basic colors for body
-@base-color:                    @grey-800;
-@base-background:               @white;
+@base-color:                            @grey-800;
+@base-background:                       @white;
 
 // Selections
-@selection-background:          rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .6);
+@selection-background:                  rgba(red(@color-primary), green(@color-primary), blue(@color-primary), .6);
 
 
 // TYPOGRAPHY & BASELINE PROPORTIONS
@@ -112,275 +112,275 @@
 //@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
 //@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
 
-@root-font-size:                16px;
-@base-line:                     24px;
+@root-font-size:                        16px;
+@base-line:                             24px;
 
-@base-font-family:              sans-serif;
-@base-font-size:                @root-font-size;
-@base-letter-spacing:           @letter-spacing-base;
+@base-font-family:                      sans-serif;
+@base-font-size:                        @root-font-size;
+@base-letter-spacing:                   @letter-spacing-base;
 
 // Line-height (unitless)
-@line-height-tightest:          1.1;
-@line-height-tighter:           1.25;
-@line-height-tight:             1.375;
-@line-height-base:              (unit(@base-line / @root-font-size));
-@line-height-loose:             1.625;
-@line-height-looser:            1.75;
-@line-height-loosest:           2;
+@line-height-tightest:                  1.1;
+@line-height-tighter:                   1.25;
+@line-height-tight:                     1.375;
+@line-height-base:                      (unit(@base-line / @root-font-size));
+@line-height-loose:                     1.625;
+@line-height-looser:                    1.75;
+@line-height-loosest:                   2;
 
 // Letter-spacing
-@letter-spacing-tightest:       -0.05em;
-@letter-spacing-tighter:        -0.025em;
-@letter-spacing-tight:          -0.01em;
-@letter-spacing-base:           0;
-@letter-spacing-loose:          0.01em;
-@letter-spacing-looser:         0.025em;
-@letter-spacing-loosest:        0.05em;
+@letter-spacing-tightest:               -0.05em;
+@letter-spacing-tighter:                -0.025em;
+@letter-spacing-tight:                  -0.01em;
+@letter-spacing-base:                   0;
+@letter-spacing-loose:                  0.01em;
+@letter-spacing-looser:                 0.025em;
+@letter-spacing-loosest:                0.05em;
 
 // Spacing
 // The base spacing unit is set equal to the "line-height" by default.
 // This helps create a consistent vertical rhythm throughout the framework.
-@spacing-base:                  @base-line;
+@spacing-base:                          @base-line;
 
-@spacing-sixth:                 round(@spacing-base / 6);
-@spacing-fifth:                 round(@spacing-base / 5);
-@spacing-fourth:                round(@spacing-base / 4);
-@spacing-third:                 round(@spacing-base / 3);
-@spacing-half:                  round(@spacing-base / 2);
-@spacing-two-thirds:            round(@spacing-base / 3 * 2);
-@spacing-double:                round(@spacing-base * 2);
-@spacing-triple:                round(@spacing-base * 3);
-@spacing-quadruple:             round(@spacing-base * 4);
+@spacing-sixth:                         round(@spacing-base / 6);
+@spacing-fifth:                         round(@spacing-base / 5);
+@spacing-fourth:                        round(@spacing-base / 4);
+@spacing-third:                         round(@spacing-base / 3);
+@spacing-half:                          round(@spacing-base / 2);
+@spacing-two-thirds:                    round(@spacing-base / 3 * 2);
+@spacing-double:                        round(@spacing-base * 2);
+@spacing-triple:                        round(@spacing-base * 3);
+@spacing-quadruple:                     round(@spacing-base * 4);
 
 // Modular Scale
 // Produce font-size in default modular-scale steps. Used in headings etc.
-@modular-scale-base:            unit(@base-font-size), unit(@base-line);
-@modular-scale-ratio:           @perfect-fourth;
-@modular-scale-px-output:       true;
+@modular-scale-base:                    unit(@base-font-size), unit(@base-line);
+@modular-scale-ratio:                   @perfect-fourth;
+@modular-scale-px-output:               true;
 
 // Links
-@link-color:                    @color-secondary;
-@link-decoration:               none;
-@link-hover-color:              @color-secondary-dark;
-@link-hover-decoration:         underline;
+@link-color:                            @color-secondary;
+@link-decoration:                       none;
+@link-hover-color:                      @color-secondary-dark;
+@link-hover-decoration:                 underline;
 
 // Headings
-@heading-font-family:           @base-font-family;
-@heading-font-weight:           700;
-@heading-letter-spacing:        @letter-spacing-tight;
-@heading-line-height:           @line-height-tightest;
-@heading-color:                 inherit;
+@heading-font-family:                   @base-font-family;
+@heading-font-weight:                   700;
+@heading-letter-spacing:                @letter-spacing-tight;
+@heading-line-height:                   @line-height-tightest;
+@heading-color:                         inherit;
 
 // Headings sizes
-@heading1-font-size:            38px;
-@heading2-font-size:            32px;
-@heading3-font-size:            28px;
-@heading4-font-size:            24px;
-@heading5-font-size:            21px;
-@heading6-font-size:            18px;
+@heading1-font-size:                    38px;
+@heading2-font-size:                    32px;
+@heading3-font-size:                    28px;
+@heading4-font-size:                    24px;
+@heading5-font-size:                    21px;
+@heading6-font-size:                    18px;
 
-@heading1-font-size-small:      32px;
-@heading2-font-size-small:      28px;
-@heading3-font-size-small:      24px;
-@heading4-font-size-small:      21px;
-@heading5-font-size-small:      18px;
-@heading6-font-size-small:      16px;
+@heading1-font-size-small:              32px;
+@heading2-font-size-small:              28px;
+@heading3-font-size-small:              24px;
+@heading4-font-size-small:              21px;
+@heading5-font-size-small:              18px;
+@heading6-font-size-small:              16px;
 
 //Display headings
-@display1-font-size:            76px;
-@display2-font-size:            56px;
-@display3-font-size:            42px;
-@display4-font-size:            32px;
+@display1-font-size:                    76px;
+@display2-font-size:                    56px;
+@display3-font-size:                    42px;
+@display4-font-size:                    32px;
 
-@display1-font-size-small:      56px;
-@display2-font-size-small:      42px;
-@display3-font-size-small:      32px;
-@display4-font-size-small:      24px;
+@display1-font-size-small:              56px;
+@display2-font-size-small:              42px;
+@display3-font-size-small:              32px;
+@display4-font-size-small:              24px;
 
-@display1-font-weight:          400;
-@display2-font-weight:          400;
-@display3-font-weight:          400;
-@display4-font-weight:          400;
+@display1-font-weight:                  400;
+@display2-font-weight:                  400;
+@display3-font-weight:                  400;
+@display4-font-weight:                  400;
 
 // Lead paragraph styles
-@lead-font-family:              inherit;
-@lead-font-size:                21px;
-@lead-font-weight:              300;
-@lead-line-height:              @line-height-tight;
-@lead-color:                    @grey-600;
+@lead-font-family:                      inherit;
+@lead-font-size:                        24px;
+@lead-font-weight:                      300;
+@lead-line-height:                      @line-height-tight;
+@lead-color:                            @grey-600;
 
 // Emphasis
-@smallall-font-size:               75%;
-@mark-background-color:         ##ffff00;
-@mark-padding:                  .2em;
+@smallall-font-size:                       75%;
+@mark-background-color:                 ##ffff00;
+@mark-padding:                          .2em;
 
 // Code
-@code-font-size:                12px;
-@code-color:                    @color-secondary;
-@code-background:               @grey-25;
-@code-border-color:             @grey-100;
-@code-border-radius:            @border-radius-small;
-@code-padding:                  .25em .5em;
-@pre-color:                     @grey-800;
-@pre-background:                @grey-50;
-@pre-padding:                   @spacing-half @spacing-two-thirds;
+@code-font-size:                        12px;
+@code-color:                            @color-secondary;
+@code-background:                       @grey-25;
+@code-border-color:                     @grey-100;
+@code-border-radius:                    @border-radius-small;
+@code-padding:                          .25em .5em;
+@pre-color:                             @grey-800;
+@pre-background:                        @grey-50;
+@pre-padding:                           @spacing-half @spacing-two-thirds;
 
 // Blockquote
-@blockquote-padding:            @spacing-third 0;
-@blockquote-quote-font-family:  @base-font-family;
-@blockquote-quote-font-style:   normal;
-@blockquote-quote-font-size:    18px;
-@blockquote-quote-font-weight:  300;
-@blockquote-quote-line-height:  @line-height-base;
-@blockquote-quote-letter-spacing:inherit;
-@blockquote-quote-margin:       @spacing-half;
-@blockquote-cite-font-size:     14px;
-@blockquote-cite-color:         @grey-400;
+@blockquote-padding:                    @spacing-third 0;
+@blockquote-quote-font-family:          @base-font-family;
+@blockquote-quote-font-style:           normal;
+@blockquote-quote-font-size:            18px;
+@blockquote-quote-font-weight:          300;
+@blockquote-quote-line-height:          @line-height-base;
+@blockquote-quote-letter-spacing:        inherit;
+@blockquote-quote-margin:               @spacing-half;
+@blockquote-cite-font-size:             14px;
+@blockquote-cite-color:                 @grey-400;
 
 // Pullquote
-@pullquote-padding:             @spacing-third @spacing-two-thirds;
-@pullquote-border-color:        @color-secondary;
-@pullquote-border-width:        4px;
-@pullquote-font-family:         @base-font-family;
-@pullquote-font-style:          normal;
-@pullquote-font-size:           18px;
-@pullquote-cite-font-size:      14px;
-@pullquote-cite-color:          @grey-400;
+@pullquote-padding:                     @spacing-third @spacing-two-thirds;
+@pullquote-border-color:                @color-secondary;
+@pullquote-border-width:                4px;
+@pullquote-font-family:                 @base-font-family;
+@pullquote-font-style:                  normal;
+@pullquote-font-size:                   18px;
+@pullquote-cite-font-size:              14px;
+@pullquote-cite-color:                  @grey-400;
 
 // Hr
-@hr-border-color:               @grey-100;
-@hr-border-width:               1px;
-@hr-margin:                     @spacing-base;
+@hr-border-color:                       @grey-100;
+@hr-border-width:                       1px;
+@hr-margin:                             @spacing-base;
 
 
 // FORMS, INPUTS & BUTTONS
 // -------------------------------------------------------
 
-@form-field-margin:             @spacing-base;
+@form-field-margin:                     @spacing-base;
 
 // Form messages
-@form-message-vertical-margin:  @spacing-half;
-@form-message-font-family:      @base-font-family;
-@form-message-font-weight:      400;
-@form-message-font-size:        14px;
-@form-message-color:            @grey-600;
-@form-message-line-height:      1;
-@form-message-text-align:       inherit;
+@form-message-vertical-margin:          @spacing-half;
+@form-message-font-family:              @base-font-family;
+@form-message-font-weight:              400;
+@form-message-font-size:                14px;
+@form-message-color:                    @grey-600;
+@form-message-line-height:              1;
+@form-message-text-align:               inherit;
 
 // Fieldset with border
-@fieldset-border-width:         1px;
-@fieldset-border-style:         solid;
-@fieldset-border-color:         @grey-100;
+@fieldset-border-width:                 1px;
+@fieldset-border-style:                 solid;
+@fieldset-border-color:                 @grey-100;
 
 // Label & legend
-@label-vertical-margin:         @spacing-fourth;
-@label-horizontal-margin:       @spacing-half;
-@label-font-family:             @base-font-family;
-@label-font-size:               inherit;
-@label-color:                   @base-color;
-@legend-font-family:            @base-font-family;
-@legend-font-size:               inherit;
-@legend-font-weight:            700;
-@legend-color:                  @base-color;
+@label-vertical-margin:                 @spacing-fourth;
+@label-horizontal-margin:               @spacing-half;
+@label-font-family:                     @base-font-family;
+@label-font-size:                       inherit;
+@label-color:                           @base-color;
+@legend-font-family:                    @base-font-family;
+@legend-font-size:                       inherit;
+@legend-font-weight:                    700;
+@legend-color:                          @base-color;
 
 // Inputs, textarea, select
-@input-color:                   @grey-800;
-@input-background:              @white;
-@input-hover-background:        grey-25;
-@input-placeholder-color:       @grey-400;
-@input-placeholder-hover-color: @grey-500;
-@input-placeholder-focus-color: @grey-800;
-@input-border-color:            @grey-400;
-@input-border-color-hover:      @grey-500;
-@input-border-color-focus:      @grey-800;
-@input-border-width:            1px;
-@input-border-radius:           0;
-@input-font-family:             @base-font-family;
-@input-font-size:               @base-font-size;
-@input-height:                  40px;
-@input-horizontal-padding:      .5em;
-@input-box-shadow:              none;
+@input-color:                           @grey-800;
+@input-background:                      @white;
+@input-hover-background:                @grey-25;
+@input-placeholder-color:               @grey-400;
+@input-placeholder-hover-color:         @grey-500;
+@input-placeholder-focus-color:         @grey-800;
+@input-border-color:                    @grey-400;
+@input-border-color-hover:              @grey-500;
+@input-border-color-focus:              @grey-800;
+@input-border-width:                    1px;
+@input-border-radius:                   0;
+@input-font-family:                     @base-font-family;
+@input-font-size:                       @base-font-size;
+@input-height:                          40px;
+@input-horizontal-padding:              .5em;
+@input-box-shadow:                      none;
 
-@input-small-height:            32px;
-@input-small-font-size:         12px;
-@input-large-height:            @input-height * 1.5;
-@input-large-font-size:         @input-font-size * 1.5;
+@input-small-height:                    32px;
+@input-small-font-size:                 12px;
+@input-large-height:                    @input-height * 1.5;
+@input-large-font-size:                 @input-font-size * 1.5;
 
 // Checkbox & radio buttons
-@checkbox-radio-background:     @input-background;
-@checkbox-radio-size:           @spacing-base;
-@checkbox-radio-border-width:   @input-border-width;
-@checkbox-radio-margin:         @spacing-half;
-@checkbox-checked-color:        currentColor;
-@checkbox-checked-background:   transparent;
-@checkbox-checked-size:         19px;
-@checkbox-checked-width:        3px;
-@checkbox-checked-y:            5px;
-@checkbox-checked-x:            9px;
-@checkbox-border-radius:        0;
-@radio-checked-color:           currentColor;
-@radio-checked-size:            @checkbox-radio-size - 4;
+@checkbox-radio-background:             @input-background;
+@checkbox-radio-size:                   @spacing-base;
+@checkbox-radio-border-width:           @input-border-width;
+@checkbox-radio-margin:                 @spacing-half;
+@checkbox-checked-color:                currentColor;
+@checkbox-checked-background:           transparent;
+@checkbox-checked-size:                 19px;
+@checkbox-checked-width:                3px;
+@checkbox-checked-y:                    5px;
+@checkbox-checked-x:                    9px;
+@checkbox-border-radius:                0;
+@radio-checked-color:                   currentColor;
+@radio-checked-size:                    @checkbox-radio-size - 4;
 
 // Range
-@range-thumb-color:             @color-primary;
-@range-thumb-border-radius:     50%;
-@range-thumb-height:            @spacing-base;
-@range-thumb-width:             @spacing-base;
-@range-thumb-box-shadow:        @box-shadow-small;
-@range-thumb-border-width:      0;
-@range-thumb-border-color:      transparent;
+@range-thumb-color:                     @color-primary;
+@range-thumb-border-radius:             50%;
+@range-thumb-height:                    @spacing-base;
+@range-thumb-width:                     @spacing-base;
+@range-thumb-box-shadow:                @box-shadow-small;
+@range-thumb-border-width:              0;
+@range-thumb-border-color:              transparent;
 
-@range-track-color:             @grey-50;
-@range-track-height:            @spacing-fourth;
-@range-track-box-shadow:        none;
-@range-track-border-width:      1px;
-@range-track-border-color:      @input-border-color;
-@range-track-border-radius:     @border-radius-default;
+@range-track-color:                     @grey-50;
+@range-track-height:                    @spacing-fourth;
+@range-track-box-shadow:                none;
+@range-track-border-width:              1px;
+@range-track-border-color:              @input-border-color;
+@range-track-border-radius:             @border-radius-default;
 
 // Buttons
-@button-font-family:            @base-font-family;
-@button-font-size:              @base-font-size;
-@button-font-weight:            400;
-@button-letter-spacing:         @letter-spacing-base;
-@button-text-transform:         none;
-@button-height:                 @input-height;
-@button-horizontal-padding:     16px;
-@button-border-width:           1px;
-@button-border-radius:          0;
+@button-font-family:                    @base-font-family;
+@button-font-size:                      @base-font-size;
+@button-font-weight:                    400;
+@button-letter-spacing:                 @letter-spacing-base;
+@button-text-transform:                 none;
+@button-height:                         @input-height;
+@button-horizontal-padding:             16px;
+@button-border-width:                   1px;
+@button-border-radius:                  0;
 
-@button-disabled-opacity:       .5;
+@button-disabled-opacity:               .5;
 
-@button-small-height:           32px;
-@button-small-font-size:        12px;
-@button-large-height:           @button-height * 1.5;
-@button-large-font-size:        @button-font-size * 1.5;
+@button-small-height:                   32px;
+@button-small-font-size:                12px;
+@button-large-height:                   @button-height * 1.5;
+@button-large-font-size:                @button-font-size * 1.5;
 
-@button-link-font-weight:       @button-font-weight;
-@button-link-color:             @link-color;
-@button-link-decoration:        @link-decoration;
-@button-link-hover-color:       @link-hover-color;
-@button-link-hover-decoration:  @link-hover-decoration;
+@button-link-font-weight:               @button-font-weight;
+@button-link-color:                     @link-color;
+@button-link-decoration:                @link-decoration;
+@button-link-hover-color:               @link-hover-color;
+@button-link-hover-decoration:          @link-hover-decoration;
 
-@button-default-color:          @base-color;
-@button-default-bg:             transparent;
-@button-default-border:         @button-default-color;
-@button-default-hover-color:    @white;
-@button-default-hover-bg:       @button-default-color;
-@button-default-hover-border:   @button-default-color;
+@button-default-color:                  @base-color;
+@button-default-bg:                     transparent;
+@button-default-border:                 @button-default-color;
+@button-default-hover-color:            @white;
+@button-default-hover-bg:               @button-default-color;
+@button-default-hover-border:           @button-default-color;
 
-@button-primary-color:          @white;
-@button-primary-bg:             @color-primary;
-@button-primary-border:         @button-primary-bg;
-@button-primary-hover-color:    @white;
-@button-primary-hover-bg:       @color-primary-accent;
-@button-primary-hover-border:   @button-primary-bg;
+@button-primary-color:                  @white;
+@button-primary-bg:                     @color-primary;
+@button-primary-border:                 @button-primary-bg;
+@button-primary-hover-color:            @white;
+@button-primary-hover-bg:               @color-primary-accent;
+@button-primary-hover-border:           @button-primary-bg;
 
-@button-secondary-color:        @white;
-@button-secondary-bg:           @color-secondary;
-@button-secondary-border:       @button-secondary-bg;
-@button-secondary-hover-color:  @white;
-@button-secondary-hover-bg:     @color-secondary-accent;
-@button-secondary-hover-border: @button-secondary-bg;
+@button-secondary-color:                @white;
+@button-secondary-bg:                   @color-secondary;
+@button-secondary-border:               @button-secondary-bg;
+@button-secondary-hover-color:          @white;
+@button-secondary-hover-bg:             @color-secondary-accent;
+@button-secondary-hover-border:         @button-secondary-bg;
 
 
 // TABLES
@@ -388,135 +388,135 @@
 // Use table styles via classes: .table, .table--striped,
 // .table--bordered, .table--highlight & .table-responsive
 
-@table-font-size:               14px;
-@table-background:              transparent;
-@table-caption-padding:         0 0 @spacing-half;
-@table-headfoot-color:          @grey-800;
-@table-headfoot-font-weight:    700;
-@table-cell-padding:            @spacing-half @spacing-fifth;
-@table-border-width:            1px;
-@table-border-color:            @grey-100;
-@table-stripe-background:       @grey-25;
-@table-higlight-background:     @grey-50;
-@table-higlight-color:          inherit;
+@table-font-size:                       14px;
+@table-background:                      transparent;
+@table-caption-padding:                 0 0 @spacing-half;
+@table-headfoot-color:                  @grey-800;
+@table-headfoot-font-weight:            700;
+@table-cell-padding:                    @spacing-half @spacing-fifth;
+@table-border-width:                    1px;
+@table-border-color:                    @grey-100;
+@table-stripe-background:               @grey-25;
+@table-higlight-background:             @grey-50;
+@table-higlight-color:                  inherit;
 
 
 // TAGS & BADGES
 // -------------------------------------------------------
-@tag-font-family:               @base-font-family;
-@tag-font-size:                 13px;
-@tag-font-weight:               400;
-@tag-background:                @grey-25;
-@tag-border-radius:             @border-radius-small;
-@tag-border-width:              1px;
-@tag-text-transform:            normal;
-@tag-letter-spacing:            @letter-spacing-loose;
-@tag-height:                    28px;
-@tag-horizontal-padding:        6px;
-@tag-color:                     @grey-700;
-@tag-border-color:              @grey-100;
-@tag-primary-color:             @white;
-@tag-primary-background:        @color-primary;
-@tag-primary-border-color:      @color-primary;
+@tag-font-family:                       @base-font-family;
+@tag-font-size:                         13px;
+@tag-font-weight:                       400;
+@tag-background:                        @grey-25;
+@tag-border-radius:                     @border-radius-small;
+@tag-border-width:                      1px;
+@tag-text-transform:                    normal;
+@tag-letter-spacing:                    @letter-spacing-loose;
+@tag-height:                            28px;
+@tag-horizontal-padding:                6px;
+@tag-color:                             @grey-700;
+@tag-border-color:                      @grey-100;
+@tag-primary-color:                     @white;
+@tag-primary-background:                @color-primary;
+@tag-primary-border-color:              @color-primary;
 
-@badge-font-family:             @base-font-family;
-@badge-font-size:               11px;
-@badge-font-weight:             400;
-@badge-background:              @grey-25;
-@badge-border-radius:           999em;
-@badge-border-width:            2px;
-@badge-letter-spacing:          @letter-spacing-base;
-@badge-height:                  21px;
-@badge-horizontal-padding:      2px;
-@badge-color:                   @grey-700;
-@badge-border-color:            @grey-100;
-@badge-primary-color:           @white;
-@badge-primary-background:      @color-primary;
-@badge-primary-border-color:    @color-primary;
+@badge-font-family:                     @base-font-family;
+@badge-font-size:                       11px;
+@badge-font-weight:                     400;
+@badge-background:                      @grey-25;
+@badge-border-radius:                   999em;
+@badge-border-width:                    2px;
+@badge-letter-spacing:                  @letter-spacing-base;
+@badge-height:                          21px;
+@badge-horizontal-padding:              2px;
+@badge-color:                           @grey-700;
+@badge-border-color:                    @grey-100;
+@badge-primary-color:                   @white;
+@badge-primary-background:              @color-primary;
+@badge-primary-border-color:            @color-primary;
 
 
 // TOOLTIPS
 // -------------------------------------------------------
-@tooltip-background:            @grey-800;
-@tooltip-color:                 @grey-50;
-@tooltip-border-radius:         @border-radius-default;
-@tooltip-vertical-padding:      @spacing-third;
-@tooltip-horizontal-padding:    @spacing-half;
-@tooltip-multiline-width:       160px;
-@tooltip-box-shadow:            none;
-@tooltip-offset:                2px;
-@tooltip-anim-duration:         @transition-duration-default;
-@tooltip-anim-delay:            50ms;
-@tooltip-font-family:           @base-font-family;
-@tooltip-font-size:             12px;
-@tooltip-font-weight:           400;
-@tooltip-line-height:           @line-height-tighter;
-@tooltip-letter-spacing:        @letter-spacing-loose;
-@tooltip-arrow-size:            6px;
+@tooltip-background:                    @grey-800;
+@tooltip-color:                         @grey-50;
+@tooltip-border-radius:                 @border-radius-default;
+@tooltip-vertical-padding:              @spacing-third;
+@tooltip-horizontal-padding:            @spacing-half;
+@tooltip-multiline-width:               160px;
+@tooltip-box-shadow:                    none;
+@tooltip-offset:                        2px;
+@tooltip-anim-duration:                 @transition-duration-default;
+@tooltip-anim-delay:                    50ms;
+@tooltip-font-family:                   @base-font-family;
+@tooltip-font-size:                     12px;
+@tooltip-font-weight:                   400;
+@tooltip-line-height:                   @line-height-tighter;
+@tooltip-letter-spacing:                @letter-spacing-loose;
+@tooltip-arrow-size:                    6px;
 
 
 // LOADER
 // -------------------------------------------------------
-@loader-color:                  @color-primary;
-@loader-size:                   @base-font-size;
-@loader-speed:                  500ms;
-@loader-thickness:              2px;
-@loader-opacity:                .8;
+@loader-color:                          @color-primary;
+@loader-size:                           @base-font-size;
+@loader-speed:                          500ms;
+@loader-thickness:                      2px;
+@loader-opacity:                        .8;
 
 
 // MISC
 // -------------------------------------------------------
 
 // Navigation responsive
-@nav-responsive-breakpoint:     @breakpoint-medium;
+@nav-responsive-breakpoint:             @breakpoint-medium;
 
 // Field-group collapse
-@field-group-breakpoint:        @breakpoint-medium;
+@field-group-breakpoint:                @breakpoint-medium;
 
 // Icons (svg)
-@icon-small-size:               16px;
-@icon-medium-size:              24px;
-@icon-large-size:               48px;
-@icon-x-large-size:             72px;
-@icon-baseline-shift:           -0.0625em;
+@icon-small-size:                       16px;
+@icon-medium-size:                      24px;
+@icon-large-size:                       48px;
+@icon-x-large-size:                     72px;
+@icon-baseline-shift:                   -0.0625em;
 
 // Border-radius
-@border-radius-small:           3px;
-@border-radius-default:         6px;
-@border-radius-large:           9px;
+@border-radius-small:                   3px;
+@border-radius-default:                 6px;
+@border-radius-large:                   9px;
 
 // Box-shadow
-@box-shadow-small:              0 2px 4px rgba(0,0,0,.05);
-@box-shadow-default:            0 2px 4px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.05);
-@box-shadow-large:              0 2px 4px rgba(0,0,0,0.05),0 3px 12px rgba(0,0,0,0.15);
+@box-shadow-small:                      0 2px 4px rgba(0,0,0,.05);
+@box-shadow-default:                    0 2px 4px rgba(0,0,0,0.1),0 2px 8px rgba(0,0,0,0.05);
+@box-shadow-large:                      0 2px 4px rgba(0,0,0,0.05),0 3px 12px rgba(0,0,0,0.15);
 
 // Media
-@media-background:              transparent;
+@media-background:                      transparent;
 
 // Transition & Animation
-@transition-duration-fastest:   @transition-duration-default / 4;
-@transition-duration-faster:    @transition-duration-default / 2;
-@transition-duration-fast:      @transition-duration-default / 1.5;
-@transition-duration-default:   250ms;
-@transition-duration-slow:      @transition-duration-default * 1.5;
-@transition-duration-slower:    @transition-duration-default * 2;
-@transition-duration-slowest:   @transition-duration-default * 4;
-@transition-easing-default:     cubic-bezier(0.445, 0.05, 0.55, 0.95);
+@transition-duration-fastest:           @transition-duration-default / 4;
+@transition-duration-faster:            @transition-duration-default / 2;
+@transition-duration-fast:              @transition-duration-default / 1.5;
+@transition-duration-default:           250ms;
+@transition-duration-slow:              @transition-duration-default * 1.5;
+@transition-duration-slower:            @transition-duration-default * 2;
+@transition-duration-slowest:           @transition-duration-default * 4;
+@transition-easing-default:             cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
 
 // Z-INDEX SCALE
 // -------------------------------------------------------
 
-@z-index-1:                     100;  // i.e navbar
-@z-index-2:                     200;  // i.e navbar dropdown
-@z-index-3:                     300;
-@z-index-4:                     400;
-@z-index-5:                     500;
-@z-index-6:                     600;  // i.e alerts & notifications
-@z-index-7:                     700;  // i.e popover
-@z-index-8:                     800;  // i.e tooltip
-@z-index-9:                     900;  // i.e modal
-@z-index-10:                    1000; // development
+@z-index-1:                             100;  // i.e navbar
+@z-index-2:                             200;  // i.e navbar dropdown
+@z-index-3:                             300;
+@z-index-4:                             400;
+@z-index-5:                             500;
+@z-index-6:                             600;  // i.e alerts & notifications
+@z-index-7:                             700;  // i.e popover
+@z-index-8:                             800;  // i.e tooltip
+@z-index-9:                             900;  // i.e modal
+@z-index-10:                            1000; // development
 
 
 // INCLUDES
@@ -526,100 +526,100 @@
 // you do not wish to be included to `false`
 
 // Core
-@use-resets:                    true;
+@use-resets:                            true;
 
 // Base
-@use-main:                      true;
-@use-typography:                true;
-@use-horizontal-rule:           true;
-@use-lists:                     true;
-@use-embed-content:             true;
-@use-forms:                     true;
-@use-tables:                    true;
-@use-print:                     true;
+@use-main:                              true;
+@use-typography:                        true;
+@use-horizontal-rule:                   true;
+@use-lists:                             true;
+@use-embed-content:                     true;
+@use-forms:                             true;
+@use-tables:                            true;
+@use-print:                             true;
 
 // Screen sizes
-@use-screen-x-small:            true;
-@use-screen-small:              true;
-@use-screen-medium:             true;
-@use-screen-large:              true;
-@use-screen-x-large:            true;
+@use-screen-x-small:                    true;
+@use-screen-small:                      true;
+@use-screen-medium:                     true;
+@use-screen-large:                      true;
+@use-screen-x-large:                    true;
 
 // Objects
-@use-animation:                 true;
-    @use-animation-modifiers:   true;
-@use-icons:                     true;
-@use-buttons:                   true;
-@use-button-group:              true;
-@use-form-styles:               true;
-    @use-input-modifiers:       true;
-@use-form-fields:               true;
-@use-form-messages:             true;
-@use-grid-classes:              true;
-    @use-container:             true;
-    @use-grid:                  true;
-    @use-grid-column:           true;
-    @use-grid-modifiers:        true;
-@use-table-styles:              true;
-@use-tags-badges:               true;
-@use-tooltips:                  true;
-@use-media:                     true;
-@use-loader:                    true;
-@use-responsive-navigation:     true;
+@use-animation:                         true;
+    @use-animation-modifiers:           true;
+@use-icons:                             true;
+@use-buttons:                           true;
+@use-button-group:                      true;
+@use-form-styles:                       true;
+    @use-input-modifiers:               true;
+@use-form-fields:                       true;
+@use-form-messages:                     true;
+@use-grid-classes:                      true;
+    @use-container:                     true;
+    @use-grid:                          true;
+    @use-grid-column:                   true;
+    @use-grid-modifiers:                true;
+@use-table-styles:                      true;
+@use-tags-badges:                       true;
+@use-tooltips:                          true;
+@use-media:                             true;
+@use-loader:                            true;
+@use-responsive-navigation:             true;
 
 // Utilities
-@use-centering:                 true;
-@use-display:                   true;
-@use-flex-alignment:            true;
-@use-floats:                    true;
-@use-margins:                   true;
-@use-paddings:                  true;
-@use-text-alignment:            true;
-@use-text-color:                true;
-@use-text-weight:               true;
-@use-utility-classes:           true;
-@use-visibility:                true;
-@use-vertical-align:            true;
-@use-widths:                    true;
+@use-centering:                         true;
+@use-display:                           true;
+@use-flex-alignment:                    true;
+@use-floats:                            true;
+@use-margins:                           true;
+@use-paddings:                          true;
+@use-text-alignment:                    true;
+@use-text-color:                        true;
+@use-text-weight:                       true;
+@use-utility-classes:                   true;
+@use-visibility:                        true;
+@use-vertical-align:                    true;
+@use-widths:                            true;
 
 // Animations
 
 // Sliding Enterances
-@use-slide-in-down:             true;
-@use-slide-in-left:             true;
-@use-slide-in-right:            true;
-@use-slide-in-up:               true;
+@use-slide-in-down:                     true;
+@use-slide-in-left:                     true;
+@use-slide-in-right:                    true;
+@use-slide-in-up:                       true;
 // Sliding Exits
-@use-slide-out-down:            true;
-@use-slide-out-left:            true;
-@use-slide-out-right:           true;
-@use-slide-out-up:              true;
+@use-slide-out-down:                    true;
+@use-slide-out-left:                    true;
+@use-slide-out-right:                   true;
+@use-slide-out-up:                      true;
 // Attention Seekers
-@use-bounce:                    true;
-@use-flash:                     true;
-@use-pulse:                     true;
-@use-shake:                     true;
-@use-swing:                     true;
-@use-tada:                      true;
-@use-wobble:                    true;
+@use-bounce:                            true;
+@use-flash:                             true;
+@use-pulse:                             true;
+@use-shake:                             true;
+@use-swing:                             true;
+@use-tada:                              true;
+@use-wobble:                            true;
 // Fading Enterances
-@use-fade-in:                   true;
-@use-fade-in-down:              true;
-@use-fade-in-left:              true;
-@use-fade-in-right:             true;
-@use-fade-in-up:                true;
+@use-fade-in:                           true;
+@use-fade-in-down:                      true;
+@use-fade-in-left:                      true;
+@use-fade-in-right:                     true;
+@use-fade-in-up:                        true;
 // Fading Exits
-@use-fade-out:                  true;
-@use-fade-out-down:             true;
-@use-fade-out-left:             true;
-@use-fade-out-right:            true;
-@use-fade-out-up:               true;
+@use-fade-out:                          true;
+@use-fade-out-down:                     true;
+@use-fade-out-left:                     true;
+@use-fade-out-right:                    true;
+@use-fade-out-up:                       true;
 // Zooms
-@use-zoom-in:                   true;
-@use-zoom-out:                  true;
+@use-zoom-in:                           true;
+@use-zoom-out:                          true;
 // Bounces
-@use-bounce-in:                 true;
-@use-bounce-out:                true;
+@use-bounce-in:                         true;
+@use-bounce-out:                        true;
 // Rolls
-@use-roll-in:                   true;
-@use-roll-out:                  true;
+@use-roll-in:                           true;
+@use-roll-out:                          true;
