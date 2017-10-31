@@ -4,49 +4,49 @@
 .use-widths(@boolean) when (@boolean =true) {
 
     // Small Grid for Mobile devices
-    .use-screen-xs(@boolean) when (@boolean =true) {
-        .loop-grid(@grid-columns, width, -xs);
-        .u-width-xs-auto {
+    .use-screen-x-small(@boolean) when (@boolean =true) {
+        .loop-grid(@grid-columns, width, -x-small);
+        .u-width-x-small-auto {
             flex: 1;
         }
     }
-    .use-screen-xs(@use-screen-xs); // Small Grid for Mobile devices
-    .use-screen-sm(@boolean) when (@boolean =true) {
+    .use-screen-x-small(@use-screen-x-small); // Small Grid for Mobile devices
+    .use-screen-small(@boolean) when (@boolean =true) {
         @media @small-up {
-            .loop-grid(@grid-columns, width, -sm);
-            .u-width-sm-auto {
+            .loop-grid(@grid-columns, width, -small);
+            .u-width-small-auto {
                 flex: 1;
             }
         }
     }
-    .use-screen-sm(@use-screen-sm); // Medium Grid for Tablet devices
-    .use-screen-md(@boolean) when (@boolean =true) {
+    .use-screen-small(@use-screen-small); // Medium Grid for Tablet devices
+    .use-screen-medium(@boolean) when (@boolean =true) {
         @media @medium-down {
-            .loop-grid(@grid-columns, width, -md);
-            .u-width-md-auto {
+            .loop-grid(@grid-columns, width, -medium);
+            .u-width-medium-auto {
                 flex: 1;
             }
         }
     }
-    .use-screen-md(@use-screen-md); // Large Grid, optimal for laptop & desktop devices
-    .use-screen-lg(@boolean) when (@boolean =true) {
+    .use-screen-medium(@use-screen-medium); // Large Grid, optimal for laptop & desktop devices
+    .use-screen-large(@boolean) when (@boolean =true) {
         @media @large-up {
-            .loop-grid(@grid-columns, width, -lg);
-            .u-width-lg-auto {
+            .loop-grid(@grid-columns, width, -large);
+            .u-width-large-auto {
                 flex: 1;
             }
         }
     }
-    .use-screen-lg(@use-screen-lg); // Extra Large Grid for Large desktop devices
-    .use-screen-xl(@boolean) when (@boolean =true) {
+    .use-screen-large(@use-screen-large); // Extra Large Grid for Large desktop devices
+    .use-screen-x-large(@boolean) when (@boolean =true) {
         @media @x-large-up {
-            .loop-grid(@grid-columns, width, -xl);
-            .u-width-xl-auto {
+            .loop-grid(@grid-columns, width, -x-large);
+            .u-width-x-large-auto {
                 flex: 1;
             }
         }
     }
-    .use-screen-xl(@use-screen-xl);
+    .use-screen-x-large(@use-screen-x-large);
 }
 
 .use-widths(@use-widths);

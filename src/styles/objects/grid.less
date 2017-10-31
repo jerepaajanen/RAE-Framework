@@ -6,7 +6,7 @@
     // Usage
     // <element class="container">
     //    <element class="grid">
-    //        <element class="grid__column u-width-sm-*">
+    //        <element class="grid__column u-width-small-*">
     //        </element>
     //    </element>
     // </element>
@@ -37,42 +37,42 @@
         // Fixed containers
 
         // Container Small (Default)
-        .use-screen-sm(@boolean) when (@boolean =true) {
+        .use-screen-small(@boolean) when (@boolean =true) {
             .container {
-                width: @container-sm;
+                width: @container-small;
             }
         }
-        .use-screen-sm(@use-screen-sm);
+        .use-screen-small(@use-screen-small);
 
         // Container Medium
-        .use-screen-md(@boolean) when (@boolean =true) {
+        .use-screen-medium(@boolean) when (@boolean =true) {
             @media @medium-down {
                 .container {
-                    width: @container-md;
+                    width: @container-medium;
                 }
             }
         }
-        .use-screen-md(@use-screen-md);
+        .use-screen-medium(@use-screen-medium);
 
         // Container Large
-        .use-screen-lg(@boolean) when (@boolean =true) {
+        .use-screen-large(@boolean) when (@boolean =true) {
             @media @large-up {
                 .container {
-                    width: @container-lg;
+                    width: @container-large;
                 }
             }
         }
-        .use-screen-lg(@use-screen-lg);
+        .use-screen-large(@use-screen-large);
 
         // Container Extra-Large
-        .use-screen-xl(@boolean) when (@boolean =true) {
+        .use-screen-x-large(@boolean) when (@boolean =true) {
             @media @x-large-up {
                 .container {
-                    width: @container-xl;
+                    width: @container-x-large;
                 }
             }
         }
-        .use-screen-xl(@use-screen-xl);
+        .use-screen-x-large(@use-screen-x-large);
     }
     .use-container(@use-container);
 

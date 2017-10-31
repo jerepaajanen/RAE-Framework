@@ -16,21 +16,21 @@
 @grid-gutter-width:             48px;
 
 // Breakpoints & container widths
-@breakpoint-xs:                 0;
-@breakpoint-sm:                 544px; //34em;
-@breakpoint-md:                 768px; //48em;
-@breakpoint-lg:                 992px; //62em;
-@breakpoint-xl:                 1280px; //80em;
+@breakpoint-x-small:            0;
+@breakpoint-small:              544px; //34em;
+@breakpoint-medium:             768px; //48em;
+@breakpoint-large:              992px; //62em;
+@breakpoint-x-large:            1280px; //80em;
 
-@container-sm:                  100%;
-@container-md:                  (@breakpoint-md - @grid-gutter-width);
-@container-lg:                  (@breakpoint-lg - @grid-gutter-width);
-@container-xl:                  (@breakpoint-xl - @grid-gutter-width);
+@container-small:               100%;
+@container-medium:              (@breakpoint-medium - @grid-gutter-width);
+@container-large:               (@breakpoint-large - @grid-gutter-width);
+@container-x-large:             (@breakpoint-x-large - @grid-gutter-width);
 
 @container-fluid:               100%;
-@container-fluid-max:           @container-xl;
+@container-fluid-max:           @container-x-large;
 @container-fluid-inner:         100%;
-@container-fluid-inner-max:     @container-md;
+@container-fluid-inner-max:     @container-medium;
 @container-fluid-full:          100%;
 @container-fluid-full-max:      100%;
 
@@ -468,16 +468,16 @@
 // -------------------------------------------------------
 
 // Navigation responsive
-@nav-responsive-breakpoint:     @breakpoint-md;
+@nav-responsive-breakpoint:     @breakpoint-medium;
 
 // Field-group collapse
-@field-group-breakpoint:        @breakpoint-md;
+@field-group-breakpoint:        @breakpoint-medium;
 
 // Icons (svg)
-@icon-sm-size:                  16px;
-@icon-md-size:                  24px;
-@icon-lg-size:                  48px;
-@icon-xl-size:                  72px;
+@icon-small-size:               16px;
+@icon-medium-size:              24px;
+@icon-large-size:               48px;
+@icon-x-large-size:             72px;
 @icon-baseline-shift:           -0.0625em;
 
 // Border-radius
@@ -539,11 +539,11 @@
 @use-print:                     true;
 
 // Screen sizes
-@use-screen-xs:                 true;
-@use-screen-sm:                 true;
-@use-screen-md:                 true;
-@use-screen-lg:                 true;
-@use-screen-xl:                 true;
+@use-screen-x-small:            true;
+@use-screen-small:              true;
+@use-screen-medium:             true;
+@use-screen-large:              true;
+@use-screen-x-large:            true;
 
 // Objects
 @use-animation:                 true;
@@ -583,6 +583,7 @@
 @use-widths:                    true;
 
 // Animations
+
 // Sliding Enterances
 @use-slide-in-down:             true;
 @use-slide-in-left:             true;

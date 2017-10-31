@@ -1,9 +1,7 @@
 //
 // Forms
 // -------------------------------------------------------
-.use-forms(@boolean) when (@boolean = true) {
-
-    @label-vertical-margin:         @spacing-fourth;
+.use-forms(@boolean) when (@boolean =true) {
 
     fieldset {
         margin: 0 0 @spacing-base 0;
@@ -62,7 +60,7 @@
             // disable also [checkbox] & [radio] labels
             cursor: not-allowed;
             pointer-events: none;
-            opacity: .4;
+            opacity: 0.4;
         }
     }
 
@@ -74,6 +72,6 @@
             outline: 0;
         }
     }
-
 }
+
 .use-forms(@use-forms);

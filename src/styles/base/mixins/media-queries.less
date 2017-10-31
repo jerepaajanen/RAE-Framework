@@ -8,15 +8,15 @@
 // }
 
 // Variables
-@breakpoint-sm-min: @breakpoint-sm;
-@breakpoint-md-min: @breakpoint-md;
-@breakpoint-lg-min: @breakpoint-lg;
-@breakpoint-xl-min: @breakpoint-xl;
+@breakpoint-small-min: @breakpoint-small;
+@breakpoint-medium-min: @breakpoint-medium;
+@breakpoint-large-min: @breakpoint-large;
+@breakpoint-x-large-min: @breakpoint-x-large;
 
-@breakpoint-xs-max: (@breakpoint-sm-min - 1);
-@breakpoint-sm-max: (@breakpoint-md-min - 1);
-@breakpoint-md-max: (@breakpoint-lg-min - 1);
-@breakpoint-lg-max: (@breakpoint-xl-min - 1);
+@breakpoint-x-small-max: (@breakpoint-small-min - 1);
+@breakpoint-small-max: (@breakpoint-medium-min - 1);
+@breakpoint-medium-max: (@breakpoint-large-min - 1);
+@breakpoint-large-max: (@breakpoint-x-large-min - 1);
 
 @nav-responsive-breakpoint-min: @nav-responsive-breakpoint;
 @nav-responsive-breakpoint-max: (@nav-responsive-breakpoint-min - 1);
@@ -45,30 +45,30 @@
 
 // Extra-small
 
-@x-small-down: ~"(max-width: @{breakpoint-xs-max})";
-@x-small-only: ~"(max-width: @{breakpoint-xs-max})";
+@x-small-down: ~"(max-width: @{breakpoint-x-small-max})";
+@x-small-only: ~"(max-width: @{breakpoint-x-small-max})";
 
 // Small
 
-@small-up: ~"(min-width: @{breakpoint-sm-min})";
-@small-down: ~"(max-width: @{breakpoint-sm-max})";
-@small-only: ~"(min-width: @{breakpoint-sm-min}) and (max-width: @{breakpoint-sm-max})";
+@small-up: ~"(min-width: @{breakpoint-small-min})";
+@small-down: ~"(max-width: @{breakpoint-small-max})";
+@small-only: ~"(min-width: @{breakpoint-small-min}) and (max-width: @{breakpoint-small-max})";
 
 // Medium
 
-@medium-down: ~"(min-width: @{breakpoint-md-min})";
-@medium-down: ~"(max-width: @{breakpoint-md-max})";
-@medium-only: ~"(min-width: @{breakpoint-md-min}) and (max-width: @{breakpoint-md-max})";
+@medium-down: ~"(min-width: @{breakpoint-medium-min})";
+@medium-down: ~"(max-width: @{breakpoint-medium-max})";
+@medium-only: ~"(min-width: @{breakpoint-medium-min}) and (max-width: @{breakpoint-medium-max})";
 
 // Large
 
-@large-up: ~"(min-width: @{breakpoint-lg-min})";
-@large-down: ~"(max-width: @{breakpoint-lg-max})";
-@large-only: ~"(min-width: @{breakpoint-lg-min}) and (max-width: @{breakpoint-lg-max})";
+@large-up: ~"(min-width: @{breakpoint-large-min})";
+@large-down: ~"(max-width: @{breakpoint-large-max})";
+@large-only: ~"(min-width: @{breakpoint-large-min}) and (max-width: @{breakpoint-large-max})";
 
 // Extra-large
 
-@x-large-up: ~"(min-width: @{breakpoint-xl-min})";
+@x-large-up: ~"(min-width: @{breakpoint-x-large-min})";
 
 // Retina
 
