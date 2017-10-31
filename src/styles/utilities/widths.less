@@ -21,7 +21,7 @@
     }
     .use-screen-small(@use-screen-small); // Medium Grid for Tablet devices
     .use-screen-medium(@boolean) when (@boolean =true) {
-        @media @medium-down {
+        @media @medium-up {
             .loop-grid(@grid-columns, width, -medium);
             .u-width-medium-auto {
                 flex: 1;
