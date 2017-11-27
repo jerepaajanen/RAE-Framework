@@ -1,0 +1,19 @@
+//
+// Utilities – Text Inherit
+// -------------------------------------------------------
+.use-text-inherit(@boolean) when (@boolean =true) {
+
+    .u-text-inherit-all{
+        font-family:inherit!important;
+        font-size:inherit!important;
+        font-weight:inherit!important;
+        line-height:inherit!important;
+    }
+
+    .u-text-inherit-base{
+        font-size:inherit!important;
+        line-height:inherit!important;
+    }
+}
+
+.use-text-inherit(@use-text-inherit);
