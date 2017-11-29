@@ -174,7 +174,7 @@
     .checkbox {
         user-select: none;
         & + & {
-            margin-top: @checkbox-radio-margin; // add some spacing between checkboxes/radios
+            margin-top: @checkbox-radio-vertical-margin; // add some spacing between checkboxes/radios
         }
         // Inline styles
         &.checkbox--inline,
@@ -196,10 +196,9 @@
         // Control inputs with label
         label {
             position: relative;
-            padding-left: (@checkbox-radio-size);
-            text-indent: @spacing-fourth;
+            padding-left: (@checkbox-radio-size + @checkbox-radio-left-padding);
             line-height: @checkbox-radio-size;
-            height: @checkbox-radio-size; // makes empty label possible
+            min-height: @checkbox-radio-size; // makes empty label possible
             &:before,
             &:after {
                 content: '';
