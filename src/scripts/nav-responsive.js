@@ -29,10 +29,10 @@
             var wrapper = $(this),
                 content = wrapper.find(options.content).first(),
                 toggleSelector = options.toggle,
-                toggleButton = '<div role="button" class="' + options.toggle.split('.').join("") + ' is-inactive" data-toggle aria-label="Navigation menu">' + options.toggleContent + '</div>',
+                toggleButton = '<div role="button" class="' + options.toggle.split('.').join('') + ' is-inactive" data-toggle aria-label="Navigation menu">' + options.toggleContent + '</div>',
                 childContent = content.find(options.childContent),
                 childToggleSelector = 'ul li [data-handle]',
-                childToggleButton = '<span role="button" class="' + options.childToggle.split('.').join("") + '" data-handle>' + options.childToggleContent + '</span>',
+                childToggleButton = '<span role="button" class="' + options.childToggle.split('.').join('') + '" data-handle>' + options.childToggleContent + '</span>',
                 overlaySelector = options.overlay;
 
             function initPlugin() {
@@ -58,7 +58,7 @@
                 });
 
                 if (options.overlay) {
-                    $('body').append('<div role="button" class="' + options.overlay.split('.').join("") + '" data-overlay></div>');
+                    $('body').append('<div role="button" class="' + options.overlay.split('.').join('') + '" data-overlay></div>');
                 }
             }
             initPlugin();

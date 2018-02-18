@@ -6,13 +6,12 @@
     // Usage
     // <element class="container">
     //    <element class="grid">
-    //        <element class="grid__column u-width-sm-*">
+    //        <element class="grid__column u-width-small-*">
     //        </element>
     //    </element>
     // </element>
 
     // Container
-
     .use-container(@boolean) when (@boolean =true) {
         .container,
         .container-fluid {
@@ -20,7 +19,6 @@
         }
 
         // Fluid containers
-
         .container-fluid {
             width: @container-fluid;
             max-width: @container-fluid-max;
@@ -36,55 +34,49 @@
             max-width: @container-fluid-inner-max;
         }
 
-
         // Fixed containers
 
         // Container Small (Default)
-
-        .use-screen-sm(@boolean) when (@boolean =true) {
+        .use-screen-small(@boolean) when (@boolean =true) {
             .container {
-                width: @container-sm;
+                width: @container-small;
             }
         }
-        .use-screen-sm(@use-screen-sm);
+        .use-screen-small(@use-screen-small);
 
         // Container Medium
-
-        .use-screen-md(@boolean) when (@boolean =true) {
-            @media @md-up {
+        .use-screen-medium(@boolean) when (@boolean =true) {
+            @media @medium-up {
                 .container {
-                    width: @container-md;
+                    width: @container-medium;
                 }
             }
         }
-        .use-screen-md(@use-screen-md);
+        .use-screen-medium(@use-screen-medium);
 
         // Container Large
-
-        .use-screen-lg(@boolean) when (@boolean =true) {
-            @media @lg-up {
+        .use-screen-large(@boolean) when (@boolean =true) {
+            @media @large-up {
                 .container {
-                    width: @container-lg;
+                    width: @container-large;
                 }
             }
         }
-        .use-screen-lg(@use-screen-lg);
+        .use-screen-large(@use-screen-large);
 
         // Container Extra-Large
-
-        .use-screen-xl(@boolean) when (@boolean =true) {
-            @media @xl-up {
+        .use-screen-x-large(@boolean) when (@boolean =true) {
+            @media @x-large-up {
                 .container {
-                    width: @container-xl;
+                    width: @container-x-large;
                 }
             }
         }
-        .use-screen-xl(@use-screen-xl);
+        .use-screen-x-large(@use-screen-x-large);
     }
     .use-container(@use-container);
 
     // Grid
-
     .use-grid(@boolean) when (@boolean =true) {
         .grid {
             .make-grid();
@@ -93,7 +85,6 @@
     .use-grid(@use-grid);
 
     // Grid-column
-
     .use-grid-column(@boolean) when (@boolean =true) {
         .grid__column {
             .make-grid-column(@grid-gutter-width);
@@ -101,7 +92,7 @@
         }
 
         // Collapse column gutters
-        .grid__column--collapse {
+        .grid__column--flush {
             padding-left: 0;
             padding-right: 0;
         }
@@ -109,7 +100,6 @@
     .use-grid-column(@use-grid-column);
 
     // Grid modifiers
-
     .use-grid-modifiers(@boolean) when (@boolean =true) {
 
         // Grid with half gutters
@@ -122,54 +112,23 @@
             }
         }
 
-        // Grid with tight gutters
-        .grid--quarter {
-            margin-left: (@grid-gutter-width / -8);
-            margin-right: (@grid-gutter-width / -8);
-            > .grid__column {
-                padding-left: (@grid-gutter-width / 8);
-                padding-right: (@grid-gutter-width / 8);
-            }
-        }
-
         // Collapse row gutters
-        .grid--collapse {
+        .grid--flush {
             margin-left: 0;
             margin-right: 0;
-            > .grid__column{
+            > .grid__column {
                 padding-left: 0;
                 padding-right: 0;
             }
         }
 
-        .grid--collapse-deep {
-            &,
-            & .grid {
-                margin-left: 0;
-                margin-right: 0;
+        // Grid with equal height columns
+        .grid--equal-height {
+            > .grid__column {
+                display: flex;
             }
-            .grid__column {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
-
-        // Flex-grid only features
-        & when (@use-flex-grid =true) {
-
-            // Grid with centered columns
-            .grid--centered {
-                justify-content: center;
-            }
-
-            // Grid with equal height columns
-            .grid--equal-height {
-                > .grid__column {
-                    display: flex;
-                }
-                .grid {
-                    flex: 1;
-                }
+            .grid {
+                flex: 1;
             }
         }
     }

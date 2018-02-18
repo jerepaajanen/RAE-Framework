@@ -330,13 +330,13 @@ gulp.task('images', ['images:optimize', 'images:favicons']);
 
 // Images : Optimize
 gulp.task('images:optimize', function () {
-    return gulp.src(paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}')
+    return gulp.src([paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
+                    '!' + paths.images.src + 'icons/**/*.svg'])
         .pipe($.if(!isProduction, $.newer(paths.images.dest)))
         .pipe($.if(isProduction, ($.imagemin([
                 $.imagemin.gifsicle({interlaced: true}),
                 $.imagemin.jpegtran({progressive: true}),
-                $.imagemin.optipng({optimizationLevel: 7}),
-                $.imagemin.svgo({plugins: [{removeViewBox: false}]})
+                $.imagemin.optipng({optimizationLevel: 7})
             ]))))
         .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({
@@ -432,6 +432,7 @@ gulp.task('icons', function() {
     return gulp.src(paths.images.src + 'icons/**/*.svg')
 
         .pipe($.svgmin(svgMinConfig))
+        .pipe(gulp.dest(paths.images.dest + 'icons/'))
         .pipe($.svgSprite(svgSpritesConfig))
         .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({

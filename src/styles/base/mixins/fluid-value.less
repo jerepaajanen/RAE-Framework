@@ -16,8 +16,8 @@
     @value-attribute: font-size,
     @min-value: @root-font-size,
     @max-value: @root-font-size * @line-height-base,
-    @min-value-range: @breakpoint-sm,
-    @max-value-range: @breakpoint-xl) {
+    @min-value-range: @breakpoint-small,
+    @max-value-range: @breakpoint-x-large) {
 
     // Pre-calculated mixin values
     @value-return: unit(@max-value - @min-value);

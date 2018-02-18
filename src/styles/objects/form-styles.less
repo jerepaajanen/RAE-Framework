@@ -174,12 +174,12 @@
     .checkbox {
         user-select: none;
         & + & {
-            margin-top: @checkbox-radio-margin; // add some spacing between checkboxes/radios
+            margin-top: @checkbox-radio-vertical-margin; // add some spacing between checkboxes/radios
         }
         // Inline styles
         &.checkbox--inline,
         &.radio--inline {
-            @media @md-up {
+            @media @medium-up {
                 display: inline-block;
                 margin-top: 0; // reset margin
                 margin-right: @spacing-half; // space out consecutive inline controls
@@ -196,10 +196,9 @@
         // Control inputs with label
         label {
             position: relative;
-            padding-left: (@checkbox-radio-size);
-            text-indent: @spacing-fourth;
+            padding-left: (@checkbox-radio-size + @checkbox-radio-left-padding);
             line-height: @checkbox-radio-size;
-            height: @checkbox-radio-size; // makes empty label possible
+            min-height: @checkbox-radio-size; // makes empty label possible
             &:before,
             &:after {
                 content: '';
@@ -285,11 +284,6 @@
         select.select--large {
             height: @input-large-height;
             font-size: @input-large-font-size;
-        }
-        input.input--huge,
-        select.select--huge {
-            height: @input-huge-height;
-            font-size: @input-huge-font-size;
         }
         // Input variations
         input.input--underlined,
