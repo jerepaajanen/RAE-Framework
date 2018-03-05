@@ -13,6 +13,8 @@ var
     flexbugsFixes = require('postcss-flexbugs-fixes'),
     mqpacker = require('css-mqpacker'),
     cssnano = require('cssnano'),
+    colors = require('ansi-colors'),
+    through = require('through2'),
     sequence = require('run-sequence'),
     bowerFiles = require('main-bower-files'),
     browserSync = require('browser-sync'),
@@ -78,8 +80,7 @@ var
 // Handle errors
 
 function handleErrors(error) {
-    console.log($.util.colors.red(error.toString()));
-    $.util.beep();
+    console.log(colors.bold(colors.red(error.toString())));
     this.emit('end');
 }
 
@@ -89,13 +90,16 @@ try {
     var configFtp = require('./config-ftp.json');
 } catch (error) {
 
-    console.log($.util.colors.red('"config-ftp.json" file needed!'));
+    console.log(colors.bold(colors.red('"config-ftp.json" file needed!')));
+
 }
 
 if (configFtp) {
     //console.log(configFtp);
 
-    console.log($.util.colors.grey('Using "config-ftp.json".'));
+    console.log(colors.bold(colors.grey('Using "config-ftp.json".')));
+
+
 
     var remoteDev = ftp.create({
             host:     configFtp.development.host,
@@ -104,7 +108,7 @@ if (configFtp) {
             password: configFtp.development.password,
             parallel: 5,
             reload:   true,
-            log:      null //$.util.log
+            log:      null
         }),
         remoteProd = ftp.create({
             host:     configFtp.production.host,
@@ -113,7 +117,7 @@ if (configFtp) {
             password: configFtp.production.password,
             parallel: 5,
             reload:   true,
-            log:      null //$.util.log
+            log:      null
         });
 }
 
@@ -128,12 +132,13 @@ gulp.task('default', ['clean'], function () {
 
     if (isProduction) {
 
-        console.log($.util.colors.green('Production mode'));
+        console.log(colors.bold(colors.green('Production mode')));
 
         gulp.start('default:production');
     } else {
 
-        console.log($.util.colors.green('Development mode'));
+        console.log(colors.bold(colors.green('Development mode')));
+
 
         gulp.start('default:development');
     }
@@ -155,7 +160,8 @@ gulp.task('default:development', function () {
 
 gulp.task('default:production', function () {
     sequence(['images'], ['markup', 'styles', 'scripts', 'icons', 'copy'], function () {
-        console.log($.util.colors.green('✔ Build done!'));
+        console.log(colors.bold(colors.green('✔ Build done!')));
+
         if (isServe) {
             gulp.start(['serve']);
         } else if (isDeploy) {
@@ -173,8 +179,8 @@ var markupProcess = function (isNotPartial) {
     return gulp.src(paths.src + '**/*.{html,php}', {
         base: paths.src
     })
-        //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : $.util.noop())
-        .pipe(isNotPartial ? $.newer(paths.dest) : $.util.noop())
+        //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : through.obj())
+        .pipe(isNotPartial ? $.newer(paths.dest) : through.obj())
         .pipe($.preprocess({
             context: {
                 ENV: isProduction ? 'production' : 'development',
@@ -490,35 +496,37 @@ gulp.task('clean', ['clean:files']);
 
 // Clean : Files
 gulp.task('clean:files', function () {
-    console.log($.util.colors.cyan('Cleaning ' + paths.dest + ' -folder'));
-
+    console.log(colors.bold(colors.cyan('Cleaning ' + paths.dest + ' -folder')));
     del.sync([paths.dest + '**']);
+    console.log(colors.bold(colors.green('Clean Done')));
 
-    console.log($.util.colors.green('Clean Done'));
 });
 
 // Clean : Remote
 gulp.task('clean:remote', function (done) {
 
     if (isProduction) {
-        console.log($.util.colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...'));
+        console.log(colors.bold(colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...')));
+
 
         remoteProd.rmdir(configFtp.production.remotePath, function (err) {
             done();
             if (err) {
                 return handleErrors;
-                console.log($.util.colors.green('Clean Done'));
+                console.log(colors.bold(colors.green('Clean Done')));
+
             }
         });
 
     } else {
-        console.log($.util.colors.cyan('Cleaning ' + configFtp.development.remotePath + ' -folder on remote server...'));
+        console.log(colors.bold(colors.cyan('Cleaning ' + configFtp.development.remotePath + ' -folder on remote server...')));
 
         remoteDev.rmdir(configFtp.development.remotePath, function (err) {
             done();
             if (err) {
                 return handleErrors;
-                console.log($.util.colors.green('Clean Done'));
+                console.log(colors.bold(colors.green('Clean Done')));
+
             }
         });
     }
@@ -531,7 +539,8 @@ gulp.task('clean:remote', function (done) {
 
 gulp.task('watch', function () {
 
-    console.log($.util.colors.grey('Watching changes...'));
+    console.log(colors.bold(colors.grey('Watching changes...')));
+
 
 
     // Watch Html-files
@@ -562,7 +571,7 @@ gulp.task('watch', function () {
 
 // Watch Files For Changes & Reload
 gulp.task('serve', function () {
-    console.log($.util.colors.grey('Launching server...'));
+    console.log(colors.bold(colors.grey('Launching server...')));
 
     browserSync({
         server: {
@@ -587,7 +596,7 @@ gulp.task('deploy', ['clean:remote'], function () {
     ];
 
     return gulp.src(globs, {
-        base: './' + paths.dest,
+        base: paths.dest,
         buffer: false
     })
 
@@ -599,15 +608,16 @@ gulp.task('deploy', ['clean:remote'], function () {
 
 gulp.task('deploy:watch', ['deploy'], function () {
 
-    console.log($.util.colors.grey('Watching changes...'));
+    console.log(colors.bold(colors.grey('Watching changes...')));
 
-    gulp.watch(paths.dest + '**')
+
+    gulp.watch(paths.dest + '**/*')
         .on('change', function (event) {
 
-            console.log($.util.colors.cyan('Uploading file "' + event.path + '", ' + event.type));
+            console.log(colors.bold(colors.cyan('Uploading file "' + event.path + '", ' + event.type)));
 
             return gulp.src([event.path], {
-                base: './' + paths.dest,
+                base: paths.dest,
                 buffer: false
             })
                 .pipe(remoteDev.newer(configFtp.development.remotePath))
