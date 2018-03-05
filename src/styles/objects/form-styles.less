@@ -276,12 +276,14 @@
     .use-input-modifiers(@boolean) when (@boolean =true) {
         // Input sizes
         input.input--small,
-        select.select--small {
+        select.select--small,
+        textarea.textarea--small{
             height: @input-small-height;
             font-size: @input-small-font-size;
         }
         input.input--large,
-        select.select--large {
+        select.select--large,
+        textarea.textarea--large {
             height: @input-large-height;
             font-size: @input-large-font-size;
         }

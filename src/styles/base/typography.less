@@ -143,7 +143,7 @@
 
     small,
     .small {
-        font-size: @smallall-font-size;
+        font-size: @small-font-size;
         font-weight: normal;
     }
 
@@ -164,6 +164,7 @@
     }
 
     blockquote {
+        color: @blockquote-quote-color;
         font-family: @blockquote-quote-font-family;
         font-size: @blockquote-quote-font-size;
         font-weight: @blockquote-quote-font-weight;
@@ -199,8 +200,17 @@
     // Pullquote
 
     .pullquote {
+        color: @pullquote-color;
+        font-family: @pullquote-font-family;
+        font-size: @pullquote-font-size;
+        font-style: @pullquote-font-style;
         padding: @pullquote-padding;
         border-left: @pullquote-border-width solid @pullquote-border-color;
+
+        cite {
+            font-size: @pullquote-cite-font-size;
+            color: @pullquote-cite-color;
+        }
     }
 
     // Code and Pre Elements

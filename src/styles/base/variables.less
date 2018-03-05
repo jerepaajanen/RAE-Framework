@@ -210,7 +210,7 @@
 @lead-color:                            @grey-600;
 
 // Emphasis
-@smallall-font-size:                       75%;
+@small-font-size:                       75%;
 @mark-background-color:                 ##ffff00;
 @mark-padding:                          .2em;
 
@@ -227,6 +227,7 @@
 
 // Blockquote
 @blockquote-padding:                    @spacing-third 0;
+@blockquote-quote-color:                @color-primary;
 @blockquote-quote-font-family:          @base-font-family;
 @blockquote-quote-font-style:           normal;
 @blockquote-quote-font-size:            18px;
@@ -239,9 +240,10 @@
 
 // Pullquote
 @pullquote-padding:                     @spacing-third @spacing-two-thirds;
-@pullquote-border-color:                @color-secondary;
+@pullquote-border-color:                @color-primary;
 @pullquote-border-width:                4px;
-@pullquote-font-family:                 @base-font-family;
+@pullquote-color:                       @color-primary;
+@pullquote-font-family:                 @blockquote-quote-font-family;
 @pullquote-font-style:                  normal;
 @pullquote-font-size:                   18px;
 @pullquote-cite-font-size:              14px;
@@ -277,6 +279,7 @@
 @label-horizontal-margin:               @spacing-half;
 @label-font-family:                     @base-font-family;
 @label-font-size:                       inherit;
+@label-font-weight:                     inherit;
 @label-color:                           @base-color;
 @legend-font-family:                    @base-font-family;
 @legend-font-size:                       inherit;
