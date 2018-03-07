@@ -11,12 +11,13 @@ var
     del = require('del'),
     autoprefixer = require('autoprefixer'),
     flexbugsFixes = require('postcss-flexbugs-fixes'),
+    postcssObjectFit = require('postcss-object-fit-images'),
     mqpacker = require('css-mqpacker'),
     cssnano = require('cssnano'),
     colors = require('ansi-colors'),
     through = require('through2'),
     sequence = require('run-sequence'),
-    bowerFiles = require('main-bower-files'),
+    mainYarnFiles = require('main-yarn-files'),
     browserSync = require('browser-sync'),
     inject = require('gulp-inject-string'),
     ftp = require('vinyl-ftp'),
@@ -229,6 +230,7 @@ gulp.task('styles', function () {
         .on('error', handleErrors)
         .pipe($.postcss([
             flexbugsFixes,
+            postcssObjectFit,
             autoprefixer({
                 browsers: config.browserSupport
             })
@@ -237,6 +239,7 @@ gulp.task('styles', function () {
 
         .pipe($.if(isProduction, $.postcss([
             flexbugsFixes,
+            postcssObjectFit,
             autoprefixer({
                 browsers: config.browserSupport
             }),
@@ -277,9 +280,11 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
-    return gulp.src(bowerFiles('**/*.js'), {
-        base: './bower_components'
-    })
+    return gulp.src(mainYarnFiles({
+            paths: {
+                modulesFolder: './node_modules'
+            }
+        }))
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
@@ -553,7 +558,7 @@ gulp.task('watch', function () {
 
     // Watch Scripts
     gulp.watch(paths.scripts.src + '**/*.js', ['scripts:main']);
-    gulp.watch('bower.json', ['scripts:vendor']);
+    gulp.watch('package.json', ['scripts:vendor']);
 
     // Watch Images
     gulp.watch([
