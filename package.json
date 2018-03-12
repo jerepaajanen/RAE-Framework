@@ -7,10 +7,10 @@
     "main": "gulpfile.js",
     "repository": "https://github.com/jerepaajanen/RAE-Framework.git",
     "keywords": [
-        "css",
-        "less",
-        "framework"
-    ],
+    "css",
+    "less",
+    "framework"
+  ],
     "license": "MIT",
     "devDependencies": {
         "ansi-colors": "^1.1.0",
@@ -46,8 +46,8 @@
         "jshint": "^2.9.5",
         "jshint-stylish": "^2.2.1",
         "lodash": "^4.17.4",
-        "main-bower-files": "^2.13.1",
         "minimist": "^1.2.0",
+        "npmfiles": "^0.1.1",
         "postcss-flexbugs-fixes": "^3.2.0",
         "postcss-object-fit-images": "^1.1.2",
         "run-sequence": "^2.1.0",
@@ -68,10 +68,7 @@
     },
     "overrides": {
         "NPM-PACKAGE": {
-            "main": [
-                "**/*.js",
-                "filename.js"
-            ]
+            "main": ["**/*.js", "filename.js"]
         }
     }
 }

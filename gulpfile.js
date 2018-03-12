@@ -17,7 +17,7 @@ var
     colors = require('ansi-colors'),
     through = require('through2'),
     sequence = require('run-sequence'),
-    bowerFiles = require('main-bower-files'),
+    npmFiles = require("npmfiles"),
     browserSync = require('browser-sync'),
     inject = require('gulp-inject-string'),
     ftp = require('vinyl-ftp'),
@@ -280,9 +280,7 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
-    return gulp.src(bowerFiles('**/*.js'), {
-        base: './bower_components'
-    })
+    return gulp.src(npmFiles())
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
@@ -556,7 +554,7 @@ gulp.task('watch', function () {
 
     // Watch Scripts
     gulp.watch(paths.scripts.src + '**/*.js', ['scripts:main']);
-    gulp.watch('bower.json', ['scripts:vendor']);
+    gulp.watch('package.json', ['scripts:vendor']);
 
     // Watch Images
     gulp.watch([
