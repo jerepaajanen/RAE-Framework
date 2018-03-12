@@ -17,7 +17,7 @@ var
     colors = require('ansi-colors'),
     through = require('through2'),
     sequence = require('run-sequence'),
-    mainYarnFiles = require('main-yarn-files'),
+    bowerFiles = require('main-bower-files'),
     browserSync = require('browser-sync'),
     inject = require('gulp-inject-string'),
     ftp = require('vinyl-ftp'),
@@ -280,11 +280,9 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
-    return gulp.src(mainYarnFiles({
-            paths: {
-                modulesFolder: './node_modules'
-            }
-        }))
+    return gulp.src(bowerFiles('**/*.js'), {
+        base: './bower_components'
+    })
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
@@ -558,7 +556,7 @@ gulp.task('watch', function () {
 
     // Watch Scripts
     gulp.watch(paths.scripts.src + '**/*.js', ['scripts:main']);
-    gulp.watch('package.json', ['scripts:vendor']);
+    gulp.watch('bower.json', ['scripts:vendor']);
 
     // Watch Images
     gulp.watch([
