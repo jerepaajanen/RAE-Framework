@@ -5,12 +5,12 @@
 
 - install npm (http://nodejs.org/)
 - install gulp client: `npm install -g gulp`
-- install bower: `npm install -g bower`
+- install yarn: `npm install -g yarn`
 
-### Install dependencies
+### Install dependencies with yarn
 
 ```bash
-npm install && bower install
+yarn
 ```
 ...or just open gulp-init.command
 
