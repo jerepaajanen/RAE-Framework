@@ -46,6 +46,10 @@
         "jshint": "^2.9.5",
         "jshint-stylish": "^2.2.1",
         "lodash": "^4.17.4",
+<<<<<<< HEAD
+=======
+        "main-yarn-files": "^3.0.4",
+>>>>>>> parent of aed3b52... back to bower
         "minimist": "^1.2.0",
         "npmfiles": "^0.1.1",
         "postcss-flexbugs-fixes": "^3.2.0",

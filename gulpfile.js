@@ -17,7 +17,11 @@ var
     colors = require('ansi-colors'),
     through = require('through2'),
     sequence = require('run-sequence'),
+<<<<<<< HEAD
     npmFiles = require("npmfiles"),
+=======
+    mainYarnFiles = require('main-yarn-files'),
+>>>>>>> parent of aed3b52... back to bower
     browserSync = require('browser-sync'),
     inject = require('gulp-inject-string'),
     ftp = require('vinyl-ftp'),
@@ -280,7 +284,15 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
+<<<<<<< HEAD
     return gulp.src(npmFiles())
+=======
+    return gulp.src(mainYarnFiles({
+            paths: {
+                modulesFolder: './node_modules'
+            }
+        }))
+>>>>>>> parent of aed3b52... back to bower
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
