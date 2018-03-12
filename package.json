@@ -47,6 +47,10 @@
         "jshint-stylish": "^2.2.1",
         "lodash": "^4.17.4",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        "main-yarn-files": "^3.0.4",
+>>>>>>> parent of aed3b52... back to bower
 =======
         "main-yarn-files": "^3.0.4",
 >>>>>>> parent of aed3b52... back to bower

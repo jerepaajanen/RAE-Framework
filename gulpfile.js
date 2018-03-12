@@ -18,7 +18,11 @@ var
     through = require('through2'),
     sequence = require('run-sequence'),
 <<<<<<< HEAD
+<<<<<<< HEAD
     npmFiles = require("npmfiles"),
+=======
+    mainYarnFiles = require('main-yarn-files'),
+>>>>>>> parent of aed3b52... back to bower
 =======
     mainYarnFiles = require('main-yarn-files'),
 >>>>>>> parent of aed3b52... back to bower
@@ -285,13 +289,19 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
 <<<<<<< HEAD
+<<<<<<< HEAD
     return gulp.src(npmFiles())
 =======
+=======
+>>>>>>> parent of aed3b52... back to bower
     return gulp.src(mainYarnFiles({
             paths: {
                 modulesFolder: './node_modules'
             }
         }))
+<<<<<<< HEAD
+>>>>>>> parent of aed3b52... back to bower
+=======
 >>>>>>> parent of aed3b52... back to bower
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
