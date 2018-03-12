@@ -17,15 +17,7 @@ var
     colors = require('ansi-colors'),
     through = require('through2'),
     sequence = require('run-sequence'),
-<<<<<<< HEAD
-<<<<<<< HEAD
-    npmFiles = require("npmfiles"),
-=======
-    mainYarnFiles = require('main-yarn-files'),
->>>>>>> parent of aed3b52... back to bower
-=======
-    mainYarnFiles = require('main-yarn-files'),
->>>>>>> parent of aed3b52... back to bower
+    bowerFiles = require("main-bower-files"),
     browserSync = require('browser-sync'),
     inject = require('gulp-inject-string'),
     ftp = require('vinyl-ftp'),
@@ -288,21 +280,9 @@ gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
 
 // Scripts : Vendor
 gulp.task('scripts:vendor', function () {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    return gulp.src(npmFiles())
-=======
-=======
->>>>>>> parent of aed3b52... back to bower
-    return gulp.src(mainYarnFiles({
-            paths: {
-                modulesFolder: './node_modules'
-            }
-        }))
-<<<<<<< HEAD
->>>>>>> parent of aed3b52... back to bower
-=======
->>>>>>> parent of aed3b52... back to bower
+    return gulp.src(bowerFiles('**/*.js'), {
+        base: './bower_components'
+    })
         .pipe($.concat('vendor.js'))
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe($.if(isProduction, $.uglify()))
