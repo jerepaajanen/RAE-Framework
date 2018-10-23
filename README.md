@@ -5,12 +5,12 @@
 
 - install npm (http://nodejs.org/)
 - install gulp client: `npm install -g gulp`
-- install yarn: `npm install -g yarn`
+- install yarn: `npm install -g bower`
 
-### Install dependencies with yarn
+### Install dependencies with bower
 
 ```bash
-yarn
+bower install
 ```
 ...or just open gulp-init.command
 
@@ -54,5 +54,5 @@ You can use also shorthand for enviroment modifiers
 #### Help
 This command will give you a list of all tasks available and their description.
 ```bash
-gulp --tasks
+gulp tasks
 ```
