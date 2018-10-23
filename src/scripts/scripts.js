@@ -3,15 +3,24 @@
     'use strict';
 
     // Javascript Detection
-    $('html').removeClass('no-js').addClass('js');
+    function checkJs() {
+
+        $('html').removeClass('no-js').addClass('js');
+    }
+    checkJs();
 
     // Touch Device Detection
-    var isTouchDevice = 'ontouchstart' in document.documentElement;
-    if (isTouchDevice) {
-        $('html').addClass('touch');
-    } else {
-        $('html').addClass('no-touch');
+    function checkTouch() {
+        //Check Device
+        var isTouch = ('ontouchstart' in document.documentElement);
+        //Check Device //All Touch Devices
+        if (isTouch) {
+            $('html').addClass('touch');
+        } else {
+            $('html').addClass('no-touch');
+        }
     }
+    checkTouch();
 
 
     // DOM ready
