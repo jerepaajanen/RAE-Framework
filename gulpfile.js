@@ -172,6 +172,10 @@ gulp.task('default:production', function () {
     });
 });
 
+// Show all tasks
+gulp.task('tasks', $.taskListing);
+
+
 
 // MARKUP
 // -------------------------------------------------------
