@@ -11,9 +11,7 @@
 
     // Touch Device Detection
     function checkTouch() {
-        //Check Device
         var isTouch = ('ontouchstart' in document.documentElement);
-        //Check Device //All Touch Devices
         if (isTouch) {
             $('html').addClass('touch');
         } else {
