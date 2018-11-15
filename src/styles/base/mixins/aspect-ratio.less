@@ -12,6 +12,7 @@
 
 
 .aspect-ratio(@width, @height) {
+
     &:before {
         display: block;
         content: "";
@@ -23,6 +24,10 @@
 
 .aspect-ratio-container() {
     position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+
     > *:first-child {
         .cover();
     }

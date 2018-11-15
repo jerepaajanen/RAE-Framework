@@ -24,6 +24,8 @@
     // DOM ready
     $(function () {
 
+        // Init object-fit polyfill
+        objectFitImages();
 
     });
 
