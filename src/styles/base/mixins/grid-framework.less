@@ -40,8 +40,6 @@
 
 // Grid-column mixin
 .make-grid-column(@gutter: @grid-gutter-width) {
-    position: relative;
-    min-height: 1px;
     & when (@gutter > 0) {
         padding-left: (@gutter / 2);
         padding-right: (@gutter / 2);
@@ -65,27 +63,5 @@
     }
     & when (@offset < 1) {
         margin-left: percentage((@offset));
-    }
-}
-
-// Push mixin
-.push(@push: 1) {
-    & when (@push >=1) {
-        left: percentage((@push / @grid-columns));
-    }
-    & when (@push < 1) {
-        left: percentage((@push));
-    }
-    right: auto;
-}
-
-// Pull mixin
-.pull(@pull: 1) {
-    left: auto;
-    & when (@pull >=1) {
-        right: percentage((@pull / @grid-columns));
-    }
-    & when (@pull < 1) {
-        right: percentage((@pull));
     }
 }

@@ -40,7 +40,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-size": "^3.0.0",
     "gulp-svg-sprite": "^1.5.0",
-    "gulp-svgmin": "^2.1.0",
+    "gulp-svgmin": "^2.2.0",
     "gulp-task-listing": "^1.1.0",
     "gulp-uglify": "^3.0.2",
     "jshint": "^2.10.2",

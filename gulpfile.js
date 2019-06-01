@@ -401,6 +401,9 @@ gulp.task('images:favicons-generate', function () {
 
 // ICONS (svg sprites)
 // -------------------------------------------------------
+
+// Save svg with style element to stript all styles, else with style attributes i.e. to save fill colors.
+
 var svgMinConfig = {
             plugins: [{
                 removeDoctype: true
@@ -413,11 +416,13 @@ var svgMinConfig = {
             }, {
                 removeStyleElement: true
             }, {
-                sortAttrs: true
+                inlineStyles: false
             }, {
                 removeAttrs: {
-                    attrs: 'class'
+                    attrs: '(class|xmlns)'
                 }
+            }, {
+                sortAttrs: true
             }]
         }
 var svgSpritesConfig = {
