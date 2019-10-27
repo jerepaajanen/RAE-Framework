@@ -236,7 +236,7 @@ gulp.task('styles', function () {
             flexbugsFixes,
             postcssObjectFit,
             autoprefixer({
-                browsers: config.browserSupport
+                //Supported browsers stored in .browserslistrc
             })
         ]))
         .pipe(gulp.dest(paths.styles.dest))
@@ -245,7 +245,7 @@ gulp.task('styles', function () {
             flexbugsFixes,
             postcssObjectFit,
             autoprefixer({
-                browsers: config.browserSupport
+                //Supported browsers stored in .browserslistrc
             }),
             mqpacker({
                 sort: true

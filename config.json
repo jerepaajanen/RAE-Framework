@@ -4,11 +4,6 @@
         "dest": "dist/"
     },
 
-    "browserSupport": [
-      "last 3 version",
-      "ie >= 10"
-    ],
-
     "wordpressTheme": false,
 
     "siteTitle": "RAE",
