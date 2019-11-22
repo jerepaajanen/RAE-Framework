@@ -5,29 +5,50 @@
 // REQUIRES
 // -------------------------------------------------------
 
-var
-    gulp = require('gulp'),
-    fs = require('fs'),
-    del = require('del'),
-    autoprefixer = require('autoprefixer'),
-    flexbugsFixes = require('postcss-flexbugs-fixes'),
-    postcssObjectFit = require('postcss-object-fit-images'),
-    mqpacker = require('css-mqpacker'),
-    cssnano = require('cssnano'),
-    colors = require('ansi-colors'),
-    through = require('through2'),
-    sequence = require('run-sequence'),
-    bowerFiles = require("main-bower-files"),
-    browserSync = require('browser-sync'),
-    inject = require('gulp-inject-string'),
-    ftp = require('vinyl-ftp'),
-    pkg = require('./package.json'),
-    config = require('./config.json'),
-    $ = require('gulp-load-plugins')(),
-    flags = require('minimist')(process.argv.slice(2));
+const {
+    src,
+    dest,
+    parallel,
+    series,
+    watch
+} = require('gulp');
+const fs = require('fs');
+const del = require('del');
+const pkg = require('./package.json');
+const config = require('./config.json');
+const flags = require('minimist')(process.argv.slice(2));
+
+//PLUGINS
+const postCss_autoprefixer = require('autoprefixer');
+const bowerFiles = require("main-bower-files");
+const browserSync = require('browser-sync');
+const inject = require('gulp-inject-string');
+const ftp = require('vinyl-ftp');
+const postCss_flexbugsFixes = require('postcss-flexbugs-fixes');
+const postCss_objectFit = require('postcss-object-fit-images');
+const postCss_cssMqpacker = require('css-mqpacker');
+const postCss_cssnano = require('cssnano');
+const colors = require('ansi-colors');
+const through = require('through2');
+const newer = require('gulp-newer');
+const less = require('gulp-less');
+const postCss = require('gulp-postcss');
+const size = require('gulp-size');
+const rename = require('gulp-rename');
+const header = require('gulp-header');
+const htmlClean = require('gulp-htmlclean');
+const preprocess = require('gulp-preprocess');
+const gulpIf = require('gulp-if');
+const concat = require('gulp-concat');
+const jshint = require('gulp-jshint');
+const imagemin = require('gulp-imagemin');
+const favicons = require('gulp-favicons');
+const uglify = require('gulp-uglify');
+const svgMin = require('gulp-svgmin');
+const svgSprite = require('gulp-svg-sprite');
 
 
-// VARS
+// VARIABLES
 // -------------------------------------------------------
 
 var
@@ -103,90 +124,100 @@ if (configFtp) {
 
 
     var remoteDev = ftp.create({
-            host:     configFtp.development.host,
-            port:     configFtp.development.port,
-            user:     configFtp.development.user,
+            host: configFtp.development.host,
+            port: configFtp.development.port,
+            user: configFtp.development.user,
             password: configFtp.development.password,
             parallel: 5,
-            reload:   true,
-            log:      null
+            reload: true,
+            log: null
         }),
         remoteProd = ftp.create({
-            host:     configFtp.production.host,
-            port:     configFtp.production.port,
-            user:     configFtp.production.user,
+            host: configFtp.production.host,
+            port: configFtp.production.port,
+            user: configFtp.production.user,
             password: configFtp.production.password,
             parallel: 5,
-            reload:   true,
-            log:      null
+            reload: true,
+            log: null
         });
 }
 
 // Timestamp
 
-var runTimestamp = Math.round(Date.now()/1000);
+var runTimestamp = Math.round(Date.now() / 1000);
+
 
 // DEFAULT TASKS
 // -------------------------------------------------------
 
-gulp.task('default', ['clean'], function () {
+//gulp.task('default', ['clean'], function () {
+
+exports.default = init;
+exports.development = development;
+exports.production = production;
+
+
+
+function init(done) {
 
     if (isProduction) {
 
         console.log(colors.bold(colors.green('Production mode')));
 
-        gulp.start('default:production');
+        series(production);
     } else {
 
         console.log(colors.bold(colors.green('Development mode')));
 
-
-        gulp.start('default:development');
+        series(development);
     }
+    done();
+}
 
-});
+function development(done) {
 
-gulp.task('default:development', function () {
-    sequence(['markup:all', 'styles', 'scripts', 'images', 'icons', 'copy'], function () {
-        if (isServe && isDeploy) {
-            gulp.start(['serve', 'watch', 'deploy:watch']);
-        } else if (isDeploy) {
-            gulp.start(['deploy']);
-        } else if (isServe) {
-            gulp.start(['serve', 'watch']);
+    series(markupAll, styles, scripts, images, icons),
+        function () {
+            if (isServe && isDeploy) {
+                parallel(serve, watchFiles, deployWatch);
+            } else if (isDeploy) {
+                parallel(deploy);
+            } else if (isServe) {
+                parallel(serve, watch);
+            }
         }
+    done();
+}
 
-    });
-});
+function production() {
+    series(images, parallel(markup, styles, scripts, icons, copy)),
+        function (done) {
+            console.log(colors.bold(colors.green('✔ Build done!')));
 
-gulp.task('default:production', function () {
-    sequence(['images'], ['markup', 'styles', 'scripts', 'icons', 'copy'], function () {
-        console.log(colors.bold(colors.green('✔ Build done!')));
+            if (isServe) {
+                parallel(serve);
+            } else if (isDeploy) {
+                parallel(deploy);
+            }
+            done();
 
-        if (isServe) {
-            gulp.start(['serve']);
-        } else if (isDeploy) {
-            gulp.start(['deploy']);
         }
-
-    });
-});
-
-// Show all tasks
-gulp.task('tasks', $.taskListing);
-
-
+}
 
 // MARKUP
 // -------------------------------------------------------
 
+exports.markup = markup;
+exports.markupAll = markupAll;
+
 var markupProcess = function (isNotPartial) {
-    return gulp.src(paths.src + '**/*.{html,php}', {
-        base: paths.src
-    })
-        //.pipe(isNotPartial || isProduction ? $.newer(paths.dest) : through.obj())
-        .pipe(isNotPartial ? $.newer(paths.dest) : through.obj())
-        .pipe($.preprocess({
+    return src(paths.src + '**/*.{html,php}', {
+            base: paths.src
+        })
+        //.pipe(isNotPartial || isProduction ? newer(paths.dest) : through.obj())
+        .pipe(isNotPartial ? newer(paths.dest) : through.obj())
+        .pipe(preprocess({
             context: {
                 ENV: isProduction ? 'production' : 'development',
                 UA: config.analyticsUA,
@@ -202,179 +233,199 @@ var markupProcess = function (isNotPartial) {
             },
             extension: 'html'
         }))
-        .pipe($.if(isProduction, $.htmlclean()))
-        .pipe(gulp.dest(paths.dest))
+        .pipe(gulpIf(isProduction, htmlClean()))
+        .pipe(dest(paths.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
 };
 
 // Markup : Main (process only main files)
-gulp.task('markup', function () {
+function markup(done) {
     return markupProcess(true);
-});
+    done();
+
+}
 
 
 // Markup : All (process all files)
-gulp.task('markup:all', function () {
+function markupAll(done) {
     return markupProcess();
-});
+    done();
 
+}
 
 // STYLES
 // -------------------------------------------------------
 
-gulp.task('styles', function () {
+exports.styles = styles;
 
-    return gulp.src(paths.styles.src + 'style.less')
-        .pipe($.less({
+function styles(done) {
+
+    return src(paths.styles.src + 'style.less')
+        .pipe(less({
             relativeUrls: true,
             compress: false
         }))
         .on('error', handleErrors)
-        .pipe($.postcss([
-            flexbugsFixes,
-            postcssObjectFit,
-            autoprefixer({
+        .pipe(postCss([
+            postCss_flexbugsFixes,
+            postCss_objectFit,
+            postCss_autoprefixer({
                 //Supported browsers stored in .browserslistrc
             })
         ]))
-        .pipe(gulp.dest(paths.styles.dest))
+        .pipe(dest(paths.styles.dest))
 
-        .pipe($.if(isProduction, $.postcss([
-            flexbugsFixes,
-            postcssObjectFit,
-            autoprefixer({
+        .pipe(gulpIf(isProduction, postCss([
+            postCss_flexbugsFixes,
+            postCss_objectFit,
+            postCss_autoprefixer({
                 //Supported browsers stored in .browserslistrc
             }),
-            mqpacker({
+            postCss_cssMqpacker({
                 sort: true
             }),
-            cssnano({
+            postCss_cssnano({
                 preserveHacks: true,
                 removeAllComments: true
             })
         ])))
 
-        .pipe($.if(isProduction, $.header(banner, {
+        .pipe(gulpIf(isProduction, header(banner, {
             pkg: pkg
         })))
-        .pipe($.if(isProduction, $.rename({
+        .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
-        .pipe($.if(isProduction, gulp.dest(paths.styles.dest)))
-        .pipe($.if(isProduction, $.size({
+        .pipe(gulpIf(isProduction, dest(paths.styles.dest)))
+        .pipe(gulpIf(isProduction, size({
             gzip: false,
             title: 'Styles'
         })))
-        .pipe($.if(isProduction, $.size({
+        .pipe(gulpIf(isProduction, size({
             gzip: true,
             title: 'Styles'
         })))
         .pipe(browserSync.reload({
             stream: true
         }));
-});
+    done();
 
+}
 
 // SCRIPTS
 // -------------------------------------------------------
 
-gulp.task('scripts', ['scripts:main', 'scripts:vendor']);
-
-// Scripts : Vendor
-gulp.task('scripts:vendor', function () {
-    return gulp.src(bowerFiles('**/*.js'), {
-        base: './bower_components'
-    })
-        .pipe($.concat('vendor.js'))
-        .pipe(gulp.dest(paths.scripts.dest))
-        .pipe($.if(isProduction, $.uglify()))
-        .on('error', handleErrors)
-        .pipe($.if(isProduction, $.rename({
-            suffix: '.min'
-        })))
-        .pipe(gulp.dest(paths.scripts.dest))
-        .pipe($.if(isProduction, $.size({
-            gzip: false,
-            title: 'Scripts:Vendor'
-        })))
-        .pipe(browserSync.reload({
-            stream: true
-        }));
-});
+//const scriptsMain = series(scriptsHint, scriptsMain);
+const scripts = series(scriptsHint, scriptsMain, scriptsVendor);
 
 
-// Scripts : Hint
-gulp.task('scripts:hint', function () {
-    return gulp.src(paths.scripts.src + '**/*.js')
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish'));
-});
-
+exports.scripts = scripts;
+exports.scriptsMain = series(scriptsHint, scriptsMain);
+exports.scriptsVendor = scriptsVendor;
+exports.scriptsHint = scriptsHint;
 
 // Scripts : Main
-gulp.task('scripts:main', ['scripts:hint'], function () {
-    return gulp.src(paths.scripts.src + '**/*.js')
+function scriptsMain(done) {
+    return src(paths.scripts.src + '**/*.js')
 
-        .pipe($.concat('main.js'))
-        .pipe(gulp.dest(paths.scripts.dest))
-        .pipe($.if(isProduction, $.uglify()))
+        .pipe(concat('main.js'))
+        .pipe(dest(paths.scripts.dest))
+        .pipe(gulpIf(isProduction, uglify()))
         .on('error', handleErrors)
-        .pipe($.if(isProduction, $.rename({
+        .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
-        .pipe(gulp.dest(paths.scripts.dest))
-        .pipe($.if(isProduction, $.size({
+        .pipe(dest(paths.scripts.dest))
+        .pipe(gulpIf(isProduction, size({
             gzip: false,
             title: 'Scripts:main'
         })))
         .pipe(browserSync.reload({
             stream: true
         }));
-});
+    done();
+
+}
+// Scripts : Vendor
+function scriptsVendor(done) {
+    return src(bowerFiles('**/*.js'), {
+            base: './bower_components'
+        })
+        .pipe(concat('vendor.js'))
+        .pipe(dest(paths.scripts.dest))
+        .pipe(gulpIf(isProduction, uglify()))
+        .on('error', handleErrors)
+        .pipe(gulpIf(isProduction, rename({
+            suffix: '.min'
+        })))
+        .pipe(dest(paths.scripts.dest))
+        .pipe(gulpIf(isProduction, size({
+            gzip: false,
+            title: 'Scripts:Vendor'
+        })))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+    done();
+
+}
+
+
+// Scripts : Hint
+function scriptsHint(done) {
+    return src(paths.scripts.src + '**/*.js')
+        .pipe(jshint())
+    //.pipe(jshint.reporter('jshint-stylish'));
+    done();
+
+}
 
 
 // IMAGES
 // -------------------------------------------------------
 
-gulp.task('images', ['images:optimize', 'images:favicons']);
+const imagesFavicons = series(imagesFaviconsBuild, imagesFaviconsWordpress);
+const images = series(imagesOptimize, imagesFavicons);
 
+exports.images = images;
+exports.imagesOptimize = imagesOptimize;
+exports.imagesFavicons = imagesFavicons;
 
 // Images : Optimize
-gulp.task('images:optimize', function () {
-    return gulp.src([paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
+function imagesOptimize(done) {
+    return src([paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
                     '!' + paths.images.src + 'icons/**/*.svg'])
-        .pipe($.if(!isProduction, $.newer(paths.images.dest)))
-        .pipe($.if(isProduction, ($.imagemin([
-                $.imagemin.gifsicle({interlaced: true}),
-                $.imagemin.jpegtran({progressive: true}),
-                $.imagemin.optipng({optimizationLevel: 7})
+        .pipe(gulpIf(!isProduction, newer(paths.images.dest)))
+        .pipe(gulpIf(isProduction, (imagemin([
+                imagemin.gifsicle({
+                interlaced: true
+            }),
+                imagemin.jpegtran({
+                progressive: true
+            }),
+                imagemin.optipng({
+                optimizationLevel: 7
+            })
             ]))))
-        .pipe(gulp.dest(paths.images.dest))
+        .pipe(dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
-});
+    done();
 
+}
 
-// Images : Favicons
-gulp.task('images:favicons', ['images:favicons-generate'], function () {
+// Images : FaviconsBuild
 
-    if (config.wordpressTheme && isProduction) {
-        return gulp.src(paths.src + 'partials/favicons.html')
-            .pipe(inject.beforeEach(config.faviconsPath, '<?php echo get_template_directory_uri(); ?>/'))
-            .pipe(gulp.dest(paths.src + 'partials/'));
-    }
-});
-
-gulp.task('images:favicons-generate', function () {
+function imagesFaviconsBuild(done) {
 
     if (isProduction) {
         fs.writeFileSync(paths.src + 'partials/favicons.html', '');
 
-        return gulp.src(paths.images.src + '/favicon.png')
-            .pipe($.favicons({
+        return src(paths.images.src + '/favicon.png')
+            .pipe(favicons({
                 appName: config.siteTitle,
                 appDescription: config.siteDescription,
                 url: config.siteURL,
@@ -387,86 +438,105 @@ gulp.task('images:favicons-generate', function () {
                 version: 1.0,
                 logging: false,
                 online: false,
-                html: paths.src + 'partials/favicons.html'
+                html: '../../partials/favicons.html',
+                pipeHTML: true,
+                replace: true,
             }))
-            .pipe($.imagemin())
-            .pipe(gulp.dest(paths.images.dest + 'favicons'));
+            .pipe(imagemin())
+            .pipe(dest(paths.images.dest + 'favicons'));
 
     }
+    done();
 
+}
 
+// Images : FaviconsWordpress
+function imagesFaviconsWordpress(done) {
 
-});
+    if (config.wordpressTheme && isProduction) {
+        return src(paths.dest + 'partials/favicons.html')
+            .pipe(inject.beforeEach(config.faviconsPath, '<? echo get_template_directory_uri(); ?>/'))
+            .pipe(dest(paths.src + 'partials/'));
+    }
+    done();
 
+}
 
 // ICONS (svg sprites)
 // -------------------------------------------------------
 
+exports.icons = icons;
+
 // Save svg with style element to stript all styles, else with style attributes i.e. to save fill colors.
 
 var svgMinConfig = {
-            plugins: [{
-                removeDoctype: true
+        plugins: [{
+            removeDoctype: true
             }, {
-                removeXMLProcInst: true
+            removeXMLProcInst: true
             }, {
-                removeTitle: true
+            removeTitle: true
             }, {
-                removeComments: true
+            removeComments: true
             }, {
-                removeStyleElement: true
+            removeStyleElement: true
             }, {
-                inlineStyles: false
+            inlineStyles: false
             }, {
-                removeAttrs: {
-                    attrs: '(class|xmlns)'
-                }
-            }, {
-                sortAttrs: true
-            }]
-        }
-var svgSpritesConfig = {
-    mode: {
-        symbol: {
-            dest: '.',
-            inline: false,
-            sprite: 'icons.svg',
-            example: {
-                dest: '../styleguide/icons.html'
+            removeAttrs: {
+                attrs: '(class|xmlns)'
             }
+            }, {
+            sortAttrs: true
+            }]
+    },
+    svgSpritesConfig = {
+        mode: {
+            symbol: {
+                dest: '.',
+                inline: false,
+                sprite: 'icons.svg',
+                example: {
+                    dest: '../styleguide/icons.html'
+                }
+            }
+        },
+        shape: {
+            dest: 'icons/'
+        },
+        svg: {
+            xmlDeclaration: false,
+            doctypeDeclaration: false,
+            namespaceClassnames: false
         }
-    },
-    shape: {
-        dest: 'icons/'
-    },
-    svg: {
-        xmlDeclaration: false,
-        doctypeDeclaration: false,
-        namespaceClassnames: false
-    }
-};
+    };
 
-gulp.task('icons', function() {
-    return gulp.src(paths.images.src + 'icons/**/*.svg')
+function icons(done) {
+    return src(paths.images.src + 'icons/**/*.svg')
 
-        .pipe($.svgmin(svgMinConfig))
-        .pipe(gulp.dest(paths.images.dest + 'icons/'))
-        .pipe($.svgSprite(svgSpritesConfig))
-        .pipe(gulp.dest(paths.images.dest))
+        .pipe(svgMin(svgMinConfig))
+        .pipe(dest(paths.images.dest + 'icons/'))
+        .pipe(svgSprite(svgSpritesConfig))
+        .pipe(dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
-});
+    done();
+
+}
 
 
 // COPY
 // -------------------------------------------------------
 
-gulp.task('copy', ['copy:root', 'copy:htaccess', 'copy:assets', 'copy:fonts']);
+const copy = series(copyRoot, copyHtaccess, copyAssets, copyFonts);
+
+exports.copy = copy;
+
 
 // Copy : Root
-gulp.task('copy:root', function () {
-    return gulp.src([
+function copyRoot(done) {
+    return src([
         paths.src + '**/*',
         '!' + paths.src + '**/*.{php,html}',
         '!' + paths.images.src + '**/*',
@@ -474,48 +544,61 @@ gulp.task('copy:root', function () {
         '!' + paths.scripts.src + '**/*',
         '!' + paths.fonts.src + '**/*',
         '!' + paths.assets.src + '**/*'], {
-        dot: true
-    })
-        .pipe(gulp.dest(paths.dest));
-});
+            dot: true
+        })
+        .pipe(dest(paths.dest));
+    done();
+
+}
 
 // Copy : Htaccess
-gulp.task('copy:htaccess', function () {
-    return gulp.src('node_modules/apache-server-configs/dist/.htaccess', {
-        dot: true
-    })
-    .pipe($.if(config.wordpressTheme, $.rename({extname: '.bak'})))
-    .pipe(gulp.dest(paths.dest));
-});
+function copyHtaccess(done) {
+    return src('node_modules/apache-server-configs/dist/.htaccess', {
+            dot: true
+        })
+        .pipe(gulpIf(config.wordpressTheme, rename({
+            extname: '.bak'
+        })))
+        .pipe(dest(paths.dest));
+    done();
+
+}
 
 // Copy : Assets
-gulp.task('copy:assets', function () {
-    return gulp.src(paths.assets.src + '**/*')
-        .pipe(gulp.dest(paths.assets.dest));
-});
+function copyAssets(done) {
+    return src(paths.assets.src + '**/*')
+        .pipe(dest(paths.assets.dest));
+    done();
+
+}
 
 // Copy : Fonts
-gulp.task('copy:fonts', function () {
-    return gulp.src(paths.fonts.src + '**/*.{ttf,woff,woff2}')
-        .pipe(gulp.dest(paths.fonts.dest));
-});
+function copyFonts(done) {
+    return src(paths.fonts.src + '**/*.{ttf,woff,woff2}')
+        .pipe(dest(paths.fonts.dest));
+    done();
 
+}
 
 // CLEAN
 // -------------------------------------------------------
 
-gulp.task('clean', ['clean:files']);
+exports.clean = clean;
+exports.cleanRemote = cleanRemote;
 
-// Clean : Files
-gulp.task('clean:files', function () {
+
+// Clean
+function clean(done) {
     console.log(colors.bold(colors.cyan('Cleaning ' + paths.dest + ' -folder')));
     del.sync([paths.dest + '**']);
     console.log(colors.bold(colors.green('Clean Done')));
 
-});
+    done();
+
+}
 
 // Clean : Remote
-gulp.task('clean:remote', function (done) {
+function cleanRemote(done) {
 
     if (isProduction) {
         console.log(colors.bold(colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...')));
@@ -543,46 +626,49 @@ gulp.task('clean:remote', function (done) {
         });
     }
 
-});
-
+}
 
 // WATCH
 // -------------------------------------------------------
 
-gulp.task('watch', function () {
+exports.watchFiles = watchFiles;
 
-    console.log(colors.bold(colors.grey('Watching changes...')));
+function watchFiles(done) {
 
-
+    console.log(colors.bold(colors.grey('Watching files...')));
 
     // Watch Html-files
-    gulp.watch([paths.src + '**/*.{php,html}',
-        '!' + paths.src + 'partials/**/*'], ['markup']);
-    gulp.watch(paths.src + 'partials/**/*', ['markup:all']);
+    watch([paths.src + '**/*.{php,html}',
+        '!' + paths.src + 'partials/**/*'], parallel(markup));
+    watch(paths.src + 'partials/**/*', parallel(markupAll));
 
     // Watch Styles
-    gulp.watch(paths.styles.src + '**/*.less', ['styles']);
+    watch(paths.styles.src + '**/*.less', parallel(styles));
 
     // Watch Scripts
-    gulp.watch(paths.scripts.src + '**/*.js', ['scripts:main']);
-    gulp.watch('package.json', ['scripts:vendor']);
+    watch(paths.scripts.src + '**/*.js', parallel(scriptsMain));
+    watch('package.json', parallel(scriptsVendor));
 
     // Watch Images
-    gulp.watch([
+    watch([
         paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
-        '!' + paths.images.src + 'icons/**/*'], ['images:optimize']);
+        '!' + paths.images.src + 'icons/**/*'], parallel(imagesOptimize));
 
     // Watch Icons
-    gulp.watch(paths.images.src + 'icons/**/*.svg', ['icons']);
+    watch(paths.images.src + 'icons/**/*.svg', parallel(icons));
 
-});
+    done();
+
+}
 
 
 // SERVE
 // -------------------------------------------------------
 
+exports.serve = serve;
+
 // Watch Files For Changes & Reload
-gulp.task('serve', function () {
+function serve(done) {
     console.log(colors.bold(colors.grey('Launching server...')));
 
     browserSync({
@@ -593,46 +679,56 @@ gulp.task('serve', function () {
         logPrefix: 'RAE',
         notify: false
     });
+    done();
 
-});
-
+}
 
 // DEPLOY
 // -------------------------------------------------------
 
-gulp.task('deploy', ['clean:remote'], function () {
+//const deploy = series(cleanRemote, deploy);
+//const deployWatch = series(deploy, deployWatch);
+
+exports.deploy = series(cleanRemote, deploy);
+exports.deployWatch = series(deploy, deployWatch);
+
+function deploy(done) {
 
     var globs = [
         paths.dest + '**',
         paths.dest + '.htaccess'
     ];
 
-    return gulp.src(globs, {
-        base: paths.dest,
-        buffer: false
-    })
+    return src(globs, {
+            base: paths.dest,
+            buffer: false,
+            allowEmpty: true
+        })
 
-        .pipe($.if(isProduction, (remoteProd.dest(configFtp.production.remotePath))))
+        .pipe(gulpIf(isProduction, (remoteProd.dest(configFtp.production.remotePath))))
 
-        .pipe($.if(!isProduction, (remoteDev.dest(configFtp.development.remotePath))));
+        .pipe(gulpIf(!isProduction, (remoteDev.dest(configFtp.development.remotePath))));
 
-});
+    done();
 
-gulp.task('deploy:watch', ['deploy'], function () {
+}
+
+function deployWatch(done) {
 
     console.log(colors.bold(colors.grey('Watching changes...')));
 
 
-    gulp.watch(paths.dest + '**/*')
+    watch(paths.dest + '**/*')
         .on('change', function (event) {
 
             console.log(colors.bold(colors.cyan('Uploading file "' + event.path + '", ' + event.type)));
 
-            return gulp.src([event.path], {
-                base: paths.dest,
-                buffer: false
-            })
+            return src([event.path], {
+                    base: paths.dest,
+                    buffer: false
+                })
                 .pipe(remoteDev.newer(configFtp.development.remotePath))
                 .pipe(remoteDev.dest(configFtp.development.remotePath));
         });
-});
+    done();
+}
