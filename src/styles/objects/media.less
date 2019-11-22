@@ -58,7 +58,8 @@
     .media--2-1 {
         .aspect-ratio(2, 1);
     }
-    .media--cover {
+    .media--cover,
+    .media--background {
         > *:first-child {
             object-fit: cover;
             object-position: center;
@@ -69,6 +70,11 @@
             object-fit: contain;
             object-position: center;
         }
+    }
+
+    .media--background {
+        .cover();
+        z-index: -1;
     }
 }
 

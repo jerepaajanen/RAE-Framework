@@ -55,7 +55,7 @@
 @black:                                 #000000;
 @white:                                 #ffffff;
 
-// Custom brand colors
+// Brand colors
 @color-primary:                         #5d5fff;
 @color-primary-light:                   tint(@color-primary, 40%);
 @color-primary-dark:                    shade(@color-primary, 20%);
@@ -110,18 +110,18 @@
 
 // @Font-Face (Formats: .ttf, .woff, .woff2)
 // Options: 'font-family', 'font-file-name', font-weight, font-style
-//@font-face {.font-face('Raleway', 'Raleway-Regular', 400, normal);}
-//@font-face {.font-face('Raleway', 'Raleway-Bold', 700, normal);}
+//@font-face {.font-face('Font-name', 'Font-name-Regular', 400, normal);}
+//@font-face {.font-face('Font-name', 'Font-name-Bold', 700, normal);}
 
 @root-font-size:                        16px;
 @base-line:                             24px;
 
-@base-font-family:                      sans-serif;
+@base-font-family:                      Moderat, sans-serif;
 @base-font-size:                        @root-font-size;
 @base-letter-spacing:                   @letter-spacing-base;
 
 // Line-height (unitless)
-@line-height-tightest:                  1.1;
+@line-height-tightest:                  1;
 @line-height-tighter:                   1.25;
 @line-height-tight:                     1.375;
 @line-height-base:                      (unit(@base-line / @root-font-size));
@@ -153,12 +153,6 @@
 @spacing-triple:                        round(@spacing-base * 3);
 @spacing-quadruple:                     round(@spacing-base * 4);
 
-// Modular Scale
-// Produce font-size in default modular-scale steps. Used in headings etc.
-@modular-scale-base:                    unit(@base-font-size), unit(@base-line);
-@modular-scale-ratio:                   @perfect-fourth;
-@modular-scale-px-output:               true;
-
 // Links
 @link-color:                            @color-secondary;
 @link-decoration:                       none;
@@ -173,30 +167,30 @@
 @heading-color:                         inherit;
 
 // Headings sizes
-@heading1-font-size:                    38px;
-@heading2-font-size:                    32px;
-@heading3-font-size:                    28px;
-@heading4-font-size:                    24px;
-@heading5-font-size:                    21px;
-@heading6-font-size:                    18px;
+@heading1-font-size:                    round(@base-font-size * 3);
+@heading2-font-size:                    round(@base-font-size * 2.25);
+@heading3-font-size:                    round(@base-font-size * 1.75);
+@heading4-font-size:                    round(@base-font-size * 1.5);
+@heading5-font-size:                    round(@base-font-size * 1.25);
+@heading6-font-size:                    round(@base-font-size * 1.125);
 
-@heading1-font-size-small:              32px;
-@heading2-font-size-small:              28px;
-@heading3-font-size-small:              24px;
-@heading4-font-size-small:              21px;
-@heading5-font-size-small:              18px;
-@heading6-font-size-small:              16px;
+@heading1-font-size-small:              round(@base-font-size * 2.25);
+@heading2-font-size-small:              round(@base-font-size * 1.75);
+@heading3-font-size-small:              round(@base-font-size * 1.5);
+@heading4-font-size-small:              round(@base-font-size * 1.25);
+@heading5-font-size-small:              round(@base-font-size * 1.125);
+@heading6-font-size-small:              round(@base-font-size * 1);
 
 //Display headings
-@display1-font-size:                    76px;
-@display2-font-size:                    56px;
-@display3-font-size:                    42px;
-@display4-font-size:                    32px;
+@display1-font-size:                    round(@base-font-size * 6);
+@display2-font-size:                    round(@base-font-size * 4);
+@display3-font-size:                    round(@base-font-size * 2.5);
+@display4-font-size:                    round(@base-font-size * 1.75);
 
-@display1-font-size-small:              56px;
-@display2-font-size-small:              42px;
-@display3-font-size-small:              32px;
-@display4-font-size-small:              24px;
+@display1-font-size-small:              round(@base-font-size * 5);
+@display2-font-size-small:              round(@base-font-size * 3);
+@display3-font-size-small:              round(@base-font-size * 2);
+@display4-font-size-small:              round(@base-font-size * 1.5);
 
 @display1-font-weight:                  400;
 @display2-font-weight:                  400;
@@ -205,7 +199,7 @@
 
 // Lead paragraph styles
 @lead-font-family:                      inherit;
-@lead-font-size:                        24px;
+@lead-font-size:                        round(@base-font-size * 1.5);
 @lead-font-weight:                      300;
 @lead-line-height:                      @line-height-tight;
 @lead-color:                            @grey-600;
@@ -216,7 +210,7 @@
 @mark-padding:                          .2em;
 
 // Code
-@code-font-size:                        12px;
+@code-font-size:                        round(@base-font-size * 0.75);
 @code-color:                            @color-secondary;
 @code-background:                       @grey-25;
 @code-border-color:                     @grey-100;
@@ -231,7 +225,7 @@
 @blockquote-quote-color:                @color-primary;
 @blockquote-quote-font-family:          @base-font-family;
 @blockquote-quote-font-style:           normal;
-@blockquote-quote-font-size:            18px;
+@blockquote-quote-font-size:            round(@base-font-size * 1.25);
 @blockquote-quote-font-weight:          300;
 @blockquote-quote-line-height:          @line-height-base;
 @blockquote-quote-letter-spacing:        inherit;
@@ -246,7 +240,7 @@
 @pullquote-color:                       @color-primary;
 @pullquote-font-family:                 @blockquote-quote-font-family;
 @pullquote-font-style:                  normal;
-@pullquote-font-size:                   18px;
+@pullquote-font-size:                   round(@base-font-size * 1.25);
 @pullquote-cite-font-size:              14px;
 @pullquote-cite-color:                  @grey-400;
 
@@ -265,7 +259,7 @@
 @form-message-vertical-margin:          @spacing-half;
 @form-message-font-family:              @base-font-family;
 @form-message-font-weight:              400;
-@form-message-font-size:                14px;
+@form-message-font-size:                @base-font-size;
 @form-message-color:                    @grey-600;
 @form-message-line-height:              1;
 @form-message-text-align:               inherit;
@@ -283,7 +277,7 @@
 @label-font-weight:                     inherit;
 @label-color:                           @base-color;
 @legend-font-family:                    @base-font-family;
-@legend-font-size:                       inherit;
+@legend-font-size:                      inherit;
 @legend-font-weight:                    700;
 @legend-color:                          @base-color;
 
@@ -393,7 +387,7 @@
 // Use table styles via classes: .table, .table--striped,
 // .table--bordered, .table--highlight & .table-responsive
 
-@table-font-size:                       14px;
+@table-font-size:                       @base-font-size - 2;
 @table-background:                      transparent;
 @table-caption-padding:                 0 0 @spacing-half;
 @table-headfoot-color:                  @grey-800;
@@ -409,7 +403,7 @@
 // TAGS & BADGES
 // -------------------------------------------------------
 @tag-font-family:                       @base-font-family;
-@tag-font-size:                         13px;
+@tag-font-size:                         @base-font-size - 2;
 @tag-font-weight:                       400;
 @tag-background:                        @grey-25;
 @tag-border-radius:                     @border-radius-small;
@@ -425,7 +419,7 @@
 @tag-primary-border-color:              @color-primary;
 
 @badge-font-family:                     @base-font-family;
-@badge-font-size:                       11px;
+@badge-font-size:                       10px;
 @badge-font-weight:                     400;
 @badge-background:                      @grey-25;
 @badge-border-radius:                   999em;
@@ -453,7 +447,7 @@
 @tooltip-anim-duration:                 @transition-duration-default;
 @tooltip-anim-delay:                    50ms;
 @tooltip-font-family:                   @base-font-family;
-@tooltip-font-size:                     12px;
+@tooltip-font-size:                     @base-font-size - 2;
 @tooltip-font-weight:                   400;
 @tooltip-line-height:                   @line-height-tighter;
 @tooltip-letter-spacing:                @letter-spacing-loose;
@@ -466,7 +460,7 @@
 @loader-size:                           @base-font-size;
 @loader-speed:                          500ms;
 @loader-thickness:                      2px;
-@loader-opacity:                        .8;
+@loader-opacity:                        1;
 
 
 // MISC
@@ -479,10 +473,10 @@
 @field-group-breakpoint:                @breakpoint-medium;
 
 // Icons (svg)
-@icon-small-size:                       16px;
-@icon-medium-size:                      24px;
+@icon-small-size:                       24px;
+@icon-medium-size:                      32px;
 @icon-large-size:                       48px;
-@icon-x-large-size:                     72px;
+@icon-x-large-size:                     64px;
 @icon-baseline-shift:                   -0.0625em;
 
 // Border-radius
@@ -573,7 +567,7 @@
 @use-responsive-navigation:             true;
 
 // Utilities
-@use-centering:                         true;
+@use-colors:                            true;
 @use-display:                           true;
 @use-flex-alignment:                    true;
 @use-floats:                            true;
@@ -581,7 +575,6 @@
 @use-paddings:                          true;
 @use-text-alignment:                    true;
 @use-text-inherit:                      true;
-@use-text-color:                        true;
 @use-text-weight:                       true;
 @use-utility-classes:                   true;
 @use-visibility:                        true;

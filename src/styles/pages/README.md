@@ -1,1 +1,0 @@
-The pages folder holds page or view specific css. E.g if you need specific styles for the front-page front-page.less
