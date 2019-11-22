@@ -27,6 +27,12 @@
         // Init object-fit polyfill
         objectFitImages();
 
+        // Init Responsive Nav
+        $('.js-nav').raeNavResponsive({});
+
+        // Init Modal
+        $('.js-modal').raeModal({});
+
     });
 
 }());

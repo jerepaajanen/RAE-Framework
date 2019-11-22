@@ -2,7 +2,7 @@
 
     'use strict';
 
-    $.fn.navResponsive = function (settings) {
+    $.fn.raeNavResponsive = function (settings) {
 
         // This is the easiest way to have default settings.
         var options = $.extend({
@@ -20,7 +20,7 @@
             childToggle: '.nav__handle', //CSS selector for the element acting as a button.
             childTogglePosition: 'after', // String: Position of child toggle: 'before', 'after' or 'none'
             childToggleContent: '+', // Html tags or text
-            overlay: '.nav-overlay' // Selector class for the element acting as overlay.
+            overlay: '' // Selector class for the element acting as overlay.
         }, settings);
 
 
