@@ -175,7 +175,7 @@ gulp.task('markup', function (done) {
 
 
 // Markup : All (process all files)
-gulp.task('markup:all', function (done) {
+gulp.task('markupAll', function (done) {
     return markupProcess();
     done();
 
@@ -244,7 +244,7 @@ gulp.task('styles', function (done) {
 // -------------------------------------------------------
 
 // Scripts : Hint
-gulp.task('scripts:hint', function (done) {
+gulp.task('scriptsHint', function (done) {
 
     return gulp.src(paths.scripts.src + '**/*.js')
         .pipe(jshint())
@@ -254,7 +254,7 @@ gulp.task('scripts:hint', function (done) {
 });
 
 // Scripts : Main
-gulp.task('scripts:main', gulp.series('scripts:hint', function compiling(done) {
+gulp.task('scriptsMain', gulp.series('scriptsHint', function scriptsMainCompiling(done) {
     return gulp.src(paths.scripts.src + '**/*.js')
 
         .pipe(concat('main.js'))
@@ -277,7 +277,7 @@ gulp.task('scripts:main', gulp.series('scripts:hint', function compiling(done) {
 }));
 
 // Scripts : Vendor
-gulp.task('scripts:vendor', function (done) {
+gulp.task('scriptsVendor', function (done) {
 
     return gulp.src(bowerFiles('**/*.js'), {
             base: './bower_components'
@@ -301,13 +301,13 @@ gulp.task('scripts:vendor', function (done) {
 
 });
 
-gulp.task('scripts', gulp.series('scripts:main', 'scripts:vendor'));
+gulp.task('scripts', gulp.series('scriptsMain', 'scriptsVendor'));
 
 // IMAGES
 // -------------------------------------------------------
 
 // Images : Optimize
-gulp.task('images:optimize', function (done) {
+gulp.task('imagesOptimize', function (done) {
     return gulp.src([paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
                     '!' + paths.images.src + 'icons/**/*.svg'])
         .pipe(gulpIf(!isProduction, newer(paths.images.dest)))
@@ -331,8 +331,7 @@ gulp.task('images:optimize', function (done) {
 });
 
 // Images : Favicons-Build
-gulp.task('images:favicons-build', function (done) {
-
+gulp.task('imagesFaviconsBuild', function (done) {
 
     if (isProduction) {
         fs.writeFileSync(paths.src + 'partials/favicons.html', '');
@@ -364,8 +363,7 @@ gulp.task('images:favicons-build', function (done) {
 });
 
 // Images : Favicons-Wordpress
-gulp.task('images:favicons-wordpress', function (done) {
-
+gulp.task('imagesFavicons', gulp.series('imagesFaviconsBuild', function imagesFaviconsWordpressCheck(done) {
 
     if (config.wordpressTheme && isProduction) {
         return gulp.src(paths.dest + 'partials/favicons.html')
@@ -374,13 +372,10 @@ gulp.task('images:favicons-wordpress', function (done) {
     }
     done();
 
-});
-
-// Images : Favicons
-gulp.task('images:favicons', gulp.series('images:favicons-build', 'images:favicons-wordpress'));
+}));
 
 // Images
-gulp.task('images', gulp.series('images:optimize', 'images:favicons'));
+gulp.task('images', gulp.series('imagesOptimize', 'imagesFavicons'));
 
 
 // ICONS (svg sprites)
@@ -449,7 +444,7 @@ gulp.task('icons', function (done) {
 // -------------------------------------------------------
 
 // Copy : Root
-gulp.task('copy:root', function (done) {
+gulp.task('copyRoot', function (done) {
     return gulp.src([
         paths.src + '**/*',
         '!' + paths.src + '**/*.{php,html}',
@@ -466,7 +461,7 @@ gulp.task('copy:root', function (done) {
 });
 
 // Copy : Htaccess
-gulp.task('copy:htaccess', function (done) {
+gulp.task('copyHtaccess', function (done) {
     return gulp.src('node_modules/apache-server-configs/dist/.htaccess', {
             dot: true
         })
@@ -479,7 +474,7 @@ gulp.task('copy:htaccess', function (done) {
 });
 
 // Copy : Assets
-gulp.task('copy:assets', function (done) {
+gulp.task('copyAssets', function (done) {
     return gulp.src(paths.assets.src + '**/*')
         .pipe(gulp.dest(paths.assets.dest));
     done();
@@ -487,7 +482,7 @@ gulp.task('copy:assets', function (done) {
 });
 
 // Copy : Fonts
-gulp.task('copy:fonts', function (done) {
+gulp.task('copyFonts', function (done) {
     return gulp.src(paths.fonts.src + '**/*.{ttf,woff,woff2}')
         .pipe(gulp.dest(paths.fonts.dest));
     done();
@@ -495,7 +490,7 @@ gulp.task('copy:fonts', function (done) {
 });
 
 // Copy
-gulp.task('copy', gulp.series('copy:root', 'copy:htaccess', 'copy:assets', 'copy:fonts'));
+gulp.task('copy', gulp.series('copyRoot', 'copyHtaccess', 'copyAssets', 'copyFonts'));
 
 
 // CLEAN
@@ -512,7 +507,7 @@ gulp.task('clean', function (done) {
 });
 
 // Clean : Remote
-gulp.task('clean:remote', function (done) {
+gulp.task('cleanRemote', function (done) {
 
     if (isProduction) {
         console.log(colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...'));
@@ -553,19 +548,19 @@ gulp.task('watch', function (done) {
     // Watch Html-files
     gulp.watch([paths.src + '**/*.{php,html}',
         '!' + paths.src + 'partials/**/*'], gulp.parallel('markup'));
-    gulp.watch(paths.src + 'partials/**/*', gulp.parallel('markup:all'));
+    gulp.watch(paths.src + 'partials/**/*', gulp.parallel('markupAll'));
 
     // Watch Styles
     gulp.watch(paths.styles.src + '**/*.less', gulp.parallel('styles'));
 
     // Watch Scripts
-    gulp.watch(paths.scripts.src + '**/*.js', gulp.parallel('scripts:main'));
-    gulp.watch('bower.json', gulp.parallel('scripts:vendor'));
+    gulp.watch(paths.scripts.src + '**/*.js', gulp.parallel('scriptsMain'));
+    gulp.watch('bower.json', gulp.parallel('scriptsVendor'));
 
     // Watch Images
     gulp.watch([
         paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
-        '!' + paths.images.src + 'icons/**/*'], gulp.parallel('images:optimize'));
+        '!' + paths.images.src + 'icons/**/*'], gulp.parallel('imagesOptimize'));
 
     // Watch Icons
     gulp.watch(paths.images.src + 'icons/**/*.svg', gulp.parallel('icons'));
@@ -602,7 +597,7 @@ gulp.task('serve', function (done) {
 //exports.deploy = series(cleanRemote, deploy);
 //exports.deployWatch = series(deploy, deployWatch);
 
-gulp.task('deploy', gulp.series('clean:remote', function uploading(done) {
+gulp.task('deploy', gulp.series('cleanRemote', function uploading(done) {
     var globs = [
         paths.dest + '**',
         paths.dest + '.htaccess'
@@ -625,7 +620,7 @@ gulp.task('deploy', gulp.series('clean:remote', function uploading(done) {
 
 }));
 
-gulp.task('deploy:watch', gulp.series('deploy', function watching(done) {
+gulp.task('deployWatch', gulp.series('deploy', function watching(done) {
 
     console.log(colors.bold(colors.grey('Watching changes...')));
 
@@ -655,7 +650,7 @@ gulp.task('deploy:watch', gulp.series('deploy', function watching(done) {
 // -------------------------------------------------------
 
 // Stuff to do after default tast is completed
-function defaultDone(done) {
+function initAfter(done) {
 
     if (isProduction) {
 
@@ -686,7 +681,7 @@ function defaultDone(done) {
 
             console.log(colors.bold(colors.blue('Now deploying & serving')));
 
-            gulp.series('serve', 'watch', 'deploy:watch')(done);
+            gulp.series('serve', 'watch', 'deployWatch')(done);
 
         } else if (isDeploy) {
 
@@ -709,17 +704,17 @@ function defaultDone(done) {
 }
 
 // Default : Development
-gulp.task('default:development', function (done) {
+gulp.task('initDevelopment', function (done) {
 
-    gulp.series('markup:all', 'styles', 'scripts', 'images', 'icons', 'copy', defaultDone)(done);
+    gulp.series('markupAll', 'styles', 'scripts', 'images', 'icons', 'copy', initAfter)(done);
 })
 
 // Default : Production
-gulp.task('default:production', function (done) {
+gulp.task('initProduction', function (done) {
 
     gulp.series('images', gulp.parallel(
             'markup', 'styles', 'scripts', 'icons', 'copy'),
-        defaultDone)(done);
+        initAfter)(done);
 })
 
 
@@ -731,13 +726,13 @@ gulp.task('default', gulp.series('clean', function init(done) {
 
         console.log(colors.bold(colors.green('Starting Production')));
 
-        gulp.series('default:production')(done);
+        gulp.series('initProduction')(done);
     } else {
 
         console.log(colors.bold(colors.green('Starting Development')));
 
 
-        gulp.series('default:development')(done);
+        gulp.series('initDevelopment')(done);
     }
     done();
 
