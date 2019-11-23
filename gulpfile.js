@@ -5,20 +5,12 @@
 // REQUIRES
 // -------------------------------------------------------
 
-const {
-    src,
-    dest,
-    parallel,
-    series,
-    watch
-} = require('gulp');
+const gulp = require('gulp');
 const fs = require('fs');
 const del = require('del');
 const pkg = require('./package.json');
 const config = require('./config.json');
 const flags = require('minimist')(process.argv.slice(2));
-
-//PLUGINS
 const postCss_autoprefixer = require('autoprefixer');
 const bowerFiles = require("main-bower-files");
 const browserSync = require('browser-sync');
@@ -118,9 +110,7 @@ try {
 
 if (configFtp) {
     //console.log(configFtp);
-
-    console.log(colors.bold(colors.grey('Using "config-ftp.json".')));
-
+    console.log(colors.white('Using '), colors.magenta('config-ftp.json'));
 
 
     var remoteDev = ftp.create({
@@ -143,76 +133,12 @@ if (configFtp) {
         });
 }
 
-// Timestamp
-
-var runTimestamp = Math.round(Date.now() / 1000);
-
-
-// DEFAULT TASKS
-// -------------------------------------------------------
-
-//gulp.task('default', ['clean'], function () {
-
-exports.default = init;
-exports.development = development;
-exports.production = production;
-
-
-
-function init(done) {
-
-    if (isProduction) {
-
-        console.log(colors.bold(colors.green('Production mode')));
-
-        series(production);
-    } else {
-
-        console.log(colors.bold(colors.green('Development mode')));
-
-        series(development);
-    }
-    done();
-}
-
-function development(done) {
-
-    series(markupAll, styles, scripts, images, icons),
-        function () {
-            if (isServe && isDeploy) {
-                parallel(serve, watchFiles, deployWatch);
-            } else if (isDeploy) {
-                parallel(deploy);
-            } else if (isServe) {
-                parallel(serve, watch);
-            }
-        }
-    done();
-}
-
-function production() {
-    series(images, parallel(markup, styles, scripts, icons, copy)),
-        function (done) {
-            console.log(colors.bold(colors.green('✔ Build done!')));
-
-            if (isServe) {
-                parallel(serve);
-            } else if (isDeploy) {
-                parallel(deploy);
-            }
-            done();
-
-        }
-}
 
 // MARKUP
 // -------------------------------------------------------
 
-exports.markup = markup;
-exports.markupAll = markupAll;
-
 var markupProcess = function (isNotPartial) {
-    return src(paths.src + '**/*.{html,php}', {
+    return gulp.src(paths.src + '**/*.{html,php}', {
             base: paths.src
         })
         //.pipe(isNotPartial || isProduction ? newer(paths.dest) : through.obj())
@@ -234,35 +160,34 @@ var markupProcess = function (isNotPartial) {
             extension: 'html'
         }))
         .pipe(gulpIf(isProduction, htmlClean()))
-        .pipe(dest(paths.dest))
+        .pipe(gulp.dest(paths.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
 };
 
 // Markup : Main (process only main files)
-function markup(done) {
+gulp.task('markup', function (done) {
     return markupProcess(true);
     done();
 
-}
+});
 
 
 // Markup : All (process all files)
-function markupAll(done) {
+gulp.task('markup:all', function (done) {
     return markupProcess();
     done();
 
-}
+});
+
 
 // STYLES
 // -------------------------------------------------------
 
-exports.styles = styles;
+gulp.task('styles', function (done) {
 
-function styles(done) {
-
-    return src(paths.styles.src + 'style.less')
+    return gulp.src(paths.styles.src + 'style.less')
         .pipe(less({
             relativeUrls: true,
             compress: false
@@ -275,7 +200,7 @@ function styles(done) {
                 //Supported browsers stored in .browserslistrc
             })
         ]))
-        .pipe(dest(paths.styles.dest))
+        .pipe(gulp.dest(paths.styles.dest))
 
         .pipe(gulpIf(isProduction, postCss([
             postCss_flexbugsFixes,
@@ -298,7 +223,7 @@ function styles(done) {
         .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
-        .pipe(gulpIf(isProduction, dest(paths.styles.dest)))
+        .pipe(gulpIf(isProduction, gulp.dest(paths.styles.dest)))
         .pipe(gulpIf(isProduction, size({
             gzip: false,
             title: 'Styles'
@@ -312,32 +237,34 @@ function styles(done) {
         }));
     done();
 
-}
+});
+
 
 // SCRIPTS
 // -------------------------------------------------------
 
-//const scriptsMain = series(scriptsHint, scriptsMain);
-const scripts = series(scriptsHint, scriptsMain, scriptsVendor);
+// Scripts : Hint
+gulp.task('scripts:hint', function (done) {
 
+    return gulp.src(paths.scripts.src + '**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
+    done();
 
-exports.scripts = scripts;
-exports.scriptsMain = series(scriptsHint, scriptsMain);
-exports.scriptsVendor = scriptsVendor;
-exports.scriptsHint = scriptsHint;
+});
 
 // Scripts : Main
-function scriptsMain(done) {
-    return src(paths.scripts.src + '**/*.js')
+gulp.task('scripts:main', gulp.series('scripts:hint', function compiling(done) {
+    return gulp.src(paths.scripts.src + '**/*.js')
 
         .pipe(concat('main.js'))
-        .pipe(dest(paths.scripts.dest))
+        .pipe(gulp.dest(paths.scripts.dest))
         .pipe(gulpIf(isProduction, uglify()))
         .on('error', handleErrors)
         .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
-        .pipe(dest(paths.scripts.dest))
+        .pipe(gulp.dest(paths.scripts.dest))
         .pipe(gulpIf(isProduction, size({
             gzip: false,
             title: 'Scripts:main'
@@ -347,20 +274,22 @@ function scriptsMain(done) {
         }));
     done();
 
-}
+}));
+
 // Scripts : Vendor
-function scriptsVendor(done) {
-    return src(bowerFiles('**/*.js'), {
+gulp.task('scripts:vendor', function (done) {
+
+    return gulp.src(bowerFiles('**/*.js'), {
             base: './bower_components'
         })
         .pipe(concat('vendor.js'))
-        .pipe(dest(paths.scripts.dest))
+        .pipe(gulp.dest(paths.scripts.dest))
         .pipe(gulpIf(isProduction, uglify()))
         .on('error', handleErrors)
         .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
-        .pipe(dest(paths.scripts.dest))
+        .pipe(gulp.dest(paths.scripts.dest))
         .pipe(gulpIf(isProduction, size({
             gzip: false,
             title: 'Scripts:Vendor'
@@ -370,32 +299,16 @@ function scriptsVendor(done) {
         }));
     done();
 
-}
+});
 
-
-// Scripts : Hint
-function scriptsHint(done) {
-    return src(paths.scripts.src + '**/*.js')
-        .pipe(jshint())
-    //.pipe(jshint.reporter('jshint-stylish'));
-    done();
-
-}
-
+gulp.task('scripts', gulp.series('scripts:main', 'scripts:vendor'));
 
 // IMAGES
 // -------------------------------------------------------
 
-const imagesFavicons = series(imagesFaviconsBuild, imagesFaviconsWordpress);
-const images = series(imagesOptimize, imagesFavicons);
-
-exports.images = images;
-exports.imagesOptimize = imagesOptimize;
-exports.imagesFavicons = imagesFavicons;
-
 // Images : Optimize
-function imagesOptimize(done) {
-    return src([paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
+gulp.task('images:optimize', function (done) {
+    return gulp.src([paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
                     '!' + paths.images.src + 'icons/**/*.svg'])
         .pipe(gulpIf(!isProduction, newer(paths.images.dest)))
         .pipe(gulpIf(isProduction, (imagemin([
@@ -409,22 +322,22 @@ function imagesOptimize(done) {
                 optimizationLevel: 7
             })
             ]))))
-        .pipe(dest(paths.images.dest))
+        .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
     done();
 
-}
+});
 
-// Images : FaviconsBuild
+// Images : Favicons-Build
+gulp.task('images:favicons-build', function (done) {
 
-function imagesFaviconsBuild(done) {
 
     if (isProduction) {
         fs.writeFileSync(paths.src + 'partials/favicons.html', '');
 
-        return src(paths.images.src + '/favicon.png')
+        return gulp.src(paths.images.src + '/favicon.png')
             .pipe(favicons({
                 appName: config.siteTitle,
                 appDescription: config.siteDescription,
@@ -443,29 +356,35 @@ function imagesFaviconsBuild(done) {
                 replace: true,
             }))
             .pipe(imagemin())
-            .pipe(dest(paths.images.dest + 'favicons'));
+            .pipe(gulp.dest(paths.images.dest + 'favicons'));
 
     }
     done();
 
-}
+});
 
-// Images : FaviconsWordpress
-function imagesFaviconsWordpress(done) {
+// Images : Favicons-Wordpress
+gulp.task('images:favicons-wordpress', function (done) {
+
 
     if (config.wordpressTheme && isProduction) {
-        return src(paths.dest + 'partials/favicons.html')
+        return gulp.src(paths.dest + 'partials/favicons.html')
             .pipe(inject.beforeEach(config.faviconsPath, '<? echo get_template_directory_uri(); ?>/'))
-            .pipe(dest(paths.src + 'partials/'));
+            .pipe(gulp.dest(paths.src + 'partials/'));
     }
     done();
 
-}
+});
+
+// Images : Favicons
+gulp.task('images:favicons', gulp.series('images:favicons-build', 'images:favicons-wordpress'));
+
+// Images
+gulp.task('images', gulp.series('images:optimize', 'images:favicons'));
+
 
 // ICONS (svg sprites)
 // -------------------------------------------------------
-
-exports.icons = icons;
 
 // Save svg with style element to stript all styles, else with style attributes i.e. to save fill colors.
 
@@ -511,32 +430,27 @@ var svgMinConfig = {
         }
     };
 
-function icons(done) {
-    return src(paths.images.src + 'icons/**/*.svg')
+gulp.task('icons', function (done) {
+    return gulp.src(paths.images.src + 'icons/**/*.svg')
 
         .pipe(svgMin(svgMinConfig))
-        .pipe(dest(paths.images.dest + 'icons/'))
+        .pipe(gulp.dest(paths.images.dest + 'icons/'))
         .pipe(svgSprite(svgSpritesConfig))
-        .pipe(dest(paths.images.dest))
+        .pipe(gulp.dest(paths.images.dest))
         .pipe(browserSync.reload({
             stream: true
         }));
     done();
 
-}
+});
 
 
 // COPY
 // -------------------------------------------------------
 
-const copy = series(copyRoot, copyHtaccess, copyAssets, copyFonts);
-
-exports.copy = copy;
-
-
 // Copy : Root
-function copyRoot(done) {
-    return src([
+gulp.task('copy:root', function (done) {
+    return gulp.src([
         paths.src + '**/*',
         '!' + paths.src + '**/*.{php,html}',
         '!' + paths.images.src + '**/*',
@@ -546,69 +460,69 @@ function copyRoot(done) {
         '!' + paths.assets.src + '**/*'], {
             dot: true
         })
-        .pipe(dest(paths.dest));
+        .pipe(gulp.dest(paths.dest));
     done();
 
-}
+});
 
 // Copy : Htaccess
-function copyHtaccess(done) {
-    return src('node_modules/apache-server-configs/dist/.htaccess', {
+gulp.task('copy:htaccess', function (done) {
+    return gulp.src('node_modules/apache-server-configs/dist/.htaccess', {
             dot: true
         })
         .pipe(gulpIf(config.wordpressTheme, rename({
             extname: '.bak'
         })))
-        .pipe(dest(paths.dest));
+        .pipe(gulp.dest(paths.dest));
     done();
 
-}
+});
 
 // Copy : Assets
-function copyAssets(done) {
-    return src(paths.assets.src + '**/*')
-        .pipe(dest(paths.assets.dest));
+gulp.task('copy:assets', function (done) {
+    return gulp.src(paths.assets.src + '**/*')
+        .pipe(gulp.dest(paths.assets.dest));
     done();
 
-}
+});
 
 // Copy : Fonts
-function copyFonts(done) {
-    return src(paths.fonts.src + '**/*.{ttf,woff,woff2}')
-        .pipe(dest(paths.fonts.dest));
+gulp.task('copy:fonts', function (done) {
+    return gulp.src(paths.fonts.src + '**/*.{ttf,woff,woff2}')
+        .pipe(gulp.dest(paths.fonts.dest));
     done();
 
-}
+});
+
+// Copy
+gulp.task('copy', gulp.series('copy:root', 'copy:htaccess', 'copy:assets', 'copy:fonts'));
+
 
 // CLEAN
 // -------------------------------------------------------
 
-exports.clean = clean;
-exports.cleanRemote = cleanRemote;
-
-
 // Clean
-function clean(done) {
-    console.log(colors.bold(colors.cyan('Cleaning ' + paths.dest + ' -folder')));
+gulp.task('clean', function (done) {
+    console.log(colors.cyan('Cleaning ' + paths.dest + ' -folder'));
     del.sync([paths.dest + '**']);
-    console.log(colors.bold(colors.green('Clean Done')));
+    console.log(colors.bold(colors.green('✔ Clean Done')));
 
     done();
 
-}
+});
 
 // Clean : Remote
-function cleanRemote(done) {
+gulp.task('clean:remote', function (done) {
 
     if (isProduction) {
-        console.log(colors.bold(colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...')));
+        console.log(colors.cyan('Cleaning ' + configFtp.production.remotePath + ' -folder on remote server...'));
 
 
         remoteProd.rmdir(configFtp.production.remotePath, function (err) {
             done();
             if (err) {
                 return handleErrors;
-                console.log(colors.bold(colors.green('Clean Done')));
+                console.log(colors.bold(colors.green('✔ Clean Done')));
 
             }
         });
@@ -626,49 +540,47 @@ function cleanRemote(done) {
         });
     }
 
-}
+});
+
 
 // WATCH
 // -------------------------------------------------------
 
-exports.watchFiles = watchFiles;
-
-function watchFiles(done) {
+gulp.task('watch', function (done) {
 
     console.log(colors.bold(colors.grey('Watching files...')));
 
     // Watch Html-files
-    watch([paths.src + '**/*.{php,html}',
-        '!' + paths.src + 'partials/**/*'], parallel(markup));
-    watch(paths.src + 'partials/**/*', parallel(markupAll));
+    gulp.watch([paths.src + '**/*.{php,html}',
+        '!' + paths.src + 'partials/**/*'], gulp.parallel('markup'));
+    gulp.watch(paths.src + 'partials/**/*', gulp.parallel('markup:all'));
 
     // Watch Styles
-    watch(paths.styles.src + '**/*.less', parallel(styles));
+    gulp.watch(paths.styles.src + '**/*.less', gulp.parallel('styles'));
 
     // Watch Scripts
-    watch(paths.scripts.src + '**/*.js', parallel(scriptsMain));
-    watch('package.json', parallel(scriptsVendor));
+    gulp.watch(paths.scripts.src + '**/*.js', gulp.parallel('scripts:main'));
+    gulp.watch('bower.json', gulp.parallel('scripts:vendor'));
 
     // Watch Images
-    watch([
+    gulp.watch([
         paths.images.src + '**/*.{gif,jpg,jpeg,png,svg}',
-        '!' + paths.images.src + 'icons/**/*'], parallel(imagesOptimize));
+        '!' + paths.images.src + 'icons/**/*'], gulp.parallel('images:optimize'));
 
     // Watch Icons
-    watch(paths.images.src + 'icons/**/*.svg', parallel(icons));
+    gulp.watch(paths.images.src + 'icons/**/*.svg', gulp.parallel('icons'));
 
     done();
 
-}
+});
 
 
 // SERVE
 // -------------------------------------------------------
 
-exports.serve = serve;
-
 // Watch Files For Changes & Reload
-function serve(done) {
+gulp.task('serve', function (done) {
+
     console.log(colors.bold(colors.grey('Launching server...')));
 
     browserSync({
@@ -681,25 +593,25 @@ function serve(done) {
     });
     done();
 
-}
+});
+
 
 // DEPLOY
 // -------------------------------------------------------
 
-//const deploy = series(cleanRemote, deploy);
-//const deployWatch = series(deploy, deployWatch);
+//exports.deploy = series(cleanRemote, deploy);
+//exports.deployWatch = series(deploy, deployWatch);
 
-exports.deploy = series(cleanRemote, deploy);
-exports.deployWatch = series(deploy, deployWatch);
-
-function deploy(done) {
-
+gulp.task('deploy', gulp.series('clean:remote', function uploading(done) {
     var globs = [
         paths.dest + '**',
         paths.dest + '.htaccess'
     ];
 
-    return src(globs, {
+    console.log(colors.bold(colors.grey('Uploading files...')));
+
+
+    return gulp.src(globs, {
             base: paths.dest,
             buffer: false,
             allowEmpty: true
@@ -711,24 +623,122 @@ function deploy(done) {
 
     done();
 
-}
+}));
 
-function deployWatch(done) {
+gulp.task('deploy:watch', gulp.series('deploy', function watching(done) {
 
     console.log(colors.bold(colors.grey('Watching changes...')));
 
 
-    watch(paths.dest + '**/*')
-        .on('change', function (event) {
+    var watcher = gulp.watch(paths.dest + '**/*');
 
-            console.log(colors.bold(colors.cyan('Uploading file "' + event.path + '", ' + event.type)));
+    watcher.on('change', function (filePath, stats) {
 
-            return src([event.path], {
-                    base: paths.dest,
-                    buffer: false
-                })
-                .pipe(remoteDev.newer(configFtp.development.remotePath))
-                .pipe(remoteDev.dest(configFtp.development.remotePath));
-        });
+        console.log(colors.white('Uploading file '), colors.magenta(filePath));
+
+        return gulp.src(filePath, {
+                base: paths.dest,
+                buffer: false,
+                allowEmpty: true
+            })
+            .pipe(remoteDev.newer(configFtp.development.remotePath))
+            .pipe(remoteDev.dest(configFtp.development.remotePath));
+
+    });
+
     done();
+
+}));
+
+
+// DEFAULT TASKS
+// -------------------------------------------------------
+
+// Stuff to do after default tast is completed
+function defaultDone(done) {
+
+    if (isProduction) {
+
+        console.log(colors.bold(colors.green('✔ Build done!')));
+
+        if (isServe) {
+
+            console.log(colors.bold(colors.blue('Now serving')));
+
+            gulp.series('serve')(done);
+
+        } else if (isDeploy) {
+
+            console.log(colors.bold(colors.blue('Now deploying')));
+
+            gulp.series('deploy')(done);
+
+        } else {
+
+            done(); // Signal async completion
+        }
+
+    } else {
+
+        console.log(colors.bold(colors.green('✔ All set!')));
+
+        if (isServe && isDeploy) {
+
+            console.log(colors.bold(colors.blue('Now deploying & serving')));
+
+            gulp.series('serve', 'watch', 'deploy:watch')(done);
+
+        } else if (isDeploy) {
+
+            console.log(colors.bold(colors.blue('Now deploying')));
+
+            gulp.series('deploy')(done);
+
+        } else if (isServe) {
+
+            console.log(colors.bold(colors.blue('Now serving')));
+
+            gulp.series('serve', 'watch')(done);
+        } else {
+
+            done(); // Signal async completion
+        }
+
+    }
+
 }
+
+// Default : Development
+gulp.task('default:development', function (done) {
+
+    gulp.series('markup:all', 'styles', 'scripts', 'images', 'icons', 'copy', defaultDone)(done);
+})
+
+// Default : Production
+gulp.task('default:production', function (done) {
+
+    gulp.series('images', gulp.parallel(
+            'markup', 'styles', 'scripts', 'icons', 'copy'),
+        defaultDone)(done);
+})
+
+
+
+// Default
+gulp.task('default', gulp.series('clean', function init(done) {
+
+    if (isProduction) {
+
+        console.log(colors.bold(colors.green('Starting Production')));
+
+        gulp.series('default:production')(done);
+    } else {
+
+        console.log(colors.bold(colors.green('Starting Development')));
+
+
+        gulp.series('default:development')(done);
+    }
+    done();
+
+}));
