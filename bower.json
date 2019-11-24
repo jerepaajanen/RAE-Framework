@@ -1,6 +1,6 @@
 {
   "name": "rae-framework",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "dependencies": {
     "jquery": "^3.1.0",
     "svgxuse": "^1.1.21",
