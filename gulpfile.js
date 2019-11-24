@@ -5,39 +5,39 @@
 // REQUIRES
 // -------------------------------------------------------
 
-const gulp = require('gulp');
-const fs = require('fs');
-const del = require('del');
-const pkg = require('./package.json');
-const config = require('./config.json');
-const flags = require('minimist')(process.argv.slice(2));
-const postCss_autoprefixer = require('autoprefixer');
 const bowerFiles = require("main-bower-files");
 const browserSync = require('browser-sync');
-const inject = require('gulp-inject-string');
-const ftp = require('vinyl-ftp');
-const postCss_flexbugsFixes = require('postcss-flexbugs-fixes');
-const postCss_objectFit = require('postcss-object-fit-images');
-const postCss_cssMqpacker = require('css-mqpacker');
-const postCss_cssnano = require('cssnano');
 const colors = require('ansi-colors');
-const through = require('through2');
-const newer = require('gulp-newer');
-const less = require('gulp-less');
-const postCss = require('gulp-postcss');
-const size = require('gulp-size');
-const rename = require('gulp-rename');
+const concat = require('gulp-concat');
+const config = require('./config.json');
+const del = require('del');
+const favicons = require('gulp-favicons');
+const flags = require('minimist')(process.argv.slice(2));
+const fs = require('fs');
+const ftp = require('vinyl-ftp');
+const gulp = require('gulp');
+const gulpIf = require('gulp-if');
 const header = require('gulp-header');
 const htmlClean = require('gulp-htmlclean');
-const preprocess = require('gulp-preprocess');
-const gulpIf = require('gulp-if');
-const concat = require('gulp-concat');
-const jshint = require('gulp-jshint');
 const imagemin = require('gulp-imagemin');
-const favicons = require('gulp-favicons');
-const uglify = require('gulp-uglify');
+const inject = require('gulp-inject-string');
+const jshint = require('gulp-jshint');
+const less = require('gulp-less');
+const newer = require('gulp-newer');
+const pkg = require('./package.json');
+const postCss = require('gulp-postcss');
+const postCss_autoprefixer = require('autoprefixer');
+const postCss_cssMqpacker = require('css-mqpacker');
+const postCss_cssnano = require('cssnano');
+const postCss_flexbugsFixes = require('postcss-flexbugs-fixes');
+const postCss_objectFit = require('postcss-object-fit-images');
+const preprocess = require('gulp-preprocess');
+const rename = require('gulp-rename');
+const size = require('gulp-size');
 const svgMin = require('gulp-svgmin');
 const svgSprite = require('gulp-svg-sprite');
+const through = require('through2');
+const uglify = require('gulp-uglify');
 
 
 // VARIABLES
@@ -362,8 +362,8 @@ gulp.task('imagesFaviconsBuild', function (done) {
 
 });
 
-// Images : Favicons-Wordpress
-gulp.task('imagesFavicons', gulp.series('imagesFaviconsBuild', function imagesFaviconsWordpressCheck(done) {
+// Images : FaviconsMarkup (for Wordpress)
+gulp.task('imagesFavicons', gulp.series('imagesFaviconsBuild', function imagesFaviconsMarkup(done) {
 
     if (config.wordpressTheme && isProduction) {
         return gulp.src(paths.dest + 'partials/favicons.html')
