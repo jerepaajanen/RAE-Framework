@@ -350,7 +350,7 @@ gulp.task('imagesFaviconsBuild', function (done) {
                 version: 1.0,
                 logging: false,
                 online: false,
-                html: '../../partials/favicons.html',
+                html: '../../../' + paths.src + 'partials/favicons.html',
                 pipeHTML: true,
                 replace: true,
             }))
@@ -366,7 +366,7 @@ gulp.task('imagesFaviconsBuild', function (done) {
 gulp.task('imagesFavicons', gulp.series('imagesFaviconsBuild', function imagesFaviconsMarkup(done) {
 
     if (config.wordpressTheme && isProduction) {
-        return gulp.src(paths.dest + 'partials/favicons.html')
+        return gulp.src(paths.src + 'partials/favicons.html')
             .pipe(inject.beforeEach(config.faviconsPath, '<? echo get_template_directory_uri(); ?>/'))
             .pipe(gulp.dest(paths.src + 'partials/'));
     }
