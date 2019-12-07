@@ -594,9 +594,6 @@ gulp.task('serve', function (done) {
 // DEPLOY
 // -------------------------------------------------------
 
-//exports.deploy = series(cleanRemote, deploy);
-//exports.deployWatch = series(deploy, deployWatch);
-
 gulp.task('deploy', gulp.series('cleanRemote', function uploading(done) {
     var globs = [
         paths.dest + '**',
@@ -636,7 +633,6 @@ gulp.task('deployWatch', gulp.series('deploy', function watching(done) {
                 buffer: false,
                 allowEmpty: true
             })
-            .pipe(remoteDev.newer(configFtp.development.remotePath))
             .pipe(remoteDev.dest(configFtp.development.remotePath));
 
     });
