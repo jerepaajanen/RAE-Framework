@@ -118,7 +118,8 @@ if (configFtp) {
             port: configFtp.development.port,
             user: configFtp.development.user,
             password: configFtp.development.password,
-            parallel: 5,
+            parallel: 10,
+            maxConnections: 5,
             reload: true,
             log: null
         }),
@@ -127,7 +128,8 @@ if (configFtp) {
             port: configFtp.production.port,
             user: configFtp.production.user,
             password: configFtp.production.password,
-            parallel: 5,
+            parallel: 10,
+            maxConnections: 5,
             reload: true,
             log: null
         });
@@ -633,6 +635,8 @@ gulp.task('deployWatch', gulp.series('deploy', function watching(done) {
                 buffer: false,
                 allowEmpty: true
             })
+
+            .pipe(remoteDev.newer(configFtp.development.remotePath))
             .pipe(remoteDev.dest(configFtp.development.remotePath));
 
     });
