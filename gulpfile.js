@@ -615,6 +615,7 @@ gulp.task('deploy', gulp.series('cleanRemote', function uploading(done) {
 
         .pipe(gulpIf(!isProduction, (remoteDev.dest(configFtp.development.remotePath))));
 
+
     done();
 
 }));
@@ -636,7 +637,7 @@ gulp.task('deployWatch', gulp.series('deploy', function watching(done) {
                 allowEmpty: true
             })
 
-            .pipe(remoteDev.newer(configFtp.development.remotePath))
+            .pipe(remoteDev.newerOrDifferentSize(configFtp.development.remotePath))
             .pipe(remoteDev.dest(configFtp.development.remotePath));
 
     });
