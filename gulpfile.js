@@ -501,7 +501,7 @@ gulp.task('copy', gulp.series('copyRoot', 'copyHtaccess', 'copyAssets', 'copyFon
 // Clean
 gulp.task('clean', function (done) {
     console.log(colors.cyan('Cleaning ' + paths.dest + ' -folder'));
-    del.sync([paths.dest + '**']);
+    del.sync([paths.dest]);
     console.log(colors.bold(colors.green('✔ Clean Done')));
 
     done();
@@ -731,7 +731,6 @@ gulp.task('default', gulp.series('clean', function init(done) {
     } else {
 
         console.log(colors.bold(colors.green('Starting Development')));
-
 
         gulp.series('initDevelopment')(done);
     }
