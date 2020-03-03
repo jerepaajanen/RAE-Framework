@@ -3,63 +3,127 @@
 // -------------------------------------------------------
 .responsive-navigation(@boolean) when (@boolean =true) {
 
-    [data-navigation] {
-        overflow-x: visible;
-        -webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
-        @media @nav-responsive-down {
-            [data-content] {
-                display: none;
+
+    .nav-responsive() {
+        & when (@nav-responsive-breakpoint =@breakpoint-x-large) {
+
+            [data-navigation] {
+                overflow-x: visible;
+                -webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+
+                [data-content] {
+                    display: none;
+                    visibility: hidden;
+
+                    &.is-open {
+                        display: block;
+                        visibility: visible;
+                        overflow-y: auto;
+                    }
+                }
+            }
+
+            .nav-open {
+                overflow: hidden !important;
+                height: 100% !important
+            }
+
+            .subnav-open {
+                overflow: hidden !important;
+                height: 100% !important
+            }
+
+            [data-overlay] {
+                position: fixed;
                 visibility: hidden;
-                &.is-open {
-                    display: block;
+                width: 100%;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                opacity: 0;
+
+                &.is-visible {
                     visibility: visible;
-                    overflow-y: auto;
+                    opacity: 1;
+                }
+            }
+
+        }
+
+        & when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
+            [data-navigation] {
+                overflow-x: visible;
+                -webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+
+                @media @nav-responsive-down {
+                    [data-content] {
+                        display: none;
+                        visibility: hidden;
+
+                        &.is-open {
+                            display: block;
+                            visibility: visible;
+                            overflow-y: auto;
+                        }
+                    }
+                }
+
+                @media @nav-responsive-up {
+                    width: auto;
+
+                    [data-content] {
+                        display: block;
+                        height: auto;
+                        overflow: visible;
+                        visibility: visible;
+                    }
+
+                    // Hide navigation toggle-buttons
+                    [data-toggle] {
+                        display: none;
+                    }
+                }
+            }
+
+            @media @nav-responsive-down {
+                .nav-open {
+                    overflow: hidden !important;
+                    height: 100% !important
+                }
+            }
+
+            @media @nav-responsive-up {
+                .subnav-open {
+                    overflow: hidden !important;
+                    height: 100% !important
+                }
+            }
+
+            @media @nav-responsive-up {
+                [data-overlay] {
+                    position: fixed;
+                    visibility: hidden;
+                    width: 100%;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    opacity: 0;
+
+                    &.is-visible {
+                        visibility: visible;
+                        opacity: 1;
+                    }
                 }
             }
         }
-        @media @nav-responsive-up {
-            width: auto;
-            [data-content] {
-                display: block;
-                height: auto;
-                overflow: visible;
-                visibility: visible;
-            } // Hide navigation toggle-buttons
-            [data-toggle] {
-                display: none;
-            }
-        }
     }
 
-    @media @nav-responsive-down {
-        .nav-open {
-            overflow: hidden !important;
-            height: 100% !important
-        }
-    }
-    @media @nav-responsive-up {
-        .subnav-open {
-            overflow: hidden !important;
-            height: 100% !important
-        }
-    }
 
-    @media @nav-responsive-up {
-        [data-overlay] {
-            position: fixed;
-            visibility: hidden;
-            width: 100%;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            opacity: 0;
-            &.is-visible {
-                visibility: visible;
-                opacity: 1;
-            }
-        }
-    }
+
+    .nav-responsive();
+
 }
 
 .responsive-navigation(@use-responsive-navigation);

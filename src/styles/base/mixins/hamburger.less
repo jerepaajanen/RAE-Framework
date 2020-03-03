@@ -5,40 +5,46 @@
 // .selector {
 //    .hamburger(height, width, stroke-width, stroke-radius, color, color-active, duration, close: true/false, cheese: true/false)
 // }
-.hamburger( @height: @spacing-base,
-@width: @spacing-base * 1.5,
-@stroke-width: @spacing-sixth,
-@stroke-radius: 0,
-@color: @base-color,
-@color-active: @base-color,
-@duration: @transition-duration-default,
-@close: true,
-@cheese: true) {
+.hamburger(@height: @spacing-base,
+    @width: @spacing-base * 1.5,
+    @stroke-width: @spacing-sixth,
+    @stroke-radius: 0,
+    @color: @base-color,
+    @color-active: @base-color,
+    @duration: @transition-duration-default,
+    @close: true,
+    @cheese: true) {
     cursor: pointer;
     position: relative;
     height: @height;
     width: @width;
+
     .hamburger-icon {
         & when (@cheese =true) {
+
             &,
             &:before,
             &:after {
                 background: @color;
             }
         }
+
         & when (@cheese =false) {
             & {
                 color: transparent;
             }
+
             &:before,
             &:after {
                 background: @color;
             }
         }
+
         &:before,
         &:after {
             content: "";
         }
+
         &,
         &:before,
         &:after {
@@ -49,29 +55,40 @@
             height: @stroke-width;
             transition: all @duration @transition-easing-default;
         }
+
         & {
             top: 50%;
             margin-top: round(-@stroke-width / 2);
         }
+
         &:before {
             top: -@height / 2 + round(@stroke-width / 2);
         }
+
         &:after {
             bottom: -@height / 2 + round(@stroke-width / 2);
         }
     }
+
     &.is-active,
     &:active {
         .hamburger-icon {
-            background: @color-active;
+
+            &:before,
+            &:after {
+                background: @color-active;
+            }
+
             & when (@close =true) {
                 & {
                     background: transparent;
                 }
+
                 &:before {
                     transform: rotate(45deg);
                     top: 0;
                 }
+
                 &:after {
                     transform: rotate(-45deg);
                     bottom: 0;
@@ -79,11 +96,13 @@
             }
         }
     }
+
     &.is-inactive:hover {
         .hamburger-icon {
             &:before {
                 transform: translateY(-@stroke-width / 2);
             }
+
             &:after {
                 transform: translateY(@stroke-width / 2);
             }
