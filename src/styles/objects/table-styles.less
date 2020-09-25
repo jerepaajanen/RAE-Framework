@@ -2,13 +2,17 @@
 // Table styles
 // -------------------------------------------------------
 .table-styles(@boolean) when (@boolean =true) {
+
     // Basic table styling
     .table {
+        font-family: @table-font-family;
         font-size: @table-font-size;
         background-color: @table-background;
+
         caption {
             padding: @table-caption-padding;
         }
+
         > thead {
             > tr {
                 > th {
@@ -20,19 +24,23 @@
                 }
             }
         }
+
         > tbody {
             > tr {
+
                 > td,
                 th {
                     padding: @table-cell-padding;
                     vertical-align: top;
                     border-bottom: @table-border-width solid @table-border-color;
+
                     &:not(td) {
                         font-weight: @table-headfoot-font-weight;
                     }
                 }
             }
         }
+
         > tfoot {
             > tr {
                 > td {
@@ -81,6 +89,7 @@
         margin-bottom: @spacing-base; // add vertical-rhytmn
         .momentum-scrolling();
         .pretty-scrollbars();
+
         table {
             margin-bottom: 0; // remove vertical-rhytmn
         }

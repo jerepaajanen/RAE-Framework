@@ -32,7 +32,7 @@
                 toggleButton = '<div role="button" class="' + options.toggle.split('.').join('') + ' is-inactive" data-toggle aria-label="Navigation menu">' + options.toggleContent + '</div>',
                 childContent = content.find(options.childContent),
                 childToggleSelector = 'ul li [data-handle]',
-                childToggleButton = '<span role="button" class="' + options.childToggle.split('.').join('') + '" data-handle>' + options.childToggleContent + '</span>',
+                childToggleButton = '<span role="button" class="' + options.childToggle.split('.').join('') + '" data-handle tabindex="0" aria-label="Open submenu">' + options.childToggleContent + '</span>',
                 overlaySelector = options.overlay;
 
             function initPlugin() {
@@ -84,7 +84,7 @@
                 $(childContent).not(el).removeClass('is-open');
                 if (!$(childContent).hasClass('is-open')) {
                     $(overlaySelector).removeClass('is-visible');
-                    $('body').removeClass('subnav-open');
+                    $('body').removeClass('submenu-open');
                 }
             }
 
@@ -111,7 +111,7 @@
                     $(content).hide().toggleClass('is-open').transitions(function () {
                         $(this).removeAttr('style');
                     });
-                    $('body').addClass('nav-open');
+                    $('body').addClass('menu-open');
 
                 } else {
 
@@ -119,7 +119,7 @@
                         $(toggleSelector).toggleClass('is-active is-inactive');
                         $(this).toggleClass('is-open').removeAttr('style');
                     });
-                    $('body').removeClass('nav-open');
+                    $('body').removeClass('menu-open');
                 }
 
                 return false;
@@ -145,7 +145,7 @@
                     $(this).addClass('is-active');
                     $(overlaySelector).addClass('is-visible');
                     $(currentTarget).addClass('is-open');
-                    $('body').addClass('subnav-open');
+                    $('body').addClass('submenu-open');
                 }
                 return false;
             });

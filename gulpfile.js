@@ -11,6 +11,7 @@ const colors = require('ansi-colors');
 const concat = require('gulp-concat');
 const config = require('./config.json');
 const del = require('del');
+const exec = require('gulp-exec');
 const favicons = require('gulp-favicons');
 const flags = require('minimist')(process.argv.slice(2));
 const fs = require('fs');
@@ -19,6 +20,7 @@ const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 const header = require('gulp-header');
 const htmlClean = require('gulp-htmlclean');
+const homeDir = require('os').homedir();
 const imagemin = require('gulp-imagemin');
 const inject = require('gulp-inject-string');
 const jshint = require('gulp-jshint');
@@ -46,12 +48,14 @@ const uglify = require('gulp-uglify');
 var
     isProduction = (flags.production || flags.p) || false,
     isServe = (flags.serve || flags.s) || false,
-    isDeploy = (flags.deploy || flags.d) || false;
+    isDeploy = (flags.deploy || flags.d) || false,
+    isLocal = (flags.local || flags.l) || false;
+
 
 var
     basePaths = {
         src: config.folders.src,
-        dest: config.folders.dest
+        dest: config.folders.dest,
     },
     paths = {
         src: basePaths.src,
@@ -78,6 +82,9 @@ var
             dest: basePaths.dest + 'assets/'
         }
     },
+
+    localWp = homeDir + '/local-sites/' + config.localProjectName + '/app/public/wp-content/themes/' + config.themeName,
+
 
     // Banner to add to file headers
     banner = ['/*',
@@ -508,6 +515,17 @@ gulp.task('clean', function (done) {
 
 });
 
+// Clean : Local
+gulp.task('cleanLocal', function (done) {
+    console.log(colors.cyan('Cleaning ' + localWp + ' -folder'));
+    del.sync([localWp], {
+        force: true,
+    });
+    console.log(colors.bold(colors.green('✔ Clean Done')));
+
+    done();
+});
+
 // Clean : Remote
 gulp.task('cleanRemote', function (done) {
 
@@ -578,19 +596,46 @@ gulp.task('watch', function (done) {
 // Watch Files For Changes & Reload
 gulp.task('serve', function (done) {
 
-    console.log(colors.bold(colors.grey('Launching server...')));
+    console.log(colors.bold(colors.grey('Launching Server...')));
 
-    browserSync({
-        server: {
-            baseDir: paths.dest
-        },
-        logConnections: true,
-        logPrefix: 'RAE',
-        notify: false
-    });
+
+    if (isServe && !isLocal) {
+
+        browserSync.init({
+            server: {
+                baseDir: paths.dest
+            },
+            //ghostMode: true,
+            logConnections: true,
+            logPrefix: 'RAE',
+            notify: false
+        });
+    } else if (isLocal) {
+
+        browserSync.init({
+            proxy: {
+                target: 'http://' + config.localProjectName + '.local',
+                ws: true
+            },
+            open: true,
+            injectChanges: true,
+            watchOptions: {
+                debounceDelay: 1000 // This introduces a small delay when watching for file change events to avoid triggering too many reloads
+            },
+            //ghostMode: true,
+            logConnections: true,
+            logPrefix: 'RAE',
+            notify: false
+        });
+
+    }
+
     done();
 
 });
+
+
+
 
 
 // DEPLOY
@@ -647,6 +692,36 @@ gulp.task('deployWatch', gulp.series('deploy', function watching(done) {
 }));
 
 
+gulp.task('deployLocal', function (done) {
+    return gulp.src(paths.dest + '**/*', {
+            read: false
+        })
+        .pipe(exec('cp -R ' + paths.dest + '/. ' + localWp));
+
+    done();
+});
+
+gulp.task('deployLocalWatch', gulp.series('deployLocal', function watching(done) {
+
+    var watcher = gulp.watch(paths.dest + '**/*');
+
+    watcher.on('change', function (filePath, stats) {
+
+        console.log(colors.white('Deploying file '), colors.magenta(filePath));
+
+        return gulp.src(filePath, {
+                base: paths.dest,
+                buffer: false,
+                allowEmpty: true
+            })
+            .pipe(exec('cp -R ' + paths.dest + '/. ' + localWp));
+    });
+
+    done();
+
+}));
+
+
 // DEFAULT TASKS
 // -------------------------------------------------------
 
@@ -678,6 +753,14 @@ function initAfter(done) {
 
         console.log(colors.bold(colors.green('✔ All set!')));
 
+        if (isServe && isLocal) {
+
+            console.log(colors.bold(colors.blue('Now deploying Local & serving')));
+
+            gulp.series('serve', 'watch', 'deployLocalWatch')(done);
+
+        }
+
         if (isServe && isDeploy) {
 
             console.log(colors.bold(colors.blue('Now deploying & serving')));
@@ -690,7 +773,7 @@ function initAfter(done) {
 
             gulp.series('deploy')(done);
 
-        } else if (isServe) {
+        } else if (isServe && !isLocal) {
 
             console.log(colors.bold(colors.blue('Now serving')));
 

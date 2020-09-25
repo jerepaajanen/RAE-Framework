@@ -5,6 +5,8 @@
     },
 
     "wordpressTheme": false,
+    "themeName": "test_theme",
+    "localProjectName": "Test",
 
     "siteTitle": "RAE",
     "siteDescription": "LESS/CSS Framework",
