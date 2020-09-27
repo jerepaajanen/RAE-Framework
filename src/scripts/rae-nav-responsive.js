@@ -83,6 +83,7 @@
             function resetChilds(el) {
                 $(childContent).not(el).removeClass('is-open');
                 if (!$(childContent).hasClass('is-open')) {
+                    $(childToggleSelector).removeClass('is-active');
                     $(overlaySelector).removeClass('is-visible');
                     $('body').removeClass('submenu-open');
                 }
