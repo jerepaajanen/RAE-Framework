@@ -15,7 +15,7 @@
     "devDependencies": {
         "ansi-colors": "^4.1.1",
         "apache-server-configs": "^4.0.0",
-        "autoprefixer": "^10.0.0",
+        "autoprefixer": "^10.0.1",
         "browser-sync": "^2.26.12",
         "css-mqpacker": "^7.0.0",
         "cssnano": "^4.1.10",
@@ -41,20 +41,21 @@
         "gulp-size": "^3.0.0",
         "gulp-svg-sprite": "^1.5.0",
         "gulp-svgmin": "^3.0.0",
+        "gulp-touch": "^1.0.1",
         "gulp-uglify": "^3.0.2",
         "jshint": "^2.12.0",
         "jshint-stylish": "^2.2.1",
         "lodash": "^4.17.15",
         "main-bower-files": "^2.13.3",
         "minimist": "^1.2.0",
-        "postcss": "^8.0.9",
+        "postcss": "^8.1.1",
         "postcss-flexbugs-fixes": "^4.2.1",
         "postcss-object-fit-images": "^1.1.2",
-        "through2": "^3.0.1",
+        "through2": "^4.0.2",
         "vinyl-ftp": "^0.6.0"
     },
     "engines": {
-        "node": "^12.18.0"
+        "node": "^12.19.0"
     },
     "scripts": {
         "test": "gulp"

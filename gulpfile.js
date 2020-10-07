@@ -105,6 +105,15 @@ function handleErrors(error) {
     this.emit('end');
 }
 
+// Touch Date
+
+const touch = () => through.obj(function (file, enc, cb) {
+    if (file.stat) {
+        file.stat.atime = file.stat.mtime = file.stat.ctime = new Date();
+    }
+    cb(null, file);
+});
+
 // Check if config-ftp.json exists
 
 try {
@@ -169,6 +178,7 @@ var markupProcess = function (isNotPartial) {
             extension: 'html'
         }))
         .pipe(gulpIf(isProduction, htmlClean()))
+        .pipe(touch())
         .pipe(gulp.dest(paths.dest))
         .pipe(browserSync.reload({
             stream: true
@@ -209,6 +219,8 @@ gulp.task('styles', function (done) {
                 //Supported browsers stored in .browserslistrc
             })
         ]))
+
+        .pipe(touch())
         .pipe(gulp.dest(paths.styles.dest))
 
         .pipe(gulpIf(isProduction, postCss([
@@ -232,13 +244,10 @@ gulp.task('styles', function (done) {
         .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
+        .pipe(gulpIf(isProduction, touch()))
         .pipe(gulpIf(isProduction, gulp.dest(paths.styles.dest)))
         .pipe(gulpIf(isProduction, size({
             gzip: false,
-            title: 'Styles'
-        })))
-        .pipe(gulpIf(isProduction, size({
-            gzip: true,
             title: 'Styles'
         })))
         .pipe(browserSync.reload({
@@ -669,17 +678,13 @@ gulp.task('deployWatch', gulp.series('deploy', function watching(done) {
 
     console.log(colors.bold(colors.grey('Watching changes...')));
 
-
-    var watcher = gulp.watch(paths.dest + '**/*');
-
-    watcher.on('change', function (filePath, stats) {
+    gulp.watch(paths.dest + '**/*').on('change', function (filePath, stats) {
 
         console.log(colors.white('Uploading file '), colors.magenta(filePath));
 
         return gulp.src(filePath, {
                 base: paths.dest,
-                buffer: false,
-                allowEmpty: true
+                buffer: false
             })
 
             .pipe(remoteDev.newerOrDifferentSize(configFtp.development.remotePath))
@@ -702,10 +707,7 @@ gulp.task('deployLocal', function (done) {
 });
 
 gulp.task('deployLocalWatch', gulp.series('deployLocal', function watching(done) {
-
-    var watcher = gulp.watch(paths.dest + '**/*');
-
-    watcher.on('change', function (filePath, stats) {
+    gulp.watch(paths.dest + '**/*').on('change', function (filePath, stats) {
 
         console.log(colors.white('Deploying file '), colors.magenta(filePath));
 
