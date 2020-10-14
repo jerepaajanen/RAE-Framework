@@ -282,6 +282,7 @@ gulp.task('scriptsMain', gulp.series('scriptsHint', function scriptsMainCompilin
         .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
+        .pipe(touch())
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe(gulpIf(isProduction, size({
             gzip: false,
@@ -307,6 +308,7 @@ gulp.task('scriptsVendor', function (done) {
         .pipe(gulpIf(isProduction, rename({
             suffix: '.min'
         })))
+        .pipe(touch())
         .pipe(gulp.dest(paths.scripts.dest))
         .pipe(gulpIf(isProduction, size({
             gzip: false,
