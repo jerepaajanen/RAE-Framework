@@ -1,7 +1,7 @@
 //
 // Typography
 // -------------------------------------------------------
-.typography(@boolean) when (@boolean = true) {
+.typography(@boolean) when (@boolean =true) {
 
     // Links
 
@@ -10,6 +10,7 @@
         text-decoration: @link-decoration;
         cursor: pointer;
         transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
+
         &:hover,
         &:focus {
             color: @link-hover-color;
@@ -37,6 +38,7 @@
         line-height: @heading-line-height;
         letter-spacing: @heading-letter-spacing;
         margin-bottom: @spacing-base;
+
         a {
             color: inherit;
         }
@@ -45,6 +47,7 @@
     h1,
     .h1 {
         font-size: @heading1-font-size-small;
+
         @media @medium-up {
             font-size: @heading1-font-size;
         }
@@ -53,6 +56,7 @@
     h2,
     .h2 {
         font-size: @heading2-font-size-small;
+
         @media @medium-up {
             font-size: @heading2-font-size;
         }
@@ -61,6 +65,7 @@
     h3,
     .h3 {
         font-size: @heading3-font-size-small;
+
         @media @medium-up {
             font-size: @heading3-font-size;
         }
@@ -69,13 +74,16 @@
     h4,
     .h4 {
         font-size: @heading4-font-size-small;
+
         @media @medium-up {
             font-size: @heading4-font-size;
         }
     }
+
     h5,
     .h5 {
         font-size: @heading5-font-size-small;
+
         @media @medium-up {
             font-size: @heading5-font-size;
         }
@@ -84,6 +92,7 @@
     h6,
     .h6 {
         font-size: @heading6-font-size-small;
+
         @media @medium-up {
             font-size: @heading6-font-size;
         }
@@ -92,32 +101,40 @@
     // Display headings
 
     .display-1 {
+        font-family: @display1-font-family;
         font-size: @display1-font-size-small;
         font-weight: @display1-font-weight;
+
         @media @medium-up {
             font-size: @display1-font-size;
         }
     }
 
     .display-2 {
+        font-family: @display2-font-family;
         font-size: @display2-font-size-small;
         font-weight: @display2-font-weight;
+
         @media @medium-up {
             font-size: @display2-font-size;
         }
     }
 
     .display-3 {
+        font-family: @display3-font-family;
         font-size: @display3-font-size-small;
         font-weight: @display3-font-weight;
+
         @media @medium-up {
             font-size: @display3-font-size;
         }
     }
 
     .display-4 {
+        font-family: @display4-font-family;
         font-size: @display4-font-size-small;
         font-weight: @display4-font-weight;
+
         @media @medium-up {
             font-size: @display4-font-size;
         }
@@ -160,7 +177,7 @@
     blockquote,
     q {
         font-style: @blockquote-quote-font-style;
-        quotes: "\201C" "\201D" "\2018" "\2019";
+        quotes: "\201C""\201D""\2018""\2019";
     }
 
     blockquote {
@@ -176,6 +193,7 @@
         // Blockquote Quote
         p {
             margin-bottom: 0;
+
             &:not(:only-child) {
                 margin-bottom: @blockquote-quote-margin;
             }
@@ -192,7 +210,7 @@
             line-height: 1;
 
             &:before {
-                content:"\2014 \0020"; // add – line before cite
+                content: "\2014 \0020"; // add – line before cite
             }
         }
     }
@@ -230,7 +248,7 @@
         word-break: normal;
     }
 
-    code {
+    code {
         background: @code-background;
         border: 1px solid @code-border-color;
         color: @code-color;
@@ -239,12 +257,13 @@
         vertical-align: middle;
     }
 
-    pre {
+    pre {
         background: @pre-background;
         color: @pre-color;
         overflow-x: auto;
         padding: @pre-padding;
-            margin-bottom: @spacing-base;
+        margin-bottom: @spacing-base;
+
         code {
             background: transparent;
             border: none;
@@ -254,4 +273,5 @@
     }
 
 }
+
 .typography(@use-typography);
