@@ -354,7 +354,7 @@ gulp.task('imagesOptimize', function (done) {
 gulp.task('imagesFaviconsBuild', function (done) {
 
     if (isProduction) {
-        fs.writeFileSync(paths.src + 'partials/favicons.html', '');
+        fs.writeFileSync(paths.src + 'template-parts/utilities/favicons.html', '');
 
         return gulp.src(paths.images.src + '/favicon.png')
             .pipe(favicons({
@@ -370,7 +370,7 @@ gulp.task('imagesFaviconsBuild', function (done) {
                 version: 1.0,
                 logging: false,
                 online: false,
-                html: '../../../' + paths.src + 'partials/favicons.html',
+                html: '../../../' + paths.src + 'template-parts/utilities/favicons.html',
                 pipeHTML: true,
                 replace: true,
             }))
@@ -386,9 +386,9 @@ gulp.task('imagesFaviconsBuild', function (done) {
 gulp.task('imagesFavicons', gulp.series('imagesFaviconsBuild', function imagesFaviconsMarkup(done) {
 
     if (config.wordpressTheme && isProduction) {
-        return gulp.src(paths.src + 'partials/favicons.html')
+        return gulp.src(paths.src + 'template-parts/utilities/favicons.html')
             .pipe(inject.beforeEach(config.faviconsPath, '<? echo get_template_directory_uri(); ?>/'))
-            .pipe(gulp.dest(paths.src + 'partials/'));
+            .pipe(gulp.dest(paths.src + 'template-parts/utilities/'));
     }
     done();
 
@@ -578,8 +578,8 @@ gulp.task('watch', function (done) {
 
     // Watch Html-files
     gulp.watch([paths.src + '**/*.{php,html}',
-        '!' + paths.src + 'partials/**/*'], gulp.parallel('markup'));
-    gulp.watch(paths.src + 'partials/**/*', gulp.parallel('markupAll'));
+        '!' + paths.src + 'template-parts/utilities/**/*'], gulp.parallel('markup'));
+    gulp.watch(paths.src + 'template-parts/utilities/**/*', gulp.parallel('markupAll'));
 
     // Watch Styles
     gulp.watch(paths.styles.src + '**/*.less', gulp.parallel('styles'));
