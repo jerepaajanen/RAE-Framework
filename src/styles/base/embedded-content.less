@@ -2,37 +2,40 @@
 // Embedded content
 // -------------------------------------------------------
 .embed-content(@boolean) when (@boolean =true) {
-    // Fluid-width <audio> & <video> elements
-    audio,
-    video,
-    canvas {
-        width: 100%;
-        &:focus {
-            outline: 1px dotted @black;
-        }
-    }
-    // Fluid-width media that maintain their aspect ratios
-    embed,
-    img,
-    object,
-    video {
-        max-width: 100%;
-        height: auto;
-    }
 
-    embed,
-    object {
-        height: 100%;
-    }
+	// Fluid-width <audio> & <video> elements
+	audio,
+	video,
+	canvas {
+		width: 100%;
 
-    // Fill video with poster image
-    video {
-        object-fit: initial;
-    }
+		&:focus {
+			outline: 1px dotted @black;
+		}
+	}
 
-    figure {
-        margin-bottom: 0 0 @spacing-base;
-    }
+	// Fluid-width media that maintain their aspect ratios
+	embed,
+	img,
+	object,
+	video {
+		max-width: 100%;
+		height: auto;
+	}
+
+	embed,
+	object {
+		height: 100%;
+	}
+
+	// Fill video with poster image
+	video {
+		object-fit: initial;
+	}
+
+	figure {
+		margin-bottom: 0 0 @spacing-base;
+	}
 
 }
 

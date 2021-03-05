@@ -1,41 +1,44 @@
 //
 // Lists
 // -------------------------------------------------------
-.lists(@boolean) when (@boolean = true) {
+.lists(@boolean) when (@boolean =true) {
 
-    ul,
-    ol,
-    dl {
-        margin-bottom: @spacing-base;
-    }
+	ul,
+	ol,
+	dl {
+		margin-bottom: @spacing-base;
+	}
 
-    ul,
-    ol {
-        margin-left: @spacing-base;
-        & & {
-            margin-bottom: 0;
-        }
-    }
+	ul,
+	ol {
+		margin-left: @spacing-base;
 
-    nav ul {
-        margin: 0;
-    }
+		& & {
+			margin-bottom: 0;
+		}
+	}
 
-    dl {
-        dt {
-            font-weight: bold;
-        }
-        dd {
-            margin: 0;
-        }
-    }
+	nav ul {
+		margin: 0;
+	}
 
-    // List Unstyled
+	dl {
+		dt {
+			font-weight: bold;
+		}
 
-    .list-unstyled {
-        list-style: none;
-        margin-left: 0;
-    }
+		dd {
+			margin: 0;
+		}
+	}
+
+	// List Unstyled
+
+	.list-unstyled {
+		list-style: none;
+		margin-left: 0;
+	}
 
 }
+
 .lists(@use-lists);

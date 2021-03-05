@@ -14,7 +14,7 @@
             content: 'ul', //CSS selector for the element acting as main content.
             toggle: '.nav__toggle', // Selector class for the element acting as a button.
             togglePosition: 'inside', // String: Position of toggle in navigation: 'inside', 'before', 'after' or 'none'.
-            toggleContent: 'Menu', // Html tags or text
+            toggleContent: 'Menu <span class="hamburger-icon"></span>', // Html tags or text
 
             childContent: 'ul', //CSS selector for the element acting as child content.
             childToggle: '.nav__handle', //CSS selector for the element acting as a button.
@@ -30,7 +30,7 @@
                 content = wrapper.find(options.content).first(),
                 toggleSelector = options.toggle,
                 toggleButton = '<div role="button" class="' + options.toggle.split('.').join('') + ' is-inactive" data-toggle aria-label="Navigation menu">' + options.toggleContent + '</div>',
-                childContent = content.find(options.childContent),
+                childContent = content.children().find(options.childContent),
                 childToggleSelector = 'ul li [data-handle]',
                 childToggleButton = '<span role="button" class="' + options.childToggle.split('.').join('') + '" data-handle tabindex="0" aria-label="Open submenu">' + options.childToggleContent + '</span>',
                 overlaySelector = options.overlay;

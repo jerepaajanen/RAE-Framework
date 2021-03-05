@@ -3,30 +3,31 @@
 // -------------------------------------------------------
 .use-form-messages(@boolean) when (@boolean =true) {
 
-    .form-message {
-        display: block;
-        margin: @form-message-vertical-margin 0;
-        font-family: @form-message-font-family;
-        font-weight: @form-message-font-weight;
-        font-size: @form-message-font-size;
-        color: @form-message-color;
-        line-height: @form-message-line-height;
-        text-align: @form-message-text-align;
+	.form-message {
+		color: @form-message-color;
+		display: block;
+		font-family: @form-message-font-family;
+		font-size: @form-message-font-size;
+		font-weight: @form-message-font-weight;
+		line-height: @form-message-line-height;
+		margin: @form-message-vertical-margin 0;
+		text-align: @form-message-text-align;
 
-        // Success
-        &--success {
-            color: @color-success;
-        }
-        // Error
-        &--error {
-            color: @color-error;
-        }
+		// Success
+		.form-message--success {
+			color: @color-success;
+		}
 
-        // Warning
-        &--warning {
-            color: @color-warning;
-        }
-    }
-}
+		// Error
+		.form-message--error {
+			color: @color-error;
+		}
 
-.use-form-messages(@use-form-messages);
+		// Warning
+		.form-message--warning {
+			color: @color-warning;
+		}
+
+	}
+
+	.use-form-messages(@use-form-messages);

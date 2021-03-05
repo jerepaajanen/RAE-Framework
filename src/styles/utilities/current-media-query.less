@@ -3,51 +3,60 @@
 // -------------------------------------------------------
 .current-media-query(@boolean) when (@boolean =true) {
 
-    //This adds a label in the top-left corner that displays the current media query state.
+	//This adds a label in the top-left corner that displays the current media query state.
 
-    html {
-        &:before,
-        &:after {
-            color: @white;
-            position: fixed;
-            top: 0;
-            z-index: 9999;
-            text-align: center;
-            font-family: sans-serif;
-            font-size: 8px;
-            letter-spacing: .025em;
-            background: rgba(0, 0, 0, 0.4);
-            height: 16px;
-            line-height: 16px;
-            padding: 0 4px;
-            border-radius: 0 0 3px 3px;
-        }
-        &:after {
-            right: 64px;
-            content: "@x-small";
-            @media @small-up {
-                content: "@small";
-            }
-            @media @medium-up {
-                content: "@medium";
-            }
-            @media @large-up {
-                content: "@large";
-            }
-            @media @x-large-up {
-                content: "@x-large";
-            }
-        }
-        &:before {
-            right: 0;
-            @media @nav-responsive-down {
-                content: "@nav-hidden";
-            }
-            @media @nav-responsive-up {
-                content: "@nav-visible";
-            }
-        }
-    }
+	html {
+
+		&:before,
+		&:after {
+			background: rgba(0, 0, 0, 0.4);
+			border-radius: 0 0 3px 3px;
+			color: @white;
+			font-family: sans-serif;
+			font-size: 8px;
+			height: 16px;
+			letter-spacing: .025em;
+			line-height: 16px;
+			padding: 0 4px;
+			position: fixed;
+			text-align: center;
+			top: 0;
+			z-index: 9999;
+		}
+
+		&:after {
+			right: 64px;
+			content: "@x-small";
+
+			@media @small-up {
+				content: "@small";
+			}
+
+			@media @medium-up {
+				content: "@medium";
+			}
+
+			@media @large-up {
+				content: "@large";
+			}
+
+			@media @x-large-up {
+				content: "@x-large";
+			}
+		}
+
+		&:before {
+			right: 0;
+
+			@media @nav-responsive-down {
+				content: "@nav-hidden";
+			}
+
+			@media @nav-responsive-up {
+				content: "@nav-visible";
+			}
+		}
+	}
 }
 
 .current-media-query(@use-current-media-query);

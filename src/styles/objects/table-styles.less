@@ -3,97 +3,97 @@
 // -------------------------------------------------------
 .table-styles(@boolean) when (@boolean =true) {
 
-    // Basic table styling
-    .table {
-        font-family: @table-font-family;
-        font-size: @table-font-size;
-        background-color: @table-background;
+	// Basic table styling
+	.table {
+		background-color: @table-background;
+		font-family: @table-font-family;
+		font-size: @table-font-size;
 
-        caption {
-            padding: @table-caption-padding;
-        }
+		caption {
+			padding: @table-caption-padding;
+		}
 
-        > thead {
-            > tr {
-                > th {
-                    color: @table-headfoot-color;
-                    padding: @table-cell-padding;
-                    vertical-align: top;
-                    font-weight: @table-headfoot-font-weight;
-                    border-bottom: @table-border-width solid @table-border-color;
-                }
-            }
-        }
+		>thead {
+			>tr {
+				>th {
+					border-bottom: @table-border-width solid @table-border-color;
+					color: @table-headfoot-color;
+					font-weight: @table-headfoot-font-weight;
+					padding: @table-cell-padding;
+					vertical-align: top;
+				}
+			}
+		}
 
-        > tbody {
-            > tr {
+		>tbody {
+			>tr {
 
-                > td,
-                th {
-                    padding: @table-cell-padding;
-                    vertical-align: top;
-                    border-bottom: @table-border-width solid @table-border-color;
+				>td,
+				th {
+					border-bottom: @table-border-width solid @table-border-color;
+					padding: @table-cell-padding;
+					vertical-align: top;
 
-                    &:not(td) {
-                        font-weight: @table-headfoot-font-weight;
-                    }
-                }
-            }
-        }
+					&:not(td) {
+						font-weight: @table-headfoot-font-weight;
+					}
+				}
+			}
+		}
 
-        > tfoot {
-            > tr {
-                > td {
-                    color: @table-headfoot-color;
-                    font-weight: @table-headfoot-font-weight;
-                    padding: @table-cell-padding;
-                    vertical-align: top;
-                    border-bottom: none;
-                }
-            }
-        }
+		>tfoot {
+			>tr {
+				>td {
+					border-bottom: none;
+					color: @table-headfoot-color;
+					font-weight: @table-headfoot-font-weight;
+					padding: @table-cell-padding;
+					vertical-align: top;
+				}
+			}
+		}
 
-        &.table--striped {
-            tbody {
-                tr:nth-of-type(odd) {
-                    background: @table-stripe-background;
-                }
-            }
-        }
+		&.table--striped {
+			tbody {
+				tr:nth-of-type(odd) {
+					background: @table-stripe-background;
+				}
+			}
+		}
 
-        &.table--bordered {
-            border: @table-border-width solid @table-border-color;
-        }
+		&.table--bordered {
+			border: @table-border-width solid @table-border-color;
+		}
 
-        &.table--highlight {
-            tbody {
-                tr {
-                    &:hover {
-                        color: @table-higlight-color;
-                        background: @table-higlight-background;
-                    }
-                }
-            }
-        }
-    }
+		&.table--highlight {
+			tbody {
+				tr {
+					&:hover {
+						background: @table-higlight-background;
+						color: @table-higlight-color;
+					}
+				}
+			}
+		}
+	}
 
-    // Rensponsive table
-    // Add horizontal scrolling if the table
-    // contents overflow its parent element.
-    // Usage
-    // <element class="table-responsive">
-    //    <table>...</table>
-    // </element>
+	// Rensponsive table
+	// Add horizontal scrolling if the table
+	// contents overflow its parent element.
+	// Usage
+	// <element class="table-responsive">
+	//    <table>...</table>
+	// </element>
 
-    .table-responsive {
-        margin-bottom: @spacing-base; // add vertical-rhytmn
-        .momentum-scrolling();
-        .pretty-scrollbars();
+	.table-responsive {
+		margin-bottom: @spacing-base; // add vertical-rhytmn
+		.momentum-scrolling();
+		.pretty-scrollbars();
 
-        table {
-            margin-bottom: 0; // remove vertical-rhytmn
-        }
-    }
+		table {
+			margin-bottom: 0; // remove vertical-rhytmn
+		}
+	}
 }
 
 .table-styles(@use-table-styles);

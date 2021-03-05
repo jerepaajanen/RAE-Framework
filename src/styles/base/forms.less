@@ -3,76 +3,78 @@
 // -------------------------------------------------------
 .use-forms(@boolean) when (@boolean =true) {
 
-    fieldset {
-        margin: 0 0 @spacing-base 0;
-        &:last-child {
-            margin-bottom: 0; // remove unnecessary margin from last fieldset
-        }
-    }
+	fieldset {
+		margin: 0 0 @spacing-base 0;
 
-    legend {
-        color: @legend-color;
-        font-family: @legend-font-family;
-        font-size: @legend-font-size;
-        font-weight: @legend-font-weight;
-        margin-bottom: @spacing-half;
-    }
+		&:last-child {
+			margin-bottom: 0; // remove unnecessary margin from last fieldset
+		}
+	}
 
-    label {
-        display: block; // labels goes for their own lines
-        cursor: pointer;
-        color: @label-color;
-        font-family: @label-font-family;
-        font-size: @label-font-size;
-        font-weight: @label-font-weight;
-    }
+	legend {
+		color: @legend-color;
+		font-family: @legend-font-family;
+		font-size: @legend-font-size;
+		font-weight: @legend-font-weight;
+		margin-bottom: @spacing-half;
+	}
 
-    input[type="date"],
-    input[type="datetime"],
-    input[type="datetime-local"],
-    input[type="email"],
-    input[type="month"],
-    input[type="number"],
-    input[type="password"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="text"],
-    input[type="time"],
-    input[type="url"],
-    input[type="week"],
-    input[type="range"],
-    select,
-    textarea {
-        width: 100%; // Let's make 'em responsive!
-    }
+	label {
+		color: @label-color;
+		cursor: pointer;
+		display: block; // labels goes for their own lines
+		font-family: @label-font-family;
+		font-size: @label-font-size;
+		font-weight: @label-font-weight;
+	}
 
-    input[type="checkbox"],
-    input[type="radio"] {
-        + label {
-            display: inline-block; // labels goes to same line
-        }
-    }
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="text"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"],
+	input[type="range"],
+	select,
+	textarea {
+		width: 100%; // Let's make 'em responsive!
+	}
 
-    input[disabled],
-    select[disabled],
-    textarea[disabled] {
-        &,
-        & + label {
-            // disable also [checkbox] & [radio] labels
-            cursor: not-allowed;
-            pointer-events: none;
-            opacity: 0.4;
-        }
-    }
+	input[type="checkbox"],
+	input[type="radio"] {
+		+label {
+			display: inline-block; // labels goes to same line
+		}
+	}
 
-    input,
-    select,
-    textarea,
-    [contenteditable="true"] {
-        &:focus {
-            outline: 0;
-        }
-    }
+	input[disabled],
+	select[disabled],
+	textarea[disabled] {
+
+		&,
+		&+label {
+			// disable also [checkbox] & [radio] labels
+			cursor: not-allowed;
+			opacity: 0.4;
+			pointer-events: none;
+		}
+	}
+
+	input,
+	select,
+	textarea,
+	[contenteditable="true"] {
+		&:focus {
+			outline: 0;
+		}
+	}
 }
 
 .use-forms(@use-forms);

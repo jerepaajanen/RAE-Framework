@@ -3,66 +3,69 @@
 // -------------------------------------------------------
 .use-tags-badges(@boolean) when (@boolean =true) {
 
-    // Usage
-    // <span class="tag">...</span>
-    // <a class="tag">...</a>
-    // <span class="badge">...</span>
-    // <a class="badge">...</a>
+	// Usage
+	// <span class="tag">...</span>
+	// <a class="tag">...</a>
+	// <span class="badge">...</span>
+	// <a class="badge">...</a>
 
-    .tag,
-    .badge {
-        border-style: solid;
-        display: inline-block;
-        position: relative;
-        top: -0.0625em;
-        vertical-align: middle;
-        white-space: nowrap;
-        text-align: center;
-        &:hover,
-        &:focus {
-            text-decoration: none;
-        }
-    }
+	.tag,
+	.badge {
+		border-style: solid;
+		display: inline-block;
+		position: relative;
+		text-align: center;
+		top: -0.0625em;
+		vertical-align: middle;
+		white-space: nowrap;
 
-    // Tag
-    .tag {
-        font-family: @tag-font-family;
-        font-size: @tag-font-size;
-        font-weight: @tag-font-weight;
-        border-radius: @tag-border-radius;
-        border-width: @tag-border-width;
-        letter-spacing: @tag-letter-spacing;
-        text-transform: @tag-text-transform;
-        .tag-size();
-        .tag-styles(@tag-color, @tag-background, @tag-border-color);
+		&:hover,
+		&:focus {
+			text-decoration: none;
+		}
+	}
 
-        //
-        // Tag styles
-        &--primary {
-            .tag-styles(@tag-primary-color, @tag-primary-background, @tag-primary-border-color);
-        }
-    }
+	// Tag
+	.tag {
+		.tag-size();
+		.tag-styles(@tag-color, @tag-background, @tag-border-color);
+		border-radius: @tag-border-radius;
+		border-width: @tag-border-width;
+		font-family: @tag-font-family;
+		font-size: @tag-font-size;
+		font-weight: @tag-font-weight;
+		letter-spacing: @tag-letter-spacing;
+		text-transform: @tag-text-transform;
 
-    // Badge
-    .badge {
-        font-family: @badge-font-family;
-        font-weight: @badge-font-weight;
-        border-radius: @badge-border-radius;
-        border-style: solid;
-        border-width: @badge-border-width;
-        line-height: ceil(@badge-height - (@badge-border-width * 2));
-        padding: 0 @badge-horizontal-padding;
-        letter-spacing: @badge-letter-spacing;
-        text-transform: normal;
-        .badge-size();
-        .badge-styles(@badge-color, @badge-background, @badge-border-color);
+	}
 
-        //
-        // Badge styles
-        &--primary {
-            .badge-styles(@badge-primary-color, @badge-primary-background, @badge-primary-border-color);
-        }
-    }
+	//
+	// Tag styles
+	.tag--primary {
+		.tag-styles(@tag-primary-color, @tag-primary-background, @tag-primary-border-color);
+	}
+
+	// Badge
+	.badge {
+		.badge-size();
+		.badge-styles(@badge-color, @badge-background, @badge-border-color);
+		border-radius: @badge-border-radius;
+		border-style: solid;
+		border-width: @badge-border-width;
+		font-family: @badge-font-family;
+		font-weight: @badge-font-weight;
+		letter-spacing: @badge-letter-spacing;
+		line-height: ceil(@badge-height - (@badge-border-width * 2));
+		padding: 0 @badge-horizontal-padding;
+		text-transform: normal;
+
+	}
+
+	//
+	// Badge styles
+	.badge--primary {
+		.badge-styles(@badge-primary-color, @badge-primary-background, @badge-primary-border-color);
+	}
 }
 
 .use-tags-badges(@use-tags-badges);

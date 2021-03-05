@@ -1,41 +1,41 @@
 .icons(@boolean) when (@boolean =true) {
-//
-// Icon fonts
-// -------------------------------------------------------
+	//
+	// Icon fonts
+	// -------------------------------------------------------
 
-    .icon {
-        fill: currentColor;
-        display: inline-block;
-        flex-shrink: 0;
-        height: 1em;
-        width: 1em;
-        vertical-align: middle;
-        pointer-events: none;
-    }
+	.icon {
+		display: inline-block;
+		fill: currentColor;
+		flex-shrink: 0;
+		height: 1em;
+		pointer-events: none;
+		vertical-align: middle;
+		width: 1em;
+	}
 
-    .button .icon,
-    .icon--aligned {
-        position: relative;
-        top: @icon-baseline-shift;
-    }
+	.button .icon,
+	.icon--aligned {
+		position: relative;
+		top: @icon-baseline-shift;
+	}
 
-    // Icon sizes
+	// Icon sizes
 
-    .icon--small {
-        .icon-size(@icon-small-size);
-    }
+	.icon--small {
+		.icon-size(@icon-small-size);
+	}
 
-    .icon--medium {
-        .icon-size(@icon-medium-size);
-    }
+	.icon--medium {
+		.icon-size(@icon-medium-size);
+	}
 
-    .icon--large {
-        .icon-size(@icon-large-size);
-    }
+	.icon--large {
+		.icon-size(@icon-large-size);
+	}
 
-    .icon--x-large {
-        .icon-size(@icon-x-large-size);
-    }
+	.icon--x-large {
+		.icon-size(@icon-x-large-size);
+	}
 
 
 }

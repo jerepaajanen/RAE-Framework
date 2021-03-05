@@ -3,50 +3,53 @@
 // -------------------------------------------------------
 .loader(@boolean) when (@boolean =true) {
 
-    // Loader
-    .loader,
-    .is-loading {
-        min-height: @loader-size;
-        position: relative;
-        pointer-events: none;
-        color: transparent !important; // Hide text
-        &::after {
-            border: @loader-thickness solid @loader-color;
-            border-right-color: transparent;
-            border-top-color: transparent;
-            border-radius: 100%;
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin-left: -(@loader-size / 2);
-            margin-top: -(@loader-size / 2);
-            display: block;
-            height: @loader-size;
-            width: @loader-size;
-            opacity: @loader-opacity;
-            animation: spinner @loader-speed infinite linear;
-        }
-    }
+	// Loader
+	.loader,
+	.is-loading {
+		color: transparent !important; // Hide text
+		min-height: @loader-size;
+		pointer-events: none;
+		position: relative;
 
-    .loader--large {
-        min-height: @loader-size * 2;
-        &::after {
-            margin-left: -(@loader-size);
-            margin-top: -(@loader-size);
-            height: @loader-size * 2;
-            width: @loader-size * 2;
-        }
-    }
+		&::after {
+			animation: spinner @loader-speed infinite linear;
+			border-radius: 100%;
+			border-right-color: transparent;
+			border-top-color: transparent;
+			border: @loader-thickness solid @loader-color;
+			content: "";
+			display: block;
+			height: @loader-size;
+			left: 50%;
+			margin-left: -(@loader-size / 2);
+			margin-top: -(@loader-size / 2);
+			opacity: @loader-opacity;
+			position: absolute;
+			top: 50%;
+			width: @loader-size;
+		}
+	}
 
-    @keyframes spinner {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
-    }
+	.loader--large {
+		min-height: @loader-size * 2;
+
+		&::after {
+			height: @loader-size * 2;
+			margin-left: -(@loader-size);
+			margin-top: -(@loader-size);
+			width: @loader-size * 2;
+		}
+	}
+
+	@keyframes spinner {
+		0% {
+			transform: rotate(0deg);
+		}
+
+		100% {
+			transform: rotate(360deg);
+		}
+	}
 }
 
 .loader(@use-loader);

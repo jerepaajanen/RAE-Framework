@@ -1,16 +1,17 @@
 //
 // Tables
 // -------------------------------------------------------
-.tables(@boolean) when (@boolean = true) {
+.tables(@boolean) when (@boolean =true) {
 
-    table {
-        empty-cells: show;
-        word-wrap: break-word; // for CSS3 browsers
-        text-align: left;
-        max-width: 100%;
-        width: 100%;
-        margin: 0 0 @spacing-base 0;
-    }
+	table {
+		empty-cells: show;
+		margin: 0 0 @spacing-base 0;
+		max-width: 100%;
+		text-align: left;
+		width: 100%;
+		word-wrap: break-word; // for CSS3 browsers
+	}
 
 }
+
 .tables(@use-tables);

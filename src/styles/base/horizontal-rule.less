@@ -1,16 +1,17 @@
 //
 // Horizontal rule
 // -------------------------------------------------------
-.horizontal-rule(@boolean) when (@boolean = true) {
+.horizontal-rule(@boolean) when (@boolean =true) {
 
-    hr,
-    .hr {
-        border: 0;
-        border-top: @hr-border-width solid @hr-border-color;
-        clear: both;
-        margin-top: @hr-margin;
-        margin-bottom: @hr-margin;
-    }
+	hr,
+	.hr {
+		border-top: @hr-border-width solid @hr-border-color;
+		border: 0;
+		clear: both;
+		margin-bottom: @hr-margin;
+		margin-top: @hr-margin;
+	}
 
 }
+
 .horizontal-rule(@use-horizontal-rule);

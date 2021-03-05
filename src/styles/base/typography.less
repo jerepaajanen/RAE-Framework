@@ -3,274 +3,290 @@
 // -------------------------------------------------------
 .typography(@boolean) when (@boolean =true) {
 
-    // Links
+	// Links
 
-    a {
-        color: @link-color;
-        text-decoration: @link-decoration;
-        cursor: pointer;
-        transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
+	a {
+		color: @link-color;
+		cursor: pointer;
+		text-decoration: @link-decoration;
+		transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
 
-        &:hover,
-        &:focus {
-            color: @link-hover-color;
-            text-decoration: @link-hover-decoration;
-        }
-    }
+		&:hover,
+		&:focus {
+			color: @link-hover-color;
+			text-decoration: @link-hover-decoration;
+		}
+	}
 
-    // Headings
+	// Headings
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    .h1,
-    .h2,
-    .h3,
-    .h4,
-    .h5,
-    .h6 {
-        color: @heading-color;
-        font-family: @heading-font-family;
-        font-weight: @heading-font-weight;
-        line-height: @heading-line-height;
-        letter-spacing: @heading-letter-spacing;
-        margin-bottom: @spacing-base;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6 {
+		color: @heading-color;
+		font-family: @heading-font-family;
+		font-weight: @heading-font-weight;
+		letter-spacing: @heading-letter-spacing;
+		line-height: @heading-line-height;
+		margin-bottom: @spacing-base;
 
-        a {
-            color: inherit;
-        }
-    }
+		a {
+			color: inherit;
+		}
+	}
 
-    h1,
-    .h1 {
-        font-size: @heading1-font-size-small;
+	h1,
+	.h1 {
+		font-size: @heading1-font-size-small;
 
-        @media @medium-up {
-            font-size: @heading1-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @heading1-font-size;
+		}
+	}
 
-    h2,
-    .h2 {
-        font-size: @heading2-font-size-small;
+	h2,
+	.h2 {
+		font-size: @heading2-font-size-small;
 
-        @media @medium-up {
-            font-size: @heading2-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @heading2-font-size;
+		}
+	}
 
-    h3,
-    .h3 {
-        font-size: @heading3-font-size-small;
+	h3,
+	.h3 {
+		font-size: @heading3-font-size-small;
 
-        @media @medium-up {
-            font-size: @heading3-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @heading3-font-size;
+		}
+	}
 
-    h4,
-    .h4 {
-        font-size: @heading4-font-size-small;
+	h4,
+	.h4 {
+		font-size: @heading4-font-size-small;
 
-        @media @medium-up {
-            font-size: @heading4-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @heading4-font-size;
+		}
+	}
 
-    h5,
-    .h5 {
-        font-size: @heading5-font-size-small;
+	h5,
+	.h5 {
+		font-size: @heading5-font-size-small;
 
-        @media @medium-up {
-            font-size: @heading5-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @heading5-font-size;
+		}
+	}
 
-    h6,
-    .h6 {
-        font-size: @heading6-font-size-small;
+	h6,
+	.h6 {
+		font-size: @heading6-font-size-small;
 
-        @media @medium-up {
-            font-size: @heading6-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @heading6-font-size;
+		}
+	}
 
-    // Display headings
+	// Display headings
 
-    .display-1 {
-        font-family: @display1-font-family;
-        font-size: @display1-font-size-small;
-        font-weight: @display1-font-weight;
+	.display-1-size() {
+		font-size: @display1-font-size-small;
 
-        @media @medium-up {
-            font-size: @display1-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @display1-font-size;
+		}
+	}
 
-    .display-2 {
-        font-family: @display2-font-family;
-        font-size: @display2-font-size-small;
-        font-weight: @display2-font-weight;
+	.display-1 {
+		font-family: @display1-font-family;
+		font-weight: @display1-font-weight;
+		.display-1-size();
+	}
 
-        @media @medium-up {
-            font-size: @display2-font-size;
-        }
-    }
+	.display-2-size() {
+		font-size: @display2-font-size-small;
 
-    .display-3 {
-        font-family: @display3-font-family;
-        font-size: @display3-font-size-small;
-        font-weight: @display3-font-weight;
+		@media @medium-up {
+			font-size: @display2-font-size;
+		}
+	}
 
-        @media @medium-up {
-            font-size: @display3-font-size;
-        }
-    }
+	.display-2 {
+		font-family: @display2-font-family;
+		font-weight: @display2-font-weight;
+		.display-2-size();
+	}
 
-    .display-4 {
-        font-family: @display4-font-family;
-        font-size: @display4-font-size-small;
-        font-weight: @display4-font-weight;
+	.display-3-size() {
+		font-size: @display3-font-size-small;
 
-        @media @medium-up {
-            font-size: @display4-font-size;
-        }
-    }
+		@media @medium-up {
+			font-size: @display3-font-size;
+		}
+	}
 
-    // Paragraph
+	.display-3 {
+		font-family: @display3-font-family;
+		font-weight: @display3-font-weight;
+		.display-3-size();
+	}
 
-    p {
-        margin-bottom: @spacing-base;
-    }
+	.display-4-size() {
+		font-size: @display4-font-size-small;
 
-    // Lead
+		@media @medium-up {
+			font-size: @display4-font-size;
+		}
+	}
 
-    .lead {
-        color: @lead-color;
-        font-family: @lead-font-family;
-        font-size: @lead-font-size;
-        font-weight: @lead-font-weight;
-        line-height: @lead-line-height;
-    }
+	.display-4 {
+		font-family: @display4-font-family;
+		font-weight: @display4-font-weight;
+		.display-4-size();
+	}
 
-    // Small
+	// Paragraph
 
-    small,
-    .small {
-        font-size: @small-font-size;
-        font-weight: normal;
-    }
+	p {
+		margin-bottom: @spacing-base;
+	}
 
-    // Mark
+	// Lead
 
-    mark,
-    .mark {
-        background-color: @mark-background-color;
-        padding: @mark-padding;
-    }
+	.lead {
+		color: @lead-color;
+		font-family: @lead-font-family;
+		font-size: @lead-font-size;
+		font-weight: @lead-font-weight;
+		line-height: @lead-line-height;
+	}
 
-    // Blockquotes
+	// Small
 
-    blockquote,
-    q {
-        font-style: @blockquote-quote-font-style;
-        quotes: "\201C""\201D""\2018""\2019";
-    }
+	small,
+	.small {
+		font-size: @small-font-size;
+		font-weight: normal;
+	}
 
-    blockquote {
-        color: @blockquote-quote-color;
-        font-family: @blockquote-quote-font-family;
-        font-size: @blockquote-quote-font-size;
-        font-weight: @blockquote-quote-font-weight;
-        padding: @blockquote-padding;
-        margin-bottom: @spacing-base;
-        letter-spacing: @blockquote-quote-letter-spacing;
-        line-height: @blockquote-quote-line-height;
+	// Mark
 
-        // Blockquote Quote
-        p {
-            margin-bottom: 0;
+	mark,
+	.mark {
+		background-color: @mark-background-color;
+		padding: @mark-padding;
+	}
 
-            &:not(:only-child) {
-                margin-bottom: @blockquote-quote-margin;
-            }
-        }
+	// Blockquotes
 
-        // Blockquote Cite
-        cite {
-            color: @blockquote-cite-color;
-            display: inline-block;
-            font-family: @base-font-family;
-            font-size: @blockquote-cite-font-size;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 1;
+	blockquote,
+	q {
+		font-style: @blockquote-quote-font-style;
+		quotes: "\201C""\201D""\2018""\2019";
+	}
 
-            &:before {
-                content: "\2014 \0020"; // add – line before cite
-            }
-        }
-    }
+	blockquote {
+		color: @blockquote-quote-color;
+		font-family: @blockquote-quote-font-family;
+		font-size: @blockquote-quote-font-size;
+		font-weight: @blockquote-quote-font-weight;
+		letter-spacing: @blockquote-quote-letter-spacing;
+		line-height: @blockquote-quote-line-height;
+		margin-bottom: @spacing-base;
+		padding: @blockquote-padding;
 
-    // Pullquote
+		// Blockquote Quote
+		p {
+			margin-bottom: 0;
 
-    .pullquote {
-        color: @pullquote-color;
-        font-family: @pullquote-font-family;
-        font-size: @pullquote-font-size;
-        font-style: @pullquote-font-style;
-        padding: @pullquote-padding;
-        border-left: @pullquote-border-width solid @pullquote-border-color;
+			&:not(:only-child) {
+				margin-bottom: @blockquote-quote-margin;
+			}
+		}
 
-        cite {
-            font-size: @pullquote-cite-font-size;
-            color: @pullquote-cite-color;
-        }
-    }
+		// Blockquote Cite
+		cite {
+			color: @blockquote-cite-color;
+			display: inline-block;
+			font-family: @base-font-family;
+			font-size: @blockquote-cite-font-size;
+			font-style: normal;
+			font-weight: normal;
+			line-height: 1;
 
-    // Code and Pre Elements
+			&:before {
+				content: "\2014 \0020"; // add – line before cite
+			}
+		}
+	}
 
-    code,
-    kbd,
-    pre {
-        font-size: @code-font-size;
-        border-radius: @code-border-radius;
-    }
+	// Pullquote
 
-    code,
-    pre {
-        line-height: 1.25;
-        white-space: pre;
-        word-wrap: normal;
-        word-break: normal;
-    }
+	.pullquote {
+		border-left: @pullquote-border-width solid @pullquote-border-color;
+		color: @pullquote-color;
+		font-family: @pullquote-font-family;
+		font-size: @pullquote-font-size;
+		font-style: @pullquote-font-style;
+		padding: @pullquote-padding;
 
-    code {
-        background: @code-background;
-        border: 1px solid @code-border-color;
-        color: @code-color;
-        font-weight: normal;
-        padding: @code-padding;
-        vertical-align: middle;
-    }
+		cite {
+			color: @pullquote-cite-color;
+			font-size: @pullquote-cite-font-size;
+		}
+	}
 
-    pre {
-        background: @pre-background;
-        color: @pre-color;
-        overflow-x: auto;
-        padding: @pre-padding;
-        margin-bottom: @spacing-base;
+	// Code and Pre Elements
 
-        code {
-            background: transparent;
-            border: none;
-            color: inherit;
-            padding: 0;
-        }
-    }
+	code,
+	kbd,
+	pre {
+		border-radius: @code-border-radius;
+		font-size: @code-font-size;
+	}
+
+	code,
+	pre {
+		line-height: 1.25;
+		white-space: pre;
+		word-break: normal;
+		word-wrap: normal;
+	}
+
+	code {
+		background: @code-background;
+		border: 1px solid @code-border-color;
+		color: @code-color;
+		font-weight: normal;
+		padding: @code-padding;
+		vertical-align: middle;
+	}
+
+	pre {
+		background: @pre-background;
+		color: @pre-color;
+		margin-bottom: @spacing-base;
+		overflow-x: auto;
+		padding: @pre-padding;
+
+		code {
+			background: transparent;
+			border: none;
+			color: inherit;
+			padding: 0;
+		}
+	}
 
 }
 

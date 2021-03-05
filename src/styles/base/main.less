@@ -1,22 +1,23 @@
 //
 // Main
 // -------------------------------------------------------
-.main(@boolean) when (@boolean = true) {
+.main(@boolean) when (@boolean =true) {
 
-    html {
-        font-size: @root-font-size; // Default `font-size` for used with `rem` type scales.
-        height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
-    }
+	:root {
+		font-size: @root-font-size; // Default `font-size` for used with `rem` type scales.
+		height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
+	}
 
-    body {
-        background-color: @base-background;
-        color: @base-color;
-        font-family: @base-font-family;
-        font-size: @base-font-size;
-        line-height: @line-height-base;
-        letter-spacing: @base-letter-spacing;
-        min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
-    }
+	body {
+		background-color: @base-background;
+		color: @base-color;
+		font-family: @base-font-family;
+		font-size: @base-font-size;
+		line-height: @line-height-base;
+		letter-spacing: @base-letter-spacing;
+		min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
+	}
 
 }
+
 .main(@use-main);

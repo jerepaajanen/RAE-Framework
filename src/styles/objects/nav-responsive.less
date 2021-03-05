@@ -4,125 +4,119 @@
 .responsive-navigation(@boolean) when (@boolean =true) {
 
 
-    .nav-responsive() {
-        & when (@nav-responsive-breakpoint =@breakpoint-x-large) {
+	.nav-responsive() {
+		& when (@nav-responsive-breakpoint =@breakpoint-x-large) {
 
-            [data-navigation] {
-                overflow-x: visible;
-                -webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+			[data-navigation] {
+				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+				overflow-x: visible;
 
-                [data-content] {
-                    display: none;
-                    visibility: hidden;
+				[data-content] {
+					display: none;
+					visibility: hidden;
 
-                    &.is-open {
-                        display: block;
-                        visibility: visible;
-                        overflow-y: auto;
-                    }
-                }
-            }
+					&.is-open {
+						display: block;
+						overflow-y: auto;
+						visibility: visible;
+					}
+				}
+			}
 
-            .menu-open {
-                overflow: hidden !important;
-                height: 100% !important
-            }
+			.menu-open {
+				height: 100% !important overflow: hidden !important;
+			}
 
-            .submenu-open {
-                overflow: hidden !important;
-                height: 100% !important
-            }
+			.submenu-open {
+				height: 100% !important overflow: hidden !important;
+			}
 
-            [data-overlay] {
-                position: fixed;
-                visibility: hidden;
-                width: 100%;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                opacity: 0;
+			[data-overlay] {
+				bottom: 0;
+				left: 0;
+				opacity: 0;
+				position: fixed;
+				right: 0;
+				top: 0;
+				visibility: hidden;
+				width: 100%;
 
-                &.is-visible {
-                    visibility: visible;
-                    opacity: 1;
-                }
-            }
+				&.is-visible {
+					opacity: 1;
+					visibility: visible;
+				}
+			}
 
-        }
+		}
 
-        & when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
-            [data-navigation] {
-                overflow-x: visible;
-                -webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+		& when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
+			[data-navigation] {
+				overflow-x: visible;
+				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
 
-                @media @nav-responsive-down {
-                    [data-content] {
-                        display: none;
-                        visibility: hidden;
+				@media @nav-responsive-down {
+					[data-content] {
+						display: none;
+						visibility: hidden;
 
-                        &.is-open {
-                            display: block;
-                            visibility: visible;
-                            overflow-y: auto;
-                        }
-                    }
-                }
+						&.is-open {
+							display: block;
+							overflow-y: auto;
+							visibility: visible;
+						}
+					}
+				}
 
-                @media @nav-responsive-up {
-                    width: auto;
+				@media @nav-responsive-up {
+					width: auto;
 
-                    [data-content] {
-                        display: block;
-                        height: auto;
-                        overflow: visible;
-                        visibility: visible;
-                    }
+					[data-content] {
+						display: block;
+						height: auto;
+						overflow: visible;
+						visibility: visible;
+					}
 
-                    // Hide navigation toggle-buttons
-                    [data-toggle] {
-                        display: none;
-                    }
-                }
-            }
+					// Hide navigation toggle-buttons
+					[data-toggle] {
+						display: none;
+					}
+				}
+			}
 
-            @media @nav-responsive-down {
-                .menu-open {
-                    overflow: hidden !important;
-                    height: 100% !important
-                }
-            }
+			@media @nav-responsive-down {
+				.menu-open {
+					height: 100% !important overflow: hidden !important;
+				}
+			}
 
-            @media @nav-responsive-up {
-                .submenu-open {
-                    overflow: hidden !important;
-                    height: 100% !important
-                }
-            }
+			@media @nav-responsive-up {
+				.submenu-open {
+					height: 100% !important overflow: hidden !important;
+				}
+			}
 
-            @media @nav-responsive-up {
-                [data-overlay] {
-                    position: fixed;
-                    visibility: hidden;
-                    width: 100%;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    opacity: 0;
+			@media @nav-responsive-up {
+				[data-overlay] {
+					bottom: 0;
+					left: 0;
+					opacity: 0;
+					position: fixed;
+					right: 0;
+					top: 0;
+					visibility: hidden;
+					width: 100%;
 
-                    &.is-visible {
-                        visibility: visible;
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-    }
+					&.is-visible {
+						opacity: 1;
+						visibility: visible;
+					}
+				}
+			}
+		}
+	}
 
-
-
-    .nav-responsive();
+	.nav-responsive();
 
 }
 

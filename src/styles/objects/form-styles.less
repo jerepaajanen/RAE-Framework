@@ -3,385 +3,385 @@
 // -------------------------------------------------------
 .use-form-styles(@boolean) when (@boolean =true) {
 
-    // Fieldset with borders
-    fieldset.fieldset--bordered {
-        border: @fieldset-border-width @fieldset-border-style @fieldset-border-color;
-        padding: @spacing-half @spacing-base @spacing-base @spacing-base;
+	// Fieldset with borders
+	fieldset.fieldset--bordered {
+		border: @fieldset-border-width @fieldset-border-style @fieldset-border-color;
+		padding: @spacing-half @spacing-base @spacing-base @spacing-base;
 
-        legend {
-            padding: 0 @spacing-half;
-            margin: 0 0 0 (@spacing-half * -1);
-        }
-    }
+		legend {
+			margin: 0 0 0 (@spacing-half * -1);
+			padding: 0 @spacing-half;
+		}
+	}
 
-    // Basic styles for form elements
-    .input,
-    input[type="date"],
-    input[type="datetime"],
-    input[type="datetime-local"],
-    input[type="email"],
-    input[type="month"],
-    input[type="number"],
-    input[type="password"],
-    input[type="search"],
-    input[type="tel"],
-    input[type="text"],
-    input[type="time"],
-    input[type="url"],
-    input[type="week"],
-    textarea,
-    select {
-        // Removes awkward default styles on some inputs for iOS
-        // Get rid of <select> arrow in FF, idea for this hack:
-        // https://gist.github.com/joaocunha/6273016
-        appearance: none;
-        position: relative;
-        background-color: @input-background;
-        background-image: none;
-        border-style: solid;
-        border-color: @input-border-color;
-        border-width: @input-border-width;
-        border-radius: @input-border-radius;
-        box-shadow: @input-box-shadow;
-        color: @input-color;
-        font-family: @input-font-family;
-        font-size: @input-font-size;
-        height: @input-height;
-        padding: 0 @input-horizontal-padding;
-        transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
+	// Basic styles for form elements
+	.input,
+	input[type="date"],
+	input[type="datetime"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="password"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="text"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"],
+	textarea,
+	select {
+		// Removes awkward default styles on some inputs for iOS
+		// Get rid of <select> arrow in FF, idea for this hack:
+		// https://gist.github.com/joaocunha/6273016
+		appearance: none;
+		background-color: @input-background;
+		background-image: none;
+		border-color: @input-border-color;
+		border-radius: @input-border-radius;
+		border-style: solid;
+		border-width: @input-border-width;
+		box-shadow: @input-box-shadow;
+		color: @input-color;
+		font-family: @input-font-family;
+		font-size: @input-font-size;
+		height: @input-height;
+		padding: 0 @input-horizontal-padding;
+		position: relative;
+		transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
 
-        &:hover {
-            border-color: @input-border-color-hover;
-            background: @input-hover-background;
-        }
+		&:hover {
+			background: @input-hover-background;
+			border-color: @input-border-color-hover;
+		}
 
-        &:focus {
-            border-color: @input-border-color-focus;
-        }
-    }
+		&:focus {
+			border-color: @input-border-color-focus;
+		}
+	}
 
-    textarea,
-    select[multiple] {
-        height: auto;
-        padding-top: ((@input-height - (@input-font-size * @line-height-base)) / 2);
-        padding-bottom: ((@input-height - (@input-font-size * @line-height-base)) / 2);
-    }
+	textarea,
+	select[multiple] {
+		height: auto;
+		padding-bottom: ((@input-height - (@input-font-size * @line-height-base)) / 2);
+		padding-top: ((@input-height - (@input-font-size * @line-height-base)) / 2);
+	}
 
-    // Range input
-    input[type=range] {
-        -webkit-appearance: none;
-        margin: (@range-thumb-height / 2) 0;
+	// Range input
+	input[type=range] {
+		-webkit-appearance: none;
+		margin: (@range-thumb-height / 2) 0;
 
-        .track() {
-            height: @range-track-height;
-            cursor: pointer;
-            transition: background @transition-duration-default;
-        }
+		.track() {
+			height: @range-track-height;
+			cursor: pointer;
+			transition: background @transition-duration-default;
+		}
 
-        .thumb() {
-            height: @range-thumb-height;
-            width: @range-thumb-width;
-            border-radius: @range-thumb-border-radius;
-            background-color: @range-thumb-color;
-            border-width: @range-thumb-border-width;
-            border-color: @range-thumb-border-color;
-            box-shadow: @range-thumb-box-shadow;
-            cursor: pointer;
-        }
+		.thumb() {
+			background-color: @range-thumb-color;
+			border-color: @range-thumb-border-color;
+			border-radius: @range-thumb-border-radius;
+			border-width: @range-thumb-border-width;
+			box-shadow: @range-thumb-box-shadow;
+			cursor: pointer;
+			height: @range-thumb-height;
+			width: @range-thumb-width;
+		}
 
-        &:focus {
-            outline: none;
-        }
+		&:focus {
+			outline: none;
+		}
 
-        &::-webkit-slider-runnable-track {
-            .track();
-            box-shadow: @range-track-box-shadow;
-            background-color: @range-track-color;
-            border-radius: @range-track-border-radius;
-            border-width: @range-track-border-width;
-            border-color: @range-track-border-color;
-        }
+		&::-webkit-slider-runnable-track {
+			.track();
+			background-color: @range-track-color;
+			border-color: @range-track-border-color;
+			border-radius: @range-track-border-radius;
+			border-width: @range-track-border-width;
+			box-shadow: @range-track-box-shadow;
+		}
 
-        &::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            .thumb();
-            margin-top: ((-@range-track-border-width * 2 + @range-track-height) / 2) - (@range-thumb-height / 2);
-        }
+		&::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			.thumb();
+			margin-top: ((-@range-track-border-width * 2 + @range-track-height) / 2) - (@range-thumb-height / 2);
+		}
 
-        &:focus::-webkit-slider-runnable-track {
-            background-color: darken(@range-track-color, 5%);
-        }
+		&:focus::-webkit-slider-runnable-track {
+			background-color: darken(@range-track-color, 5%);
+		}
 
-        &::-moz-range-track {
-            .track();
-            box-shadow: @range-track-box-shadow;
-            background: @range-track-color;
-            border-radius: @range-track-border-radius;
-            border-width: @range-track-border-width;
-            border-color: @range-track-border-color;
-        }
+		&::-moz-range-track {
+			.track();
+			background: @range-track-color;
+			border-radius: @range-track-border-radius;
+			border-width: @range-track-border-width;
+			box-shadow: @range-track-box-shadow;
+			border-color: @range-track-border-color;
+		}
 
-        &::-moz-range-thumb {
-            .thumb();
-        }
+		&::-moz-range-thumb {
+			.thumb();
+		}
 
-        &::-ms-track {
-            .track();
-            background-color: transparent;
-            border-color: transparent;
-            border-width: @range-thumb-width 0;
-            color: transparent;
-        }
+		&::-ms-track {
+			.track();
+			background-color: transparent;
+			border-color: transparent;
+			border-width: @range-thumb-width 0;
+			color: transparent;
+		}
 
-        &::-ms-fill-lower {
-            background-color: darken(@range-track-color, 5%);
-            border-width: @range-track-border-width;
-            border-color: @range-track-border-color;
-            border-radius: @range-track-border-radius*2;
-            box-shadow: @range-track-box-shadow;
-        }
+		&::-ms-fill-lower {
+			background-color: darken(@range-track-color, 5%);
+			border-color: @range-track-border-color;
+			border-radius: @range-track-border-radius*2;
+			border-width: @range-track-border-width;
+			box-shadow: @range-track-box-shadow;
+		}
 
-        &::-ms-fill-upper {
-            background-color: @range-track-color;
-            border-width: @range-track-border-width;
-            border-color: @range-track-border-color;
-            border-radius: @range-track-border-radius*2;
-            box-shadow: @range-track-box-shadow
-        }
+		&::-ms-fill-upper {
+			background-color: @range-track-color;
+			border-color: @range-track-border-color;
+			border-radius: @range-track-border-radius*2;
+			border-width: @range-track-border-width;
+			box-shadow: @range-track-box-shadow
+		}
 
-        &::-ms-thumb {
-            .thumb();
-        }
+		&::-ms-thumb {
+			.thumb();
+		}
 
-        &:focus::-ms-fill-lower {
-            background-color: @range-track-color;
-        }
+		&:focus::-ms-fill-lower {
+			background-color: @range-track-color;
+		}
 
-        &:focus::-ms-fill-upper {
-            background-color: darken(@range-track-color, 5%);
-        }
-    }
+		&:focus::-ms-fill-upper {
+			background-color: darken(@range-track-color, 5%);
+		}
+	}
 
-    // Select
-    select:not([multiple]) {
-        -moz-appearance: none;
-        -webkit-appearance: none;
-        appearance: none;
-        cursor: pointer;
-        background-image: data-uri('image/svg+xml;charset=UTF-8', '../../images/icons/select.svg');
-        background-position: right center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        padding: 0 2.4em 0 @input-horizontal-padding;
+	// Select
+	select:not([multiple]) {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		appearance: none;
+		background-image: data-uri('image/svg+xml;charset=UTF-8', '../../images/icons/select.svg');
+		background-position: right center;
+		background-repeat: no-repeat;
+		background-size: contain;
+		cursor: pointer;
+		padding: 0 2.4em 0 @input-horizontal-padding;
 
-        &::-ms-expand {
-            display: none; // Internet Explorer 11+
-        }
+		&::-ms-expand {
+			display: none; // Internet Explorer 11+
+		}
 
-        &::-ms-value {
-            color: currentColor; // Internet Explorer 11+
-        }
+		&::-ms-value {
+			color: currentColor; // Internet Explorer 11+
+		}
 
-        &:focus:-moz-focusring {
-            // Remove ugly focus in FF
-            color: transparent;
-            text-shadow: 0 0 0 @input-color;
-        }
+		&:focus:-moz-focusring {
+			// Remove ugly focus in FF
+			color: transparent;
+			text-shadow: 0 0 0 @input-color;
+		}
 
-        &:hover,
-        &:focus {
-        background-image: data-uri('image/svg+xml;charset=UTF-8', '../../images/icons/select_hover.svg');
-        }
-    }
+		&:hover,
+		&:focus {
+			background-image: data-uri('image/svg+xml;charset=UTF-8', '../../images/icons/select_hover.svg');
+		}
+	}
 
-    // Radios and checkboxes
-    .radio,
-    .checkbox {
-        user-select: none;
+	// Radios and checkboxes
+	.radio,
+	.checkbox {
+		user-select: none;
 
-        & + & {
-            margin-top: @checkbox-radio-vertical-margin; // add some spacing between checkboxes/radios
-        }
+		&+& {
+			margin-top: @checkbox-radio-vertical-margin; // add some spacing between checkboxes/radios
+		}
 
-        // Inline styles
-        &.checkbox--inline,
-        &.radio--inline {
-            @media @medium-up {
-                display: inline-block;
-                margin-top: 0; // reset margin
-                margin-right: @spacing-half; // space out consecutive inline controls
-            }
-        }
+		// Inline styles
+		&.checkbox--inline,
+		&.radio--inline {
+			@media @medium-up {
+				display: inline-block;
+				margin-top: 0; // reset margin
+				margin-right: @spacing-half; // space out consecutive inline controls
+			}
+		}
 
-        // Hide inputs
-        input {
-            display: none;
-        }
+		// Hide inputs
+		input {
+			display: none;
+		}
 
-        // Overwrite unstyled radios and checkboxes
-        input + label {
-            display: block;
-        }
+		// Overwrite unstyled radios and checkboxes
+		input+label {
+			display: block;
+		}
 
-        // Control inputs with label
-        label {
-            position: relative;
-            padding-left: (@checkbox-radio-size + @checkbox-radio-left-padding);
-            line-height: @checkbox-radio-size;
-            min-height: @checkbox-radio-size; // makes empty label possible
+		// Control inputs with label
+		label {
+			line-height: @checkbox-radio-size;
+			min-height: @checkbox-radio-size; // makes empty label possible
+			padding-left: (@checkbox-radio-size + @checkbox-radio-left-padding);
+			position: relative;
 
-            &:before,
-            &:after {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: @checkbox-radio-size;
-                height: @checkbox-radio-size;
-                line-height: @checkbox-radio-size;
-            }
+			&:before,
+			&:after {
+				content: '';
+				height: @checkbox-radio-size;
+				left: 0;
+				line-height: @checkbox-radio-size;
+				position: absolute;
+				top: 0;
+				width: @checkbox-radio-size;
+			}
 
-            &:before {
-                background: @checkbox-radio-background;
-                border: @checkbox-radio-border-width solid @input-border-color;
-                box-shadow: @input-box-shadow;
-                transition: border-color @transition-duration-default @transition-easing-default;
-            }
+			&:before {
+				background: @checkbox-radio-background;
+				border: @checkbox-radio-border-width solid @input-border-color;
+				box-shadow: @input-box-shadow;
+				transition: border-color @transition-duration-default @transition-easing-default;
+			}
 
-            &:after {
-                transform: scale(0) rotate(45deg);
-                transition: transform 100ms @transition-easing-default;
-            }
+			&:after {
+				transform: scale(0) rotate(45deg);
+				transition: transform 100ms @transition-easing-default;
+			}
 
-            &:hover::before {
-                border-color: @input-border-color-hover;
-            }
-        }
+			&:hover::before {
+				border-color: @input-border-color-hover;
+			}
+		}
 
-        input:checked {
-            + label:after {
-                transform: scale(1) rotate(45deg);
-            }
-        }
-    }
+		input:checked {
+			+label:after {
+				transform: scale(1) rotate(45deg);
+			}
+		}
+	}
 
-    // Checkbox styles
-    .checkbox {
-        label {
-            &:before {
-                border-radius: @checkbox-border-radius;
-            }
+	// Checkbox styles
+	.checkbox {
+		label {
+			&:before {
+				border-radius: @checkbox-border-radius;
+			}
 
-            // Checked tick
-            &:after {
-                border: solid @checkbox-checked-color;
-                border-width: 0 @checkbox-checked-width @checkbox-checked-width 0;
-                height: round((@checkbox-checked-size / 1.5), 0);
-                width: round((@checkbox-checked-size / 2.75), 0);
-                position: absolute;
-                left: @checkbox-checked-x;
-                top: @checkbox-checked-y;
-            }
-        }
+			// Checked tick
+			&:after {
+				border-width: 0 @checkbox-checked-width @checkbox-checked-width 0;
+				border: solid @checkbox-checked-color;
+				height: round((@checkbox-checked-size / 1.5), 0);
+				left: @checkbox-checked-x;
+				position: absolute;
+				top: @checkbox-checked-y;
+				width: round((@checkbox-checked-size / 2.75), 0);
+			}
+		}
 
-        input:checked {
-            + label:before {
-                & when not(@checkbox-checked-background =transparent) {
-                    background: @checkbox-checked-background;
-                    border-color: @checkbox-checked-background;
-                    transition: all 100ms @transition-easing-default;
-                }
-            }
-        }
-    }
+		input:checked {
+			+label:before {
+				& when not(@checkbox-checked-background =transparent) {
+					background: @checkbox-checked-background;
+					border-color: @checkbox-checked-background;
+					transition: all 100ms @transition-easing-default;
+				}
+			}
+		}
+	}
 
-    // Radio styles
-    .radio {
-        label {
-            &:before {
-                border-radius: 100%;
-            }
+	// Radio styles
+	.radio {
+		label {
+			&:before {
+				border-radius: 100%;
+			}
 
-            // Checked radio
-            &:after {
-                background: @radio-checked-color;
-                background-clip: padding-box;
-                border: (@checkbox-radio-size - @radio-checked-size) solid transparent;
-                border-radius: 100%;
-            }
-        }
-    }
+			// Checked radio
+			&:after {
+				background-clip: padding-box;
+				background: @radio-checked-color;
+				border-radius: 100%;
+				border: (@checkbox-radio-size - @radio-checked-size) solid transparent;
+			}
+		}
+	}
 
-    // Input modifiers
-    .use-input-modifiers(@boolean) when (@boolean =true) {
+	// Input modifiers
+	.use-input-modifiers(@boolean) when (@boolean =true) {
 
-        // Input sizes
-        input.input--small,
-        select.select--small,
-        textarea.textarea--small {
-            height: @input-small-height;
-            font-size: @input-small-font-size;
-        }
+		// Input sizes
+		input.input--small,
+		select.select--small,
+		textarea.textarea--small {
+			font-size: @input-small-font-size;
+			height: @input-small-height;
+		}
 
-        input.input--large,
-        select.select--large,
-        textarea.textarea--large {
-            height: @input-large-height;
-            font-size: @input-large-font-size;
-        }
+		input.input--large,
+		select.select--large,
+		textarea.textarea--large {
+			font-size: @input-large-font-size;
+			height: @input-large-height;
+		}
 
-        // Input variations
-        input.input--underlined,
-        select.select--underlined,
-        textarea.textarea--underlined {
-            border-width: 0 0 @input-border-width 0;
-            border-radius: 0;
-            padding-left: 0;
-            padding-right: 0;
-        }
+		// Input variations
+		input.input--underlined,
+		select.select--underlined,
+		textarea.textarea--underlined {
+			border-radius: 0;
+			border-width: 0 0 @input-border-width 0;
+			padding-left: 0;
+			padding-right: 0;
+		}
 
-        input.input--pill,
-        select.select--pill {
-            border-radius: 999em;
-            padding-left: (@input-horizontal-padding * 2);
-            padding-right: (@input-horizontal-padding * 2);
-        }
+		input.input--pill,
+		select.select--pill {
+			border-radius: 999em;
+			padding-left: (@input-horizontal-padding * 2);
+			padding-right: (@input-horizontal-padding * 2);
+		}
 
-        input.input--opaque,
-        select.select--opaque,
-        textarea.textarea--opaque {
-            background-color: transparent;
-        }
+		input.input--opaque,
+		select.select--opaque,
+		textarea.textarea--opaque {
+			background-color: transparent;
+		}
 
-        input.input--unstyled,
-        select.select--unstyled,
-        textarea.textarea--unstyled {
-            border: 0;
-            border-radius: 0;
-            padding: 0;
-            outline: 0;
-            height: auto;
-            background-color: transparent;
-            box-shadow: none;
+		input.input--unstyled,
+		select.select--unstyled,
+		textarea.textarea--unstyled {
+			background-color: transparent;
+			border-radius: 0;
+			border: 0;
+			box-shadow: none;
+			height: auto;
+			outline: 0;
+			padding: 0;
 
-            &:focus,
-            &:hover {
-                outline: none;
-                box-shadow: none;
-                background-color: transparent;
-            }
-        }
+			&:focus,
+			&:hover {
+				background-color: transparent;
+				box-shadow: none;
+				outline: none;
+			}
+		}
 
-        textarea.textarea--unstyled {
-            resize: none;
-        }
-    }
+		textarea.textarea--unstyled {
+			resize: none;
+		}
+	}
 
-    .use-input-modifiers(@use-input-modifiers);
+	.use-input-modifiers(@use-input-modifiers);
 
-    // Input placeholder color
+	// Input placeholder color
 
-    .input-placeholder(@input-placeholder-color, @input-placeholder-hover-color, @input-placeholder-focus-color);
+	.input-placeholder(@input-placeholder-color, @input-placeholder-hover-color, @input-placeholder-focus-color);
 
 
 }

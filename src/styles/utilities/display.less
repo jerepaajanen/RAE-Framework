@@ -3,29 +3,30 @@
 // -------------------------------------------------------
 .use-display(@boolean) when (@boolean =true) {
 
-    .u-block {
-        display: block !important;
-    }
+	.u-block {
+		display: block !important;
+	}
 
-    .u-inline-block {
-        display: inline-block !important;
-    }
+	.u-inline-block {
+		display: inline-block !important;
+	}
 
-    .u-table {
-        display: table !important;
-        &:before {
-            height: auto !important;
-            display: inherit !important;
-        }
-    }
+	.u-table {
+		display: table !important;
 
-    .u-table-cell {
-        display: table-cell !important
-    }
+		&:before {
+			display: inherit !important;
+			height: auto !important;
+		}
+	}
 
-    .u-flex {
-        display: flex !important;
-    }
+	.u-table-cell {
+		display: table-cell !important
+	}
+
+	.u-flex {
+		display: flex !important;
+	}
 }
 
 .use-display(@use-display);
