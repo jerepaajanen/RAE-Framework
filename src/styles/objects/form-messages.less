@@ -12,22 +12,22 @@
 		line-height: @form-message-line-height;
 		margin: @form-message-vertical-margin 0;
 		text-align: @form-message-text-align;
-
-		// Success
-		.form-message--success {
-			color: @color-success;
-		}
-
-		// Error
-		.form-message--error {
-			color: @color-error;
-		}
-
-		// Warning
-		.form-message--warning {
-			color: @color-warning;
-		}
-
 	}
 
-	.use-form-messages(@use-form-messages);
+	// Success
+	.form-message--success {
+		color: @color-success;
+	}
+
+	// Error
+	.form-message--error {
+		color: @color-error;
+	}
+
+	// Warning
+	.form-message--warning {
+		color: @color-warning;
+	}
+}
+
+.use-form-messages(@use-form-messages);
