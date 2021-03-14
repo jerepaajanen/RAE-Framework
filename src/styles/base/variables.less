@@ -11,10 +11,12 @@
 // -------------------------------------------------------
 
 // Breakpoints
-@breakpoint-small:                      544px; // Phone landscape
+@breakpoint-x-small:                    360px; // Phone Potrait
+@breakpoint-small:                      640px; // Phone landscape
 @breakpoint-medium:                     768px; // Tablet Landscape
-@breakpoint-large:                      992px; // Desktop
-@breakpoint-x-large:                    1200px; // Large Screens
+@breakpoint-large:                      1024px; // Desktop
+@breakpoint-x-large:                    1280px; // Large Screens
+@breakpoint-xx-large:                   1440px; // Wide Screens
 
 // Grid Columns
 @grid-columns:                          12;
@@ -23,17 +25,15 @@
 // Grid Container
 @container-padding-x:                   @grid-gutter-width / 2;
 
-@container-small:                       100%;
+@container-x-small:                     100%;
+@container-small:                       (@breakpoint-small - @grid-gutter-width);
 @container-medium:                      (@breakpoint-medium - @grid-gutter-width);
 @container-large:                       (@breakpoint-large - @grid-gutter-width);
 @container-x-large:                     (@breakpoint-x-large - @grid-gutter-width);
+@container-xx-large:                    (@breakpoint-xx-large - @grid-gutter-width);
 
 @container-fluid:                       100%;
 @container-fluid-max:                   @container-x-large;
-@container-fluid-inner:                 100%;
-@container-fluid-inner-max:             @container-medium;
-@container-fluid-full:                  100%;
-@container-fluid-full-max:              100%;
 
 
 // COLORS
@@ -190,7 +190,7 @@
 
 // Code
 @code-font-size:                        round(@base-font-size * 0.75);
-@code-color:                            @color-secondary;
+@code-color:                            @color-primary;
 @code-background:                       @grey-25;
 @code-border-color:                     @grey-100;
 @code-border-radius:                    @border-radius-small;
@@ -519,12 +519,12 @@
 @use-tables:                            true;
 @use-print:                             true;
 
-// Screen sizes
-@use-screen-x-small:                    true;
+// Screen Sizes
 @use-screen-small:                      true;
 @use-screen-medium:                     true;
 @use-screen-large:                      true;
 @use-screen-x-large:                    true;
+@use-screen-xx-large:                   true;
 
 // Objects
 @use-animation:                         true;

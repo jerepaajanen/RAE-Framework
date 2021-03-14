@@ -13,11 +13,11 @@
 			border-radius: 0 0 3px 3px;
 			color: @white;
 			font-family: sans-serif;
-			font-size: 8px;
-			height: 16px;
+			font-size: 10px;
+			height: 18px;
 			letter-spacing: .025em;
 			line-height: 16px;
-			padding: 0 4px;
+			padding: 0 6px;
 			position: fixed;
 			text-align: center;
 			top: 0;
@@ -25,8 +25,12 @@
 		}
 
 		&:after {
-			right: 64px;
-			content: "@x-small";
+			right: 80px;
+			content: "@xx-small";
+
+			@media @x-small-up {
+				content: "@x-small";
+			}
 
 			@media @small-up {
 				content: "@small";
@@ -42,6 +46,10 @@
 
 			@media @x-large-up {
 				content: "@x-large";
+			}
+
+			@media @xx-large-up {
+				content: "@xx-large";
 			}
 		}
 

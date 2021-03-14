@@ -3,17 +3,14 @@
 // -------------------------------------------------------
 .use-widths(@boolean) when (@boolean =true) {
 
-	// Small Grid for Mobile devices
-	.use-screen-x-small(@boolean) when (@boolean =true) {
-		.loop-grid(@grid-columns, width, -x-small);
+	// Widths (aka X-Small Widths)
+	.loop-grid(@grid-columns, width);
 
-		.u-width-x-small-auto {
-			flex: 1;
-		}
+	.u-width-auto {
+		flex: 1;
 	}
 
-	.use-screen-x-small(@use-screen-x-small); // Small Grid for Mobile devices
-
+	// Small Widths
 	.use-screen-small(@boolean) when (@boolean =true) {
 		@media @small-up {
 			.loop-grid(@grid-columns, width, -small);
@@ -24,8 +21,9 @@
 		}
 	}
 
-	.use-screen-small(@use-screen-small); // Medium Grid for Tablet devices
+	.use-screen-small(@use-screen-small);
 
+	// Medium Widths
 	.use-screen-medium(@boolean) when (@boolean =true) {
 		@media @medium-up {
 			.loop-grid(@grid-columns, width, -medium);
@@ -36,8 +34,9 @@
 		}
 	}
 
-	.use-screen-medium(@use-screen-medium); // Large Grid, optimal for laptop & desktop devices
+	.use-screen-medium(@use-screen-medium);
 
+	// Large Widths
 	.use-screen-large(@boolean) when (@boolean =true) {
 		@media @large-up {
 			.loop-grid(@grid-columns, width, -large);
@@ -48,8 +47,9 @@
 		}
 	}
 
-	.use-screen-large(@use-screen-large); // Extra Large Grid for Large desktop devices
+	.use-screen-large(@use-screen-large);
 
+	// X-Large Widths
 	.use-screen-x-large(@boolean) when (@boolean =true) {
 		@media @x-large-up {
 			.loop-grid(@grid-columns, width, -x-large);
@@ -61,6 +61,19 @@
 	}
 
 	.use-screen-x-large(@use-screen-x-large);
+
+	// Xx-Large Widths
+	.use-screen-xx-large(@boolean) when (@boolean =true) {
+		@media @xx-large-up {
+			.loop-grid(@grid-columns, width, -xx-large);
+
+			.u-width-xx-large-auto {
+				flex: 1;
+			}
+		}
+	}
+
+	.use-screen-xx-large(@use-screen-xx-large);
 }
 
 .use-widths(@use-widths);

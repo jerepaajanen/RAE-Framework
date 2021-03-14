@@ -1,21 +1,21 @@
 //
 // Grid Framework
 // -------------------------------------------------------
-// Calculate grids
+// Calculate Grids
 .calc-grid(@index, @type, @class: ~'') when (@type =width) and (@index > 0) {
 	.u-width@{class}-@{index}of@{grid-columns} {
 		width: percentage((@index / @grid-columns));
 	}
 }
 
-// Loop grid variables
-.loop-grid(@index, @type, @class) when (@index >=0) {
+// Loop Grid Variables
+.loop-grid(@index, @type, @class: ~'') when (@index >=0) {
 	.calc-grid(@index, @type, @class); // next iteration
 	.loop-grid(@index - 1, @type, @class);
 }
 
 
-// Container mixin
+// Container Mixin
 .make-container(@gutter: @container-padding-x) {
 	display: flow-root;
 	margin-left: auto;
@@ -24,7 +24,7 @@
 	padding-right: @gutter;
 }
 
-// Grid mixin
+// Grid Mixin
 .make-grid(@gutter: @grid-gutter-width) {
 
 	display: flex;
@@ -38,7 +38,7 @@
 	list-style: none; // Row can be used with list items
 }
 
-// Grid-column mixin
+// Grid-column Mixin
 .make-grid-column(@gutter: @grid-gutter-width) {
 	& when (@gutter > 0) {
 		padding-left: (@gutter / 2);
@@ -46,7 +46,7 @@
 	}
 }
 
-// Width mixin
+// Width Mixin
 .width(@column: @grid-columns) {
 	& when (@column >=1) {
 		width: percentage((@column / @grid-columns));
@@ -57,7 +57,7 @@
 	}
 }
 
-// Offset mixin
+// Offset Mixin
 .offset(@offset: 1) {
 	& when (@offset >=1) {
 		margin-left: percentage((@offset / @grid-columns));

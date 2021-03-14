@@ -8,75 +8,73 @@
 // }
 
 // Variables
+@breakpoint-x-small-min: @breakpoint-x-small;
 @breakpoint-small-min: @breakpoint-small;
 @breakpoint-medium-min: @breakpoint-medium;
 @breakpoint-large-min: @breakpoint-large;
 @breakpoint-x-large-min: @breakpoint-x-large;
+@breakpoint-xx-large-min: @breakpoint-xx-large;
+
 
 @breakpoint-x-small-max: (@breakpoint-small-min - 1);
 @breakpoint-small-max: (@breakpoint-medium-min - 1);
 @breakpoint-medium-max: (@breakpoint-large-min - 1);
 @breakpoint-large-max: (@breakpoint-x-large-min - 1);
+@breakpoint-x-large-max: (@breakpoint-xx-large-min - 1);
 
 @nav-responsive-breakpoint-min: @nav-responsive-breakpoint;
 @nav-responsive-breakpoint-max: (@nav-responsive-breakpoint-min - 1);
 
 
-
 // Landscape
-
 @landscape: ~"(orientation:landscape)";
 
 // Potrait
-
 @potrait: ~"(orientation:portrait)";
 
 
 // Nav Responsive
-
 @nav-responsive-down: ~"(max-width: @{nav-responsive-breakpoint-max})";
 @nav-responsive-up: ~"(min-width: @{nav-responsive-breakpoint-min})";
 
 
-// Extra-extra-small
+// Xx-small
+@xx-small-down: ~"(max-width: 360px)";
+@xx-small-only: ~"(max-width: 360px)";
 
-@xx-small-down: ~"(max-width: 320px)";
-@xx-small-only: ~"(max-width: 320px)";
-
-// Extra-small
-
+// X-small
+@x-small-up: ~"(min-width: @{breakpoint-x-small-min})";
 @x-small-down: ~"(max-width: @{breakpoint-x-small-max})";
 @x-small-only: ~"(max-width: @{breakpoint-x-small-max})";
 
 // Small
-
 @small-up: ~"(min-width: @{breakpoint-small-min})";
 @small-down: ~"(max-width: @{breakpoint-small-max})";
 @small-only: ~"(min-width: @{breakpoint-small-min}) and (max-width: @{breakpoint-small-max})";
 
 // Medium
-
 @medium-up: ~"(min-width: @{breakpoint-medium-min})";
 @medium-down: ~"(max-width: @{breakpoint-medium-max})";
 @medium-only: ~"(min-width: @{breakpoint-medium-min}) and (max-width: @{breakpoint-medium-max})";
 
 // Large
-
 @large-up: ~"(min-width: @{breakpoint-large-min})";
 @large-down: ~"(max-width: @{breakpoint-large-max})";
 @large-only: ~"(min-width: @{breakpoint-large-min}) and (max-width: @{breakpoint-large-max})";
 
-// Extra-large
-
+// X-large
 @x-large-up: ~"(min-width: @{breakpoint-x-large-min})";
-@x-large-only: ~"(min-width: @{breakpoint-x-large-min})";
+@x-large-down: ~"(max-width: @{breakpoint-x-large-max})";
+@x-large-only: ~"(min-width: @{breakpoint-x-large-min}) and (max-width: @{breakpoint-x-large-max})";
+
+
+// Xx-large
+@xx-large-up: ~"(min-width: @{breakpoint-xx-large-min})";
+@xx-large-only: ~"(min-width: @{breakpoint-xx-large-min})";
 
 // Retina
-
 @retina: ~"only screen and (-webkit-min-device-pixel-ratio: 2),only screen and (min--moz-device-pixel-ratio: 2),only screen and (-o-min-device-pixel-ratio: 2/1),only screen and (min-device-pixel-ratio: 2),only screen and (min-resolution: 192dpi),only screen and (min-resolution: 2dppx)";
 
 // Media-query hacks for old IE
-
 @ie8: \0screen;
-
 @ie9-10: ~"screen and (min-width:0\0)";

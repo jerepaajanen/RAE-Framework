@@ -1,38 +1,35 @@
 (function () {
 
-    'use strict';
+  'use strict';
 
-    // Javascript Detection
-    function checkJs() {
+  // Javascript Detection
+  function checkJs() {
 
-        $('html').removeClass('no-js').addClass('js');
+    $('html').removeClass('no-js').addClass('js');
+  }
+  checkJs();
+
+  // Touch Device Detection
+  function checkTouch() {
+    var isTouch = ('ontouchstart' in document.documentElement);
+    if (isTouch) {
+      $('html').addClass('touch');
+    } else {
+      $('html').addClass('no-touch');
     }
-    checkJs();
-
-    // Touch Device Detection
-    function checkTouch() {
-        var isTouch = ('ontouchstart' in document.documentElement);
-        if (isTouch) {
-            $('html').addClass('touch');
-        } else {
-            $('html').addClass('no-touch');
-        }
-    }
-    checkTouch();
+  }
+  checkTouch();
 
 
-    // DOM ready
-    $(function () {
+  // DOM ready
+  $(function () {
 
-        // Init object-fit polyfill
-        objectFitImages();
+    // Init Responsive Nav
+    $('.js-primary-nav').raeNavResponsive({});
 
-        // Init Responsive Nav
-        $('.js-primary-nav').raeNavResponsive({});
+    // Init Modal
+    $('.js-modal').raeModal({});
 
-        // Init Modal
-        $('.js-modal').raeModal({});
-
-    });
+  });
 
 }());

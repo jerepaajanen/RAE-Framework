@@ -1,7 +1,7 @@
 {
     "name": "rae-framework",
-    "version": "3.3.0",
-    "description": "CSS Framework",
+    "version": "4.0.0",
+    "description": "LESS/CSS Framework",
     "author": "RAE – Jere Paajanen <https://rae.fi>",
     "homepage": "http://www.rae.fi",
     "main": "gulpfile.js",
@@ -9,6 +9,7 @@
     "keywords": [
         "css",
         "less",
+        "bem",
         "framework"
     ],
     "license": "MIT",
@@ -50,7 +51,6 @@
         "minimist": "^1.2.5",
         "postcss": "^8.2.6",
         "postcss-flexbugs-fixes": "^5.0.2",
-        "postcss-object-fit-images": "^1.1.2",
         "streamqueue": "^1.1.2",
         "through2": "^4.0.2",
         "vinyl-ftp": "^0.6.0"

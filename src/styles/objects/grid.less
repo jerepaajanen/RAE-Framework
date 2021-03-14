@@ -19,35 +19,25 @@
 			.make-container();
 		}
 
-		.container {
-			.hook-container;
-		}
-
-		// Fluid Containers
+		// Container-Fluid
 		.container-fluid {
 			width: @container-fluid;
 			max-width: @container-fluid-max;
 			.hook-container-fluid;
 		}
 
-		.container-fluid--full {
-			width: @container-fluid-full;
-			max-width: @container-fluid-full-max;
-			.hook-container-fluid--full;
+		// Container (Fixed Width)
+		.container {
+			width: 100%;
+			.hook-container;
 		}
 
-		.container-fluid--inner {
-			width: @container-fluid-inner;
-			max-width: @container-fluid-inner-max;
-			.hook-container-fluid--inner;
-		}
-
-		// Fixed Containers
-
-		// Container Small (Default)
+		// Container Small
 		.use-screen-small(@boolean) when (@boolean =true) {
-			.container {
-				width: @container-small;
+			@media @small-up {
+				.container {
+					width: @container-small;
+				}
 			}
 		}
 
@@ -75,7 +65,7 @@
 
 		.use-screen-large(@use-screen-large);
 
-		// Container Extra-Large
+		// Container X-Large
 		.use-screen-x-large(@boolean) when (@boolean =true) {
 			@media @x-large-up {
 				.container {
@@ -85,6 +75,17 @@
 		}
 
 		.use-screen-x-large(@use-screen-x-large);
+
+		// Container Xx-Large
+		.use-screen-xx-large(@boolean) when (@boolean =true) {
+			@media @xx-large-up {
+				.container {
+					width: @container-xx-large;
+				}
+			}
+		}
+
+		.use-screen-xx-large(@use-screen-x-large);
 	}
 
 	.use-container(@use-container);

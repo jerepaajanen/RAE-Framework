@@ -5,96 +5,98 @@
 <!--<![endif]-->
 
 <head>
-    <title>RAE Framework</title>
+	<title>RAE Framework</title>
 
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="MobileOptimized" content="320">
 
-    <!-- @if ENV='development' -->
-    <link rel="stylesheet" href="styles/style.css">
-    <!-- @endif -->
-    <!-- @if ENV='production' -->
-    <link rel="stylesheet" href="styles/style.min.css">
-    <!-- @endif -->
+	<!-- @if ENV='development' -->
+	<link rel="stylesheet" href="styles/style.css">
+	<!-- @endif -->
+	<!-- @if ENV='production' -->
+	<link rel="stylesheet" href="styles/style.min.css">
+	<!-- @endif -->
 
-    <!-- @include template-parts/utilities/meta.html -->
-    <!-- @include template-parts/utilities/favicons.html -->
+	<!-- @include template-parts/utilities/meta.html -->
+	<!-- @include template-parts/utilities/favicons.html -->
 
 </head>
 
 <body>
-    <!-- @include template-parts/utilities/browserhappy.html -->
+	<header id="site-header" class="site-header" role="banner">
+		<div class="logo">
+			<a href="/">
+				<img src="images/logo.svg" alt="Logo" style="height: 40px;">
+				<span class="u-visually-hidden">RAE Framework</span>
+			</a>
+		</div>
 
-    <header id="site-header" class="site-header" role="banner">
-        <div class="logo">
-            <a href="/">
-                <img src="images/logo.svg" alt="Logo" style="height: 40px;">
-                <span class="u-visually-hidden">RAE Framework</span>
-            </a>
-        </div>
+		<nav class="primary-nav js-primary-nav" data-navigation role="navigation" aria-label="Primary Navigation">
+			<ul class="primary-nav__menu" data-nav-content>
+				<li class="primary-nav__item">
+					<a href="styleguide/index.html" class="primary-nav__link">Visual Style Guide &amp; Documentation</a>
+				</li>
+				<li class="primary-nav__item">
+					<a href="http://www.rae.fi" class="primary-nav__link">RAE Framework</a>
+					<ul class="primary-nav__submenu">
+						<li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just a
+								subnav</a>
+						</li>
+						<li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just a
+								subnav</a>
+							<ul class="primary-nav__list primary-nav__list--subnav">
+								<li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just
+										a subnav</a>
+								</li>
+								<li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just
+										a subnav</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</nav>
 
-        <nav class="primary-nav js-primary-nav" data-navigation role="navigation" aria-label="Primary Navigation">
-            <ul class="primary-nav__menu" data-nav-content>
-                <li class="primary-nav__item">
-                    <a href="styleguide/index.html" class="primary-nav__link">Visual Style Guide &amp; Documentation</a>
-                </li>
-                <li class="primary-nav__item">
-                    <a href="http://www.rae.fi" class="primary-nav__link">RAE Framework</a>
-                    <ul class="primary-nav__submenu">
-                        <li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just a subnav</a>
-                        </li>
-                        <li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just a subnav</a>
-                            <ul class="primary-nav__list primary-nav__list--subnav">
-                                <li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just a subnav</a>
-                                </li>
-                                <li class="primary-nav__item"><a href="http://www.rae.fi" class="primary-nav__link">Just a subnav</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
+	</header>
 
-    </header>
-
-    <main id="site-main" class="site-main" role="main">
-        <section class="hero">
-            <div class="hero__top">Header</div>
-            <div class="hero__image">
-                <div class="media media--background">
-                    <img src="http://placehold.it/1600x900" />
-                </div>
-            </div>
-            <div class="hero__content">
-                <div class="container-fluid">
-                    <div class="content" style="background: pink;">Content</div>
-                </div>
-            </div>
-
-
-            <div class="hero__bottom">Footer</div>
-        </section>
-
-    </main>
-
-    <footer id="site-footer" class="site-footer" role="contentinfo">
-    </footer>
+	<main id="site-main" class="site-main" role="main">
+		<section class="hero">
+			<div class="hero__top">Header</div>
+			<div class="hero__image">
+				<div class="media media--background">
+					<img src="http://placehold.it/1600x900" />
+				</div>
+			</div>
+			<div class="hero__content">
+				<div class="container-fluid">
+					<div class="content" style="background: pink;">Content</div>
+				</div>
+			</div>
 
 
-    <!-- @if ENV='development' -->
-    <script src="scripts/vendor.js"></script>
-    <script src="scripts/main.js"></script>
-    <!-- @endif -->
-    <!-- @if ENV='production' -->
-    <script src="scripts/vendor.min.js"></script>
-    <script src="scripts/main.min.js"></script>
-    <!-- @endif -->
+			<div class="hero__bottom">Footer</div>
+		</section>
 
-    <!-- @include template-parts/utilities/analytics.html -->
+	</main>
+
+	<footer id="site-footer" class="site-footer" role="contentinfo">
+	</footer>
+
+
+	<!-- @if ENV='development' -->
+	<script src="scripts/vendor.js"></script>
+	<script src="scripts/main.js"></script>
+	<!-- @endif -->
+	<!-- @if ENV='production' -->
+	<script src="scripts/vendor.min.js"></script>
+	<script src="scripts/main.min.js"></script>
+	<!-- @endif -->
+
+	<!-- @include template-parts/utilities/analytics.html -->
 </body>
 
 </html>

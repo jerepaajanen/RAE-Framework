@@ -1,15 +1,11 @@
 {
   "name": "rae-framework",
-  "version": "3.3.0",
   "dependencies": {
-    "jquery": "^3.6.0",
-    "svgxuse": "^1.1.21",
-    "object-fit-images": "*"
+    "jquery": "^3.6.0"
   },
   "overrides": {
     "package": {
       "main": [
-        "dist/xxx.js",
         "dist/xxx.js"
       ]
     }

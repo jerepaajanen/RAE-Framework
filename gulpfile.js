@@ -32,7 +32,6 @@ const postCss_autoprefixer = require('autoprefixer');
 const postCss_cssMqpacker = require('css-mqpacker');
 const postCss_cssnano = require('cssnano');
 const postCss_flexbugsFixes = require('postcss-flexbugs-fixes');
-const postCss_objectFit = require('postcss-object-fit-images');
 const preprocess = require('gulp-preprocess');
 const rename = require('gulp-rename');
 const size = require('gulp-size');
@@ -216,7 +215,6 @@ gulp.task('styles', function (done) {
     .on('error', handleErrors)
     .pipe(postCss([
       postCss_flexbugsFixes,
-      postCss_objectFit,
       postCss_autoprefixer({
         //Supported browsers stored in .browserslistrc
       })
@@ -227,7 +225,6 @@ gulp.task('styles', function (done) {
 
     .pipe(gulpIf(isProduction, postCss([
       postCss_flexbugsFixes,
-      postCss_objectFit,
       postCss_autoprefixer({
         //Supported browsers stored in .browserslistrc
       }),
