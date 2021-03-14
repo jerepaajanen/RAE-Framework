@@ -3,64 +3,67 @@
 // -------------------------------------------------------
 // Calculate grids
 .calc-grid(@index, @type, @class: ~'') when (@type =width) and (@index > 0) {
-    .u-width@{class}-@{index}of@{grid-columns} {
-        width: percentage((@index / @grid-columns));
-    }
-}
-// Loop grid variables
-.loop-grid(@index, @type, @class) when (@index >=0) {
-    .calc-grid(@index, @type, @class); // next iteration
-    .loop-grid(@index - 1, @type, @class);
+	.u-width@{class}-@{index}of@{grid-columns} {
+		width: percentage((@index / @grid-columns));
+	}
 }
 
-//
-// Grid mixins
+// Loop grid variables
+.loop-grid(@index, @type, @class) when (@index >=0) {
+	.calc-grid(@index, @type, @class); // next iteration
+	.loop-grid(@index - 1, @type, @class);
+}
+
+
 // Container mixin
-.make-container(@gutter: @grid-gutter-width) {
-    & when (@gutter > 0) {
-        padding-left: (@gutter / 2);
-        padding-right: (@gutter / 2);
-    }
-    margin-left: auto;
-    margin-right: auto;
+.make-container(@gutter: @container-padding-x) {
+	display: flow-root;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: @gutter;
+	padding-right: @gutter;
 }
 
 // Grid mixin
 .make-grid(@gutter: @grid-gutter-width) {
 
-    display: flex;
-    flex-wrap: wrap;
-    & when (@gutter > 0) {
-        margin-left: ceil(@gutter / -2);
-        margin-right: floor(@gutter / -2);
-    }
-    list-style: none; // Row can be used with list items
+	display: flex;
+	flex-wrap: wrap;
+
+	& when (@gutter > 0) {
+		margin-left: ceil(@gutter / -2);
+		margin-right: floor(@gutter / -2);
+	}
+
+	list-style: none; // Row can be used with list items
 }
 
 // Grid-column mixin
 .make-grid-column(@gutter: @grid-gutter-width) {
-    & when (@gutter > 0) {
-        padding-left: (@gutter / 2);
-        padding-right: (@gutter / 2);
-    }
+	& when (@gutter > 0) {
+		padding-left: (@gutter / 2);
+		padding-right: (@gutter / 2);
+	}
 }
 
 // Width mixin
 .width(@column: @grid-columns) {
-    & when (@column >=1) {
-        width: percentage((@column / @grid-columns));
-    }
-    & when (@column < 1) {
-        width: percentage((@column));
-    }
+	& when (@column >=1) {
+		width: percentage((@column / @grid-columns));
+	}
+
+	& when (@column < 1) {
+		width: percentage((@column));
+	}
 }
 
 // Offset mixin
 .offset(@offset: 1) {
-    & when (@offset >=1) {
-        margin-left: percentage((@offset / @grid-columns));
-    }
-    & when (@offset < 1) {
-        margin-left: percentage((@offset));
-    }
+	& when (@offset >=1) {
+		margin-left: percentage((@offset / @grid-columns));
+	}
+
+	& when (@offset < 1) {
+		margin-left: percentage((@offset));
+	}
 }

@@ -11,8 +11,10 @@
 		position: relative;
 
 		>label {
-			margin: 0 0 @label-vertical-margin 0;
+			margin: 0 0 @label--margin-y 0;
 		}
+
+		.hook-field;
 	}
 
 	.field--inline {
@@ -21,16 +23,18 @@
 
 		label {
 			flex-shrink: 0; // fix for iOS
-			margin: 0 @label-horizontal-margin 0 0;
+			margin: 0 @label-margin-x 0 0;
 		}
 
 		input,
 		select {
 			flex-shrink: 1; // fix for IE10
 		}
+
+		.hook-field--inline;
 	}
 
-	// Field-groups, only for larger screens
+	// Field-Groups; only for larger screens
 	.field-group {
 		margin-bottom: @form-field-margin;
 		position: relative;
@@ -61,6 +65,8 @@
 				}
 			}
 		}
+
+		.hook-field-group;
 	}
 
 	.field-group--half {
@@ -70,6 +76,8 @@
 				padding-right: (@grid-gutter-width / 4);
 			}
 		}
+
+		.hook-field-group--half;
 	}
 
 	.field-group--flush {
@@ -79,6 +87,8 @@
 				padding-right: 0;
 			}
 		}
+
+		.hook-field-group--flush;
 	}
 
 	.field-group--inline {
@@ -88,7 +98,7 @@
 				display: flex;
 
 				label {
-					margin: 0 @label-horizontal-margin 0 0;
+					margin: 0 @label-margin-x 0 0;
 					flex-shrink: 0; // fix for iOS
 
 				}
@@ -99,7 +109,22 @@
 				}
 			}
 		}
+
+		.hook-field-group--inline;
 	}
 }
 
 .use-form-fields(@use-form-fields);
+
+// Hooks
+.hook-field() {}
+
+.hook-field--inline() {}
+
+.hook-field-group() {}
+
+.hook-field-group--half() {}
+
+.hook-field-group--flush() {}
+
+.hook-field-group--inline() {}

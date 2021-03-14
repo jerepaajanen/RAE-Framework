@@ -10,24 +10,40 @@
 		font-size: @form-message-font-size;
 		font-weight: @form-message-font-weight;
 		line-height: @form-message-line-height;
-		margin: @form-message-vertical-margin 0;
+		margin: @form-message-margin-y 0;
 		text-align: @form-message-text-align;
+		.hook-form-message;
 	}
 
 	// Success
 	.form-message--success {
-		color: @color-success;
+		color: @color-ui-success;
+		.hook-form-message--success;
+
 	}
 
 	// Error
 	.form-message--error {
-		color: @color-error;
+		color: @color-ui-error;
+		.hook-form-message--error;
+
 	}
 
 	// Warning
 	.form-message--warning {
-		color: @color-warning;
+		color: @color-ui-warning;
+		.hook-form-message--warning;
+
 	}
 }
 
 .use-form-messages(@use-form-messages);
+
+// Hooks
+.hook-form-message() {}
+
+.hook-form-message--success() {}
+
+.hook-form-message--error() {}
+
+.hook-form-message--warning() {}

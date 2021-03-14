@@ -1,0 +1,1 @@
+Files in "scripts" root won't be concatenated. Files in "main" folder will be concatenated to main.js, and "vendor" folder to vendor.js.

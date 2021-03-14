@@ -8,15 +8,9 @@
 	// Make tooltip multi-line with class "tooltip--multiline"
 
 	// Variables
-
 	@tooltip-position: (@tooltip-offset + 2 + @tooltip-arrow-size);
-	@tooltip-height: @tooltip-font-size +2 * @tooltip-vertical-padding;
+	@tooltip-height: @tooltip-font-size +2 * @tooltip-padding-y;
 
-	// The 'before' pseudo element is concerned with the body
-	// and 'after' pseudo element is concerned with the arrow.
-	// of tips
-	// The 'after' pseudo elements is generated only if arrow
-	// size is larger than 0.
 	.tooltip {
 		position: relative;
 
@@ -51,7 +45,7 @@
 			font-weight: @tooltip-font-weight;
 			letter-spacing: @tooltip-letter-spacing;
 			line-height: @tooltip-line-height  !important;
-			padding: @tooltip-vertical-padding @tooltip-horizontal-padding;
+			padding: @tooltip-padding-y @tooltip-padding-x;
 			text-align: center;
 			text-decoration: none;
 			text-overflow: ellipsis;
@@ -68,6 +62,8 @@
 				opacity: 1;
 			}
 		}
+
+		.hook-tooltip;
 	}
 
 	// Tooltip variations
@@ -93,6 +89,8 @@
 				transform: translate(-50%, -@tooltip-position);
 			}
 		}
+
+		.hook-tooltip--top;
 	}
 
 	.tooltip--bottom {
@@ -116,6 +114,9 @@
 				transform: translate(-50%, @tooltip-position);
 			}
 		}
+
+		.hook-tooltip--bottom;
+
 	}
 
 	.tooltip--top,
@@ -150,6 +151,9 @@
 				transform: translate(-@tooltip-position, -50%);
 			}
 		}
+
+		.hook-tooltip--left;
+
 	}
 
 	.tooltip--right {
@@ -173,6 +177,9 @@
 				transform: translate(@tooltip-position, -50%);
 			}
 		}
+
+		.hook-tooltip--right;
+
 	}
 
 	.tooltip--left,
@@ -198,7 +205,23 @@
 				width: @tooltip-multiline-width;
 			}
 		}
+
+		.hook-tooltip--multiline;
+
 	}
 }
 
 .tooltips(@use-tooltips);
+
+// Hooks
+.hook-tooltip() {}
+
+.hook-tooltip--top() {}
+
+.hook-tooltip--bottom() {}
+
+.hook-tooltip--left() {}
+
+.hook-tooltip--right() {}
+
+.hook-tooltip--multiline() {}

@@ -1,11 +1,13 @@
 //
 // Button-group
 // -------------------------------------------------------
+
 .use-button-group(@boolean) when (@boolean =true) {
 
 	.button-group {
 		display: inline-flex;
 		flex-wrap: wrap;
+		.hook-button-group;
 
 		.button {
 			flex: 1 0 auto;
@@ -36,6 +38,8 @@
 			&.is-active {
 				z-index: 3; // keep active button above others
 			}
+
+			.hook-button-group-button;
 		}
 
 		&.button-group--block {
@@ -45,3 +49,8 @@
 }
 
 .use-button-group(@use-button-group);
+
+// Hooks
+.hook-button-group() {}
+
+.hook-button-group-button() {}

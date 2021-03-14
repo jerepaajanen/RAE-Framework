@@ -1,5 +1,5 @@
 //
-// Table styles
+// Table Styles
 // -------------------------------------------------------
 .table-styles(@boolean) when (@boolean =true) {
 
@@ -53,31 +53,38 @@
 			}
 		}
 
-		&.table--striped {
-			tbody {
-				tr:nth-of-type(odd) {
-					background: @table-stripe-background;
-				}
-			}
-		}
-
-		&.table--bordered {
-			border: @table-border-width solid @table-border-color;
-		}
-
-		&.table--highlight {
-			tbody {
-				tr {
-					&:hover {
-						background: @table-higlight-background;
-						color: @table-higlight-color;
-					}
-				}
-			}
-		}
+		.hook-table;
 	}
 
-	// Rensponsive table
+	.table--striped {
+		tbody {
+			tr:nth-of-type(odd) {
+				background: @table-stripe-background;
+			}
+		}
+
+		.hook-table--striped;
+	}
+
+	.table--bordered {
+		border: @table-border-width solid @table-border-color;
+		.hook-table--bordered;
+	}
+
+	.table--highlight {
+		tbody {
+			tr {
+				&:hover {
+					background: @table-higlight-background;
+					color: @table-higlight-color;
+				}
+			}
+		}
+
+		.hook-table--highlight;
+	}
+
+	// Rensponsive Table
 	// Add horizontal scrolling if the table
 	// contents overflow its parent element.
 	// Usage
@@ -93,7 +100,20 @@
 		table {
 			margin-bottom: 0; // remove vertical-rhytmn
 		}
+
+		.hook-table-responsive;
 	}
 }
 
 .table-styles(@use-table-styles);
+
+// Hooks
+.hook-table() {}
+
+.hook-table--striped() {}
+
+.hook-table--bordered() {}
+
+.hook-table--highlight() {}
+
+.hook-table-responsive() {}

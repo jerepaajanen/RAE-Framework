@@ -1,6 +1,7 @@
 //
 // Embedded content
 // -------------------------------------------------------
+
 .embed-content(@boolean) when (@boolean =true) {
 
 	// Fluid-width <audio> & <video> elements
@@ -31,12 +32,19 @@
 	// Fill video with poster image
 	video {
 		object-fit: initial;
+		.hook-video;
 	}
 
 	figure {
 		margin-bottom: 0 0 @spacing-base;
+		.hook-figure;
 	}
 
 }
 
 .embed-content(@use-embed-content);
+
+// Hooks
+.hook-video() {}
+
+.hook-figure() {}

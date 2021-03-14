@@ -1,12 +1,14 @@
 //
 // Lists
 // -------------------------------------------------------
+
 .lists(@boolean) when (@boolean =true) {
 
 	ul,
 	ol,
 	dl {
 		margin-bottom: @spacing-base;
+		.hook-list;
 	}
 
 	ul,
@@ -42,3 +44,6 @@
 }
 
 .lists(@use-lists);
+
+// Hooks
+.hook-list() {}

@@ -36,6 +36,7 @@
 		font-weight: @tag-font-weight;
 		letter-spacing: @tag-letter-spacing;
 		text-transform: @tag-text-transform;
+		.hook-tag;
 
 	}
 
@@ -43,6 +44,7 @@
 	// Tag styles
 	.tag--primary {
 		.tag-styles(@tag-primary-color, @tag-primary-background, @tag-primary-border-color);
+		.hook-tag--primary;
 	}
 
 	// Badge
@@ -56,8 +58,9 @@
 		font-weight: @badge-font-weight;
 		letter-spacing: @badge-letter-spacing;
 		line-height: ceil(@badge-height - (@badge-border-width * 2));
-		padding: 0 @badge-horizontal-padding;
+		padding: 0 @badge-padding-x;
 		text-transform: normal;
+		.hook-badge;
 
 	}
 
@@ -65,7 +68,17 @@
 	// Badge styles
 	.badge--primary {
 		.badge-styles(@badge-primary-color, @badge-primary-background, @badge-primary-border-color);
+		.hook-badge--primary;
 	}
 }
 
 .use-tags-badges(@use-tags-badges);
+
+// Hooks
+.hook-tag() {}
+
+.hook-tag--primary() {}
+
+.hook-badge() {}
+
+.hook-badge--primary() {}

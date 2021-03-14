@@ -1,12 +1,22 @@
 //
 // Main
 // -------------------------------------------------------
+
 .main(@boolean) when (@boolean =true) {
 
 	:root {
 		font-size: @root-font-size; // Default `font-size` for used with `rem` type scales.
 		height: 100%; // Ensure the <html> element's `height` is at least the viewport height.
+		scroll-behavior: smooth;
+
+		// Add Breakpoints as css-variable
+		--breakpoint-small: @breakpoint-small;
+		--breakpoint-medium: @breakpoint-medium;
+		--breakpoint-large: @breakpoint-large;
+		--breakpoint-x-large: @breakpoint-x-large;
+		.hook-root;
 	}
+
 
 	body {
 		background-color: @base-background;
@@ -16,8 +26,14 @@
 		line-height: @line-height-base;
 		letter-spacing: @base-letter-spacing;
 		min-height: 100%; // Ensure the <body> element's `min-height` is at least the viewport height.
+		.hook-body;
 	}
 
 }
 
 .main(@use-main);
+
+// Hooks
+.hook-root() {}
+
+.hook-body() {}

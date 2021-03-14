@@ -7,21 +7,21 @@
 @use-debug-mode:                        false;
 
 
-// GRID & BREAKPOINTS
+// BREAKPOINTS & GRID
 // -------------------------------------------------------
 
-// Dictate how many columns you would like your grid
-// system to use. Default value is 12.
-// Gutter width between columns (use px|%|rem)
-@grid-columns:                          12;
-@grid-gutter-width:                     40px;
+// Breakpoints
+@breakpoint-small:                      544px; // Phone landscape
+@breakpoint-medium:                     768px; // Tablet Landscape
+@breakpoint-large:                      992px; // Desktop
+@breakpoint-x-large:                    1200px; // Large Screens
 
-// Breakpoints & container widths
-@breakpoint-x-small:                    0;
-@breakpoint-small:                      544px; //34em;
-@breakpoint-medium:                     768px; //48em;
-@breakpoint-large:                      992px; //62em;
-@breakpoint-x-large:                    1280px; //80em;
+// Grid Columns
+@grid-columns:                          12;
+@grid-gutter-width:                     48px; //px|%|rem
+
+// Grid Container
+@container-padding-x:                   @grid-gutter-width / 2;
 
 @container-small:                       100%;
 @container-medium:                      (@breakpoint-medium - @grid-gutter-width);
@@ -39,39 +39,26 @@
 // COLORS
 // -------------------------------------------------------
 
-// Greyscale
-@grey-25:                               lighten(@black, 97,5%);
-@grey-50:                               lighten(@black, 95%);
-@grey-100:                              lighten(@black, 90%);
-@grey-200:                              lighten(@black, 80%);
-@grey-300:                              lighten(@black, 70%);
-@grey-400:                              lighten(@black, 60%);
-@grey-500:                              lighten(@black, 50%);
-@grey-600:                              lighten(@black, 40%);
-@grey-700:                              lighten(@black, 30%);
-@grey-800:                              lighten(@black, 20%);
-@grey-900:                              lighten(@black, 10%);
-
 @black:                                 #000000;
 @white:                                 #ffffff;
 
 // Brand colors
 @color-primary:                         #5d5fff;
-@color-primary-light:                   tint(@color-primary, 40%);
-@color-primary-dark:                    shade(@color-primary, 20%);
+@color-primary-light:                   @color-primary-300;
+@color-primary-dark:                    @color-primary-700;
 @color-primary-accent:                  overlay(@color-primary, fade(@black, 50%));
 
 @color-secondary:                       #ff6b61;
-@color-secondary-light:                 tint(@color-secondary, 40%);
-@color-secondary-dark:                  shade(@color-secondary, 20%);
+@color-secondary-light:                 @color-secondary-300;
+@color-secondary-dark:                  @color-secondary-700;
 @color-secondary-accent:                overlay(@color-secondary, fade(@black, 50%));
 
 // UI colors
-@color-success:                         #5cb85c;
-@color-error:                           #d9534f;
-@color-warning:                         #ed9c28;
+@color-ui-success:                      #5cb85c;
+@color-ui-error:                        #d9534f;
+@color-ui-warning:                      #ed9c28;
 
-// Basic colors for body
+// Base colors for body
 @base-color:                            @grey-800;
 @base-background:                       @white;
 
@@ -113,8 +100,6 @@
 @letter-spacing-loosest:                0.05em;
 
 // Spacing
-// The base spacing unit is set equal to the "line-height" by default.
-// This helps create a consistent vertical rhythm throughout the framework.
 @spacing-base:                          @base-line;
 
 @spacing-sixth:                         round(@spacing-base / 6);
@@ -141,40 +126,55 @@
 @heading-color:                         inherit;
 
 // Headings sizes
-@heading1-font-size:                    round(@base-font-size * 3);
-@heading2-font-size:                    round(@base-font-size * 2.25);
-@heading3-font-size:                    round(@base-font-size * 1.75);
-@heading4-font-size:                    round(@base-font-size * 1.5);
-@heading5-font-size:                    round(@base-font-size * 1.25);
-@heading6-font-size:                    round(@base-font-size * 1.125);
+@heading1-font-size-small:              round(@base-font-size * 3.052);
+@heading1-font-size-medium:             round(@base-font-size * 3.662);
+@heading1-font-size-large:              round(@base-font-size * 3.815);
 
-@heading1-font-size-small:              round(@base-font-size * 2.25);
-@heading2-font-size-small:              round(@base-font-size * 1.75);
-@heading3-font-size-small:              round(@base-font-size * 1.5);
-@heading4-font-size-small:              round(@base-font-size * 1.25);
-@heading5-font-size-small:              round(@base-font-size * 1.125);
+@heading2-font-size-small:              round(@base-font-size * 2.441);
+@heading2-font-size-medium:             round(@base-font-size * 2.93);
+@heading2-font-size-large:              round(@base-font-size * 3.052);
+
+@heading3-font-size-small:              round(@base-font-size * 1.953);
+@heading3-font-size-medium:             round(@base-font-size * 2.344);
+@heading3-font-size-large:              round(@base-font-size * 2.441);
+
+@heading4-font-size-small:              round(@base-font-size * 1.563);
+@heading4-font-size-medium:             round(@base-font-size * 1.875);
+@heading4-font-size-large:              round(@base-font-size * 1.953);
+
+@heading5-font-size-small:              round(@base-font-size * 1.25);
+@heading5-font-size-medium:             round(@base-font-size * 1.5);
+@heading5-font-size-large:              round(@base-font-size * 1.563);
+
 @heading6-font-size-small:              round(@base-font-size * 1);
+@heading6-font-size-medium:             round(@base-font-size * 1.2);
+@heading6-font-size-large:              round(@base-font-size * 1.25);
 
-//Display headings
+
+//Display Headings
 @display1-font-family:                  @heading-font-family;
 @display1-font-weight:                  400;
-@display1-font-size:                    round(@base-font-size * 6);
 @display1-font-size-small:              round(@base-font-size * 5);
+@display1-font-size-medium:             round(@base-font-size * 5.5);
+@display1-font-size-large:              round(@base-font-size * 6);
 
 @display2-font-family:                  @heading-font-family;
 @display2-font-weight:                  400;
-@display2-font-size:                    round(@base-font-size * 4);
 @display2-font-size-small:              round(@base-font-size * 3);
+@display2-font-size-medium:             round(@base-font-size * 3.5);
+@display2-font-size-large:              round(@base-font-size * 4);
 
 @display3-font-family:                  @heading-font-family;
 @display3-font-weight:                  400;
-@display3-font-size:                    round(@base-font-size * 2.5);
 @display3-font-size-small:              round(@base-font-size * 1.5);
+@display3-font-size-medium:             round(@base-font-size * 2.0);
+@display3-font-size-large:              round(@base-font-size * 2.5);
 
 @display4-font-family:                  @heading-font-family;
 @display4-font-weight:                  400;
-@display4-font-size:                    round(@base-font-size * 1.75);
 @display4-font-size-small:              round(@base-font-size * 1.25);
+@display4-font-size-medium:             round(@base-font-size * 1.5);
+@display4-font-size-large:              round(@base-font-size * 1.75);
 
 // Lead paragraph styles
 @lead-font-family:                      inherit;
@@ -235,7 +235,7 @@
 @form-field-margin:                     @spacing-base;
 
 // Form messages
-@form-message-vertical-margin:          @spacing-half;
+@form-message-margin-y:                 @spacing-half;
 @form-message-font-family:              @base-font-family;
 @form-message-font-weight:              400;
 @form-message-font-size:                @base-font-size;
@@ -249,8 +249,8 @@
 @fieldset-border-color:                 @grey-100;
 
 // Label & legend
-@label-vertical-margin:                 @spacing-fourth;
-@label-horizontal-margin:               @spacing-half;
+@label--margin-y:                       @spacing-fourth;
+@label-margin-x:                        @spacing-half;
 @label-font-family:                     @base-font-family;
 @label-font-size:                       inherit;
 @label-font-weight:                     inherit;
@@ -275,11 +275,12 @@
 @input-font-family:                     @base-font-family;
 @input-font-size:                       @base-font-size;
 @input-height:                          40px;
-@input-horizontal-padding:              .5em;
+@input-padding-x:                       .5em;
 @input-box-shadow:                      none;
 
 @input-small-height:                    32px;
 @input-small-font-size:                 12px;
+
 @input-large-height:                    @input-height * 1.5;
 @input-large-font-size:                 @input-font-size * 1.5;
 
@@ -287,7 +288,7 @@
 @checkbox-radio-background:             @input-background;
 @checkbox-radio-size:                   @spacing-base;
 @checkbox-radio-border-width:           @input-border-width;
-@checkbox-radio-vertical-margin:        @spacing-half;
+@checkbox-radio-margin-y:               @spacing-half;
 @checkbox-radio-left-padding:           @spacing-fourth;
 @checkbox-checked-color:                currentColor;
 @checkbox-checked-background:           transparent;
@@ -322,7 +323,7 @@
 @button-letter-spacing:                 @letter-spacing-base;
 @button-text-transform:                 none;
 @button-height:                         @input-height;
-@button-horizontal-padding:             16px;
+@button-padding-x:                      16px;
 @button-border-width:                   1px;
 @button-border-radius:                  0;
 
@@ -330,6 +331,7 @@
 
 @button-small-height:                   32px;
 @button-small-font-size:                12px;
+
 @button-large-height:                   @button-height * 1.5;
 @button-large-font-size:                @button-font-size * 1.5;
 
@@ -351,14 +353,14 @@
 @button-primary-border:                 @button-primary-background;
 @button-primary-hover-color:            @white;
 @button-primary-hover-background:       @color-primary-accent;
-@button-primary-hover-border:           @button-primary-background;
+@button-primary-hover-border:           @button-primary-hover-background;
 
 @button-secondary-color:                @white;
 @button-secondary-background:           @color-secondary;
 @button-secondary-border:               @button-secondary-background;
 @button-secondary-hover-color:          @white;
 @button-secondary-hover-background:     @color-secondary-accent;
-@button-secondary-hover-border:         @button-secondary-background;
+@button-secondary-hover-border:         @button-secondary-hover-background;
 
 
 // TABLES
@@ -391,7 +393,7 @@
 @tag-text-transform:                    normal;
 @tag-letter-spacing:                    @letter-spacing-loose;
 @tag-height:                            28px;
-@tag-horizontal-padding:                6px;
+@tag-padding-x:                         6px;
 @tag-color:                             @grey-700;
 @tag-border-color:                      @grey-100;
 @tag-primary-color:                     @white;
@@ -406,7 +408,7 @@
 @badge-border-width:                    2px;
 @badge-letter-spacing:                  @letter-spacing-base;
 @badge-height:                          21px;
-@badge-horizontal-padding:              2px;
+@badge-padding-x:                       2px;
 @badge-color:                           @grey-700;
 @badge-border-color:                    @grey-100;
 @badge-primary-color:                   @white;
@@ -419,8 +421,8 @@
 @tooltip-background:                    @grey-800;
 @tooltip-color:                         @grey-50;
 @tooltip-border-radius:                 @border-radius-default;
-@tooltip-vertical-padding:              @spacing-third;
-@tooltip-horizontal-padding:            @spacing-half;
+@tooltip-padding-y:                     @spacing-third;
+@tooltip-padding-x:                     @spacing-half;
 @tooltip-multiline-width:               160px;
 @tooltip-box-shadow:                    none;
 @tooltip-offset:                        2px;

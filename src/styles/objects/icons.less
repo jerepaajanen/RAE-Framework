@@ -6,38 +6,58 @@
 	.icon {
 		display: inline-block;
 		fill: currentColor;
+		stroke: currentColor;
 		flex-shrink: 0;
 		height: 1em;
 		pointer-events: none;
 		vertical-align: middle;
 		width: 1em;
+		.hook-icon;
 	}
 
-	.button .icon,
-	.icon--aligned {
+	.icon--aligned,
+	.button .icon {
 		position: relative;
 		top: @icon-baseline-shift;
+		.hook-icon--aligned;
 	}
 
 	// Icon sizes
 
 	.icon--small {
 		.icon-size(@icon-small-size);
+		.hook-icon--small;
 	}
 
 	.icon--medium {
 		.icon-size(@icon-medium-size);
+		.hook-icon--medium;
 	}
 
 	.icon--large {
 		.icon-size(@icon-large-size);
+		.hook-icon--large;
 	}
 
 	.icon--x-large {
 		.icon-size(@icon-x-large-size);
+		.hook-icon--x-large;
 	}
 
 
 }
 
 .icons(@use-icons);
+
+// Hooks
+.hook-icon() {}
+
+.hook-icon--aligned() {}
+
+.hook-icon--small() {}
+
+.hook-icon--medium() {}
+
+.hook-icon--large() {}
+
+.hook-icon--x-large() {}

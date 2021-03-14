@@ -51,6 +51,7 @@
         "postcss": "^8.2.6",
         "postcss-flexbugs-fixes": "^5.0.2",
         "postcss-object-fit-images": "^1.1.2",
+        "streamqueue": "^1.1.2",
         "through2": "^4.0.2",
         "vinyl-ftp": "^0.6.0"
     },

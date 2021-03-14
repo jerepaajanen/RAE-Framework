@@ -13,7 +13,7 @@
 }
 
 // Tag Size
-.tag-size( @font-size: @tag-font-size, @height: @tag-height, @padding-horizontal: @tag-horizontal-padding, @border-width: @tag-border-width) {
+.tag-size( @font-size: @tag-font-size, @height: @tag-height, @padding-horizontal: @tag-padding-x, @border-width: @tag-border-width) {
     // Pre-calculated multiplier for padding
     @multiplier-return: @height / @tag-height;
     font-size: @font-size;
@@ -37,7 +37,7 @@
 }
 
 // Badge Size
-.badge-size( @font-size: @badge-font-size, @height: @badge-height, @padding-horizontal: @badge-horizontal-padding, @border-width: @badge-border-width) {
+.badge-size( @font-size: @badge-font-size, @height: @badge-height, @padding-horizontal: @badge-padding-x, @border-width: @badge-border-width) {
     // Pre-calculated multiplier for padding
     @multiplier-return: @height / @badge-height;
     font-size: @font-size;

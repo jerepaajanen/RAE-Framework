@@ -17,33 +17,43 @@
 			pointer-events: none;
 			text-shadow: none;
 		}
+
+		.hook-button;
 	}
 
 	//
-	// Buttons sizes
+	// Buttons Sizes
 	.button--small {
 		.button-size(@button-small-font-size, @button-small-height);
+		.hook-button--small;
 	}
 
 	.button--large {
 		.button-size(@button-large-font-size, @button-large-height);
+		.hook-button--large;
 	}
 
+	// Hook Button Sizes
+	.hook-button-sizes;
+
 	//
-	// Button modifiers
+	// Button Modifiers
 	.button--block {
 		padding-left: 0;
 		padding-right: 0;
 		white-space: normal !important; // line-break for mobile
 		width: 100%;
-	}
-
-	.button--pill {
-		border-radius: 999em;
+		.hook-button--block;
 	}
 
 	.button--borderless {
 		border: none;
+		.hook-button--borderless;
+	}
+
+	.button--pill {
+		border-radius: 999em;
+		.hook-button--pill;
 	}
 
 	.button--circle {
@@ -58,6 +68,8 @@
 		&.button--large {
 			width: @button-large-height;
 		}
+
+		.hook-button--circle;
 	}
 
 	.button--link {
@@ -88,17 +100,51 @@
 			color: @button-link-hover-color;
 			text-decoration: @button-link-hover-decoration;
 		}
+
+		.hook-button--link;
+	}
+
+	//
+	// Button Styles
+	.button--primary {
+		.button-theme(@button-primary-color, @button-primary-background, @button-primary-border, @button-primary-hover-color, @button-primary-hover-background, @button-primary-hover-border);
+		.hook-button--primary;
+	}
+
+	.button--secondary {
+		.button-theme(@button-secondary-color, @button-secondary-background, @button-secondary-border, @button-secondary-hover-color, @button-secondary-hover-background, @button-secondary-hover-border);
+		.hook-button--secondary;
 	}
 }
 
-//
-// Button styles
-.button--primary {
-	.button-theme(@button-primary-color, @button-primary-background, @button-primary-border, @button-primary-hover-color, @button-primary-hover-background, @button-primary-hover-border);
-}
 
-.button--secondary {
-	.button-theme(@button-secondary-color, @button-secondary-background, @button-secondary-border, @button-secondary-hover-color, @button-secondary-hover-background, @button-secondary-hover-border);
-}
+
+// Hook Button Styles
+.hook-button-styles;
 
 .use-buttons(@use-buttons);
+
+// Hooks
+.hook-button() {}
+
+.hook-button--small() {}
+
+.hook-button--large() {}
+
+.hook-button-sizes() {}
+
+.hook-button--block() {}
+
+.hook-button--pill() {}
+
+.hook-button--borderless() {}
+
+.hook-button--circle() {}
+
+.hook-button--link() {}
+
+.hook-button--primary() {}
+
+.hook-button--secondary() {}
+
+.hook-button-styles() {}

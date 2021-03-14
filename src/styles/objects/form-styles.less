@@ -12,6 +12,8 @@
 			margin: 0 0 0 (@spacing-half * -1);
 			padding: 0 @spacing-half;
 		}
+
+		.hook-fieldset--bordered;
 	}
 
 	// Basic styles for form elements
@@ -46,7 +48,7 @@
 		font-family: @input-font-family;
 		font-size: @input-font-size;
 		height: @input-height;
-		padding: 0 @input-horizontal-padding;
+		padding: 0 @input-padding-x;
 		position: relative;
 		transition: background @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border @transition-duration-default @transition-easing-default;
 
@@ -172,7 +174,7 @@
 		background-repeat: no-repeat;
 		background-size: contain;
 		cursor: pointer;
-		padding: 0 2.4em 0 @input-horizontal-padding;
+		padding: 0 2.4em 0 @input-padding-x;
 
 		&::-ms-expand {
 			display: none; // Internet Explorer 11+
@@ -194,23 +196,13 @@
 		}
 	}
 
-	// Radios and checkboxes
-	.radio,
-	.checkbox {
+	// Checkbox & Radio
+	.checkbox,
+	.radio {
 		user-select: none;
 
 		&+& {
-			margin-top: @checkbox-radio-vertical-margin; // add some spacing between checkboxes/radios
-		}
-
-		// Inline styles
-		&.checkbox--inline,
-		&.radio--inline {
-			@media @medium-up {
-				display: inline-block;
-				margin-top: 0; // reset margin
-				margin-right: @spacing-half; // space out consecutive inline controls
-			}
+			margin-top: @checkbox-radio-margin-y; // add some spacing between checkboxes/radios
 		}
 
 		// Hide inputs
@@ -274,8 +266,8 @@
 
 			// Checked tick
 			&:after {
+				border-style: solid @checkbox-checked-color;
 				border-width: 0 @checkbox-checked-width @checkbox-checked-width 0;
-				border: solid @checkbox-checked-color;
 				height: round((@checkbox-checked-size / 1.5), 0);
 				left: @checkbox-checked-x;
 				position: absolute;
@@ -293,6 +285,8 @@
 				}
 			}
 		}
+
+		.hook-checkbox;
 	}
 
 	// Radio styles
@@ -310,6 +304,21 @@
 				border: (@checkbox-radio-size - @radio-checked-size) solid transparent;
 			}
 		}
+
+		.hook-radio;
+	}
+
+	// Inline styles
+	.checkbox--inline,
+	.radio--inline {
+		@media @medium-up {
+			display: inline-block;
+			margin-top: 0; // reset margin
+			margin-right: @spacing-half; // space out consecutive inline controls
+		}
+
+		.hook-checkbox--inline;
+		.hook-radio--inline;
 	}
 
 	// Input modifiers
@@ -343,8 +352,8 @@
 		input.input--pill,
 		select.select--pill {
 			border-radius: 999em;
-			padding-left: (@input-horizontal-padding * 2);
-			padding-right: (@input-horizontal-padding * 2);
+			padding-left: (@input-padding-x * 2);
+			padding-right: (@input-padding-x * 2);
 		}
 
 		input.input--opaque,
@@ -387,3 +396,14 @@
 }
 
 .use-form-styles(@use-form-styles);
+
+// Hooks
+.hook-fieldset--bordered() {}
+
+.hook-checkbox() {}
+
+.hook-radio() {}
+
+.hook-checkbox--inline() {}
+
+.hook-radio--inline() {}

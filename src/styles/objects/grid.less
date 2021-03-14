@@ -3,136 +3,185 @@
 // -------------------------------------------------------
 .use-grid-classes(@boolean) when (@boolean =true) {
 
-    // Usage
-    // <element class="container">
-    //    <element class="grid">
-    //        <element class="grid__column u-width-small-*">
-    //        </element>
-    //    </element>
-    // </element>
+	// Usage
+	// <element class="container">
+	//    <element class="grid">
+	//        <element class="grid__column u-width-small-*">
+	//        </element>
+	//    </element>
+	// </element>
 
-    // Container
-    .use-container(@boolean) when (@boolean =true) {
-        .container,
-        .container-fluid {
-            .make-container();
-        }
+	// Container
+	.use-container(@boolean) when (@boolean =true) {
 
-        // Fluid containers
-        .container-fluid {
-            width: @container-fluid;
-            max-width: @container-fluid-max;
-        }
+		.container,
+		.container-fluid {
+			.make-container();
+		}
 
-        .container-fluid--full {
-            width: @container-fluid-full;
-            max-width: @container-fluid-full-max;
-        }
+		.container {
+			.hook-container;
+		}
 
-        .container-fluid--inner {
-            width: @container-fluid-inner;
-            max-width: @container-fluid-inner-max;
-        }
+		// Fluid Containers
+		.container-fluid {
+			width: @container-fluid;
+			max-width: @container-fluid-max;
+			.hook-container-fluid;
+		}
 
-        // Fixed containers
+		.container-fluid--full {
+			width: @container-fluid-full;
+			max-width: @container-fluid-full-max;
+			.hook-container-fluid--full;
+		}
 
-        // Container Small (Default)
-        .use-screen-small(@boolean) when (@boolean =true) {
-            .container {
-                width: @container-small;
-            }
-        }
-        .use-screen-small(@use-screen-small);
+		.container-fluid--inner {
+			width: @container-fluid-inner;
+			max-width: @container-fluid-inner-max;
+			.hook-container-fluid--inner;
+		}
 
-        // Container Medium
-        .use-screen-medium(@boolean) when (@boolean =true) {
-            @media @medium-up {
-                .container {
-                    width: @container-medium;
-                }
-            }
-        }
-        .use-screen-medium(@use-screen-medium);
+		// Fixed Containers
 
-        // Container Large
-        .use-screen-large(@boolean) when (@boolean =true) {
-            @media @large-up {
-                .container {
-                    width: @container-large;
-                }
-            }
-        }
-        .use-screen-large(@use-screen-large);
+		// Container Small (Default)
+		.use-screen-small(@boolean) when (@boolean =true) {
+			.container {
+				width: @container-small;
+			}
+		}
 
-        // Container Extra-Large
-        .use-screen-x-large(@boolean) when (@boolean =true) {
-            @media @x-large-up {
-                .container {
-                    width: @container-x-large;
-                }
-            }
-        }
-        .use-screen-x-large(@use-screen-x-large);
-    }
-    .use-container(@use-container);
+		.use-screen-small(@use-screen-small);
 
-    // Grid
-    .use-grid(@boolean) when (@boolean =true) {
-        .grid {
-            .make-grid();
-        }
-    }
-    .use-grid(@use-grid);
+		// Container Medium
+		.use-screen-medium(@boolean) when (@boolean =true) {
+			@media @medium-up {
+				.container {
+					width: @container-medium;
+				}
+			}
+		}
 
-    // Grid-column
-    .use-grid-column(@boolean) when (@boolean =true) {
-        .grid__column {
-            .make-grid-column(@grid-gutter-width);
-            width: 100%; // Default width for mobile column
-        }
+		.use-screen-medium(@use-screen-medium);
 
-        // Collapse column gutters
-        .grid__column--flush {
-            padding-left: 0;
-            padding-right: 0;
-        }
-    }
-    .use-grid-column(@use-grid-column);
+		// Container Large
+		.use-screen-large(@boolean) when (@boolean =true) {
+			@media @large-up {
+				.container {
+					width: @container-large;
+				}
+			}
+		}
 
-    // Grid modifiers
-    .use-grid-modifiers(@boolean) when (@boolean =true) {
+		.use-screen-large(@use-screen-large);
 
-        // Grid with half gutters
-        .grid--half {
-            margin-left: ceil(@grid-gutter-width / -4);
-            margin-right: floor(@grid-gutter-width / -4);
-            > .grid__column {
-                padding-left: (@grid-gutter-width / 4);
-                padding-right: (@grid-gutter-width / 4);
-            }
-        }
+		// Container Extra-Large
+		.use-screen-x-large(@boolean) when (@boolean =true) {
+			@media @x-large-up {
+				.container {
+					width: @container-x-large;
+				}
+			}
+		}
 
-        // Collapse row gutters
-        .grid--flush {
-            margin-left: 0;
-            margin-right: 0;
-            > .grid__column {
-                padding-left: 0;
-                padding-right: 0;
-            }
-        }
+		.use-screen-x-large(@use-screen-x-large);
+	}
 
-        // Grid with equal height columns
-        .grid--equal-height {
-            > .grid__column {
-                display: flex;
-            }
-            .grid {
-                flex: 1;
-            }
-        }
-    }
-    .use-grid-modifiers(@use-grid-modifiers);
+	.use-container(@use-container);
+
+	// Grid
+	.use-grid(@boolean) when (@boolean =true) {
+		.grid {
+			.make-grid();
+			.hook-grid;
+		}
+	}
+
+	.use-grid(@use-grid);
+
+	// Grid-Column
+	.use-grid-column(@boolean) when (@boolean =true) {
+		.grid__column {
+			.make-grid-column(@grid-gutter-width);
+			width: 100%; // Default width for mobile column
+			.hook-grid__column;
+		}
+
+		// Flush Column Gutters
+		.grid__column--flush {
+			padding-left: 0;
+			padding-right: 0;
+			.hook-grid__column--flush;
+		}
+	}
+
+	.use-grid-column(@use-grid-column);
+
+	// Grid Modifiers
+	.use-grid-modifiers(@boolean) when (@boolean =true) {
+
+		// Grid with half gutters
+		.grid--half {
+			margin-left: ceil(@grid-gutter-width / -4);
+			margin-right: floor(@grid-gutter-width / -4);
+
+			>.grid__column {
+				padding-left: (@grid-gutter-width / 4);
+				padding-right: (@grid-gutter-width / 4);
+			}
+
+			.hook-grid--half;
+		}
+
+		// Collapse row gutters
+		.grid--flush {
+			margin-left: 0;
+			margin-right: 0;
+
+			>.grid__column {
+				padding-left: 0;
+				padding-right: 0;
+			}
+
+			.hook-grid--flush;
+		}
+
+		// Grid with equal height columns
+		.grid--equal-height {
+			>.grid__column {
+				display: flex;
+			}
+
+			.grid {
+				flex: 1;
+			}
+
+			.hook-grid--equal-height;
+		}
+	}
+
+	.use-grid-modifiers(@use-grid-modifiers);
 }
 
 .use-grid-classes(@use-grid-classes);
+
+// Hooks
+.hook-container() {}
+
+.hook-container-fluid() {}
+
+.hook-container-fluid--full() {}
+
+.hook-container-fluid--inner() {}
+
+.hook-grid() {}
+
+.hook-grid--half() {}
+
+.hook-grid--flush() {}
+
+.hook-grid--equal-height() {}
+
+.hook-grid__column() {}
+
+.hook-grid__column--flush() {}

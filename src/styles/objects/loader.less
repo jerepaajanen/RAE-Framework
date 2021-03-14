@@ -14,8 +14,8 @@
 		&::after {
 			animation: spinner @loader-speed infinite linear;
 			border-radius: 100%;
-			border-right-color: transparent;
-			border-top-color: transparent;
+			border-right-color: transparent !important;
+			border-top-color: transparent !important;
 			border: @loader-thickness solid @loader-color;
 			content: "";
 			display: block;
@@ -28,6 +28,8 @@
 			top: 50%;
 			width: @loader-size;
 		}
+
+		.hook-loader;
 	}
 
 	.loader--large {
@@ -39,6 +41,8 @@
 			margin-top: -(@loader-size);
 			width: @loader-size * 2;
 		}
+
+		.hook-loader--large;
 	}
 
 	@keyframes spinner {
@@ -53,3 +57,8 @@
 }
 
 .loader(@use-loader);
+
+// Hooks
+.hook-loader() {}
+
+.hook-loader--large() {}

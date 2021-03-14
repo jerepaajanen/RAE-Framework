@@ -28,7 +28,7 @@
         objectFitImages();
 
         // Init Responsive Nav
-        $('.js-nav').raeNavResponsive({});
+        $('.js-primary-nav').raeNavResponsive({});
 
         // Init Modal
         $('.js-modal').raeModal({});

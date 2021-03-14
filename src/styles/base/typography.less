@@ -1,6 +1,7 @@
 //
 // Typography
 // -------------------------------------------------------
+
 .typography(@boolean) when (@boolean =true) {
 
 	// Links
@@ -10,6 +11,7 @@
 		cursor: pointer;
 		text-decoration: @link-decoration;
 		transition: background-color @transition-duration-default @transition-easing-default, color @transition-duration-default @transition-easing-default, opacity @transition-duration-default @transition-easing-default, border-color @transition-duration-default @transition-easing-default;
+		.hook-a;
 
 		&:hover,
 		&:focus {
@@ -38,6 +40,7 @@
 		letter-spacing: @heading-letter-spacing;
 		line-height: @heading-line-height;
 		margin-bottom: @spacing-base;
+		.hook-h;
 
 		a {
 			color: inherit;
@@ -49,8 +52,14 @@
 		font-size: @heading1-font-size-small;
 
 		@media @medium-up {
-			font-size: @heading1-font-size;
+			font-size: @heading1-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @heading1-font-size-large;
+		}
+
+		.hook-h1;
 	}
 
 	h2,
@@ -58,8 +67,14 @@
 		font-size: @heading2-font-size-small;
 
 		@media @medium-up {
-			font-size: @heading2-font-size;
+			font-size: @heading2-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @heading2-font-size-large;
+		}
+
+		.hook-h2;
 	}
 
 	h3,
@@ -67,8 +82,14 @@
 		font-size: @heading3-font-size-small;
 
 		@media @medium-up {
-			font-size: @heading3-font-size;
+			font-size: @heading3-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @heading3-font-size-large;
+		}
+
+		.hook-h3;
 	}
 
 	h4,
@@ -76,8 +97,14 @@
 		font-size: @heading4-font-size-small;
 
 		@media @medium-up {
-			font-size: @heading4-font-size;
+			font-size: @heading4-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @heading4-font-size-large;
+		}
+
+		.hook-h4;
 	}
 
 	h5,
@@ -85,8 +112,14 @@
 		font-size: @heading5-font-size-small;
 
 		@media @medium-up {
-			font-size: @heading5-font-size;
+			font-size: @heading5-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @heading5-font-size-large;
+		}
+
+		.hook-h5;
 	}
 
 	h6,
@@ -94,8 +127,14 @@
 		font-size: @heading6-font-size-small;
 
 		@media @medium-up {
-			font-size: @heading6-font-size;
+			font-size: @heading6-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @heading6-font-size-large;
+		}
+
+		.hook-h6;
 	}
 
 	// Display headings
@@ -104,7 +143,11 @@
 		font-size: @display1-font-size-small;
 
 		@media @medium-up {
-			font-size: @display1-font-size;
+			font-size: @display1-font-size-medium;
+		}
+
+		@media @large-up {
+			font-size: @display1-font-size-large;
 		}
 	}
 
@@ -112,27 +155,38 @@
 		font-family: @display1-font-family;
 		font-weight: @display1-font-weight;
 		.display-1-size();
+		.hook-display-1;
 	}
 
 	.display-2-size() {
 		font-size: @display2-font-size-small;
 
 		@media @medium-up {
-			font-size: @display2-font-size;
+			font-size: @display2-font-size-medium;
 		}
+
+		@media @large-up {
+			font-size: @display2-font-size-large;
+		}
+
 	}
 
 	.display-2 {
 		font-family: @display2-font-family;
 		font-weight: @display2-font-weight;
 		.display-2-size();
+		.hook-display-2;
 	}
 
 	.display-3-size() {
 		font-size: @display3-font-size-small;
 
 		@media @medium-up {
-			font-size: @display3-font-size;
+			font-size: @display3-font-size-medium;
+		}
+
+		@media @large-up {
+			font-size: @display3-font-size-large;
 		}
 	}
 
@@ -140,13 +194,18 @@
 		font-family: @display3-font-family;
 		font-weight: @display3-font-weight;
 		.display-3-size();
+		.hook-display-3;
 	}
 
 	.display-4-size() {
 		font-size: @display4-font-size-small;
 
 		@media @medium-up {
-			font-size: @display4-font-size;
+			font-size: @display4-font-size-medium;
+		}
+
+		@media @large-up {
+			font-size: @display4-font-size-large;
 		}
 	}
 
@@ -154,12 +213,14 @@
 		font-family: @display4-font-family;
 		font-weight: @display4-font-weight;
 		.display-4-size();
+		.hook-display-4;
 	}
 
 	// Paragraph
 
 	p {
 		margin-bottom: @spacing-base;
+		.hook-p;
 	}
 
 	// Lead
@@ -170,6 +231,7 @@
 		font-size: @lead-font-size;
 		font-weight: @lead-font-weight;
 		line-height: @lead-line-height;
+		.hook-lead;
 	}
 
 	// Small
@@ -178,6 +240,7 @@
 	.small {
 		font-size: @small-font-size;
 		font-weight: normal;
+		.hook-small;
 	}
 
 	// Mark
@@ -186,6 +249,7 @@
 	.mark {
 		background-color: @mark-background-color;
 		padding: @mark-padding;
+		.hook-mark;
 	}
 
 	// Blockquotes
@@ -205,6 +269,7 @@
 		line-height: @blockquote-quote-line-height;
 		margin-bottom: @spacing-base;
 		padding: @blockquote-padding;
+		.hook-blockquote;
 
 		// Blockquote Quote
 		p {
@@ -224,6 +289,7 @@
 			font-style: normal;
 			font-weight: normal;
 			line-height: 1;
+			.hook-blockquote-cite;
 
 			&:before {
 				content: "\2014 \0020"; // add – line before cite
@@ -240,10 +306,12 @@
 		font-size: @pullquote-font-size;
 		font-style: @pullquote-font-style;
 		padding: @pullquote-padding;
+		.hook-pullquote;
 
 		cite {
 			color: @pullquote-cite-color;
 			font-size: @pullquote-cite-font-size;
+			.hook-pullquote-cite;
 		}
 	}
 
@@ -291,3 +359,44 @@
 }
 
 .typography(@use-typography);
+
+// Hooks
+.hook-a() {}
+
+.hook-h() {}
+
+.hook-h1() {}
+
+.hook-h2() {}
+
+.hook-h3() {}
+
+.hook-h4() {}
+
+.hook-h5() {}
+
+.hook-h6() {}
+
+.hook-display-1() {}
+
+.hook-display-2() {}
+
+.hook-display-3() {}
+
+.hook-display-4() {}
+
+.hook-p() {}
+
+.hook-lead() {}
+
+.hook-small() {}
+
+.hook-mark() {}
+
+.hook-blockquote() {}
+
+.hook-blockquote-cite() {}
+
+.hook-pullquote() {}
+
+.hook-pullquote-cite() {}

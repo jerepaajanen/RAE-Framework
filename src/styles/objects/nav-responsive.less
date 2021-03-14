@@ -24,11 +24,13 @@
 			}
 
 			.menu-open {
-				height: 100% !important overflow: hidden !important;
+				height: 100% !important;
+				overflow: hidden !important;
 			}
 
 			.submenu-open {
-				height: 100% !important overflow: hidden !important;
+				height: 100% !important;
+				overflow: hidden !important;
 			}
 
 			[data-overlay] {
@@ -86,13 +88,15 @@
 
 			@media @nav-responsive-down {
 				.menu-open {
-					height: 100% !important overflow: hidden !important;
+					height: 100% !important;
+					overflow: hidden !important;
 				}
 			}
 
 			@media @nav-responsive-up {
 				.submenu-open {
-					height: 100% !important overflow: hidden !important;
+					height: 100% !important;
+					overflow: hidden !important;
 				}
 			}
 
@@ -114,6 +118,8 @@
 				}
 			}
 		}
+
+		.hook-nav-responsive;
 	}
 
 	.nav-responsive();
@@ -121,3 +127,6 @@
 }
 
 .responsive-navigation(@use-responsive-navigation);
+
+// Hooks
+.hook-nav-responsive() {}
