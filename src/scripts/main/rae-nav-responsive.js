@@ -162,9 +162,10 @@
           $current,
           $toggleNav = $('#' + $current.attr('aria-controls'));
 
-          console.log($toggleNav);
+
         if ($(':visible', $toggleNav).length < 1) {
 
+          $('body').addClass('menu-open');
           $current
             .toggleClass('is-inactive is-active')
             .attr("aria-expanded", "true");
@@ -176,7 +177,7 @@
               $(this).removeAttr('style');
             });
 
-          $('body').addClass('menu-open');
+
 
         } else {
 
