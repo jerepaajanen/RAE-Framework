@@ -1,68 +1,79 @@
 //
 // Responsive navigation
 // -------------------------------------------------------
-.responsive-navigation(@boolean) when (@boolean =true) {
 
+.responsive-navigation(@boolean) when (@boolean =true) {
 
 	.nav-responsive() {
 		& when (@nav-responsive-breakpoint =@breakpoint-x-large) {
-
-			[data-navigation] {
-				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
-				overflow-x: visible;
-
-				[data-content] {
-					display: none;
-					visibility: hidden;
-
-					&.is-open {
-						display: block;
-						overflow-y: auto;
-						visibility: visible;
-					}
-				}
-			}
 
 			.menu-open {
 				height: 100% !important;
 				overflow: hidden !important;
 			}
 
-			.submenu-open {
-				height: 100% !important;
-				overflow: hidden !important;
-			}
+			.nav-responsive {
+				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+				overflow-x: visible;
 
-			[data-overlay] {
-				bottom: 0;
-				left: 0;
-				opacity: 0;
-				position: fixed;
-				right: 0;
-				top: 0;
-				visibility: hidden;
-				width: 100%;
+				&:not(.is-open) {
+					display: none;
+					visibility: hidden;
 
-				&.is-visible {
-					opacity: 1;
+					&.is-open {
+						overflow-y: auto;
+						visibility: visible;
+					}
+				}
+
+				[aria-hidden="true"] {
+					left: 0;
+					position: absolute;
+					top: 100%;
+					visibility: hidden;
+				}
+
+				[aria-hidden="false"] {
 					visibility: visible;
 				}
-			}
 
+				.no-js & li>ul {
+					display: none;
+				}
+
+				.no-js & li:hover>ul,
+				.no-js & li:focus-within>ul {
+					display: block;
+				}
+			}
 		}
 
 		& when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
-			[data-navigation] {
+
+			.menu-open {
+				@media @nav-responsive-down {
+					height: 100% !important;
+					overflow: hidden !important;
+				}
+			}
+
+			.nav-toggle {
+				@media @nav-responsive-up {
+					display: none;
+				}
+			}
+
+			.nav-responsive {
 				overflow-x: visible;
 				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
 
 				@media @nav-responsive-down {
-					[data-content] {
+
+					&:not(.is-open) {
 						display: none;
 						visibility: hidden;
 
 						&.is-open {
-							display: block;
 							overflow-y: auto;
 							visibility: visible;
 						}
@@ -70,51 +81,38 @@
 				}
 
 				@media @nav-responsive-up {
-					width: auto;
 
-					[data-content] {
-						display: block;
-						height: auto;
+					& {
 						overflow: visible;
 						visibility: visible;
 					}
 
 					// Hide navigation toggle-buttons
-					[data-toggle] {
+					.nav-toggle {
 						display: none;
 					}
 				}
-			}
 
-			@media @nav-responsive-down {
-				.menu-open {
-					height: 100% !important;
-					overflow: hidden !important;
-				}
-			}
-
-			@media @nav-responsive-up {
-				.submenu-open {
-					height: 100% !important;
-					overflow: hidden !important;
-				}
-			}
-
-			@media @nav-responsive-up {
-				[data-overlay] {
-					bottom: 0;
+				[aria-hidden="true"] {
+					display: none;
 					left: 0;
-					opacity: 0;
-					position: fixed;
-					right: 0;
-					top: 0;
+					position: absolute;
+					top: 100%;
 					visibility: hidden;
-					width: 100%;
+				}
 
-					&.is-visible {
-						opacity: 1;
-						visibility: visible;
-					}
+				[aria-hidden="false"] {
+					display: block;
+					visibility: visible;
+				}
+
+				.no-js & li>ul {
+					display: none;
+				}
+
+				.no-js & li:hover>ul,
+				.no-js & li:focus-within>ul {
+					display: block;
 				}
 			}
 		}
