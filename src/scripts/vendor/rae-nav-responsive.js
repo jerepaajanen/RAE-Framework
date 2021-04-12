@@ -2,7 +2,7 @@
 
   'use strict';
 
-  $.fn.raeNavResponsive = function (settings) {
+  $.fn.raeNavResponsive = function (options) {
 
     var settings = $.extend({
       toggle: true, // Enable / disable Navigation toggle functionality
@@ -21,7 +21,8 @@
       submenuButtonContent: '+', // Html or text
       closeOnBodyClick: true // Close Submenus on click outside navigation. If using multiple instances, set false to other
 
-    }, settings);
+    }, options);
+
     this.each(function () {
 
       var
@@ -60,11 +61,11 @@
 
 
       // Set toggle button in place
-      if (settings.toggle == true && settings.toggleAppendTo !== '') {
+      if (settings.toggle === true && settings.toggleAppendTo !== '') {
         $(settings.toggleAppendTo).append($this.toggle);
-      } else if (settings.toggle == true && settings.togglePrependTo !== '') {
+      } else if (settings.toggle === true && settings.togglePrependTo !== '') {
         $(settings.togglePrependTo).prepend($this.toggle);
-      } else if (settings.toggle == true) {
+      } else if (settings.toggle === true) {
         $this.before($this.toggle);
       }
 
@@ -159,7 +160,6 @@
       function toggleNav($current) {
 
         var
-          $current,
           $toggleNav = $('#' + $current.attr('aria-controls'));
 
 
@@ -168,7 +168,7 @@
           $('body').addClass('menu-open');
           $current
             .toggleClass('is-inactive is-active')
-            .attr("aria-expanded", "true");
+            .attr('aria-expanded', 'true');
 
           $toggleNav
             .hide()
@@ -186,7 +186,7 @@
 
               $current
                 .toggleClass('is-active is-inactive')
-                .attr("aria-expanded", "false");
+                .attr('aria-expanded', 'false');
 
               $(this)
                 .removeClass('is-open')
@@ -201,22 +201,21 @@
       function toggleSubmenu($current) {
 
         var
-          $current,
           $toggleSubmenu = $('#' + $current.attr('aria-controls')),
           $currentParents = $current.parents(settings.submenuSelector);
 
-        if ($current.attr("aria-expanded") === "true") {
-          $current.attr("aria-expanded", "false");
-          $toggleSubmenu.attr('aria-hidden', "true");
+        if ($current.attr('aria-expanded') === 'true') {
+          $current.attr('aria-expanded', 'false');
+          $toggleSubmenu.attr('aria-hidden', 'true');
 
           $('body').removeClass('submenu-open');
 
         } else {
-          $submenuButton.attr("aria-expanded", "false");
-          $submenu.not($currentParents).attr("aria-hidden", "true");
+          $submenuButton.attr('aria-expanded', 'false');
+          $submenu.not($currentParents).attr('aria-hidden', 'true');
 
-          $current.attr("aria-expanded", "true");
-          $toggleSubmenu.attr('aria-hidden', "false");
+          $current.attr('aria-expanded', 'true');
+          $toggleSubmenu.attr('aria-hidden', 'false');
           $('body').addClass('submenu-open');
 
         }
@@ -232,15 +231,15 @@
         $($this.toggle)
           .removeClass('is-active')
           .addClass('is-inactive')
-          .attr("aria-expanded", "false");
+          .attr('aria-expanded', 'false');
 
         $('body').removeClass('menu-open');
       }
 
       function closeAllSubmenus() {
 
-        $submenuButton.attr("aria-expanded", "false");
-        $submenu.attr("aria-hidden", "true");
+        $submenuButton.attr('aria-expanded', 'false');
+        $submenu.attr('aria-hidden', 'true');
 
         $('body').removeClass('submenu-open');
       }
@@ -249,7 +248,7 @@
        Nav Open / Close Functions
       ===================================================*/
 
-      $($this.toggle).on("click", function (e) {
+      $($this.toggle).on('click', function (e) {
 
         toggleNav($(this));
         closeAllSubmenus();
@@ -261,9 +260,9 @@
        Submenu Open / Close Functions
       ===================================================*/
 
-      var $submenuButton = $submenuParent.children("[aria-expanded]");
+      var $submenuButton = $submenuParent.children('[aria-expanded]');
 
-      $submenuButton.on("click", function (e) {
+      $submenuButton.on('click', function (e) {
         toggleSubmenu($(this));
       });
 
@@ -271,8 +270,8 @@
        Close Nav and Submenu on ESC key press
       ===================================================*/
 
-      $(document).on("keyup", function (e) {
-        if (e.keyCode == 27) {
+      $(document).on('keyup', function (e) {
+        if (e.keyCode === 27) {
           if ($('body').hasClass('submenu-open')) {
             closeAllSubmenus();
           } else {
@@ -286,8 +285,8 @@
        Close Submenu when clicked outside of Nav
       ===================================================*/
 
-      $(document).on("click", function (e) {
-        if (settings.closeOnBodyClick === true & !$(e.target).closest($this).length) {
+      $(document).on('click', function (e) {
+        if (settings.closeOnBodyClick === true && !$(e.target).closest($this).length) {
           closeAllSubmenus();
         }
       });

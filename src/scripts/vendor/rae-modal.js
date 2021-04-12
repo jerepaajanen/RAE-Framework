@@ -2,40 +2,40 @@
 
     'use strict';
 
-    $.fn.raeModal = function (settings) {
+    $.fn.raeModal = function (options) {
 
         // This is the easiest way to have default settings.
-        var options = $.extend({
+        var settings = $.extend({
             // These are the defaults.
             transition: 'fade', // String: Transition to apply. 'slide', 'fade', 'both' or 'none'
             transitionSpeed: 250,
             transitionEasing: 'linear', // String: 'linear', 'swing', 'default'.
             toggle: '[data-modal-toggle]' // Selector class for the element acting as a button.
 
-        }, settings);
+        }, options);
 
 
         this.each(function () {
 
             var wrapper = $(this),
                 modalClose = '[data-modal-close]',
-                modalOpen = options.toggle,
-                overlaySelector = options.overlay;
+                modalOpen = settings.toggle,
+                overlaySelector = settings.overlay;
 
             $.fn.transitions = function (callback) {
                 var transition = {};
-                if (options.transition === 'fade') {
+                if (settings.transition === 'fade') {
                     transition.opacity = 'toggle';
                 }
-                if (options.transition === 'slide') {
+                if (settings.transition === 'slide') {
                     transition.height = 'toggle';
                 }
-                if (options.transition === 'both') {
+                if (settings.transition === 'both') {
                     transition.opacity = 'toggle';
                     transition.height = 'toggle';
                 }
 
-                return this.animate(transition, options.transitionSpeed, options.transitionEasing, callback);
+                return this.animate(transition, settings.transitionSpeed, settings.transitionEasing, callback);
 
             };
 
