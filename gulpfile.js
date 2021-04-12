@@ -32,6 +32,8 @@ const postCss_autoprefixer = require('autoprefixer');
 const postCss_cssMqpacker = require('css-mqpacker');
 const postCss_cssnano = require('cssnano');
 const postCss_flexbugsFixes = require('postcss-flexbugs-fixes');
+const postCss_purgecss = require('@fullhuman/postcss-purgecss')
+const postCss_purgecssWordpress = require('purgecss-with-wordpress')
 const preprocess = require('gulp-preprocess');
 const rename = require('gulp-rename');
 const size = require('gulp-size');
@@ -224,6 +226,10 @@ gulp.task('styles', function (done) {
     .pipe(gulp.dest(paths.styles.dest))
 
     .pipe(gulpIf(isProduction, postCss([
+      postCss_purgecss({
+        content: [paths.src + '**/*.{html,php}'],
+        safelist: postCss_purgecssWordpress.safelist
+      }),
       postCss_flexbugsFixes,
       postCss_autoprefixer({
         //Supported browsers stored in .browserslistrc
@@ -275,6 +281,7 @@ gulp.task('scriptsMain', gulp.series('scriptsHint', function scriptsMainCompilin
   return gulp.src(paths.scripts.src + 'main/**/*.js')
 
     .pipe(concat('main.js'))
+    .pipe(touch())
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(gulpIf(isProduction, uglify()))
     .on('error', handleErrors)
@@ -306,6 +313,7 @@ gulp.task('scriptsVendor', function (done) {
     )
 
     .pipe(concat('vendor.js'))
+    .pipe(touch())
     .pipe(gulp.dest(paths.scripts.dest))
     .pipe(gulpIf(isProduction, uglify()))
     .on('error', handleErrors)
@@ -592,8 +600,11 @@ gulp.task('watch', function (done) {
   gulp.watch(paths.styles.src + '**/*.less', gulp.parallel('styles'));
 
   // Watch Scripts
-  gulp.watch(paths.scripts.src + '**/*.js', gulp.parallel('scriptsMain'));
-  gulp.watch('bower.json', gulp.parallel('scriptsVendor'));
+  gulp.watch(paths.scripts.src + 'main/**/*.js', gulp.parallel('scriptsMain'));
+  gulp.watch([
+    paths.scripts.src + 'vendor/**/*.js',
+    'bower.json'
+  ], gulp.parallel('scriptsVendor'));
 
   // Watch Images
   gulp.watch([
