@@ -60,6 +60,8 @@
 		&:focus {
 			border-color: @input-border-color-focus;
 		}
+
+		.hook-input;
 	}
 
 	textarea,
@@ -69,15 +71,21 @@
 		padding-top: ((@input-height - (@input-font-size * @line-height-base)) / 2);
 	}
 
+	textarea {
+		.hook-textarea;
+	}
+
 	// Range input
 	input[type=range] {
 		-webkit-appearance: none;
 		margin: (@range-thumb-height / 2) 0;
+		.hook-range;
 
 		.track() {
-			height: @range-track-height;
 			cursor: pointer;
+			height: @range-track-height;
 			transition: background @transition-duration-default;
+			.hook-range-track;
 		}
 
 		.thumb() {
@@ -88,7 +96,10 @@
 			box-shadow: @range-thumb-box-shadow;
 			cursor: pointer;
 			height: @range-thumb-height;
+			position: relative;
 			width: @range-thumb-width;
+			z-index: 2;
+			.hook-range-thumb;
 		}
 
 		&:focus {
@@ -194,6 +205,8 @@
 		&:focus {
 			background-image: data-uri('image/svg+xml;charset=UTF-8', '../../images/icons/select_hover.svg');
 		}
+
+		.hook-select;
 	}
 
 	// Checkbox & Radio
@@ -399,6 +412,18 @@
 
 // Hooks
 .hook-fieldset--bordered() {}
+
+.hook-input() {}
+
+.hook-textarea() {}
+
+.hook-select() {}
+
+.hook-range() {}
+
+.hook-range-thumb() {}
+
+.hook-range-track() {}
 
 .hook-checkbox() {}
 
