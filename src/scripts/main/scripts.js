@@ -28,7 +28,7 @@
     $('.js-primary-nav').raeNavResponsive({});
 
     // Init Modal
-    $('.js-modal').raeModal({});
+    //$('.js-modal').raeModal({});
 
   });
 
