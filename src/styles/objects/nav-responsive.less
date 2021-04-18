@@ -4,18 +4,31 @@
 
 .responsive-navigation(@boolean) when (@boolean =true) {
 
-	.nav-responsive() {
-		& when (@nav-responsive-breakpoint =@breakpoint-x-large) {
+	body.menu-open {
+		@media @nav-responsive-down {
+			height: 100% !important;
+			overflow: hidden !important;
+		}
+	}
 
-			// Body Class
-			body.menu-open {
-				height: 100% !important;
-				overflow: hidden !important;
+	.nav-toggle {
+
+		& when not (@nav-responsive-breakpoint =@breakpoint-xx-large) {
+			@media @nav-responsive-up {
+				display: none;
 			}
+		}
 
-			.nav-responsive {
-				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
-				overflow-x: visible;
+	}
+
+	// Reusable .nav-responsive mixin. Defaults to 'ul' as submenu container.
+	.nav-responsive(@submenuSelector: ~'ul'; ) {
+
+		overflow-x: visible;
+		-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+
+		& when not (@nav-responsive-breakpoint =@breakpoint-xx-large) {
+			@media @nav-responsive-down {
 
 				&:not(.is-open) {
 					display: none;
@@ -26,128 +39,53 @@
 						visibility: visible;
 					}
 				}
+			}
 
-				li>ul:not([aria-hidden="false"]) {
-					display: none;
-					visibility: hidden;
-				}
+			@media @nav-responsive-up {
 
-				[aria-hidden="false"] {
+				& {
+					overflow: visible;
 					visibility: visible;
-				}
-
-				.no-js & li:hover>ul,
-				.no-js & li:focus-within>ul {
-					display: block;
-					visibility: visible
 				}
 			}
 		}
 
-		& when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
+		& when (@nav-responsive-breakpoint =@breakpoint-xx-large) {
+			&:not(.is-open) {
+				display: none;
+				visibility: hidden;
 
-			body.menu-open {
-				@media @nav-responsive-down {
-					height: 100% !important;
-					overflow: hidden !important;
-				}
-			}
-
-			.nav-toggle {
-				@media @nav-responsive-up {
-					display: none;
-				}
-			}
-
-			.nav-responsive() {
-				overflow-x: visible;
-				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
-
-				@media @nav-responsive-down {
-
-					&:not(.is-open) {
-						display: none;
-						visibility: hidden;
-
-						&.is-open {
-							overflow-y: auto;
-							visibility: visible;
-						}
-					}
-				}
-
-				@media @nav-responsive-up {
-
-					& {
-						overflow: visible;
-						visibility: visible;
-					}
-				}
-
-				[aria-hidden="false"] {
+				&.is-open {
+					overflow-y: auto;
 					visibility: visible;
 				}
 			}
-			.nav-responsive-menu() {
+		}
 
-				li>&:not([aria-hidden="false"]) {
-					display: none;
-					visibility: hidden;
-				}
 
-				.no-js & li:hover>&,
-				.no-js & li:focus-within>& {
-					display: block;
-					visibility: visible
-				}
-			}
 
-			.nav-responsive {
-				overflow-x: visible;
-				-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
+		[aria-hidden="false"] {
+			visibility: visible;
+		}
 
-				@media @nav-responsive-down {
 
-					&:not(.is-open) {
-						display: none;
-						visibility: hidden;
+		& li>@{submenuSelector}:not([aria-hidden="false"]) {
+			display: none;
+			visibility: hidden;
+		}
 
-						&.is-open {
-							overflow-y: auto;
-							visibility: visible;
-						}
-					}
-				}
-
-				@media @nav-responsive-up {
-
-					& {
-						overflow: visible;
-						visibility: visible;
-					}
-				}
-
-				li>ul:not([aria-hidden="false"]) {
-					display: none;
-					visibility: hidden;
-				}
-
-				[aria-hidden="false"] {
-					visibility: visible;
-				}
-
-				.no-js & li:hover>ul,
-				.no-js & li:focus-within>ul {
-					display: block;
-					visibility: visible
-				}
-			}
+		.no-js & li:hover>@{submenuSelector},
+		.no-js & li:focus-within>@{submenuSelector} {
+			display: block;
+			visibility: visible
 		}
 
 		.hook-nav-responsive;
 	}
 
-	.nav-responsive();
+	.nav-responsive {
+		.nav-responsive();
+	}
 
 }
 
