@@ -13,7 +13,7 @@
 
 	.nav-toggle {
 
-		& when not (@nav-responsive-breakpoint =@breakpoint-xx-large) {
+		& when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
 			@media @nav-responsive-up {
 				display: none;
 			}
@@ -27,38 +27,37 @@
 		overflow-x: visible;
 		-webkit-overflow-scrolling: touch; // Prevent "ul" flashing when javascript isn't loaded
 
-		& when not (@nav-responsive-breakpoint =@breakpoint-xx-large) {
+		& when not (@nav-responsive-breakpoint =@breakpoint-x-large) {
 			@media @nav-responsive-down {
 
 				&:not(.is-open) {
 					display: none;
 					visibility: hidden;
+				}
 
-					&.is-open {
-						overflow-y: auto;
-						visibility: visible;
-					}
+				&.is-open {
+					overflow-y: auto;
+					visibility: visible;
 				}
 			}
 
 			@media @nav-responsive-up {
 
 				& {
-					overflow: visible;
 					visibility: visible;
 				}
 			}
 		}
 
-		& when (@nav-responsive-breakpoint =@breakpoint-xx-large) {
+		& when (@nav-responsive-breakpoint =@breakpoint-x-large) {
 			&:not(.is-open) {
 				display: none;
 				visibility: hidden;
+			}
 
-				&.is-open {
-					overflow-y: auto;
-					visibility: visible;
-				}
+			&.is-open {
+				overflow-y: auto;
+				visibility: visible;
 			}
 		}
 
