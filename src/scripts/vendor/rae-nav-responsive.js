@@ -100,7 +100,7 @@
 
           } else {
 
-            $id = $(this).text().trim().replace(/\s+/g, '-').toLowerCase() + '-submenu';
+            $id = $(this).text().trim().replace(/[!"#$%&'()*+,.\/:;<=>?@[\\\]^`{|}~]/g, '', /\s+/g, '-').replace(/\s+/g, '-').toLowerCase() + '-submenu';
 
           }
 
@@ -205,16 +205,22 @@
           $currentParents = $current.parents(settings.submenuSelector);
 
         if ($current.attr('aria-expanded') === 'true') {
-          $current.attr('aria-expanded', 'false');
+          $current
+            .removeClass('is-active')
+            .attr('aria-expanded', 'false');
           $toggleSubmenu.attr('aria-hidden', 'true');
 
           $('body').removeClass('submenu-open');
 
         } else {
-          $submenuButton.attr('aria-expanded', 'false');
+          $submenuButton
+            .removeClass('is-active')
+            .attr('aria-expanded', 'false');
           $submenu.not($currentParents).attr('aria-hidden', 'true');
 
-          $current.attr('aria-expanded', 'true');
+          $current
+            .addClass('is-active')
+            .attr('aria-expanded', 'true');
           $toggleSubmenu.attr('aria-hidden', 'false');
           $('body').addClass('submenu-open');
 
@@ -238,7 +244,9 @@
 
       function closeAllSubmenus() {
 
-        $submenuButton.attr('aria-expanded', 'false');
+        $submenuButton
+          .removeClass('is-active')
+          .attr('aria-expanded', 'false');
         $submenu.attr('aria-hidden', 'true');
 
         $('body').removeClass('submenu-open');
